@@ -1,0 +1,63 @@
+{
+  "verifiedAt": "2026-08-26T17:40:45.188Z",
+  "evidenceClass": "deterministic-runtime",
+  "note": "These cases verify expected tool plans and grounded runtime behavior. They do not claim that a language model selected the calls.",
+  "cases": 5,
+  "assertions": 25,
+  "failures": 0,
+  "result": "passed",
+  "caseResults": [
+    {
+      "id": "accessible-route",
+      "prompt": "Find the accessible gate, then take me from Entrance A to Platform 2 without stairs. Draw the route in the scene and tell me whether the available capture evidence is trustworthy.",
+      "calls": [
+        "get_scene_context",
+        "search_entities",
+        "navigate_to_entity",
+        "find_semantic_route"
+      ],
+      "assertionCount": 8,
+      "result": "passed"
+    },
+    {
+      "id": "outage-reroute-and-evidence",
+      "prompt": "Stage Lift 1 as closed, recalculate the accessible route, inspect any weak evidence on the alternate path, and show the concrete recapture guidance.",
+      "calls": [
+        "set_entity_state",
+        "find_semantic_route",
+        "get_region_quality"
+      ],
+      "assertionCount": 9,
+      "result": "passed"
+    },
+    {
+      "id": "undo-to-baseline",
+      "prompt": "Undo the staged outage and confirm that the station is back at its baseline state.",
+      "calls": [
+        "set_entity_state",
+        "undo_scene_change",
+        "get_scene_context"
+      ],
+      "assertionCount": 5,
+      "result": "passed"
+    },
+    {
+      "id": "unknown-entity-is-bounded",
+      "prompt": "Inspect the entity dragon_99. Do not invent it if it is absent.",
+      "calls": [
+        "get_entity"
+      ],
+      "assertionCount": 2,
+      "result": "passed"
+    },
+    {
+      "id": "invalid-input-is-rejected",
+      "prompt": "Call scene context with an undeclared extra argument.",
+      "calls": [
+        "get_scene_context"
+      ],
+      "assertionCount": 1,
+      "result": "passed"
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "cases": [
+    {
+      "id": "accessible-route",
+      "prompt": "Find the accessible gate, then take me from Entrance A to Platform 2 without stairs. Draw the route in the scene and tell me whether the available capture evidence is trustworthy.",
+      "expectedCalls": ["get_scene_context", "search_entities", "navigate_to_entity", "find_semantic_route"],
+      "steps": [
+        {
+          "tool": "get_scene_context",
+          "args": {},
+          "assert": [{ "pointer": "/stagedChangeCount", "equals": 0 }]
+        },
+        {
+          "tool": "search_entities",
+          "args": { "query": "accessible gate" },
+          "assert": [
+            { "pointer": "/count", "atLeast": 1 },
+            { "pointer": "/results/0/id", "equals": "accessible_gate_1" }
+          ]
+        },
+        {
+          "tool": "navigate_to_entity",
+          "args": { "entityId": "accessible_gate_1" },
+          "assert": [
+            { "pointer": "/found", "equals": true },
+            { "pointer": "/entity/id", "equals": "accessible_gate_1" }
+          ]
+        },
+        {
+          "tool": "find_semantic_route",
+          "args": { "from": "Entrance A", "to": "Platform 2", "accessibleOnly": true },
+          "assert": [
+            { "pointer": "/found", "equals": true },
+            { "pointer": "/entityIds", "includes": "lift_1" },
+            { "pointer": "/warnings", "length": 0 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "outage-reroute-and-evidence",
+      "prompt": "Stage Lift 1 as closed, recalculate the accessible route, inspect any weak evidence on the alternate path, and show the concrete recapture guidance.",
+      "expectedCalls": ["set_entity_state", "find_semantic_route", "get_region_quality"],
+      "steps": [
+        {
+          "tool": "set_entity_state",
+          "args": { "entityId": "lift_1", "patch": { "operational": "closed" } },
+          "assert": [
+            { "pointer": "/staged", "equals": true },
+            { "pointer": "/change/after/operational", "equals": "closed" }
+          ]
+        },
+        {
+          "tool": "find_semantic_route",
+          "args": { "from": "Entrance A", "to": "Platform 2", "accessibleOnly": true },
+          "assert": [
+            { "pointer": "/found", "equals": true },
+            { "pointer": "/entityIds", "includes": "lift_2" },
+            { "pointer": "/warnings/0/regionId", "equals": "west_corridor" },
+            { "pointer": "/warnings/0/readiness", "equals": 0.56 }
+          ]
+        },
+        {
+          "tool": "get_region_quality",
+          "args": { "regionId": "west_corridor" },
+          "assert": [
+            { "pointer": "/found", "equals": true },
+            { "pointer": "/quality/readiness/accessibleWayfinding", "equals": 0.56 },
+            { "pointer": "/quality/recommendations", "length": 2 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "undo-to-baseline",
+      "prompt": "Undo the staged outage and confirm that the station is back at its baseline state.",
+      "expectedCalls": ["set_entity_state", "undo_scene_change", "get_scene_context"],
+      "steps": [
+        {
+          "tool": "set_entity_state",
+          "args": { "entityId": "lift_1", "patch": { "operational": "closed" } },
+          "assert": [{ "pointer": "/stagedChangeCount", "equals": 1 }]
+        },
+        {
+          "tool": "undo_scene_change",
+          "args": {},
+          "assert": [
+            { "pointer": "/undone", "equals": true },
+            { "pointer": "/change/entityId", "equals": "lift_1" },
+            { "pointer": "/stagedChangeCount", "equals": 0 }
+          ]
+        },
+        {
+          "tool": "get_scene_context",
+          "args": {},
+          "assert": [{ "pointer": "/stagedChangeCount", "equals": 0 }]
+        }
+      ]
+    },
+    {
+      "id": "unknown-entity-is-bounded",
+      "prompt": "Inspect the entity dragon_99. Do not invent it if it is absent.",
+      "expectedCalls": ["get_entity"],
+      "steps": [
+        {
+          "tool": "get_entity",
+          "args": { "entityId": "dragon_99" },
+          "assert": [
+            { "pointer": "/found", "equals": false },
+            { "pointer": "/entityId", "equals": "dragon_99" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "invalid-input-is-rejected",
+      "prompt": "Call scene context with an undeclared extra argument.",
+      "expectedCalls": ["get_scene_context"],
+      "steps": [
+        {
+          "tool": "get_scene_context",
+          "args": { "extra": true },
+          "expectErrorContains": "additional property"
+        }
+      ]
+    }
+  ]
+}

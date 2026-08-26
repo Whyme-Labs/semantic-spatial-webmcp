@@ -1,11 +1,20 @@
 // @ts-check
 
+import { throwIfAborted } from "./schema-validator.js";
+
 /**
- * Browser demo adapter. Replace this with a real 3DGS adapter without changing
- * the semantic tools.
+ * Browser adapter that keeps semantic context stable while delegating visual
+ * work to a renderer bridge. The bridge can be Spark, PlayCanvas, or any other
+ * implementation with the same small method set.
  */
-export class DemoViewerAdapter {
-  constructor() {
+export class BrowserSpatialViewerAdapter {
+  /**
+   * @param {{bridge?:any,store?:any,eventTarget?:EventTarget|null}=} options
+   */
+  constructor(options = {}) {
+    this.bridge = options.bridge ?? null;
+    this.store = options.store ?? null;
+    this.eventTarget = options.eventTarget ?? (typeof window === "undefined" ? null : window);
     this.context = {
       cameraPose: { position: [8, 16, 1.6], target: [26, 15, 1.6] },
       currentRegionId: "entrance_a_zone",
@@ -14,33 +23,83 @@ export class DemoViewerAdapter {
     };
   }
 
-  async getContext() {
+  /** @param {any} bridge */
+  attachBridge(bridge) {
+    this.bridge = bridge;
+  }
+
+  /** @param {string} name @param {any} detail */
+  emit(name, detail) {
+    if (!this.eventTarget || typeof CustomEvent === "undefined") return;
+    this.eventTarget.dispatchEvent(new CustomEvent(name, { detail }));
+  }
+
+  /** @param {{signal?:AbortSignal}=} options */
+  async getContext(options = {}) {
+    throwIfAborted(options.signal);
+    if (this.bridge?.getContext) {
+      const liveContext = await this.bridge.getContext(options);
+      throwIfAborted(options.signal);
+      this.context = {
+        ...this.context,
+        ...liveContext,
+        selectedEntityId: Object.hasOwn(liveContext, "selectedEntityId") ? liveContext.selectedEntityId : this.context.selectedEntityId,
+        currentRegionId: Object.hasOwn(liveContext, "currentRegionId") ? liveContext.currentRegionId : this.context.currentRegionId
+      };
+    }
     return structuredClone(this.context);
   }
 
   async navigateToEntity(entity, options = {}) {
+    throwIfAborted(options.signal);
+    const navigation = await this.bridge?.navigateToEntity?.(entity, options);
+    throwIfAborted(options.signal);
     this.context.selectedEntityId = entity.id;
     this.context.currentRegionId = entity.regionId;
     this.context.visibleEntityIds = [entity.id];
-    window.dispatchEvent(new CustomEvent("spatial:navigate", { detail: { entity, options } }));
+    this.emit("spatial:navigate", { entity, options });
+    return navigation ?? { selectedViewId: null };
   }
 
-  async highlightEntities(entityIds) {
-    window.dispatchEvent(new CustomEvent("spatial:highlight", { detail: { entityIds } }));
+  async highlightEntities(entityIds, options = {}) {
+    throwIfAborted(options.signal);
+    await this.bridge?.highlightEntities?.(entityIds, options);
+    throwIfAborted(options.signal);
+    this.emit("spatial:highlight", { entityIds });
   }
 
-  async setRoute(route) {
-    window.dispatchEvent(new CustomEvent("spatial:route", { detail: { route } }));
+  async setRoute(route, options = {}) {
+    throwIfAborted(options.signal);
+    await this.bridge?.setRoute?.(route, options);
+    throwIfAborted(options.signal);
+    this.emit("spatial:route", { route });
   }
 
-  async showQualityOverlay(quality) {
-    window.dispatchEvent(new CustomEvent("spatial:quality", { detail: { quality } }));
+  async showQualityOverlay(quality, options = {}) {
+    throwIfAborted(options.signal);
+    await this.bridge?.showQualityOverlay?.(quality, options);
+    throwIfAborted(options.signal);
+    this.emit("spatial:quality", { quality });
   }
 
-  async onScenarioChanged(changes) {
-    window.dispatchEvent(new CustomEvent("spatial:scenario", { detail: { changes } }));
+  async onScenarioChanged(changes, options = {}) {
+    throwIfAborted(options.signal);
+    if (this.bridge?.syncEntityState && this.store) {
+      const entityIds = changes.length
+        ? [...new Set(changes.map((change) => change.entityId))]
+        : this.store.scene.entities.map((entity) => entity.id);
+      for (const entityId of entityIds) {
+        throwIfAborted(options.signal);
+        const entity = this.store.getEntity(entityId);
+        if (entity) await this.bridge.syncEntityState(entity, options);
+      }
+    }
+    throwIfAborted(options.signal);
+    this.emit("spatial:scenario", { changes });
   }
 }
+
+export class DemoViewerAdapter extends BrowserSpatialViewerAdapter {}
 
 /**
  * No-DOM adapter used by tests and server-side evaluation.
@@ -60,14 +119,31 @@ export class MemoryViewerAdapter {
     this.changes = [];
   }
 
-  async getContext() { return structuredClone(this.context); }
+  async getContext(options = {}) {
+    throwIfAborted(options.signal);
+    return structuredClone(this.context);
+  }
   async navigateToEntity(entity, options = {}) {
+    throwIfAborted(options.signal);
     this.lastNavigation = { entity: structuredClone(entity), options: structuredClone(options) };
     this.context.selectedEntityId = entity.id;
     this.context.currentRegionId = entity.regionId;
+    return { selectedViewId: null };
   }
-  async highlightEntities(entityIds) { this.highlighted = [...entityIds]; }
-  async setRoute(route) { this.route = structuredClone(route); }
-  async showQualityOverlay(quality) { this.quality = structuredClone(quality); }
-  async onScenarioChanged(changes) { this.changes.push(structuredClone(changes)); }
+  async highlightEntities(entityIds, options = {}) {
+    throwIfAborted(options.signal);
+    this.highlighted = [...entityIds];
+  }
+  async setRoute(route, options = {}) {
+    throwIfAborted(options.signal);
+    this.route = structuredClone(route);
+  }
+  async showQualityOverlay(quality, options = {}) {
+    throwIfAborted(options.signal);
+    this.quality = structuredClone(quality);
+  }
+  async onScenarioChanged(changes, options = {}) {
+    throwIfAborted(options.signal);
+    this.changes.push(structuredClone(changes));
+  }
 }

@@ -146,7 +146,7 @@ Suggested script:
 | 0:00-0:15 | The problem: a photorealistic scene has no persistent understanding |
 | 0:15-0:35 | Show the spatial DOM and current scene context |
 | 0:35-1:15 | Ask for an accessible route and watch the agent query, route, and navigate |
-| 1:15-1:45 | Close Lift 1 and activate the barrier; recalculate visibly |
+| 1:15-1:45 | Close Lift 1 and recalculate visibly through Lift 2 |
 | 1:45-2:15 | Expose the weakly captured sign and show evidence plus recapture guidance |
 | 2:15-2:40 | Correct or approve one entity/state change, then undo or commit |
 | 2:40-2:55 | Show the WebMCP tool surface and public repository |

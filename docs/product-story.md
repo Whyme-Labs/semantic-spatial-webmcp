@@ -149,9 +149,9 @@ The agent:
 
 The user follows with:
 
-> "Lift 1 is unavailable and the east corridor is blocked. Find another route."
+> "Lift 1 is unavailable. Find another accessible route."
 
-The agent stages those state changes, recalculates through Lift 2, and shows why the first route no longer works.
+The agent stages that state change, recalculates through Lift 2, and shows why the first route no longer works. The separate east-corridor barrier remains available for additional scenario testing, but it is not needed for the judged path.
 
 The alternate route crosses a region with weak capture evidence. The system reports:
 
@@ -178,6 +178,8 @@ The strongest interaction is not "rotate the camera." It is:
 > "Understand where I am, find what matters, show the evidence, and stage the next spatial action."
 
 ## Product boundaries for the first release
+
+The “fully working” scope below refers to the checked-in deterministic synthetic fixture and its local runtime/browser receipts. A registered captured station, public deployment, and supported-model execution are separate milestones and are not implied by this list.
 
 Fully working:
 

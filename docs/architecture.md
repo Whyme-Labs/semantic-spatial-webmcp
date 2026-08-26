@@ -3,7 +3,7 @@
 ## System boundary
 
 ```text
-3DGS renderer
+Spark/Three.js 3DGS renderer
     ↕ SpatialViewerAdapter
 Semantic spatial runtime
     ├── Entity and region store
@@ -19,6 +19,18 @@ Human and agent in the same page
 ```
 
 The semantic runtime does not own rendering. It exposes deterministic operations and asks the viewer adapter to visualize their results.
+
+The browser implementation has two renderer layers:
+
+```text
+BrowserSpatialViewerAdapter
+  Owns semantic context and WebMCP-facing behavior
+        ↕
+SplatStationViewer
+  Owns Spark, Three.js camera controls, proxy picking, labels, routes and quality volumes
+```
+
+`src/spatial-coordinates.js` is the shared mapping between sidecar map coordinates and the stacked 3D station. Keeping this conversion outside the renderer makes it testable without WebGL.
 
 ## Entity model
 
@@ -142,18 +154,26 @@ Undo removes the latest patch. Commit can later create a named scene version.
 
 Each tool is narrow and typed. It returns compact structured output.
 
-Read-only tools:
+Tools that do not alter the page or scenario:
 
 - `get_scene_context`
-- `search_entities`
 - `get_entity`
+
+Tools with visible viewer effects:
+
+- `search_entities`
+- `navigate_to_entity`
 - `find_semantic_route`
 - `get_region_quality`
+- `list_uncertain_entities`
 
 State-changing tools:
 
 - `set_entity_state`
 - `undo_scene_change`
+- `reset_scene`
+
+Route and quality overlays are derived from scene state. Every scenario change invalidates them so the page cannot display a route or evidence record computed against stale state.
 
 The browser runtime remains available without WebMCP so the same operations can be tested deterministically.
 

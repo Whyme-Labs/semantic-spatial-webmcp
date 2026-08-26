@@ -162,16 +162,16 @@ export const demoScene = {
     }
   ],
   evidenceViews: [
-    { id: "view_entrance_a", entityId: "entrance_a", visibility: 0.98, imageQuality: 0.96 },
-    { id: "view_ticket_machine_1", entityId: "ticket_machine_1", visibility: 0.95, imageQuality: 0.94 },
-    { id: "view_help_point_1", entityId: "help_point_1", visibility: 0.94, imageQuality: 0.92 },
-    { id: "view_accessible_gate_1", entityId: "accessible_gate_1", visibility: 0.98, imageQuality: 0.97 },
-    { id: "view_lift_1", entityId: "lift_1", visibility: 0.97, imageQuality: 0.94 },
-    { id: "view_lift_2", entityId: "lift_2", visibility: 0.86, imageQuality: 0.81 },
-    { id: "view_escalator_1", entityId: "escalator_1", visibility: 0.97, imageQuality: 0.95 },
-    { id: "view_bench_1", entityId: "bench_1", visibility: 0.97, imageQuality: 0.94 },
-    { id: "view_bench_2", entityId: "bench_2", visibility: 0.96, imageQuality: 0.94 },
-    { id: "view_sign_west_oblique", entityId: "sign_west_platform", visibility: 0.58, imageQuality: 0.41 },
-    { id: "view_east_barrier", entityId: "barrier_east", visibility: 1, imageQuality: 1 }
+    { id: "view_entrance_a", entityId: "entrance_a", visibility: 0.98, imageQuality: 0.96, pose: { position: [-9.288, 1.67, 2.58], target: [-7.56, 0.82, 0.18] } },
+    { id: "view_ticket_machine_1", entityId: "ticket_machine_1", visibility: 0.95, imageQuality: 0.94, pose: { position: [-6.408, 1.67, 3.12], target: [-4.68, 0.82, 0.72] } },
+    { id: "view_help_point_1", entityId: "help_point_1", visibility: 0.94, imageQuality: 0.92, pose: { position: [-5.508, 1.67, 1.86], target: [-3.78, 0.82, -0.54] } },
+    { id: "view_accessible_gate_1", entityId: "accessible_gate_1", visibility: 0.98, imageQuality: 0.97, pose: { position: [-3.708, 1.67, 2.76], target: [-1.98, 0.82, 0.36] } },
+    { id: "view_lift_1", entityId: "lift_1", visibility: 0.97, imageQuality: 0.94, pose: { position: [1.728, 1.67, 4], target: [3.96, 0.82, 0.9] } },
+    { id: "view_lift_2", entityId: "lift_2", visibility: 0.86, imageQuality: 0.81, pose: { position: [3.528, 1.67, 2.02], target: [5.76, 0.82, -1.08] } },
+    { id: "view_escalator_1", entityId: "escalator_1", visibility: 0.97, imageQuality: 0.95, pose: { position: [2.448, 1.67, 4], target: [4.68, 0.82, 0.9] } },
+    { id: "view_bench_1", entityId: "bench_1", visibility: 0.97, imageQuality: 0.94, pose: { position: [-3.168, 4.67, 2.22], target: [-1.44, 4.22, -0.18] } },
+    { id: "view_bench_2", entityId: "bench_2", visibility: 0.96, imageQuality: 0.94, pose: { position: [-0.468, 4.67, 2.22], target: [1.26, 4.22, -0.18] } },
+    { id: "view_sign_west_oblique", entityId: "sign_west_platform", visibility: 0.58, imageQuality: 0.41, pose: { position: [1.512, 1.67, 1.5], target: [3.24, 0.82, -0.9] } },
+    { id: "view_east_barrier", entityId: "barrier_east", visibility: 1, imageQuality: 1, pose: { position: [-0.648, 1.67, 3.3], target: [1.08, 0.82, 0.9] } }
   ]
 };

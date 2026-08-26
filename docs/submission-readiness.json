@@ -1,0 +1,331 @@
+{
+  "schemaVersion": 1,
+  "gates": [
+    {
+      "id": "functioning-web-app",
+      "category": "product",
+      "requirement": "The repository contains a functioning WebMCP-powered web app and deterministic product tests.",
+      "evidenceClass": "repository",
+      "assertions": [
+        { "type": "fileExists", "path": "index.html" },
+        { "type": "fileExists", "path": "src/app.js" },
+        { "type": "fileExists", "path": "test/tools.test.js" }
+      ]
+    },
+    {
+      "id": "webmcp-imperative-registration",
+      "category": "webmcp",
+      "requirement": "The app uses document.modelContext.registerTool and awaits registration failures.",
+      "evidenceClass": "repository",
+      "assertions": [
+        { "type": "fileContains", "path": "src/webmcp-adapter.js", "contains": "document?.modelContext" },
+        { "type": "fileContains", "path": "src/webmcp-adapter.js", "contains": "modelContext.registerTool" },
+        { "type": "fileContains", "path": "src/webmcp-adapter.js", "contains": "await Promise.allSettled(registrations)" }
+      ]
+    },
+    {
+      "id": "webmcp-security-contract",
+      "category": "security",
+      "requirement": "Tool schemas are narrow and annotations use only standardized WebMCP fields.",
+      "evidenceClass": "repository",
+      "assertions": [
+        { "type": "fileContains", "path": "src/tool-runtime.js", "contains": "additionalProperties: false" },
+        { "type": "fileContains", "path": "src/tool-runtime.js", "contains": "readOnlyHint" },
+        { "type": "fileNotContains", "path": "src/tool-runtime.js", "contains": "destructiveHint" },
+        { "type": "fileNotContains", "path": "src/tool-runtime.js", "contains": "idempotentHint" }
+      ]
+    },
+    {
+      "id": "shared-scene-workflow",
+      "category": "experience",
+      "requirement": "Humans and tools share the live scene for routing, outages, alternate routes, evidence gaps, recapture, and undo.",
+      "evidenceClass": "runtime",
+      "assertions": [
+        { "type": "fileContains", "path": "docs/browser-verification.md", "contains": "Complete interaction path" },
+        { "type": "fileContains", "path": "test/tools.test.js", "contains": "state tool changes route outcome" },
+        { "type": "fileContains", "path": "src/tool-runtime.js", "contains": "undo_scene_change" },
+        { "type": "fileContains", "path": "src/tool-runtime.js", "contains": "recommendations: quality.recommendations" }
+      ]
+    },
+    {
+      "id": "deterministic-verification",
+      "category": "quality",
+      "requirement": "The latest deterministic syntax and test receipt passes with zero failures.",
+      "evidenceClass": "runtime",
+      "assertions": [
+        { "type": "jsonValue", "path": "docs/build-verification.json", "pointer": "/nodeSyntaxCheck", "equals": "passed" },
+        { "type": "jsonNumberAtLeast", "path": "docs/build-verification.json", "pointer": "/tests", "minimum": 24 },
+        { "type": "jsonValue", "path": "docs/build-verification.json", "pointer": "/failures", "equals": 0 },
+        { "type": "jsonValue", "path": "docs/build-verification.json", "pointer": "/result", "equals": "passed" }
+      ]
+    },
+    {
+      "id": "tool-reliability-coverage",
+      "category": "quality",
+      "requirement": "Tests cover registration failures, schema validation, visible side effects, output budgets, and explicit failure recovery.",
+      "evidenceClass": "runtime",
+      "assertions": [
+        { "type": "fileContains", "path": "test/tools.test.js", "contains": "human and agent navigation share results and viewer effects" },
+        { "type": "fileContains", "path": "test/tool-validation.test.js", "contains": "runtime schemas reject extra fields" },
+        { "type": "fileContains", "path": "test/tool-validation.test.js", "contains": "every successful tool result is plain JSON within the output budget" },
+        { "type": "fileContains", "path": "test/webmcp-adapter.test.js", "contains": "one registration rejection aborts and settles the whole catalog" }
+      ]
+    },
+    {
+      "id": "guided-judge-path",
+      "category": "experience",
+      "requirement": "A one-click guided path demonstrates the complete reversible workflow and leaves no stale route or evidence overlay.",
+      "evidenceClass": "runtime",
+      "assertions": [
+        { "type": "fileContains", "path": "index.html", "contains": "Run guided proof" },
+        { "type": "fileContains", "path": "src/app.js", "contains": "async function runGuidedProof()" },
+        { "type": "fileContains", "path": "test/tools.test.js", "contains": "state changes invalidate derived overlays and undo leaves a clean baseline" },
+        { "type": "fileContains", "path": "docs/browser-verification.md", "contains": "## Guided judge path" }
+      ]
+    },
+    {
+      "id": "camera-context-integrity",
+      "category": "spatial-context",
+      "requirement": "Entity navigation uses the reported named evidence pose and current region follows camera position.",
+      "evidenceClass": "runtime",
+      "assertions": [
+        { "type": "fileContains", "path": "src/splat-station-viewer.js", "contains": "resolveEntityView(entity, this.semanticScene.evidenceViews)" },
+        { "type": "fileContains", "path": "src/splat-station-viewer.js", "contains": "worldPositionToSemantic(this.camera.position.toArray())" },
+        { "type": "fileContains", "path": "test/spatial-coordinates.test.js", "contains": "named evidence poses drive entity navigation before the fallback" },
+        { "type": "fileContains", "path": "test/spatial-coordinates.test.js", "contains": "current region lookup follows a semantic camera position" },
+        { "type": "fileContains", "path": "test/viewer-adapter.test.js", "contains": "browser adapter preserves an explicit null camera region" }
+      ]
+    },
+    {
+      "id": "deterministic-prompt-evaluation",
+      "category": "quality",
+      "requirement": "The checked-in prompt fixtures execute their expected tool plans with grounded assertions and explicitly avoid claiming model-selection evidence.",
+      "evidenceClass": "runtime",
+      "assertions": [
+        { "type": "fileExists", "path": "evals/webmcp-cases.json" },
+        { "type": "jsonNumberAtLeast", "path": "docs/evaluation-results.json", "pointer": "/cases", "minimum": 5 },
+        { "type": "jsonNumberAtLeast", "path": "docs/evaluation-results.json", "pointer": "/assertions", "minimum": 20 },
+        { "type": "jsonValue", "path": "docs/evaluation-results.json", "pointer": "/failures", "equals": 0 },
+        { "type": "jsonValue", "path": "docs/evaluation-results.json", "pointer": "/result", "equals": "passed" }
+      ]
+    },
+    {
+      "id": "screenshot-context-comparison",
+      "category": "evidence",
+      "requirement": "The evidence package explains what a screenshot lacks and ties spatial-context claims to deterministic receipts.",
+      "evidenceClass": "repository",
+      "assertions": [
+        { "type": "fileExists", "path": "submission/screenshots/context-comparison.svg" },
+        { "type": "fileExists", "path": "submission/screenshots/context-comparison.png" },
+        { "type": "fileContains", "path": "docs/context-comparison.md", "contains": "The left panel is a conceptual limitation diagram, not a model benchmark." },
+        { "type": "fileContains", "path": "docs/context-comparison.md", "contains": "56% accessible-wayfinding readiness" }
+      ]
+    },
+    {
+      "id": "local-chrome-webmcp-verification",
+      "category": "judge-runtime",
+      "requirement": "A supported Chrome build discovers and executes the complete local WebMCP workflow with visible source-labelled effects.",
+      "evidenceClass": "runtime",
+      "assertions": [
+        { "type": "fileExists", "path": "scripts/verify-webmcp-chrome.mjs" },
+        { "type": "fileExists", "path": "submission/screenshots/chrome-webmcp-flow.png" },
+        { "type": "fileContains", "path": "docs/browser-verification.md", "contains": "## Real Chrome WebMCP check" },
+        { "type": "fileContains", "path": "docs/browser-verification.md", "contains": "WebMCP active: 10 tools registered" },
+        { "type": "jsonValue", "path": "docs/webmcp-chrome-verification.json", "pointer": "/artifact/kind", "equals": "allowlisted-dist" },
+        { "type": "jsonValue", "path": "docs/webmcp-chrome-verification.json", "pointer": "/timing/underFiveSeconds", "equals": true },
+        { "type": "jsonValue", "path": "docs/webmcp-chrome-verification.json", "pointer": "/webmcp/toolCount", "equals": 10 },
+        { "type": "jsonValue", "path": "docs/webmcp-chrome-verification.json", "pointer": "/flow/navigation/selectedViewId", "equals": "view_accessible_gate_1" },
+        { "type": "jsonValue", "path": "docs/webmcp-chrome-verification.json", "pointer": "/flow/navigation/cameraPose/position", "equals": [-3.708, 1.67, 2.76] },
+        { "type": "jsonValue", "path": "docs/webmcp-chrome-verification.json", "pointer": "/flow/navigation/currentRegion", "equals": null },
+        { "type": "jsonValue", "path": "docs/webmcp-chrome-verification.json", "pointer": "/flow/regionQuality/bestEvidenceViewIds/0", "equals": "view_sign_west_oblique" },
+        { "type": "jsonNumberAtLeast", "path": "docs/webmcp-chrome-verification.json", "pointer": "/flow/regionQuality/recaptureMarkerCount", "minimum": 6 },
+        { "type": "jsonValue", "path": "docs/webmcp-chrome-verification.json", "pointer": "/console/errors", "equals": [] },
+        { "type": "jsonValue", "path": "docs/webmcp-chrome-verification.json", "pointer": "/result", "equals": "passed" }
+      ]
+    },
+    {
+      "id": "graceful-browser-fallback",
+      "category": "execution",
+      "requirement": "The normal human interface remains usable without WebMCP or WebGL.",
+      "evidenceClass": "repository",
+      "assertions": [
+        { "type": "fileContains", "path": "README.md", "contains": "local console remains available" },
+        { "type": "fileContains", "path": "README.md", "contains": "deterministic 2D map" }
+      ]
+    },
+    {
+      "id": "run-and-deploy-instructions",
+      "category": "reproducibility",
+      "requirement": "The public package includes complete local setup and production deployment instructions without private dependencies.",
+      "evidenceClass": "repository",
+      "assertions": [
+        { "type": "fileContains", "path": "README.md", "contains": "## Run" },
+        { "type": "fileContains", "path": "README.md", "contains": "## Deploy" },
+        { "type": "fileContains", "path": "README.md", "contains": "npm run serve" }
+      ]
+    },
+    {
+      "id": "production-webmcp-headers",
+      "category": "deployment",
+      "requirement": "The production artifact enables origin isolation, limits site tools to the same origin, and includes a deterministic builder.",
+      "evidenceClass": "repository",
+      "assertions": [
+        { "type": "fileContains", "path": "deployment/_headers", "contains": "Origin-Agent-Cluster: ?1" },
+        { "type": "fileContains", "path": "deployment/_headers", "contains": "Permissions-Policy: tools=(self)" },
+        { "type": "fileContains", "path": "deployment/_headers", "contains": "Content-Security-Policy:" },
+        { "type": "fileExists", "path": "scripts/build.mjs" },
+        { "type": "fileContains", "path": "deployment/README.md", "contains": "## Verify the public deployment" }
+      ]
+    },
+    {
+      "id": "open-source-license",
+      "category": "public-source",
+      "requirement": "A root open-source license and package metadata identify the license.",
+      "evidenceClass": "repository",
+      "assertions": [
+        { "type": "fileContains", "path": "LICENSE", "contains": "MIT License" },
+        { "type": "jsonValue", "path": "package.json", "pointer": "/license", "equals": "MIT" }
+      ]
+    },
+    {
+      "id": "challenge-period-provenance",
+      "category": "provenance",
+      "requirement": "The repository preserves the challenge baseline SHA, date, and challenge delta.",
+      "evidenceClass": "repository",
+      "assertions": [
+        { "type": "fileContains", "path": "CHALLENGE_DELTA.md", "contains": "8949b3c2bb0a3bf85b33104279c57301185211c1" },
+        { "type": "fileContains", "path": "CHALLENGE_DELTA.md", "contains": "Recorded: August 26, 2026" },
+        { "type": "fileContains", "path": "CHALLENGE_DELTA.md", "contains": "Existing work not claimed" }
+      ]
+    },
+    {
+      "id": "asset-license-inventory",
+      "category": "provenance",
+      "requirement": "Third-party code, data, assets, fonts, icons, screenshots, and demo media have a license and provenance inventory.",
+      "evidenceClass": "repository",
+      "assertions": [
+        { "type": "fileExists", "path": "docs/third-party-provenance.md" },
+        { "type": "fileContains", "path": "docs/third-party-provenance.md", "contains": "Spark" },
+        { "type": "fileContains", "path": "docs/third-party-provenance.md", "contains": "Three.js" }
+      ]
+    },
+    {
+      "id": "synthetic-scene-disclosure",
+      "category": "provenance",
+      "requirement": "No artifact presents the synthetic station as captured data.",
+      "evidenceClass": "repository",
+      "assertions": [
+        { "type": "fileContains", "path": "README.md", "contains": "deterministic synthetic fixture" },
+        { "type": "fileContains", "path": "CHALLENGE_DELTA.md", "contains": "No captured scene asset is included or claimed here" }
+      ]
+    },
+    {
+      "id": "submission-narrative",
+      "category": "submission",
+      "requirement": "English submission copy answers the four required questions and maps evidence to all four judging criteria.",
+      "evidenceClass": "repository",
+      "assertions": [
+        { "type": "fileContains", "path": "submission/submission-copy.md", "contains": "Why WebMCP" },
+        { "type": "fileContains", "path": "submission/submission-copy.md", "contains": "User experience" },
+        { "type": "fileContains", "path": "submission/submission-copy.md", "contains": "People and agents" },
+        { "type": "fileContains", "path": "submission/submission-copy.md", "contains": "How WebMCP was implemented" },
+        { "type": "fileContains", "path": "submission/submission-copy.md", "contains": "WebMCP Leverage" },
+        { "type": "fileContains", "path": "submission/submission-copy.md", "contains": "Execution" },
+        { "type": "fileContains", "path": "submission/submission-copy.md", "contains": "Potential Impact" },
+        { "type": "fileContains", "path": "submission/submission-copy.md", "contains": "Creativity & Ambition" }
+      ]
+    },
+    {
+      "id": "demo-recording-package",
+      "category": "demo",
+      "requirement": "The repository contains a sub-three-minute narrated demo script, shot list, prompts, and recording checklist.",
+      "evidenceClass": "repository",
+      "assertions": [
+        { "type": "fileContains", "path": "submission/demo-script.md", "contains": "Target duration" },
+        { "type": "fileContains", "path": "submission/demo-script.md", "contains": "Shot list" },
+        { "type": "fileContains", "path": "submission/demo-script.md", "contains": "Demo prompts" },
+        { "type": "fileContains", "path": "submission/demo-script.md", "contains": "Recording checklist" }
+      ]
+    },
+    {
+      "id": "entrant-eligibility",
+      "category": "eligibility",
+      "requirement": "The entrant or team is eligible and an eligible representative is designated.",
+      "evidenceClass": "external",
+      "assertions": [],
+      "ownerAction": "Confirm the entrant identity, age, residency, team membership, conflicts, sanctions, and representative against Official Rules section 3."
+    },
+    {
+      "id": "ownership-and-media-rights",
+      "category": "eligibility",
+      "requirement": "The entrant owns the submission and has permission for every included code, asset, mark, music track, voice, and recorded person.",
+      "evidenceClass": "external",
+      "assertions": [],
+      "ownerAction": "Review the final provenance inventory and attest ownership, licenses, trademark use, music rights, and participant media consent."
+    },
+    {
+      "id": "public-source-repository",
+      "category": "public-source",
+      "requirement": "A public GitHub, GitLab, or Bitbucket repository exposes all source, assets, instructions, and a host-recognized root license.",
+      "evidenceClass": "external",
+      "assertions": [],
+      "ownerAction": "Choose the repository account, authorize publication, and verify the anonymous public view plus license badge/About metadata."
+    },
+    {
+      "id": "public-https-app",
+      "category": "deployment",
+      "requirement": "A public HTTPS URL loads the complete app without private dependencies or mandatory account creation.",
+      "evidenceClass": "external",
+      "assertions": [],
+      "ownerAction": "Choose the hosting account/domain, authorize deployment, and verify the live URL from a clean browser profile."
+    },
+    {
+      "id": "judge-access-through-judging",
+      "category": "deployment",
+      "requirement": "Judges have free unrestricted access through September 21, 2026 at 5:00 PM PT, with credentials and testing instructions if needed.",
+      "evidenceClass": "external",
+      "assertions": [],
+      "ownerAction": "Keep the public app available through the judging period and provide any required credentials and test instructions in Devpost."
+    },
+    {
+      "id": "chatgpt-site-tools-verification",
+      "category": "judge-runtime",
+      "requirement": "The deployed app is discovered and the complete multi-tool flow executes in the supported ChatGPT in-app browser.",
+      "evidenceClass": "external",
+      "assertions": [],
+      "ownerAction": "Run and record a fresh-session discovery, route, outage, alternate-route, evidence, recapture, and undo flow in a supported ChatGPT Site Tools environment."
+    },
+    {
+      "id": "chrome-149-webmcp-verification",
+      "category": "judge-runtime",
+      "requirement": "The deployed app registers and executes its tools in Chrome 149 or later with WebMCP testing enabled.",
+      "evidenceClass": "external",
+      "assertions": [],
+      "ownerAction": "Run and record tool discovery and execution in Chrome 149+ after enabling chrome://flags/#enable-webmcp-testing."
+    },
+    {
+      "id": "model-backed-tool-evaluation",
+      "category": "quality",
+      "requirement": "Model-backed evaluations cover tool selection, arguments, chaining, visible effects, and failure recovery.",
+      "evidenceClass": "external",
+      "assertions": [],
+      "ownerAction": "Run the final prompt suite against the deployed build in a supported model and preserve the results and failure-recovery receipts."
+    },
+    {
+      "id": "public-youtube-demo",
+      "category": "demo",
+      "requirement": "A public YouTube video with audio, under three minutes, shows the real deployed app and real WebMCP calls without unlicensed media.",
+      "evidenceClass": "external",
+      "assertions": [],
+      "ownerAction": "Choose the YouTube account, record the approved script against production, verify duration is below 3:00 and audio is clear, then publish publicly."
+    },
+    {
+      "id": "devpost-submission",
+      "category": "submission",
+      "requirement": "The final Devpost entry contains the live app, public repository, public video, English narrative, images, access instructions, and required entrant fields before the deadline.",
+      "evidenceClass": "external",
+      "assertions": [],
+      "ownerAction": "Authorize the final Devpost submission, enter every required field and link, preview the judged entry, and submit before September 4, 2026 at 4:00 AM Malaysia time."
+    }
+  ]
+}

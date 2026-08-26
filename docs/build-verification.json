@@ -1,6 +1,9 @@
 {
-  "verifiedAt": "2026-08-26T11:07:54.839Z",
+  "verifiedAt": "2026-08-26T17:40:44.925Z",
+  "nodeVersion": "v22.23.0",
   "nodeSyntaxCheck": "passed",
-  "tests": 12,
-  "failures": 0
+  "syntaxFiles": 25,
+  "tests": 49,
+  "failures": 0,
+  "result": "passed"
 }

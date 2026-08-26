@@ -89,7 +89,7 @@
 /**
  * @typedef {Object} SpatialViewerAdapter
  * @property {() => Promise<SceneContext>} getContext
- * @property {(entity: SpatialEntity, options?:Record<string,unknown>) => Promise<void>} navigateToEntity
+ * @property {(entity: SpatialEntity, options?:Record<string,unknown>) => Promise<{selectedViewId:string|null}|void>} navigateToEntity
  * @property {(entityIds:string[]) => Promise<void>} highlightEntities
  * @property {(route:Record<string,unknown>|null) => Promise<void>} setRoute
  * @property {(quality:Record<string,unknown>|null) => Promise<void>} showQualityOverlay

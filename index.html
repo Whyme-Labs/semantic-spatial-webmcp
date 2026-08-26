@@ -5,7 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Semantic spatial WebMCP demonstration for 3DGS scenes.">
   <title>Semantic spatial browser</title>
+  <link rel="icon" href="data:,">
   <link rel="stylesheet" href="styles.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/",
+        "@sparkjsdev/spark": "https://sparkjs.dev/releases/spark/2.1.0/spark.module.js"
+      }
+    }
+  </script>
 </head>
 <body>
   <header class="topbar">
@@ -24,14 +34,23 @@
           <p class="eyebrow">Demo scene</p>
           <h2 id="scene-heading">Harbour Junction Station</h2>
         </div>
-        <div class="legend" aria-label="Map legend">
-          <span><i class="dot"></i> Entity</span>
-          <span><i class="dot route"></i> Route</span>
-          <span><i class="dot risk"></i> Weak evidence</span>
+        <div class="viewer-controls">
+          <div class="legend" aria-label="Scene legend">
+            <span><i class="dot"></i> Entity</span>
+            <span><i class="dot route"></i> Route</span>
+            <span><i class="dot risk"></i> Weak evidence</span>
+          </div>
+          <button id="view-mode-button" class="compact" type="button" aria-pressed="false">Show 2D map</button>
         </div>
       </div>
 
-      <div class="map-shell">
+      <div id="scene-shell" class="map-shell" data-mode="splat">
+        <div id="splat-viewport" class="splat-viewport" role="img" aria-label="Interactive Gaussian-splat station scene">
+          <div class="viewer-hud">
+            <output id="scene-mode-label">Loading Gaussian splats…</output>
+            <span>Drag to orbit · scroll to zoom · click a semantic proxy</span>
+          </div>
+        </div>
         <svg id="station-map" viewBox="0 0 100 70" role="img" aria-label="Two-level semantic station map">
           <g id="quality-layer"></g>
           <g id="route-layer"></g>
@@ -51,6 +70,25 @@
     </section>
 
     <aside class="side-panel">
+      <section class="card mission-card" aria-labelledby="mission-heading">
+        <p class="eyebrow">30-second proof</p>
+        <h2 id="mission-heading">Break one route. Prove the alternative.</h2>
+        <p>Run the complete judged path in the page, or give the same task to an agent through Site Tools.</p>
+        <blockquote id="mission-prompt">Find an accessible route from Entrance A to Platform 2. Close Lift 1, reroute, inspect weak evidence, then undo the outage.</blockquote>
+        <ol id="mission-steps" class="mission-steps">
+          <li data-mission-step="baseline"><span>1</span><div><strong>Route via Lift 1</strong><small>Establish the accessible baseline</small></div></li>
+          <li data-mission-step="outage"><span>2</span><div><strong>Close Lift 1</strong><small>Stage a reversible outage</small></div></li>
+          <li data-mission-step="alternate"><span>3</span><div><strong>Reroute via Lift 2</strong><small>Adapt the live spatial graph</small></div></li>
+          <li data-mission-step="evidence"><span>4</span><div><strong>Inspect weak evidence</strong><small>Explain the 56% corridor score</small></div></li>
+          <li data-mission-step="restore"><span>5</span><div><strong>Undo to baseline</strong><small>Leave no hidden scene change</small></div></li>
+        </ol>
+        <div class="mission-actions">
+          <button id="mission-button" class="primary" type="button">Run guided proof</button>
+          <button id="copy-prompt-button" class="compact" type="button">Copy agent prompt</button>
+        </div>
+        <output id="mission-status" class="mission-status" aria-live="polite">Ready. Every step will appear in the shared tool timeline.</output>
+      </section>
+
       <section class="card search-card">
         <p class="eyebrow">Semantic search</p>
         <h2>Find an entity</h2>
@@ -64,7 +102,7 @@
       <section id="details" class="card details-card" aria-live="polite">
         <p class="eyebrow">Shared scene state</p>
         <h2>Start with the route</h2>
-        <p>The semantic graph is the control plane. The map is a placeholder for the real 3DGS viewer adapter.</p>
+        <p>The Gaussian-splat scene and the semantic graph share one camera, selection, route, quality overlay, and reversible scenario state.</p>
       </section>
     </aside>
 

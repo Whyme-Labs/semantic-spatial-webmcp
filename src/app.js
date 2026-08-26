@@ -3,18 +3,20 @@
 import { demoScene } from "./demo-scene.js";
 import { SpatialSceneStore } from "./scene-store.js";
 import { SpatialToolRuntime } from "./tool-runtime.js";
-import { DemoViewerAdapter } from "./viewer-adapter.js";
+import { BrowserSpatialViewerAdapter } from "./viewer-adapter.js";
 import { registerWebMCPTools } from "./webmcp-adapter.js";
 
 const store = new SpatialSceneStore(demoScene);
-const viewer = new DemoViewerAdapter();
+const viewer = new BrowserSpatialViewerAdapter({ store });
 const runtime = new SpatialToolRuntime(store, viewer);
-const webmcp = registerWebMCPTools(runtime);
-
-window.spatialDemo = { store, viewer, runtime, webmcp };
+window.spatialDemo = { store, viewer, runtime, webmcp: null };
 
 const elements = {
   map: document.querySelector("#station-map"),
+  sceneShell: document.querySelector("#scene-shell"),
+  splatViewport: document.querySelector("#splat-viewport"),
+  sceneMode: document.querySelector("#scene-mode-label"),
+  viewMode: document.querySelector("#view-mode-button"),
   entityLayer: document.querySelector("#entity-layer"),
   routeLayer: document.querySelector("#route-layer"),
   qualityLayer: document.querySelector("#quality-layer"),
@@ -25,8 +27,15 @@ const elements = {
   searchResults: document.querySelector("#search-results"),
   toolSelect: document.querySelector("#tool-select"),
   toolArgs: document.querySelector("#tool-args"),
-  toolOutput: document.querySelector("#tool-output")
+  toolOutput: document.querySelector("#tool-output"),
+  missionButton: document.querySelector("#mission-button"),
+  missionStatus: document.querySelector("#mission-status"),
+  missionPrompt: document.querySelector("#mission-prompt"),
+  copyPromptButton: document.querySelector("#copy-prompt-button")
 };
+
+const missionStepOrder = ["baseline", "outage", "alternate", "evidence", "restore"];
+let missionRunning = false;
 
 function escapeHtml(value) {
   return String(value).replace(/[&<>'"]/g, (character) => ({
@@ -34,10 +43,106 @@ function escapeHtml(value) {
   }[character]));
 }
 
-function logTool(name, args, result) {
-  const item = document.createElement("li");
-  item.innerHTML = `<strong>${escapeHtml(name)}</strong><code>${escapeHtml(JSON.stringify(args))}</code><span>${escapeHtml(summarize(result))}</span>`;
-  elements.log.prepend(item);
+function renderTimelineEvent(event) {
+  const selector = `[data-invocation-id="${CSS.escape(event.invocationId)}"]`;
+  if (event.phase === "start") {
+    const item = document.createElement("li");
+    item.dataset.invocationId = event.invocationId;
+    item.innerHTML = `<strong>${escapeHtml(event.source)} · ${escapeHtml(event.tool)}</strong><code>${escapeHtml(JSON.stringify(event.args))}</code><span>Running…</span>`;
+    elements.log.prepend(item);
+    return;
+  }
+
+  const item = elements.log.querySelector(selector);
+  if (!item) return;
+  item.dataset.status = event.status;
+  const summary = event.status === "error"
+    ? `Error: ${event.error}`
+    : event.status === "cancelled" ? "Cancelled" : summarize(event.result);
+  item.querySelector("span").textContent = summary;
+  if (event.status === "success") updateMissionProgress(event);
+}
+
+function missionNode(step) {
+  return document.querySelector(`[data-mission-step="${step}"]`);
+}
+
+function markMissionStep(step, state) {
+  const node = missionNode(step);
+  if (!node) return;
+  node.dataset.state = state;
+}
+
+function resetMissionProgress() {
+  for (const step of missionStepOrder) {
+    const node = missionNode(step);
+    if (node) delete node.dataset.state;
+  }
+}
+
+function updateMissionProgress(event) {
+  const result = event.result;
+  if (event.tool === "find_semantic_route" && result?.found && result.entityIds?.includes("lift_1")) {
+    markMissionStep("baseline", "complete");
+  }
+  if (event.tool === "set_entity_state" && result?.change?.entityId === "lift_1" && result.change.after?.operational === "closed") {
+    markMissionStep("outage", "complete");
+  }
+  if (event.tool === "find_semantic_route" && result?.found && result.entityIds?.includes("lift_2")) {
+    markMissionStep("alternate", "complete");
+  }
+  if (event.tool === "get_region_quality" && result?.region?.id === "west_corridor") {
+    markMissionStep("evidence", "complete");
+  }
+  if ((event.tool === "undo_scene_change" && result?.undone) || event.tool === "reset_scene") {
+    markMissionStep("restore", "complete");
+  }
+  if (missionStepOrder.every((step) => missionNode(step)?.dataset.state === "complete")) {
+    elements.missionStatus.textContent = "Workflow complete: alternate route explained, outage undone, baseline restored.";
+  }
+}
+
+function delay(milliseconds) {
+  return new Promise((resolveDelay) => setTimeout(resolveDelay, milliseconds));
+}
+
+async function runGuidedProof() {
+  if (missionRunning) return;
+  missionRunning = true;
+  elements.missionButton.disabled = true;
+  elements.missionButton.textContent = "Running proof…";
+  elements.missionStatus.textContent = "Resetting the station and establishing the baseline route…";
+  resetMissionProgress();
+
+  try {
+    await invoke("reset_scene", {});
+    markMissionStep("restore", "pending");
+    markMissionStep("baseline", "active");
+    await invoke("find_semantic_route", { from: "Entrance A", to: "Platform 2", accessibleOnly: true });
+    await delay(300);
+    markMissionStep("outage", "active");
+    elements.missionStatus.textContent = "Staging Lift 1 as closed…";
+    await invoke("set_entity_state", { entityId: "lift_1", patch: { operational: "closed" } });
+    await delay(300);
+    markMissionStep("alternate", "active");
+    elements.missionStatus.textContent = "Recalculating through Lift 2…";
+    await invoke("find_semantic_route", { from: "Entrance A", to: "Platform 2", accessibleOnly: true });
+    await delay(300);
+    markMissionStep("evidence", "active");
+    elements.missionStatus.textContent = "Opening the weak West corridor evidence…";
+    await invoke("get_region_quality", { regionId: "west_corridor" });
+    await delay(500);
+    markMissionStep("restore", "active");
+    elements.missionStatus.textContent = "Undoing the outage and restoring the baseline…";
+    await invoke("undo_scene_change", {});
+    elements.missionStatus.textContent = "Proof complete: alternate route explained, outage undone, baseline restored.";
+  } catch (error) {
+    elements.missionStatus.textContent = `Proof stopped: ${error instanceof Error ? error.message : String(error)}`;
+  } finally {
+    missionRunning = false;
+    elements.missionButton.disabled = false;
+    elements.missionButton.textContent = "Run guided proof";
+  }
 }
 
 function summarize(value) {
@@ -51,10 +156,10 @@ function summarize(value) {
 }
 
 async function invoke(name, args = {}) {
-  const result = await runtime.invoke(name, args);
-  logTool(name, args, result);
-  return result;
+  return runtime.invoke(name, args, { source: "human" });
 }
+
+runtime.observe(renderTimelineEvent);
 
 function renderRegions() {
   const svg = elements.map;
@@ -172,6 +277,8 @@ function renderQuality(quality) {
     <h3>${escapeHtml(region?.label ?? quality.regionId)} capture quality</h3>
     <p>Accessible-wayfinding readiness: <strong>${Math.round(quality.readiness.accessibleWayfinding * 100)}%</strong></p>
     ${quality.gaps.map((gap) => `<section class="warning-card"><strong>${escapeHtml(gap.kind)}</strong><p>${escapeHtml(gap.explanation)}</p></section>`).join("")}
+    <h4>Best available evidence</h4>
+    ${(quality.evidenceViews ?? []).map((view) => `<p><code>${escapeHtml(view.id)}</code> · ${Math.round(view.visibility * 100)}% visible · ${Math.round(view.imageQuality * 100)}% image quality</p>`).join("") || "<p>No entity-specific evidence view.</p>"}
     <h4>Recommended recaptures</h4>
     ${quality.recommendations.map((item) => `<p>${escapeHtml(item.instruction)}</p>`).join("") || "<p>No recapture required.</p>"}
   `;
@@ -209,7 +316,7 @@ document.querySelector("#search-button").addEventListener("click", runSearch);
 elements.search.addEventListener("keydown", (event) => { if (event.key === "Enter") runSearch(); });
 
 document.querySelector("#route-button").addEventListener("click", () => invoke("find_semantic_route", {
-  from: "n_entrance", to: "n_platform", accessibleOnly: true
+  from: "Entrance A", to: "Platform 2", accessibleOnly: true
 }));
 
 document.querySelector("#close-lift-button").addEventListener("click", () => invoke("set_entity_state", {
@@ -225,11 +332,26 @@ document.querySelector("#quality-button").addEventListener("click", () => invoke
 document.querySelector("#uncertain-button").addEventListener("click", () => invoke("list_uncertain_entities", { threshold: 0.8 }));
 document.querySelector("#undo-button").addEventListener("click", () => invoke("undo_scene_change", {}));
 document.querySelector("#reset-button").addEventListener("click", async () => {
-  store.resetScenario();
-  await viewer.onScenarioChanged([]);
-  await viewer.setRoute(null);
-  await viewer.showQualityOverlay(null);
+  await invoke("reset_scene", {});
   elements.details.innerHTML = "<h3>Scene reset</h3><p>The station returned to its baseline state.</p>";
+});
+
+elements.missionButton.addEventListener("click", runGuidedProof);
+elements.copyPromptButton.addEventListener("click", async () => {
+  try {
+    await navigator.clipboard.writeText(elements.missionPrompt.textContent.trim());
+    elements.copyPromptButton.textContent = "Copied";
+    setTimeout(() => { elements.copyPromptButton.textContent = "Copy agent prompt"; }, 1400);
+  } catch {
+    elements.missionStatus.textContent = "Copy was unavailable. Select the prompt above and copy it manually.";
+  }
+});
+
+elements.viewMode.addEventListener("click", () => {
+  const showingMap = elements.sceneShell.dataset.mode === "map";
+  elements.sceneShell.dataset.mode = showingMap ? "splat" : "map";
+  elements.viewMode.textContent = showingMap ? "Show 2D map" : "Show 3D splats";
+  elements.viewMode.setAttribute("aria-pressed", String(!showingMap));
 });
 
 for (const tool of runtime.listTools()) {
@@ -245,12 +367,12 @@ elements.toolSelect.addEventListener("change", () => {
     search_entities: { query: "accessible gate" },
     get_entity: { entityId: "lift_1" },
     navigate_to_entity: { entityId: "help_point_1" },
-    find_semantic_route: { from: "n_entrance", to: "n_platform", accessibleOnly: true },
+    find_semantic_route: { from: "Entrance A", to: "Platform 2", accessibleOnly: true },
     set_entity_state: { entityId: "lift_1", patch: { operational: "closed" } },
     undo_scene_change: {},
     get_region_quality: { regionId: "west_corridor" },
-    recommend_recapture: { regionId: "west_corridor" },
-    list_uncertain_entities: { threshold: 0.8 }
+    list_uncertain_entities: { threshold: 0.8 },
+    reset_scene: {}
   };
   elements.toolArgs.value = JSON.stringify(examples[elements.toolSelect.value] ?? {}, null, 2);
 });
@@ -267,7 +389,55 @@ document.querySelector("#invoke-tool-button").addEventListener("click", async ()
 
 renderRegions();
 renderEntities();
-elements.status.textContent = webmcp.registered
-  ? `WebMCP active: ${webmcp.count} tools registered`
-  : `Local runtime active: ${runtime.tools.length} tools. WebMCP registers automatically in a compatible browser.`;
+elements.status.textContent = "Local runtime active. Preparing the shared viewer before WebMCP registration…";
 elements.toolSelect.dispatchEvent(new Event("change"));
+window.spatialDemo.runGuidedProof = runGuidedProof;
+
+async function initializeSplatViewer() {
+  try {
+    const { SplatStationViewer } = await import("./splat-station-viewer.js");
+    const splatUrl = new URLSearchParams(globalThis.location.search).get("splat");
+    const splatViewer = new SplatStationViewer(elements.splatViewport, demoScene, { splatUrl });
+    splatViewer.onEntitySelect = (entityId) => invoke("navigate_to_entity", { entityId });
+    const appearance = await splatViewer.initialize();
+    viewer.attachBridge(splatViewer);
+    await viewer.onScenarioChanged([]);
+    window.spatialDemo.splatViewer = splatViewer;
+
+    const count = Number(appearance.splats ?? 0).toLocaleString();
+    elements.sceneMode.textContent = appearance.kind === "captured"
+      ? Number(appearance.splats) > 0
+        ? `Captured Gaussian scene · ${count} splats`
+        : "Captured Gaussian scene loaded"
+      : `Synthetic Gaussian fixture · ${count} splats`;
+  } catch (error) {
+    console.error("The Gaussian-splat viewer did not start.", error);
+    elements.sceneShell.dataset.mode = "map";
+    elements.sceneMode.textContent = "3D unavailable · deterministic 2D fallback active";
+    elements.viewMode.textContent = "3D unavailable";
+    elements.viewMode.disabled = true;
+  }
+}
+
+function renderWebMCPStatus(status) {
+  if (status.state === "registering") {
+    elements.status.textContent = `Shared viewer ready. Registering ${status.count} WebMCP tools…`;
+  } else if (status.state === "active") {
+    elements.status.textContent = `WebMCP active: ${status.count} tools registered`;
+  } else if (status.state === "unsupported") {
+    elements.status.textContent = `Local runtime active: ${runtime.listTools().length} tools. WebMCP registers automatically in a compatible browser.`;
+  } else if (status.state === "error") {
+    elements.status.textContent = `Local runtime active. WebMCP registration failed: ${status.error}`;
+  }
+}
+
+const viewerReadiness = initializeSplatViewer();
+window.spatialDemo.readiness = viewerReadiness;
+try {
+  window.spatialDemo.webmcp = await registerWebMCPTools(runtime, {
+    readiness: viewerReadiness,
+    onStatus: renderWebMCPStatus
+  });
+} catch (error) {
+  console.error("WebMCP registration failed; the human interface remains active.", error);
+}
