@@ -165,6 +165,20 @@
       ]
     },
     {
+      "id": "public-repository-ci",
+      "category": "reproducibility",
+      "requirement": "The public repository runs syntax, tests, build, provenance-tag, and submission-gate checks without write credentials.",
+      "evidenceClass": "repository",
+      "assertions": [
+        { "type": "fileExists", "path": ".github/workflows/verify.yml" },
+        { "type": "fileContains", "path": ".github/workflows/verify.yml", "contains": "node-version: 22" },
+        { "type": "fileContains", "path": ".github/workflows/verify.yml", "contains": "npm test" },
+        { "type": "fileContains", "path": ".github/workflows/verify.yml", "contains": "npm run build" },
+        { "type": "fileContains", "path": ".github/workflows/verify.yml", "contains": "npm run check:submission" },
+        { "type": "fileContains", "path": ".github/workflows/verify.yml", "contains": "git diff --exit-code" }
+      ]
+    },
+    {
       "id": "production-webmcp-headers",
       "category": "deployment",
       "requirement": "The production artifact enables origin isolation, limits site tools to the same origin, and includes a deterministic builder.",

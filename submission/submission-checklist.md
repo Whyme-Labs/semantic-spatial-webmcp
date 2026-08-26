@@ -31,6 +31,7 @@ Complete this checklist against the final public artifacts. Do not mark an item 
 - [ ] Confirm `starter-v0.1.0` and SHA `8949b3c2bb0a3bf85b33104279c57301185211c1` are present.
 - [ ] Run `npm run verify` from a clean clone.
 - [ ] Run `npm run check:submission` from a clean clone.
+- [ ] Confirm the public repository's **Verify release** workflow is green for the submitted commit.
 - [ ] Review `docs/third-party-provenance.md` against the final media.
 
 ## Demo video

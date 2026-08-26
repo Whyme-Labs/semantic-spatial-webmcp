@@ -144,6 +144,8 @@ This reruns the syntax check and all deterministic tests, then refreshes `docs/t
 
 The prompt-level deterministic evaluation set is in `evals/webmcp-cases.json`. To exercise the exact production artifact in Chrome with `WebMCPTesting` enabled, run `npm run build`, serve `dist/` with `npm run serve:dist`, then run `npm run verify:webmcp:chrome`. The Chrome verifier requires the build manifest and refuses to treat the source server as the publish artifact.
 
+The public repository workflow at `.github/workflows/verify.yml` reruns syntax, all deterministic tests, the production build, baseline-tag verification, and submission gates on Node.js 22. It has read-only repository permissions and fails if verification rewrites tracked evidence.
+
 ## Deploy
 
 Build the allowlisted static artifact:
