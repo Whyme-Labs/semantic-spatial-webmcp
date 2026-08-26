@@ -1,5 +1,5 @@
 {
-  "verifiedAt": "2026-08-26T17:41:50.447Z",
+  "verifiedAt": "2026-08-26T17:44:07.444Z",
   "chrome": {
     "product": "Chrome/151.0.7922.174",
     "protocolVersion": "1.3",
@@ -9,14 +9,14 @@
   "artifact": {
     "kind": "allowlisted-dist",
     "manifestUrl": "http://127.0.0.1:4173/build-manifest.json",
-    "manifestSha256": "63aa0ba19cf517f23bde33f382d779ddc694f6429411ddc772fab6b4a9594d82",
-    "builtAt": "2026-08-26T17:40:45.498Z",
-    "commit": "8949b3c2bb0a3bf85b33104279c57301185211c1",
-    "dirty": true,
+    "manifestSha256": "c64e2216015ed40da507cd633be31ab9831c77f7876efff274080b9f22be46ea",
+    "builtAt": "2026-08-26T17:44:02.254Z",
+    "commit": "830509931aad6da0f562b206e6b6a86133bd4a66",
+    "dirty": false,
     "fileCount": 15
   },
   "timing": {
-    "navigationToWebMcpReadyMs": 1327,
+    "navigationToWebMcpReadyMs": 1569,
     "underFiveSeconds": true
   },
   "webmcp": {
