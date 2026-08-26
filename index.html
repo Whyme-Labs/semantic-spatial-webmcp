@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Semantic spatial WebMCP demonstration for 3DGS scenes.">
+  <title>Semantic spatial browser</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">WebMCP challenge vertical slice</p>
+      <h1>Semantic spatial browser</h1>
+      <p>Search a place. Understand it. Test what happens when it changes.</p>
+    </div>
+    <output id="webmcp-status" class="status">Starting semantic runtime…</output>
+  </header>
+
+  <main class="layout">
+    <section class="viewer-panel" aria-labelledby="scene-heading">
+      <div class="panel-heading">
+        <div>
+          <p class="eyebrow">Demo scene</p>
+          <h2 id="scene-heading">Harbour Junction Station</h2>
+        </div>
+        <div class="legend" aria-label="Map legend">
+          <span><i class="dot"></i> Entity</span>
+          <span><i class="dot route"></i> Route</span>
+          <span><i class="dot risk"></i> Weak evidence</span>
+        </div>
+      </div>
+
+      <div class="map-shell">
+        <svg id="station-map" viewBox="0 0 100 70" role="img" aria-label="Two-level semantic station map">
+          <g id="quality-layer"></g>
+          <g id="route-layer"></g>
+          <g id="entity-layer"></g>
+        </svg>
+      </div>
+
+      <div class="actions" aria-label="Demonstration actions">
+        <button id="route-button" class="primary">Accessible route</button>
+        <button id="close-lift-button">Close Lift 1</button>
+        <button id="barrier-button">Toggle east barrier</button>
+        <button id="quality-button">Show capture gaps</button>
+        <button id="uncertain-button">Show uncertainty</button>
+        <button id="undo-button">Undo</button>
+        <button id="reset-button">Reset</button>
+      </div>
+    </section>
+
+    <aside class="side-panel">
+      <section class="card search-card">
+        <p class="eyebrow">Semantic search</p>
+        <h2>Find an entity</h2>
+        <div class="search-row">
+          <input id="search-input" value="accessible gate" aria-label="Search scene entities">
+          <button id="search-button">Search</button>
+        </div>
+        <div id="search-results" class="search-results"></div>
+      </section>
+
+      <section id="details" class="card details-card" aria-live="polite">
+        <p class="eyebrow">Shared scene state</p>
+        <h2>Start with the route</h2>
+        <p>The semantic graph is the control plane. The map is a placeholder for the real 3DGS viewer adapter.</p>
+      </section>
+    </aside>
+
+    <section class="card console-card">
+      <div>
+        <p class="eyebrow">Deterministic fallback</p>
+        <h2>Tool console</h2>
+        <p>These are the same tools registered through WebMCP when the browser exposes <code>document.modelContext</code>.</p>
+      </div>
+      <div class="console-grid">
+        <label>Tool<select id="tool-select"></select></label>
+        <label>Arguments<textarea id="tool-args" rows="8"></textarea></label>
+        <button id="invoke-tool-button" class="primary">Invoke tool</button>
+        <pre id="tool-output">Run a tool to inspect its structured result.</pre>
+      </div>
+    </section>
+
+    <section class="card log-card">
+      <p class="eyebrow">Observable agent actions</p>
+      <h2>Tool timeline</h2>
+      <ol id="tool-log"></ol>
+    </section>
+  </main>
+
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>

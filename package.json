@@ -1,0 +1,16 @@
+{
+  "name": "semantic-spatial-webmcp-starter",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A dependency-free semantic spatial browser and WebMCP control plane for 3DGS scenes.",
+  "scripts": {
+    "serve": "python3 -m http.server 4173",
+    "test": "node --test",
+    "check": "node --check src/*.js test/*.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,82 @@
+TAP version 13
+# Subtest: baseline accessible route uses Lift 1
+ok 1 - baseline accessible route uses Lift 1
+  ---
+  duration_ms: 2.731222
+  type: 'test'
+  ...
+# Subtest: closing Lift 1 selects Lift 2 and exposes capture warning
+ok 2 - closing Lift 1 selects Lift 2 and exposes capture warning
+  ---
+  duration_ms: 2.388509
+  type: 'test'
+  ...
+# Subtest: blocking east corridor selects the alternate route
+ok 3 - blocking east corridor selects the alternate route
+  ---
+  duration_ms: 0.532919
+  type: 'test'
+  ...
+# Subtest: both lifts closed produces an explicit no-route result
+ok 4 - both lifts closed produces an explicit no-route result
+  ---
+  duration_ms: 1.39015
+  type: 'test'
+  ...
+# Subtest: semantic search finds the accessible fare gate
+ok 5 - semantic search finds the accessible fare gate
+  ---
+  duration_ms: 4.020777
+  type: 'test'
+  ...
+# Subtest: state changes are reversible
+ok 6 - state changes are reversible
+  ---
+  duration_ms: 1.255069
+  type: 'test'
+  ...
+# Subtest: uncertain entities expose the weak dimension
+ok 7 - uncertain entities expose the weak dimension
+  ---
+  duration_ms: 0.531898
+  type: 'test'
+  ...
+# Subtest: tool runtime exposes ten narrow tools
+ok 8 - tool runtime exposes ten narrow tools
+  ---
+  duration_ms: 5.556562
+  type: 'test'
+  ...
+# Subtest: route tool updates the shared viewer adapter
+ok 9 - route tool updates the shared viewer adapter
+  ---
+  duration_ms: 3.211829
+  type: 'test'
+  ...
+# Subtest: quality tool returns evidence gaps and updates the overlay
+ok 10 - quality tool returns evidence gaps and updates the overlay
+  ---
+  duration_ms: 6.629833
+  type: 'test'
+  ...
+# Subtest: state tool changes route outcome
+ok 11 - state tool changes route outcome
+  ---
+  duration_ms: 2.010148
+  type: 'test'
+  ...
+# Subtest: unknown entity returns not found instead of inventing one
+ok 12 - unknown entity returns not found instead of inventing one
+  ---
+  duration_ms: 1.336801
+  type: 'test'
+  ...
+1..12
+# tests 12
+# suites 0
+# pass 12
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 178.840071
