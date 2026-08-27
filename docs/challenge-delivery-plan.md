@@ -137,20 +137,20 @@ Create the baseline tag before challenge code is merged.
 
 ### 3. Three-minute video
 
-Target length: 165 to 175 seconds.
+Target length: 150 to 170 seconds.
 
 Suggested script:
 
 | Time | Content |
 |---:|---|
-| 0:00-0:15 | The problem: a photorealistic scene has no persistent understanding |
-| 0:15-0:35 | Show the spatial DOM and current scene context |
-| 0:35-1:15 | Ask for an accessible route and watch the agent query, route, and navigate |
-| 1:15-1:45 | Close Lift 1 and recalculate visibly through Lift 2 |
-| 1:45-2:15 | Expose the weakly captured sign and show evidence plus recapture guidance |
-| 2:15-2:40 | Correct or approve one entity/state change, then undo or commit |
-| 2:40-2:55 | Show the WebMCP tool surface and public repository |
-| 2:55-3:00 | Product statement and live URL |
+| 0:00-0:14 | Cold open: one closed lift breaks an accessible journey |
+| 0:14-0:42 | Establish SceneIndex, the shared scene, and the mission |
+| 0:42-1:07 | Draw the Lift 1 baseline, then close it visibly |
+| 1:07-1:33 | Reroute through Lift 2 and expose the 56 percent evidence warning |
+| 1:33-1:59 | Show recapture guidance, human review, and undo |
+| 1:59-2:13 | Pan across the ten-call WebMCP timeline |
+| 2:13-2:27 | Connect the synthetic fixture to practical field work |
+| 2:27-2:38 | Resolve on SceneIndex and the live product |
 
 The video should show the browser and agent working together. Avoid spending most of the video on slides.
 

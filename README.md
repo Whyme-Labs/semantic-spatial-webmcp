@@ -153,6 +153,18 @@ The prompt-level deterministic evaluation set is in `evals/webmcp-cases.json`. T
 
 The public repository workflow at `.github/workflows/verify.yml` reruns syntax, all deterministic tests, a Wrangler deployment dry run, baseline-tag verification, and submission gates on Node.js 22. It has read-only repository permissions and fails if verification rewrites tracked evidence.
 
+The demo-media pipeline uses one continuous VoxCPM2 narration and a beat-aligned 24-shot edit:
+
+```bash
+npm run generate:demo-narration -- --reference-audio <authorized-sample.m4a> --backend gguf --seed 43
+npm run verify:demo-narration
+npm run verify:demo-audio
+npm run assemble:demo-video
+npm run verify:media-dynamics
+```
+
+`submission/video-handoff.md` records the pinned long-form inference patch, source capture command, quality thresholds, and exact-file review steps.
+
 ## Deploy
 
 Install the pinned deployment tool and validate the exact Workers upload:

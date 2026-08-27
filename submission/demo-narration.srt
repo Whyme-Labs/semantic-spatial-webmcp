@@ -1,53 +1,47 @@
 1
-00:00:00,000 --> 00:00:12,000
-A Gaussian-splat capture can show a place beautifully and still tell an agent almost nothing about what the place means.
-This is SceneIndex.
+00:00:00,300 --> 00:00:13,682
+One lift closes. For a wheelchair user in an unfamiliar station, that red status can erase the route they expected. A beautiful 3D scan still looks complete. It does not know the journey has broken.
 
 2
-00:00:12,000 --> 00:00:27,000
-The page combines Gaussian appearance with persistent rooms, objects, relationships, routes, operational state, and capture evidence.
-The person and the agent work on the same live scene.
+00:00:14,322 --> 00:00:29,024
+SceneIndex gives the place memory and language. The Gaussian splat remains the visual record. Persistent rooms, gates, lifts, routes, and evidence sit underneath it. A person sees the station. An agent reasons about the same station.
 
 3
-00:00:27,000 --> 00:00:38,000
-I will ask for an accessible route from Entrance A to Platform 2 and ask whether the evidence is trustworthy.
+00:00:29,744 --> 00:00:41,926
+The job is simple. Get from Entrance A to Platform 2 without stairs, and do not hide uncertainty. The agent reads the live camera, finds the accessible gate, and moves the shared view to the evidence position.
 
 4
-00:00:38,000 --> 00:01:00,000
-The agent reads the current page, finds the accessible gate, moves the shared camera, and draws a route through Lift 1.
-The result is visible and inspectable. It is not a route hidden in a backend response.
+00:00:42,386 --> 00:00:53,447
+The first answer is ordinary. Follow the east corridor. Take Lift 1. Continue to the platform. The route appears in the scene, so every turn can be inspected instead of trusted blindly.
 
 5
-00:01:00,000 --> 00:01:14,000
-Now I change the situation. Lift 1 is unavailable. The agent stages that state on the page.
-The lift turns red, and the change remains reversible.
+00:00:54,387 --> 00:01:06,269
+Then Lift 1 closes. The proxy turns red, the operational state changes, and the route becomes invalid. Nothing is silently rewritten. The outage is visible to both sides, and it can be undone.
 
 6
-00:01:14,000 --> 00:01:35,000
-The original path is no longer valid. The new route uses Lift 2, but the West corridor has only 56 percent accessible-wayfinding readiness.
-Connectivity is known. The sign text is not visually verified.
+00:01:07,309 --> 00:01:20,131
+The agent searches again. Lift 2 keeps the trip possible, but the alternate path crosses the West corridor. SceneIndex finds a route and raises a warning. Accessible-wayfinding readiness is only fifty-six percent.
 
 7
-00:01:35,000 --> 00:01:53,000
-The agent opens the capture evidence instead of guessing.
-The page highlights the weak region and explains the unreadable sign and single-view coverage gap.
+00:01:20,431 --> 00:01:32,432
+That number has a reason. The directional sign has one oblique, low-resolution observation. Connectivity is known, but the text is not verified. The page exposes that doubt and marks the weak region.
 
 8
-00:01:53,000 --> 00:02:11,000
-It recommends a front-facing sign capture and a reverse corridor pass from the Lift 2 side.
-Capture quality becomes a task-specific decision, not one opaque percentage.
+00:01:32,872 --> 00:01:45,434
+Now the system looks beyond navigation. It recommends a front-facing sign capture at eye level, then a reverse corridor pass from Lift 2. Six markers and sightlines turn better coverage into fieldwork someone can perform.
 
 9
-00:02:11,000 --> 00:02:27,000
-I can inspect, accept, or undo every change.
-Undo restores the baseline scene without reloading the page.
+00:01:46,334 --> 00:01:58,876
+The person stays in control. Inspect the route, challenge the evidence, accept the recommendation, or undo the outage. One action restores Lift 1 and clears the staged change. The baseline is clean again.
 
 10
-00:02:27,000 --> 00:02:44,000
-The app exposes ten narrow tools through the current imperative WebMCP API.
-Human controls and agent calls share the same runtime, validation, viewer effects, and visible timeline.
+00:01:59,496 --> 00:02:13,358
+WebMCP connects to the live interface, not a separate backend copy. Ten narrow tools share validation, scene state, camera, visual effects, and the action timeline with human controls. Every agent call is labelled and observable.
 
 11
-00:02:44,000 --> 00:02:55,000
-The app, source, license, tests, provenance, and build receipts are public.
-Search a place. Understand it. Test what happens when it changes.
+00:02:13,518 --> 00:02:27,200
+The station is synthetic, but the pattern is practical. A registered capture could support accessibility review, building handover, remote inspection, maintenance, and targeted recapture. The agent never has to pretend the pixels know more than they do.
+
+12
+00:02:27,480 --> 00:02:37,901
+SceneIndex makes a place searchable, testable, and honest about its evidence. When the world changes, the route changes with it. Search the place. See the reason. Keep the decision in view.

@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "analyzedAt": "2026-08-27T18:45:58.711566+00:00",
+  "audio": {
+    "path": "submission/video/narration/demo-narration.wav",
+    "durationSeconds": 158.361,
+    "sampleRateHz": 48000,
+    "channels": 1
+  },
+  "silence": {
+    "thresholdDb": -50,
+    "fraction": 0.0325,
+    "totalSeconds": 5.14,
+    "longestSeconds": 1.06
+  },
+  "persistentTone": {
+    "bandHz": [
+      330,
+      346
+    ],
+    "medianProminenceDb": -7.693,
+    "p75ProminenceDb": -0.98,
+    "framesOver8DbPercent": 7.389,
+    "activeFrames": 7119
+  },
+  "limits": {
+    "minimumDurationSeconds": 145,
+    "maximumDurationSeconds": 178,
+    "maximumSilenceFraction": 0.12,
+    "maximumLongestSilenceSeconds": 2.0,
+    "maximumHumProminenceDb": 8.0
+  },
+  "checks": {
+    "durationInRange": true,
+    "silenceFraction": true,
+    "longestSilence": true,
+    "humProminence": true
+  },
+  "failures": [],
+  "result": "passed"
+}

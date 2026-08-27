@@ -1,0 +1,16 @@
+diff --git a/tools/omni/voxcpm2/voxcpm2_runtime.cpp b/tools/omni/voxcpm2/voxcpm2_runtime.cpp
+index 1360ccd..6c691e1 100644
+--- a/tools/omni/voxcpm2/voxcpm2_runtime.cpp
++++ b/tools/omni/voxcpm2/voxcpm2_runtime.cpp
+@@ -30,3 +30,3 @@
+ constexpr size_t kSmallGraphMem  = 32ull * 1024ull * 1024ull;   // simple projections (matmul + bias): ~50 nodes
+-constexpr size_t kMediumGraphMem = 128ull * 1024ull * 1024ull;  // ResidualLM forward / FSQ:      ~1-3K nodes
+-constexpr size_t kLargeGraphMem  = 512ull * 1024ull * 1024ull;  // CFM 10-step / AudioVAE decode: ~4.5K nodes
++constexpr size_t kMediumGraphMem = 512ull * 1024ull * 1024ull;  // Long-form ResidualLM prefill / FSQ
++constexpr size_t kLargeGraphMem  = 1024ull * 1024ull * 1024ull; // Long reference AudioVAE encode / decode
+@@ -35,3 +35,3 @@
+ constexpr size_t kSmallGraphNodes  = 8192;    // simple projections
+-constexpr size_t kMediumGraphNodes = 65536;   // 8-layer transformer / FSQ
+-constexpr size_t kLargeGraphNodes  = 262144;  // 10-step CFM (4462 nodes observed) + AudioVAE
++constexpr size_t kMediumGraphNodes = 262144;  // 8-layer transformer / long-form prefill / FSQ
++constexpr size_t kLargeGraphNodes  = 1048576; // Long reference AudioVAE encode + CFM / decode

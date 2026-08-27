@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "video": "submission/video/semantic-spatial-webmcp-demo.mp4",
+  "sceneDetection": {
+    "threshold": 0.12,
+    "cutCount": 24,
+    "cutsSeconds": [
+      6.933333,
+      13.866667,
+      21.566667,
+      29.266667,
+      30.7,
+      35.666667,
+      42.066667,
+      47.933333,
+      53.8,
+      60.233333,
+      66.666667,
+      73.4,
+      80.133333,
+      86.333333,
+      92.533333,
+      99.133333,
+      105.733333,
+      112.4,
+      119.066667,
+      126.2,
+      133.333333,
+      140.3,
+      147.266667,
+      152.866667
+    ]
+  },
+  "freezeDetection": {
+    "noise": 0.001,
+    "minimumDurationSeconds": 2,
+    "eventCount": 0,
+    "durationsSeconds": [],
+    "maximumDurationSeconds": 0
+  },
+  "limits": {
+    "minimumSceneCuts": 8,
+    "maximumFreezeSeconds": 8
+  },
+  "checks": {
+    "sceneCuts": true,
+    "maximumFreeze": true
+  },
+  "failures": [],
+  "result": "passed"
+}

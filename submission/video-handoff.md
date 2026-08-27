@@ -1,18 +1,37 @@
 # Demo video handoff
 
-The public app, Chrome WebMCP flow, narration, prompts, and shot timings are ready. The final MP4 and owner-authorized source voice remain outside Git under ignored `submission/video/`; their exact hashes are recorded in checked-in receipts.
+The upload candidate is a 24-shot edit built from the verified public Chrome replay and one continuous VoxCPM2 narration. The final MP4 and authorized source voice stay outside Git under ignored `submission/video/`; checked-in receipts bind their exact hashes.
 
-## Record
+## Generate the full narration
 
-1. Use the production app at https://semantic-spatial-webmcp.swmengappdev.workers.dev/.
-2. Generate and align the timed narration from the exact owner-authorized sample:
+The local GGUF engine needs the checked-in graph-capacity patch for a 406-word cloned-voice prompt:
 
 ```bash
-npm run generate:demo-narration -- --reference-audio <owner-authorized-voice-sample.m4a>
-npm run verify:demo-narration
+git -C <voxcpm2-llama.cpp-omni-root> apply --unidiff-zero "$PWD/patches/voxcpm2-long-form-graph.patch"
+cmake --build <voxcpm2-llama.cpp-omni-root>/build --target voxcpm2-cli -j 8
 ```
 
-3. Capture the paced Chrome 151 WebMCP replay. It uses an isolated profile, a 30 fps output timeline, and ten storyboard-specific hold durations so each real WebMCP result remains visible for its narration section. CDP captures only the page viewport. It never captures private tabs, notifications, bookmarks, or account details.
+Generate the entire performance in one inference. Seed 42 produced a rejected mid-track vocal artifact; seed 43 is the verified take.
+
+```bash
+npm run generate:demo-narration -- \
+  --reference-audio <owner-authorized-voice-sample.m4a> \
+  --backend gguf \
+  --seed 43
+
+npm run verify:demo-narration
+npm run verify:demo-audio
+```
+
+The accepted master must satisfy all of these:
+
+- `generator.mode` is `single-pass`;
+- 12 of 12 story beats align with no failures;
+- total silence stays below 12 percent;
+- the longest silent gap stays below two seconds; and
+- the measured 330–346 Hz tone stays at or below the surrounding-spectrum limit.
+
+## Capture the real WebMCP flow
 
 ```bash
 npm run verify:webmcp:chrome -- \
@@ -30,42 +49,32 @@ npm run verify:webmcp:chrome -- \
   --output submission/video/chrome-replay-receipt.json
 ```
 
-4. Assemble the replay and narration. The assembler normalizes any Chrome timer throttling to the authoritative 175-second narration timeline and runs the exact-file video verifier:
+The replay must expose ten tools, execute ten successful agent-labelled calls, finish with zero console errors, and point to the clean deployed artifact.
+
+## Build the dynamic edit
 
 ```bash
 npm run assemble:demo-video
+npm run verify:media-dynamics
 ```
 
-The result is `submission/video/semantic-spatial-webmcp-demo.mp4`. It is a 1920 by 1080 landscape MP4 and must remain below 3:00.
-
-The production screenshot in `submission/screenshots/cloudflare-workers-webmcp.png` is the visual reference for the final tool timeline and evidence-overlay state. The replay receipt must finish with `result: "passed"`; ordinary browsing or repository inspection is not a substitute for WebMCP execution.
+The editor reads the forced-alignment receipt and places cuts only between speech beats. It creates 24 shots with live-scene crops, evidence close-ups, timeline pans, a context-comparison beat, and a branded resolution. The final dynamics gate requires at least eight detected cuts and rejects freeze events longer than eight seconds.
 
 ## Verify the exact export
-
-To recheck the exact candidate independently, run:
 
 ```bash
 npm run verify:demo-video -- \
   --video submission/video/semantic-spatial-webmcp-demo.mp4 \
-  --output docs/demo-video-verification.json
+  --output <independent-receipt.json>
 ```
 
-The verifier requires FFmpeg's `ffprobe` and `ffmpeg` commands. It rejects:
+Do not overwrite `docs/demo-video-verification.json` with the basic verifier output. The dynamic editor writes the full source, narration, timing, shot, and motion receipt there.
 
-- a non-MP4 export;
-- duration greater than or equal to 180 seconds;
-- resolution below 1920 by 1080;
-- a missing audio stream;
-- invalid audio metadata; or
-- an effectively silent audio track.
-
-The passing receipt records the duration, codecs, resolution, frame rate, audio level, byte size, and SHA-256 of the exact MP4. Watch the full export with sound after the automated check; a machine receipt cannot prove intelligible narration or correct visual timing.
+The final file must remain below three minutes, at least 1920 by 1080, audible, and free of unlicensed media. Watch it from beginning to end with sound before upload.
 
 ## Publish
 
-1. Review `docs/third-party-provenance.md` and confirm the voice and every visible element are owned or licensed.
-2. Use the title, description, and settings in `submission/youtube-upload.md` and upload the verified file to YouTube as **Public**.
-3. Upload `submission/demo-narration.srt` as the English captions track.
-4. Open the YouTube URL while signed out and confirm that it plays with audio and captions.
-5. Add the URL to `submission/submission-copy.md` and the Devpost entry.
-6. Preserve the public URL and `docs/demo-video-verification.json` through judging.
+1. Upload `submission/video/semantic-spatial-webmcp-demo.mp4` to YouTube as Public.
+2. Upload `submission/demo-narration.srt` as the English captions track.
+3. Use `submission/youtube-upload.md` for title, description, and settings.
+4. Check the processed video while signed out before adding its URL to Devpost.

@@ -1,11 +1,11 @@
 {
-  "verifiedAt": "2026-08-27T15:26:52.717Z",
+  "verifiedAt": "2026-08-27T18:46:29.129Z",
   "artifact": {
     "path": "submission/video/semantic-spatial-webmcp-demo.mp4",
-    "bytes": 8655643,
-    "sha256": "1ae9361035f82b7d8983e5bef33254012419faa6af1157a35fb10f238bd790c8"
+    "bytes": 12364485,
+    "sha256": "abbd778206056bb9849774b9a237a29e1e26763de5f39d66ee6dee2412934be5"
   },
-  "durationSeconds": 175,
+  "durationSeconds": 158.433333,
   "underThreeMinutes": true,
   "video": {
     "codec": "h264",
@@ -19,46 +19,41 @@
     "channels": 1,
     "channelLayout": "mono",
     "sampleRateHz": 48000,
-    "meanVolumeDb": -18.5,
-    "maxVolumeDb": -1.4,
+    "meanVolumeDb": -17.6,
+    "maxVolumeDb": -1.3,
     "nonSilent": true
   },
   "container": "mov,mp4,m4a,3gp,3g2,mj2",
   "result": "passed",
   "sources": {
+    "sourceVideo": {
+      "path": "submission/video/chrome-replay-silent.mp4",
+      "sha256": "a76ac17d1645c0bf30219a890b184910359491df226104d99cff78ab90e1ee27"
+    },
     "captureReceipt": {
       "path": "submission/video/chrome-replay-receipt.json",
       "sha256": "93b48b41d37f8a735a921b5d207f71d4b0390c5c40579c1700e778be3e6e3bdb"
+    },
+    "narrationReceipt": {
+      "path": "docs/demo-narration-verification.json",
+      "sha256": "a2176ed55ed40bfcac59dafa6fde20e5fe6b542733e46be19c97e49f38093ce7"
+    },
+    "alignmentReceipt": {
+      "path": "docs/demo-narration-alignment.json",
+      "sha256": "b6b9655f2dc949df02630e92d3bf51965bd49d595232251d1a1d49a61cf30876"
+    },
+    "audioQualityReceipt": {
+      "path": "docs/demo-audio-quality.json",
+      "sha256": "68146c52661394955385cc9310426d434ddfba45f545e69fd941432ff2595393"
     },
     "timelineFrame": {
       "path": "submission/video/chrome-replay-timeline.png",
       "sha256": "d9a309658281195088920f669b6305df7ea615fcf16ad0fd64045d3dba302550"
     },
-    "outroFrame": {
-      "path": "submission/video/chrome-replay-outro.png",
-      "sha256": "88dcc92f1f90362695def08b090c926b1af2c39d550a8fbc25821bc003aecb2c"
-    },
-    "narrationReceipt": {
-      "path": "docs/demo-narration-verification.json",
-      "sha256": "410a1115e4c9b21bb679ead0e858f1c70561e9e22c437c12287316f07b2c86d7"
-    },
-    "alignmentReceipt": {
-      "path": "docs/demo-narration-alignment.json",
-      "sha256": "04181afa16139fe80b0b7ad6dcd3a2b3456597d94c2e2db87df2eec205ab5162"
+    "contextComparison": {
+      "path": "submission/screenshots/context-comparison.png",
+      "sha256": "0d1b7d6ba8be13587dfa4aa3aae8197f07cd581d4b057d37d87125f28c6c0502"
     }
-  },
-  "assembly": {
-    "durationSeconds": 175,
-    "captureDurationSeconds": 277.5,
-    "timeScale": 0.6306306306306306,
-    "timelineFrameIntervalSeconds": [
-      147,
-      164
-    ],
-    "outroFrameIntervalSeconds": [
-      164,
-      175
-    ]
   },
   "evidence": {
     "capture": {
@@ -72,297 +67,670 @@
         "dirty": false,
         "fileCount": 20
       },
-      "timing": {
-        "navigationToWebMcpReadyMs": 2308,
-        "underFiveSeconds": true,
-        "verificationLimitMs": 30000
-      },
       "webmcpToolCount": 10,
-      "flow": {
-        "baseline": {
-          "stagedChangeCount": 0
-        },
-        "navigation": {
-          "entityId": "accessible_gate_1",
-          "selectedViewId": "view_accessible_gate_1",
-          "cameraPose": {
-            "position": [
-              -3.708,
-              1.67,
-              2.76
-            ],
-            "target": [
-              -1.98,
-              0.82,
-              0.36
-            ]
-          },
-          "currentRegion": null,
-          "nearbyHiddenEntityIds": [
-            "ticket_machine_1"
-          ],
-          "connectedSpaceIds": [
-            "entrance_a_zone",
-            "east_corridor",
-            "west_corridor"
-          ]
-        },
-        "initialRoute": {
-          "from": "Entrance A",
-          "to": "Platform 2",
-          "lift": "lift_1",
-          "entityIds": [
-            "entrance_a",
-            "ticket_machine_1",
-            "help_point_1",
-            "accessible_gate_1",
-            "barrier_east",
-            "lift_1",
-            "bench_1",
-            "bench_2"
-          ],
-          "warningRegions": []
-        },
-        "closure": {
-          "entityId": "lift_1",
-          "operational": "closed",
-          "stagedChangeCount": 1
-        },
-        "alternateRoute": {
-          "lift": "lift_2",
-          "entityIds": [
-            "entrance_a",
-            "ticket_machine_1",
-            "help_point_1",
-            "accessible_gate_1",
-            "sign_west_platform",
-            "lift_2",
-            "bench_1",
-            "bench_2"
-          ],
-          "warning": {
-            "regionId": "west_corridor",
-            "readiness": 0.56
-          }
-        },
-        "regionQuality": {
-          "regionId": "west_corridor",
-          "accessibleWayfindingReadiness": 0.56,
-          "bestEvidenceViewIds": [
-            "view_sign_west_oblique"
-          ],
-          "recommendationCount": 2,
-          "recaptureMarkerCount": 6
-        },
-        "undo": {
-          "entityId": "lift_1",
-          "restoredOperational": "open",
-          "stagedChangeCount": 0
-        },
-        "timeline": {
-          "entryCount": 10,
-          "allSourceLabelledAgent": true,
-          "allSuccessful": true,
-          "allVisible": true,
-          "tools": [
-            "get_scene_context",
-            "navigate_to_entity",
-            "get_scene_context",
-            "find_semantic_route",
-            "set_entity_state",
-            "find_semantic_route",
-            "get_region_quality",
-            "undo_scene_change",
-            "get_scene_context",
-            "get_entity"
-          ]
-        }
+      "timeline": {
+        "entryCount": 10,
+        "allSourceLabelledAgent": true,
+        "allSuccessful": true,
+        "allVisible": true,
+        "tools": [
+          "get_scene_context",
+          "navigate_to_entity",
+          "get_scene_context",
+          "find_semantic_route",
+          "set_entity_state",
+          "find_semantic_route",
+          "get_region_quality",
+          "undo_scene_change",
+          "get_scene_context",
+          "get_entity"
+        ]
       },
       "console": {
         "capturedByCdp": true,
         "errors": []
-      },
-      "videoCapture": {
-        "path": "submission/video/chrome-replay-silent.mp4",
-        "framesPerSecond": 30,
-        "framesWritten": 8325,
-        "durationSeconds": 277.5
-      },
-      "replay": {
-        "headed": false,
-        "startDelayMs": 20000,
-        "stepDelayMs": 0,
-        "stepDelaysMs": [
-          3000,
-          7000,
-          5000,
-          22000,
-          14000,
-          21000,
-          36000,
-          16000,
-          8000,
-          9000
-        ],
-        "outroUrl": "https://github.com/Whyme-Labs/semantic-spatial-webmcp",
-        "outroDelayMs": 3000,
-        "timelineFrame": "submission/video/chrome-replay-timeline.png",
-        "outroFrame": "submission/video/chrome-replay-outro.png",
-        "holdMs": 11000
       }
     },
     "narration": {
-      "reference": {
-        "sourceFilename": "Tsinghua University Zijing Students' Apartment Building 23 2.m4a",
-        "sourceSha256": "18cdd2f295733b90b35b5504b4ec7578990009c0513d7858837fe91b29ed6d46",
-        "derivedReferenceSha256": "ad84d7d9b58492ca355555579382624062a9193e8a5a03cb90021424c391067d",
-        "derivedReferenceDurationSeconds": 20
-      },
+      "generationMode": "single-pass",
       "generator": {
+        "mode": "single-pass",
         "backend": "gguf",
+        "model": "openbmb/VoxCPM2",
+        "revision": "169f64d8b98bbaab1761e4ca3a83e6af653456cc",
+        "inferenceTimesteps": 10,
+        "maxDecodeSteps": 1400,
+        "cfgValue": 2,
+        "temperature": 0.75,
+        "seed": 43,
+        "voiceControl": "Warm, confident documentary narrator. Begin conversational and reflective. Become firmer and slightly quicker when Lift 1 closes, without shouting. Slow down to explain the evidence. Finish calm and assured. Use natural speech, varied sentence rhythm, and one clean foreground voice. No trailer voice, whispering, singing, humming, doubled voice, or background vocalization.",
+        "referenceSha256": "851c838d6b9d35158c9b8589533f0aadd46c0bc1f66c9abcc5d580b858ac8301",
         "package": "llama.cpp-omni",
         "packageVersion": "64d092c60db4b4ee45768476bd752f03fdcc98ea",
-        "model": "openbmb/VoxCPM2",
-        "modelRevision": "169f64d8b98bbaab1761e4ca3a83e6af653456cc",
+        "binarySha256": "79f78058fc9181ab75a172861ce4afdb5c1c62ff7ed27fd56ef2a503b9e56cab",
+        "longFormGraphPatch": "patches/voxcpm2-long-form-graph.patch",
+        "longFormGraphPatchSha256": "8ff5334dd398f823136ad5c7e1804c00e37cf5b553a1c18bc89872d909ef680c",
         "conversionModel": "DennisHuang648/VoxCPM2-GGUF",
         "baseModelSha256": "0113177abd11303503bf0b705e1613ec5f0a8508cc74a7dfd0f99312b962a962",
         "acousticModelSha256": "5bde898488ad635ff55d24da53543768fa33d5e5cdc538ce190e5ef831038e85",
-        "device": "metal",
-        "cfgValue": 2,
-        "inferenceTimesteps": 10,
-        "maxDecodeSteps": 600,
-        "seed": 42
-      },
-      "script": {
-        "path": "submission/narration-script.json",
-        "sha256": "893d1acee7e14f424546dc1b67afa6c77858bb044da719a5bdc3bfb734cd41ce",
-        "targetDurationSeconds": 175
+        "device": "metal"
       },
       "output": {
         "path": "submission/video/narration/demo-narration.wav",
-        "bytes": 25200102,
-        "sha256": "07654560d0ed0216ce9bd3a78c41fb939f01f5303d147dd7d5417039b5b79486",
-        "durationSeconds": 175,
+        "bytes": 22804122,
+        "sha256": "c506f361981dde3e59f38ab1d78e7d9ff17a1958c872cde97a140a0782959bd0",
+        "durationSeconds": 158.361,
         "sampleRateHz": 48000,
         "channels": 1,
-        "meanVolumeDb": -18.5,
+        "meanVolumeDb": -17.6,
         "maxVolumeDb": -1.5
       },
-      "alignmentMethod": "Torchaudio MMS_FA CTC forced alignment against the exact checked-in narration",
-      "alignmentMinimumMeanConfidence": 0.3,
-      "alignmentSegments": [
+      "audioQuality": {
+        "schemaVersion": 1,
+        "analyzedAt": "2026-08-27T18:45:58.711566+00:00",
+        "audio": {
+          "path": "submission/video/narration/demo-narration.wav",
+          "durationSeconds": 158.361,
+          "sampleRateHz": 48000,
+          "channels": 1
+        },
+        "silence": {
+          "thresholdDb": -50,
+          "fraction": 0.0325,
+          "totalSeconds": 5.14,
+          "longestSeconds": 1.06
+        },
+        "persistentTone": {
+          "bandHz": [
+            330,
+            346
+          ],
+          "medianProminenceDb": -7.693,
+          "p75ProminenceDb": -0.98,
+          "framesOver8DbPercent": 7.389,
+          "activeFrames": 7119
+        },
+        "limits": {
+          "minimumDurationSeconds": 145,
+          "maximumDurationSeconds": 178,
+          "maximumSilenceFraction": 0.12,
+          "maximumLongestSilenceSeconds": 2,
+          "maximumHumProminenceDb": 8
+        },
+        "checks": {
+          "durationInRange": true,
+          "silenceFraction": true,
+          "longestSilence": true,
+          "humProminence": true
+        },
+        "failures": [],
+        "result": "passed"
+      },
+      "alignmentMethod": "Torchaudio MMS_FA CTC forced alignment over one continuous checked-in narration",
+      "beats": [
         {
-          "id": "01-introduction",
-          "audioSha256": "7f2e71c3e3bffdb827ef5609e6776ef52b3a43f73b98bff7768f771be5974e81",
-          "durationSeconds": 12,
-          "wordCount": 24,
-          "alignedWordCount": 24,
-          "meanConfidence": 0.9273,
-          "minimumWordConfidence": 0.5018,
-          "maximumWordConfidence": 0.9999
+          "id": "01-cold-open",
+          "text": "One lift closes. For a wheelchair user in an unfamiliar station, that red status can erase the route they expected. A beautiful 3D scan still looks complete. It does not know the journey has broken.",
+          "wordCount": 35,
+          "alignedWordCount": 35,
+          "speechStartSeconds": 0.3,
+          "speechEndSeconds": 13.382,
+          "meanConfidence": 0.8562,
+          "minimumWordConfidence": 0.0459,
+          "maximumWordConfidence": 0.9996
         },
         {
-          "id": "02-shared-scene",
-          "audioSha256": "03c79a5b3263987a3d943aa431edfb0c7184221d4f64533f688335a17991bc4c",
-          "durationSeconds": 15,
-          "wordCount": 27,
-          "alignedWordCount": 27,
-          "meanConfidence": 0.9192,
-          "minimumWordConfidence": 0.4677,
-          "maximumWordConfidence": 0.9995
-        },
-        {
-          "id": "03-task",
-          "audioSha256": "12a09a755b628dcf8a63a86bf62cbc088940dab4c66709fc59cecc488068a336",
-          "durationSeconds": 11,
-          "wordCount": 19,
-          "alignedWordCount": 19,
-          "meanConfidence": 0.8843,
-          "minimumWordConfidence": 0.131,
-          "maximumWordConfidence": 0.9991
-        },
-        {
-          "id": "04-baseline-route",
-          "audioSha256": "53114d0d0c8e4ceb322199b43ceabe56baa809e61550dc9434deeee15d9b43fa",
-          "durationSeconds": 22,
+          "id": "02-sceneindex",
+          "text": "SceneIndex gives the place memory and language. The Gaussian splat remains the visual record. Persistent rooms, gates, lifts, routes, and evidence sit underneath it. A person sees the station. An agent reasons about the same station.",
           "wordCount": 36,
           "alignedWordCount": 36,
-          "meanConfidence": 0.9537,
-          "minimumWordConfidence": 0.6648,
-          "maximumWordConfidence": 0.9998
+          "speechStartSeconds": 14.322,
+          "speechEndSeconds": 28.724,
+          "meanConfidence": 0.9364,
+          "minimumWordConfidence": 0.5501,
+          "maximumWordConfidence": 0.9997
         },
         {
-          "id": "05-close-lift",
-          "audioSha256": "2dc059b4ea9147eb1039bc38206d017700df9d06fac80ec4d80e4c14dad80989",
-          "durationSeconds": 14,
-          "wordCount": 25,
-          "alignedWordCount": 25,
-          "meanConfidence": 0.9436,
-          "minimumWordConfidence": 0.4998,
-          "maximumWordConfidence": 0.999
-        },
-        {
-          "id": "06-alternate-route",
-          "audioSha256": "af113127021097e25fb551146b3229d05ce62b54420ffa4ccbc141494cf0393a",
-          "durationSeconds": 21,
-          "wordCount": 32,
-          "alignedWordCount": 32,
-          "meanConfidence": 0.8934,
-          "minimumWordConfidence": 0.0002,
-          "maximumWordConfidence": 0.9991
-        },
-        {
-          "id": "07-evidence-gaps",
-          "audioSha256": "281aad8129433f0324022ff53f69cbc6f0e044145d6512a96b9eb1f606598759",
-          "durationSeconds": 18,
-          "wordCount": 25,
-          "alignedWordCount": 25,
-          "meanConfidence": 0.9447,
-          "minimumWordConfidence": 0.4811,
-          "maximumWordConfidence": 0.9995
-        },
-        {
-          "id": "08-recapture",
-          "audioSha256": "011598f253d522b0a0b0dad6d45a7141fa975ab3f709bc0c250551fe5f7490db",
-          "durationSeconds": 18,
-          "wordCount": 27,
-          "alignedWordCount": 27,
-          "meanConfidence": 0.9613,
-          "minimumWordConfidence": 0.6977,
+          "id": "03-mission",
+          "text": "The job is simple. Get from Entrance A to Platform 2 without stairs, and do not hide uncertainty. The agent reads the live camera, finds the accessible gate, and moves the shared view to the evidence position.",
+          "wordCount": 36,
+          "alignedWordCount": 36,
+          "speechStartSeconds": 29.744,
+          "speechEndSeconds": 41.626,
+          "meanConfidence": 0.901,
+          "minimumWordConfidence": 0.0559,
           "maximumWordConfidence": 0.9992
         },
         {
-          "id": "09-undo",
-          "audioSha256": "dc089ef48b35c05c27b817307b8976415be91fe71484482bd40500f432d7949f",
-          "durationSeconds": 16,
-          "wordCount": 17,
-          "alignedWordCount": 17,
-          "meanConfidence": 0.937,
-          "minimumWordConfidence": 0.5919,
-          "maximumWordConfidence": 0.9998
+          "id": "04-baseline-route",
+          "text": "The first answer is ordinary. Follow the east corridor. Take Lift 1. Continue to the platform. The route appears in the scene, so every turn can be inspected instead of trusted blindly.",
+          "wordCount": 31,
+          "alignedWordCount": 31,
+          "speechStartSeconds": 42.386,
+          "speechEndSeconds": 53.147,
+          "meanConfidence": 0.9337,
+          "minimumWordConfidence": 0.0001,
+          "maximumWordConfidence": 0.9996
+        },
+        {
+          "id": "05-lift-closure",
+          "text": "Then Lift 1 closes. The proxy turns red, the operational state changes, and the route becomes invalid. Nothing is silently rewritten. The outage is visible to both sides, and it can be undone.",
+          "wordCount": 32,
+          "alignedWordCount": 32,
+          "speechStartSeconds": 54.387,
+          "speechEndSeconds": 65.969,
+          "meanConfidence": 0.9529,
+          "minimumWordConfidence": 0.2893,
+          "maximumWordConfidence": 0.9996
+        },
+        {
+          "id": "06-alternate-route",
+          "text": "The agent searches again. Lift 2 keeps the trip possible, but the alternate path crosses the West corridor. SceneIndex finds a route and raises a warning. Accessible-wayfinding readiness is only fifty-six percent.",
+          "wordCount": 33,
+          "alignedWordCount": 33,
+          "speechStartSeconds": 67.309,
+          "speechEndSeconds": 79.831,
+          "meanConfidence": 0.9054,
+          "minimumWordConfidence": 0.0245,
+          "maximumWordConfidence": 0.9993
+        },
+        {
+          "id": "07-evidence",
+          "text": "That number has a reason. The directional sign has one oblique, low-resolution observation. Connectivity is known, but the text is not verified. The page exposes that doubt and marks the weak region.",
+          "wordCount": 33,
+          "alignedWordCount": 33,
+          "speechStartSeconds": 80.431,
+          "speechEndSeconds": 92.132,
+          "meanConfidence": 0.9487,
+          "minimumWordConfidence": 0.4813,
+          "maximumWordConfidence": 0.9996
+        },
+        {
+          "id": "08-recapture",
+          "text": "Now the system looks beyond navigation. It recommends a front-facing sign capture at eye level, then a reverse corridor pass from Lift 2. Six markers and sightlines turn better coverage into fieldwork someone can perform.",
+          "wordCount": 35,
+          "alignedWordCount": 35,
+          "speechStartSeconds": 92.872,
+          "speechEndSeconds": 105.134,
+          "meanConfidence": 0.9502,
+          "minimumWordConfidence": 0.086,
+          "maximumWordConfidence": 0.9996
+        },
+        {
+          "id": "09-human-control",
+          "text": "The person stays in control. Inspect the route, challenge the evidence, accept the recommendation, or undo the outage. One action restores Lift 1 and clears the staged change. The baseline is clean again.",
+          "wordCount": 32,
+          "alignedWordCount": 32,
+          "speechStartSeconds": 106.334,
+          "speechEndSeconds": 118.576,
+          "meanConfidence": 0.9596,
+          "minimumWordConfidence": 0.7584,
+          "maximumWordConfidence": 0.9994
         },
         {
           "id": "10-webmcp",
-          "audioSha256": "0dd1833cc989babffe0144a09b2d82263d6d9fd08c1e2c667eef945782c88e76",
-          "durationSeconds": 17,
-          "wordCount": 27,
-          "alignedWordCount": 27,
-          "meanConfidence": 0.9249,
-          "minimumWordConfidence": 0.5158,
-          "maximumWordConfidence": 0.9995
+          "text": "WebMCP connects to the live interface, not a separate backend copy. Ten narrow tools share validation, scene state, camera, visual effects, and the action timeline with human controls. Every agent call is labelled and observable.",
+          "wordCount": 35,
+          "alignedWordCount": 35,
+          "speechStartSeconds": 119.496,
+          "speechEndSeconds": 133.058,
+          "meanConfidence": 0.9319,
+          "minimumWordConfidence": 0.4604,
+          "maximumWordConfidence": 0.999
         },
         {
-          "id": "11-close",
-          "audioSha256": "857266d81359b36cd414d93b325364569355972eb3d355a2a7acf1c62cdbb8dc",
-          "durationSeconds": 11,
-          "wordCount": 22,
-          "alignedWordCount": 22,
-          "meanConfidence": 0.8568,
-          "minimumWordConfidence": 0.3377,
+          "id": "11-impact",
+          "text": "The station is synthetic, but the pattern is practical. A registered capture could support accessibility review, building handover, remote inspection, maintenance, and targeted recapture. The agent never has to pretend the pixels know more than they do.",
+          "wordCount": 37,
+          "alignedWordCount": 37,
+          "speechStartSeconds": 133.518,
+          "speechEndSeconds": 146.9,
+          "meanConfidence": 0.9115,
+          "minimumWordConfidence": 0.2691,
+          "maximumWordConfidence": 0.9997
+        },
+        {
+          "id": "12-close",
+          "text": "SceneIndex makes a place searchable, testable, and honest about its evidence. When the world changes, the route changes with it. Search the place. See the reason. Keep the decision in view.",
+          "wordCount": 31,
+          "alignedWordCount": 31,
+          "speechStartSeconds": 147.48,
+          "speechEndSeconds": 157.601,
+          "meanConfidence": 0.9438,
+          "minimumWordConfidence": 0.5129,
           "maximumWordConfidence": 0.9987
         }
       ],
-      "alignmentFailures": []
+      "failures": []
+    }
+  },
+  "edit": {
+    "format": "story-driven hard-cut edit with continuous pan and zoom reframing",
+    "shotCount": 24,
+    "hardCutCount": 23,
+    "maximumPlannedShotSeconds": 7.691,
+    "minimumCutToSpeechMarginSeconds": 0.23,
+    "beatCutMargins": [
+      {
+        "cutSeconds": 13.852,
+        "afterPreviousSpeechSeconds": 0.47,
+        "beforeNextSpeechSeconds": 0.47
+      },
+      {
+        "cutSeconds": 29.234,
+        "afterPreviousSpeechSeconds": 0.51,
+        "beforeNextSpeechSeconds": 0.51
+      },
+      {
+        "cutSeconds": 42.006,
+        "afterPreviousSpeechSeconds": 0.38,
+        "beforeNextSpeechSeconds": 0.38
+      },
+      {
+        "cutSeconds": 53.767,
+        "afterPreviousSpeechSeconds": 0.62,
+        "beforeNextSpeechSeconds": 0.62
+      },
+      {
+        "cutSeconds": 66.639,
+        "afterPreviousSpeechSeconds": 0.67,
+        "beforeNextSpeechSeconds": 0.67
+      },
+      {
+        "cutSeconds": 80.131,
+        "afterPreviousSpeechSeconds": 0.3,
+        "beforeNextSpeechSeconds": 0.3
+      },
+      {
+        "cutSeconds": 92.502,
+        "afterPreviousSpeechSeconds": 0.37,
+        "beforeNextSpeechSeconds": 0.37
+      },
+      {
+        "cutSeconds": 105.734,
+        "afterPreviousSpeechSeconds": 0.6,
+        "beforeNextSpeechSeconds": 0.6
+      },
+      {
+        "cutSeconds": 119.036,
+        "afterPreviousSpeechSeconds": 0.46,
+        "beforeNextSpeechSeconds": 0.46
+      },
+      {
+        "cutSeconds": 133.288,
+        "afterPreviousSpeechSeconds": 0.23,
+        "beforeNextSpeechSeconds": 0.23
+      },
+      {
+        "cutSeconds": 147.19,
+        "afterPreviousSpeechSeconds": 0.29,
+        "beforeNextSpeechSeconds": 0.29
+      }
+    ],
+    "shots": [
+      {
+        "beat": 1,
+        "beatId": "01-cold-open",
+        "start": 0,
+        "end": 6.926,
+        "duration": 6.926,
+        "sourceStart": 109.4,
+        "image": false,
+        "asset": null,
+        "mode": "viewer",
+        "title": "ONE CLOSED LIFT",
+        "subtitle": "can break the route"
+      },
+      {
+        "beat": 1,
+        "beatId": "01-cold-open",
+        "start": 6.926,
+        "end": 13.852,
+        "duration": 6.926,
+        "sourceStart": 0,
+        "image": false,
+        "asset": null,
+        "mode": "header",
+        "title": null,
+        "subtitle": null
+      },
+      {
+        "beat": 2,
+        "beatId": "02-sceneindex",
+        "start": 13.852,
+        "end": 21.543,
+        "duration": 7.691,
+        "sourceStart": 9.5,
+        "image": false,
+        "asset": null,
+        "mode": "full",
+        "title": "THE PLACE, INDEXED",
+        "subtitle": "appearance plus persistent meaning"
+      },
+      {
+        "beat": 2,
+        "beatId": "02-sceneindex",
+        "start": 21.543,
+        "end": 29.234,
+        "duration": 7.691,
+        "sourceStart": 23.8,
+        "image": false,
+        "asset": null,
+        "mode": "viewer",
+        "title": null,
+        "subtitle": null
+      },
+      {
+        "beat": 3,
+        "beatId": "03-mission",
+        "start": 29.234,
+        "end": 35.62,
+        "duration": 6.386,
+        "sourceStart": 44.4,
+        "image": false,
+        "asset": null,
+        "mode": "right",
+        "title": "THE MISSION",
+        "subtitle": "Entrance A to Platform 2, without stairs"
+      },
+      {
+        "beat": 3,
+        "beatId": "03-mission",
+        "start": 35.62,
+        "end": 42.006,
+        "duration": 6.386,
+        "sourceStart": 57.1,
+        "image": false,
+        "asset": null,
+        "mode": "viewer",
+        "title": null,
+        "subtitle": null
+      },
+      {
+        "beat": 4,
+        "beatId": "04-baseline-route",
+        "start": 42.006,
+        "end": 47.886,
+        "duration": 5.88,
+        "sourceStart": 71.4,
+        "image": false,
+        "asset": null,
+        "mode": "viewer",
+        "title": "THE BASELINE",
+        "subtitle": "the first route uses Lift 1"
+      },
+      {
+        "beat": 4,
+        "beatId": "04-baseline-route",
+        "start": 47.886,
+        "end": 53.767,
+        "duration": 5.88,
+        "sourceStart": 87.2,
+        "image": false,
+        "asset": null,
+        "mode": "right",
+        "title": null,
+        "subtitle": null
+      },
+      {
+        "beat": 5,
+        "beatId": "05-lift-closure",
+        "start": 53.767,
+        "end": 60.203,
+        "duration": 6.436,
+        "sourceStart": 99.9,
+        "image": false,
+        "asset": null,
+        "mode": "right",
+        "title": "LIFT 1 CLOSED",
+        "subtitle": "the original route is now invalid"
+      },
+      {
+        "beat": 5,
+        "beatId": "05-lift-closure",
+        "start": 60.203,
+        "end": 66.639,
+        "duration": 6.436,
+        "sourceStart": 111,
+        "image": false,
+        "asset": null,
+        "mode": "viewer",
+        "title": null,
+        "subtitle": null
+      },
+      {
+        "beat": 6,
+        "beatId": "06-alternate-route",
+        "start": 66.639,
+        "end": 73.385,
+        "duration": 6.746,
+        "sourceStart": 123.7,
+        "image": false,
+        "asset": null,
+        "mode": "viewer",
+        "title": "THE ALTERNATE",
+        "subtitle": "Lift 2 keeps the trip possible"
+      },
+      {
+        "beat": 6,
+        "beatId": "06-alternate-route",
+        "start": 73.385,
+        "end": 80.131,
+        "duration": 6.746,
+        "sourceStart": 139.5,
+        "image": false,
+        "asset": null,
+        "mode": "evidence",
+        "title": null,
+        "subtitle": null
+      },
+      {
+        "beat": 7,
+        "beatId": "07-evidence",
+        "start": 80.131,
+        "end": 86.317,
+        "duration": 6.186,
+        "sourceStart": 155.4,
+        "image": false,
+        "asset": null,
+        "mode": "evidence",
+        "title": "EVIDENCE: 56 PERCENT",
+        "subtitle": "known connection, unreadable sign"
+      },
+      {
+        "beat": 7,
+        "beatId": "07-evidence",
+        "start": 86.317,
+        "end": 92.502,
+        "duration": 6.186,
+        "sourceStart": 171.3,
+        "image": false,
+        "asset": null,
+        "mode": "viewer",
+        "title": null,
+        "subtitle": null
+      },
+      {
+        "beat": 8,
+        "beatId": "08-recapture",
+        "start": 92.502,
+        "end": 99.118,
+        "duration": 6.616,
+        "sourceStart": 183.9,
+        "image": false,
+        "asset": null,
+        "mode": "evidence",
+        "title": "RECAPTURE THE GAP",
+        "subtitle": "two concrete field positions"
+      },
+      {
+        "beat": 8,
+        "beatId": "08-recapture",
+        "start": 99.118,
+        "end": 105.734,
+        "duration": 6.616,
+        "sourceStart": 198.2,
+        "image": false,
+        "asset": null,
+        "mode": "viewer",
+        "title": null,
+        "subtitle": null
+      },
+      {
+        "beat": 9,
+        "beatId": "09-human-control",
+        "start": 105.734,
+        "end": 112.385,
+        "duration": 6.651,
+        "sourceStart": 214.1,
+        "image": false,
+        "asset": null,
+        "mode": "right",
+        "title": "HUMAN CONTROL",
+        "subtitle": "inspect, challenge, undo"
+      },
+      {
+        "beat": 9,
+        "beatId": "09-human-control",
+        "start": 112.385,
+        "end": 119.036,
+        "duration": 6.651,
+        "sourceStart": 225.2,
+        "image": false,
+        "asset": null,
+        "mode": "full",
+        "title": null,
+        "subtitle": null
+      },
+      {
+        "beat": 10,
+        "beatId": "10-webmcp",
+        "start": 119.036,
+        "end": 126.162,
+        "duration": 7.126,
+        "sourceStart": null,
+        "image": true,
+        "asset": "timeline",
+        "mode": "timeline",
+        "title": "10 WEBMCP CALLS",
+        "subtitle": "one shared scene and one visible timeline"
+      },
+      {
+        "beat": 10,
+        "beatId": "10-webmcp",
+        "start": 126.162,
+        "end": 133.288,
+        "duration": 7.126,
+        "sourceStart": null,
+        "image": true,
+        "asset": "timeline",
+        "mode": "timeline",
+        "title": null,
+        "subtitle": null
+      },
+      {
+        "beat": 11,
+        "beatId": "11-impact",
+        "start": 133.288,
+        "end": 140.239,
+        "duration": 6.951,
+        "sourceStart": null,
+        "image": true,
+        "asset": "comparison",
+        "mode": "comparison",
+        "title": "FROM FIXTURE TO FIELDWORK",
+        "subtitle": "make uncertainty actionable"
+      },
+      {
+        "beat": 11,
+        "beatId": "11-impact",
+        "start": 140.239,
+        "end": 147.19,
+        "duration": 6.951,
+        "sourceStart": null,
+        "image": true,
+        "asset": "comparison",
+        "mode": "comparison",
+        "title": null,
+        "subtitle": null
+      },
+      {
+        "beat": 12,
+        "beatId": "12-close",
+        "start": 147.19,
+        "end": 152.775,
+        "duration": 5.585,
+        "sourceStart": 0,
+        "image": false,
+        "asset": null,
+        "mode": "header",
+        "title": "SCENEINDEX",
+        "subtitle": "Search the place. See the reason."
+      },
+      {
+        "beat": 12,
+        "beatId": "12-close",
+        "start": 152.775,
+        "end": 158.361,
+        "duration": 5.585,
+        "sourceStart": 9.5,
+        "image": false,
+        "asset": null,
+        "mode": "full",
+        "title": null,
+        "subtitle": null
+      }
+    ],
+    "dynamics": {
+      "schemaVersion": 1,
+      "video": "submission/video/semantic-spatial-webmcp-demo.mp4",
+      "sceneDetection": {
+        "threshold": 0.12,
+        "cutCount": 24,
+        "cutsSeconds": [
+          6.933333,
+          13.866667,
+          21.566667,
+          29.266667,
+          30.7,
+          35.666667,
+          42.066667,
+          47.933333,
+          53.8,
+          60.233333,
+          66.666667,
+          73.4,
+          80.133333,
+          86.333333,
+          92.533333,
+          99.133333,
+          105.733333,
+          112.4,
+          119.066667,
+          126.2,
+          133.333333,
+          140.3,
+          147.266667,
+          152.866667
+        ]
+      },
+      "freezeDetection": {
+        "noise": 0.001,
+        "minimumDurationSeconds": 2,
+        "eventCount": 0,
+        "durationsSeconds": [],
+        "maximumDurationSeconds": 0
+      },
+      "limits": {
+        "minimumSceneCuts": 8,
+        "maximumFreezeSeconds": 8
+      },
+      "checks": {
+        "sceneCuts": true,
+        "maximumFreeze": true
+      },
+      "failures": [],
+      "result": "passed"
     }
   }
 }

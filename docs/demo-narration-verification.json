@@ -1,175 +1,114 @@
 {
-  "schemaVersion": 1,
-  "generatedAt": "2026-08-27T15:17:16.790796+00:00",
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-27T18:45:55.464404+00:00",
   "authorization": "Owner-authorized voice reference; source audio is not stored in the repository",
   "reference": {
     "sourceFilename": "Tsinghua University Zijing Students' Apartment Building 23 2.m4a",
     "sourceSha256": "18cdd2f295733b90b35b5504b4ec7578990009c0513d7858837fe91b29ed6d46",
-    "derivedReferenceSha256": "ad84d7d9b58492ca355555579382624062a9193e8a5a03cb90021424c391067d",
-    "derivedReferenceDurationSeconds": 20.0
+    "cleanReferencePath": "submission/video/narration/full/reference-clean-16k.wav",
+    "cleanReferenceSha256": "851c838d6b9d35158c9b8589533f0aadd46c0bc1f66c9abcc5d580b858ac8301",
+    "cleanReferenceDurationSeconds": 20.0,
+    "filter": "highpass=f=90,afftdn=nr=14:nf=-38:tn=1:gs=8,lowpass=f=7800,loudnorm=I=-22:TP=-4:LRA=9"
   },
   "generator": {
+    "mode": "single-pass",
     "backend": "gguf",
+    "model": "openbmb/VoxCPM2",
+    "revision": "169f64d8b98bbaab1761e4ca3a83e6af653456cc",
+    "inferenceTimesteps": 10,
+    "maxDecodeSteps": 1400,
+    "cfgValue": 2.0,
+    "temperature": 0.75,
+    "seed": 43,
+    "voiceControl": "Warm, confident documentary narrator. Begin conversational and reflective. Become firmer and slightly quicker when Lift 1 closes, without shouting. Slow down to explain the evidence. Finish calm and assured. Use natural speech, varied sentence rhythm, and one clean foreground voice. No trailer voice, whispering, singing, humming, doubled voice, or background vocalization.",
+    "referenceSha256": "851c838d6b9d35158c9b8589533f0aadd46c0bc1f66c9abcc5d580b858ac8301",
     "package": "llama.cpp-omni",
     "packageVersion": "64d092c60db4b4ee45768476bd752f03fdcc98ea",
-    "model": "openbmb/VoxCPM2",
-    "modelRevision": "169f64d8b98bbaab1761e4ca3a83e6af653456cc",
+    "binarySha256": "79f78058fc9181ab75a172861ce4afdb5c1c62ff7ed27fd56ef2a503b9e56cab",
+    "longFormGraphPatch": "patches/voxcpm2-long-form-graph.patch",
+    "longFormGraphPatchSha256": "8ff5334dd398f823136ad5c7e1804c00e37cf5b553a1c18bc89872d909ef680c",
     "conversionModel": "DennisHuang648/VoxCPM2-GGUF",
     "baseModelSha256": "0113177abd11303503bf0b705e1613ec5f0a8508cc74a7dfd0f99312b962a962",
     "acousticModelSha256": "5bde898488ad635ff55d24da53543768fa33d5e5cdc538ce190e5ef831038e85",
-    "device": "metal",
-    "cfgValue": 2.0,
-    "inferenceTimesteps": 10,
-    "maxDecodeSteps": 600,
-    "seed": 42
+    "device": "metal"
   },
   "script": {
     "path": "submission/narration-script.json",
-    "sha256": "893d1acee7e14f424546dc1b67afa6c77858bb044da719a5bdc3bfb734cd41ce",
-    "targetDurationSeconds": 175.0
+    "sha256": "c4ac7139ba09173c03e70ab39b9a79bb02deab7bcd5edbe075819439f8ae1fb6",
+    "wordCount": 406,
+    "beatCount": 12,
+    "minimumDurationSeconds": 145.0,
+    "maximumDurationSeconds": 178.0
   },
-  "segments": [
+  "generation": {
+    "rawPath": "submission/video/narration/full/narration-fe91e3523cfd-raw.wav",
+    "rawSha256": "92df192fddade0e225e2a63c53244e164ba421064a61c6429d94c8989ce6ffb8",
+    "rawDurationSeconds": 158.24,
+    "trimmedPath": "submission/video/narration/full/narration-fe91e3523cfd-trimmed.wav",
+    "trimmedSha256": "82ede6b7333334343d9840f638af83ac9f97aaa9819c0be5bb167b1a3e847e23",
+    "trimmedDurationSeconds": 157.561,
+    "trimFilter": "silenceremove=start_periods=1:start_duration=0.05:start_threshold=-50dB,areverse,silenceremove=start_periods=1:start_duration=0.1:start_threshold=-50dB,areverse",
+    "tempo": 1.0,
+    "masteringFilter": "highpass=f=90,afftdn=nr=12:nf=-42:tn=1:gs=8,equalizer=f=338:t=q:w=10:g=-15,loudnorm=I=-16:TP=-1.5:LRA=9,afade=t=in:st=0:d=0.04,adelay=250,apad=pad_dur=0.55"
+  },
+  "beats": [
     {
-      "id": "01-introduction",
-      "start": 0,
-      "end": 12,
-      "text": "A Gaussian-splat capture can show a place beautifully and still tell an agent almost nothing about what the place means. This is SceneIndex.",
-      "rawDurationSeconds": 9.12,
-      "targetDurationSeconds": 12.0,
-      "speedup": 1.0,
-      "fittedDurationSeconds": 12.0,
-      "rawSha256": "69fe6425fdfa1f0430dd0b7ed9a429b284997739ab22ae79d7bff15cb42906da",
-      "fittedSha256": "7f2e71c3e3bffdb827ef5609e6776ef52b3a43f73b98bff7768f771be5974e81"
+      "id": "01-cold-open",
+      "text": "One lift closes. For a wheelchair user in an unfamiliar station, that red status can erase the route they expected. A beautiful 3D scan still looks complete. It does not know the journey has broken."
     },
     {
-      "id": "02-shared-scene",
-      "start": 12,
-      "end": 27,
-      "text": "The page combines Gaussian appearance with persistent rooms, objects, relationships, routes, operational state, and capture evidence. The person and the agent work on the same live scene.",
-      "rawDurationSeconds": 10.72,
-      "targetDurationSeconds": 15.0,
-      "speedup": 1.0,
-      "fittedDurationSeconds": 15.0,
-      "rawSha256": "ae081c5e303002a9a70c937d36473e9938529bcab8c12f05a77ee726ea0b51f7",
-      "fittedSha256": "03c79a5b3263987a3d943aa431edfb0c7184221d4f64533f688335a17991bc4c"
+      "id": "02-sceneindex",
+      "text": "SceneIndex gives the place memory and language. The Gaussian splat remains the visual record. Persistent rooms, gates, lifts, routes, and evidence sit underneath it. A person sees the station. An agent reasons about the same station."
     },
     {
-      "id": "03-task",
-      "start": 27,
-      "end": 38,
-      "text": "I will ask for an accessible route from Entrance A to Platform 2 and ask whether the evidence is trustworthy.",
-      "rawDurationSeconds": 7.68,
-      "targetDurationSeconds": 11.0,
-      "speedup": 1.0,
-      "fittedDurationSeconds": 11.0,
-      "rawSha256": "003626e551d4c0f043fe09cc544a2470465f123fe3937276b6016df70cbd89fc",
-      "fittedSha256": "12a09a755b628dcf8a63a86bf62cbc088940dab4c66709fc59cecc488068a336"
+      "id": "03-mission",
+      "text": "The job is simple. Get from Entrance A to Platform 2 without stairs, and do not hide uncertainty. The agent reads the live camera, finds the accessible gate, and moves the shared view to the evidence position."
     },
     {
       "id": "04-baseline-route",
-      "start": 38,
-      "end": 60,
-      "text": "The agent reads the current page, finds the accessible gate, moves the shared camera, and draws a route through Lift 1. The result is visible and inspectable. It is not a route hidden in a backend response.",
-      "rawDurationSeconds": 12.0,
-      "targetDurationSeconds": 22.0,
-      "speedup": 1.0,
-      "fittedDurationSeconds": 22.0,
-      "rawSha256": "5104dab9d230fb9ff2ac832aa2586fd035bceb092c4f8b81360796036e08d3f5",
-      "fittedSha256": "53114d0d0c8e4ceb322199b43ceabe56baa809e61550dc9434deeee15d9b43fa"
+      "text": "The first answer is ordinary. Follow the east corridor. Take Lift 1. Continue to the platform. The route appears in the scene, so every turn can be inspected instead of trusted blindly."
     },
     {
-      "id": "05-close-lift",
-      "start": 60,
-      "end": 74,
-      "text": "Now I change the situation. Lift 1 is unavailable. The agent stages that state on the page. The lift turns red, and the change remains reversible.",
-      "rawDurationSeconds": 10.4,
-      "targetDurationSeconds": 14.0,
-      "speedup": 1.0,
-      "fittedDurationSeconds": 14.0,
-      "rawSha256": "70e072f4d2a1ac1663c13ffbf628fed5960f2b913566899cb8fef80e6d2ada0d",
-      "fittedSha256": "2dc059b4ea9147eb1039bc38206d017700df9d06fac80ec4d80e4c14dad80989"
+      "id": "05-lift-closure",
+      "text": "Then Lift 1 closes. The proxy turns red, the operational state changes, and the route becomes invalid. Nothing is silently rewritten. The outage is visible to both sides, and it can be undone."
     },
     {
       "id": "06-alternate-route",
-      "start": 74,
-      "end": 95,
-      "text": "The original path is no longer valid. The new route uses Lift 2, but the West corridor has only 56 percent accessible-wayfinding readiness. Connectivity is known. The sign text is not visually verified.",
-      "rawDurationSeconds": 12.96,
-      "targetDurationSeconds": 21.0,
-      "speedup": 1.0,
-      "fittedDurationSeconds": 21.0,
-      "rawSha256": "f9e272c2ef26254b01ba202811d89d4f184efeb93788d0dd3a8fc06af3f60918",
-      "fittedSha256": "af113127021097e25fb551146b3229d05ce62b54420ffa4ccbc141494cf0393a"
+      "text": "The agent searches again. Lift 2 keeps the trip possible, but the alternate path crosses the West corridor. SceneIndex finds a route and raises a warning. Accessible-wayfinding readiness is only fifty-six percent."
     },
     {
-      "id": "07-evidence-gaps",
-      "start": 95,
-      "end": 113,
-      "text": "The agent opens the capture evidence instead of guessing. The page highlights the weak region and explains the unreadable sign and single-view coverage gap.",
-      "rawDurationSeconds": 9.44,
-      "targetDurationSeconds": 18.0,
-      "speedup": 1.0,
-      "fittedDurationSeconds": 18.0,
-      "rawSha256": "c6328e6baba7370b81186ad99694aa4bba57afa8e7e58e64cd72de82d9faa752",
-      "fittedSha256": "281aad8129433f0324022ff53f69cbc6f0e044145d6512a96b9eb1f606598759"
+      "id": "07-evidence",
+      "text": "That number has a reason. The directional sign has one oblique, low-resolution observation. Connectivity is known, but the text is not verified. The page exposes that doubt and marks the weak region."
     },
     {
       "id": "08-recapture",
-      "start": 113,
-      "end": 131,
-      "text": "It recommends a front-facing sign capture and a reverse corridor pass from the Lift 2 side. Capture quality becomes a task-specific decision, not one opaque percentage.",
-      "rawDurationSeconds": 11.2,
-      "targetDurationSeconds": 18.0,
-      "speedup": 1.0,
-      "fittedDurationSeconds": 18.0,
-      "rawSha256": "eab2985135b77c04bcddd692421879ed189bdadb252284b7aa2f16757245c891",
-      "fittedSha256": "011598f253d522b0a0b0dad6d45a7141fa975ab3f709bc0c250551fe5f7490db"
+      "text": "Now the system looks beyond navigation. It recommends a front-facing sign capture at eye level, then a reverse corridor pass from Lift 2. Six markers and sightlines turn better coverage into fieldwork someone can perform."
     },
     {
-      "id": "09-undo",
-      "start": 131,
-      "end": 147,
-      "text": "I can inspect, accept, or undo every change. Undo restores the baseline scene without reloading the page.",
-      "rawDurationSeconds": 6.72,
-      "targetDurationSeconds": 16.0,
-      "speedup": 1.0,
-      "fittedDurationSeconds": 16.0,
-      "rawSha256": "f3ee14b661eabf34d08c53a516e4eab44100959b2f53c53620d830785c92e8c7",
-      "fittedSha256": "dc089ef48b35c05c27b817307b8976415be91fe71484482bd40500f432d7949f"
+      "id": "09-human-control",
+      "text": "The person stays in control. Inspect the route, challenge the evidence, accept the recommendation, or undo the outage. One action restores Lift 1 and clears the staged change. The baseline is clean again."
     },
     {
       "id": "10-webmcp",
-      "start": 147,
-      "end": 164,
-      "text": "The app exposes ten narrow tools through the current imperative WebMCP API. Human controls and agent calls share the same runtime, validation, viewer effects, and visible timeline.",
-      "rawDurationSeconds": 12.32,
-      "targetDurationSeconds": 17.0,
-      "speedup": 1.0,
-      "fittedDurationSeconds": 17.0,
-      "rawSha256": "56120004237ab53891f85ce83bc82b49331e5de686aebcb0236441ad86a2d015",
-      "fittedSha256": "0dd1833cc989babffe0144a09b2d82263d6d9fd08c1e2c667eef945782c88e76"
+      "text": "WebMCP connects to the live interface, not a separate backend copy. Ten narrow tools share validation, scene state, camera, visual effects, and the action timeline with human controls. Every agent call is labelled and observable."
     },
     {
-      "id": "11-close",
-      "start": 164,
-      "end": 175,
-      "text": "The app, source, license, tests, provenance, and build receipts are public. Search a place. Understand it. Test what happens when it changes.",
-      "rawDurationSeconds": 8.16,
-      "targetDurationSeconds": 11.0,
-      "speedup": 1.0,
-      "fittedDurationSeconds": 11.0,
-      "rawSha256": "105bf44e24693b409ed43c86993a6c8ca1c244a4016f6cb25332b3831b00eea7",
-      "fittedSha256": "857266d81359b36cd414d93b325364569355972eb3d355a2a7acf1c62cdbb8dc"
+      "id": "11-impact",
+      "text": "The station is synthetic, but the pattern is practical. A registered capture could support accessibility review, building handover, remote inspection, maintenance, and targeted recapture. The agent never has to pretend the pixels know more than they do."
+    },
+    {
+      "id": "12-close",
+      "text": "SceneIndex makes a place searchable, testable, and honest about its evidence. When the world changes, the route changes with it. Search the place. See the reason. Keep the decision in view."
     }
   ],
   "output": {
     "path": "submission/video/narration/demo-narration.wav",
-    "bytes": 25200102,
-    "sha256": "07654560d0ed0216ce9bd3a78c41fb939f01f5303d147dd7d5417039b5b79486",
-    "durationSeconds": 175.0,
+    "bytes": 22804122,
+    "sha256": "c506f361981dde3e59f38ab1d78e7d9ff17a1958c872cde97a140a0782959bd0",
+    "durationSeconds": 158.361,
     "sampleRateHz": 48000,
     "channels": 1,
-    "meanVolumeDb": -18.5,
+    "meanVolumeDb": -17.6,
     "maxVolumeDb": -1.5
   },
   "result": "passed"

@@ -60,7 +60,7 @@ Exit condition: the production build loads over HTTPS with no console errors and
 
 1. Write the final project description and short summary.
 2. Create final screenshots from the production build.
-3. Write a 165 to 175 second narration and shot list.
+3. Write a 150 to 170 second narration and shot list.
 4. Add a recording checklist and exact demo prompts.
 5. Fill a submission checklist with the public app, repository, license, and video links.
 
