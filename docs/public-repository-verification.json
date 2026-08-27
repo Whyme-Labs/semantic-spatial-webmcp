@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "verifiedAt": "2026-08-27T01:31:51Z",
+  "verifiedAt": "2026-08-27T15:32:57Z",
   "repository": {
     "fullName": "Whyme-Labs/semantic-spatial-webmcp",
     "url": "https://github.com/Whyme-Labs/semantic-spatial-webmcp",
@@ -18,26 +18,26 @@
     ]
   },
   "published": {
-    "headSha": "1ac4a11a00ee9fbacb92b545263508f26c97813f",
+    "headSha": "bb3ecdf02adc082ee4693106d1398c0404d99b93",
     "baselineTag": "starter-v0.1.0",
     "baselineSha": "8949b3c2bb0a3bf85b33104279c57301185211c1",
     "anonymousApiRead": true,
     "anonymousGitRead": true
   },
   "cleanClone": {
-    "commit": "1ac4a11a00ee9fbacb92b545263508f26c97813f",
-    "tests": 49,
+    "commit": "bb3ecdf02adc082ee4693106d1398c0404d99b93",
+    "tests": 71,
     "failures": 0,
-    "buildFiles": 16,
-    "submissionPass": 21,
+    "buildFiles": 20,
+    "submissionPass": 29,
     "submissionFail": 0,
     "result": "passed"
   },
   "ci": {
     "workflow": "Verify release",
-    "runId": 33030222895,
-    "url": "https://github.com/Whyme-Labs/semantic-spatial-webmcp/actions/runs/33030222895",
-    "headSha": "1ac4a11a00ee9fbacb92b545263508f26c97813f",
+    "runId": 33088275981,
+    "url": "https://github.com/Whyme-Labs/semantic-spatial-webmcp/actions/runs/33088275981",
+    "headSha": "bb3ecdf02adc082ee4693106d1398c0404d99b93",
     "event": "push",
     "conclusion": "success"
   },
