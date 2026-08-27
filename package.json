@@ -24,6 +24,7 @@
     "check": "node scripts/verify.mjs --syntax-only",
     "verify": "node scripts/verify.mjs",
     "verify:deployment": "node scripts/verify-public-deployment.mjs",
+    "verify:demo-video": "node scripts/verify-demo-video.mjs",
     "check:submission": "node scripts/check-submission.mjs",
     "check:submission:strict": "node scripts/check-submission.mjs --strict",
     "verify:webmcp:chrome": "node scripts/verify-webmcp-chrome.mjs"

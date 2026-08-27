@@ -79,7 +79,8 @@ get_scene_context
 - Record clear English narration. Do not add music.
 - Remove private tabs, notifications, account details, bookmarks, and unrelated marks.
 - Export at 1080p or higher.
-- Confirm that the final duration is below 3:00. Aim for 2:45 to 2:55.
+- Run `npm run verify:demo-video -- --video <path-to-mp4> --output docs/demo-video-verification.json`.
+- Confirm that the final duration is below 3:00. Aim for 2:45 to 2:55; the verifier rejects the 3:00 boundary.
 - Watch the exported file with sound before uploading.
 - Upload to YouTube as Public, not Unlisted or Private.
 - Open the public YouTube URL in a signed-out browser before submission.

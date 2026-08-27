@@ -273,7 +273,11 @@
         { "type": "fileContains", "path": "submission/demo-script.md", "contains": "Target duration" },
         { "type": "fileContains", "path": "submission/demo-script.md", "contains": "Shot list" },
         { "type": "fileContains", "path": "submission/demo-script.md", "contains": "Demo prompts" },
-        { "type": "fileContains", "path": "submission/demo-script.md", "contains": "Recording checklist" }
+        { "type": "fileContains", "path": "submission/demo-script.md", "contains": "Recording checklist" },
+        { "type": "fileContains", "path": "submission/video-handoff.md", "contains": "## Verify the exact export" },
+        { "type": "fileContains", "path": "package.json", "contains": "verify:demo-video" },
+        { "type": "fileExists", "path": "scripts/verify-demo-video.mjs" },
+        { "type": "fileExists", "path": "test/demo-video-verifier.test.js" }
       ]
     },
     {
