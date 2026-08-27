@@ -24,14 +24,14 @@ Complete this checklist against the final public artifacts. Do not mark an item 
 
 ## Public repository
 
-- [ ] Publish the complete Git history to GitHub, GitLab, or Bitbucket.
-- [ ] Confirm anonymous access.
-- [ ] Confirm that the host recognizes the root MIT license.
-- [ ] Confirm the repository contains source, tests, deployment instructions, provenance, and submission materials.
-- [ ] Confirm `starter-v0.1.0` and SHA `8949b3c2bb0a3bf85b33104279c57301185211c1` are present.
-- [ ] Run `npm run verify` from a clean clone.
-- [ ] Run `npm run check:submission` from a clean clone.
-- [ ] Confirm the public repository's **Verify release** workflow is green for the submitted commit.
+- [x] Publish the complete Git history to GitHub, GitLab, or Bitbucket.
+- [x] Confirm anonymous access.
+- [x] Confirm that the host recognizes the root MIT license.
+- [x] Confirm the repository contains source, tests, deployment instructions, provenance, and submission materials.
+- [x] Confirm `starter-v0.1.0` and SHA `8949b3c2bb0a3bf85b33104279c57301185211c1` are present.
+- [x] Run `npm run verify` from a clean clone.
+- [x] Run `npm run check:submission` from a clean clone.
+- [x] Confirm the public repository's **Verify release** workflow is green for the submitted commit.
 - [ ] Review `docs/third-party-provenance.md` against the final media.
 
 ## Demo video

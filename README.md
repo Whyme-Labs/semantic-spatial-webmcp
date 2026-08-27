@@ -2,6 +2,8 @@
 
 This repository is a working vertical slice of a semantic spatial browser for 3D Gaussian Splatting scenes.
 
+Public source: [Whyme-Labs/semantic-spatial-webmcp](https://github.com/Whyme-Labs/semantic-spatial-webmcp)
+
 The browser now renders an interactive Gaussian-splat station fixture through [Spark 2.1.0](https://github.com/sparkjsdev/spark) and Three.js 0.180.0. Semantic IDs are bound to lightweight spatial proxies in that scene. The same camera, selection, routes, capture-quality overlays, and reversible state changes are available to the human interface and the WebMCP tools.
 
 The semantic control plane provides:
@@ -131,6 +133,7 @@ scene.evidence.json
 - `docs/viewer-integration.md`
 - `docs/browser-verification.md`
 - `docs/context-comparison.md`
+- `docs/public-repository-verification.json`
 - `CHALLENGE_DELTA.md`
 
 ## Verification

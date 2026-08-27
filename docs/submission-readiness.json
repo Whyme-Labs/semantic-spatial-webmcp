@@ -281,9 +281,18 @@
       "id": "public-source-repository",
       "category": "public-source",
       "requirement": "A public GitHub, GitLab, or Bitbucket repository exposes all source, assets, instructions, and a host-recognized root license.",
-      "evidenceClass": "external",
-      "assertions": [],
-      "ownerAction": "Choose the repository account, authorize publication, and verify the anonymous public view plus license badge/About metadata."
+      "evidenceClass": "runtime",
+      "assertions": [
+        { "type": "fileExists", "path": "docs/public-repository-verification.json" },
+        { "type": "jsonValue", "path": "docs/public-repository-verification.json", "pointer": "/repository/fullName", "equals": "Whyme-Labs/semantic-spatial-webmcp" },
+        { "type": "jsonValue", "path": "docs/public-repository-verification.json", "pointer": "/repository/visibility", "equals": "public" },
+        { "type": "jsonValue", "path": "docs/public-repository-verification.json", "pointer": "/repository/defaultBranch", "equals": "main" },
+        { "type": "jsonValue", "path": "docs/public-repository-verification.json", "pointer": "/repository/license", "equals": "MIT" },
+        { "type": "jsonValue", "path": "docs/public-repository-verification.json", "pointer": "/published/baselineSha", "equals": "8949b3c2bb0a3bf85b33104279c57301185211c1" },
+        { "type": "jsonValue", "path": "docs/public-repository-verification.json", "pointer": "/cleanClone/result", "equals": "passed" },
+        { "type": "jsonValue", "path": "docs/public-repository-verification.json", "pointer": "/ci/conclusion", "equals": "success" },
+        { "type": "jsonValue", "path": "docs/public-repository-verification.json", "pointer": "/result", "equals": "passed" }
+      ]
     },
     {
       "id": "public-https-app",

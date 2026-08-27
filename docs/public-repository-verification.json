@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-08-27T01:31:51Z",
+  "repository": {
+    "fullName": "Whyme-Labs/semantic-spatial-webmcp",
+    "url": "https://github.com/Whyme-Labs/semantic-spatial-webmcp",
+    "anonymousGitUrl": "https://github.com/Whyme-Labs/semantic-spatial-webmcp.git",
+    "visibility": "public",
+    "defaultBranch": "main",
+    "license": "MIT",
+    "licenseSha256": "1126322e2cc8d165adc4c792eeb195717de2bcc7b39be1ce77959d78e87ef685",
+    "topics": [
+      "3dgs",
+      "accessibility",
+      "gaussian-splatting",
+      "spatial-computing",
+      "webmcp"
+    ]
+  },
+  "published": {
+    "headSha": "1ac4a11a00ee9fbacb92b545263508f26c97813f",
+    "baselineTag": "starter-v0.1.0",
+    "baselineSha": "8949b3c2bb0a3bf85b33104279c57301185211c1",
+    "anonymousApiRead": true,
+    "anonymousGitRead": true
+  },
+  "cleanClone": {
+    "commit": "1ac4a11a00ee9fbacb92b545263508f26c97813f",
+    "tests": 49,
+    "failures": 0,
+    "buildFiles": 16,
+    "submissionPass": 21,
+    "submissionFail": 0,
+    "result": "passed"
+  },
+  "ci": {
+    "workflow": "Verify release",
+    "runId": 33030222895,
+    "url": "https://github.com/Whyme-Labs/semantic-spatial-webmcp/actions/runs/33030222895",
+    "headSha": "1ac4a11a00ee9fbacb92b545263508f26c97813f",
+    "event": "push",
+    "conclusion": "success"
+  },
+  "result": "passed"
+}
