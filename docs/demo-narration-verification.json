@@ -1,0 +1,176 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-27T11:23:09.727249+00:00",
+  "authorization": "Owner-authorized voice reference; source audio is not stored in the repository",
+  "reference": {
+    "sourceFilename": "Tsinghua University Zijing Students' Apartment Building 23 2.m4a",
+    "sourceSha256": "18cdd2f295733b90b35b5504b4ec7578990009c0513d7858837fe91b29ed6d46",
+    "derivedReferenceSha256": "ad84d7d9b58492ca355555579382624062a9193e8a5a03cb90021424c391067d",
+    "derivedReferenceDurationSeconds": 20.0
+  },
+  "generator": {
+    "backend": "gguf",
+    "package": "llama.cpp-omni",
+    "packageVersion": "64d092c60db4b4ee45768476bd752f03fdcc98ea",
+    "model": "openbmb/VoxCPM2",
+    "modelRevision": "169f64d8b98bbaab1761e4ca3a83e6af653456cc",
+    "conversionModel": "DennisHuang648/VoxCPM2-GGUF",
+    "baseModelSha256": "0113177abd11303503bf0b705e1613ec5f0a8508cc74a7dfd0f99312b962a962",
+    "acousticModelSha256": "5bde898488ad635ff55d24da53543768fa33d5e5cdc538ce190e5ef831038e85",
+    "device": "metal",
+    "cfgValue": 2.0,
+    "inferenceTimesteps": 10,
+    "maxDecodeSteps": 600,
+    "seed": 42
+  },
+  "script": {
+    "path": "submission/narration-script.json",
+    "sha256": "102b835813b6dd94c97b2034aa89f3a31d1f6f887162059d60ebc47c43fac2cd",
+    "targetDurationSeconds": 175.0
+  },
+  "segments": [
+    {
+      "id": "01-introduction",
+      "start": 0,
+      "end": 12,
+      "text": "A Gaussian-splat capture can show a place beautifully and still tell an agent almost nothing about what the place means. This is Semantic Spatial Browser.",
+      "rawDurationSeconds": 9.12,
+      "targetDurationSeconds": 12.0,
+      "speedup": 1.0,
+      "fittedDurationSeconds": 12.0,
+      "rawSha256": "a75517d9dd81c60f07cb8dfc14d93120203b6c6d50f100d9b1fab90327512f55",
+      "fittedSha256": "c69396ce2b4f9413a3bac7d8e0350f011a59ef4f88c19ca33dc45d35ec96f3c0"
+    },
+    {
+      "id": "02-shared-scene",
+      "start": 12,
+      "end": 27,
+      "text": "The page combines Gaussian appearance with persistent rooms, objects, relationships, routes, operational state, and capture evidence. The person and the agent work on the same live scene.",
+      "rawDurationSeconds": 10.72,
+      "targetDurationSeconds": 15.0,
+      "speedup": 1.0,
+      "fittedDurationSeconds": 15.0,
+      "rawSha256": "ae081c5e303002a9a70c937d36473e9938529bcab8c12f05a77ee726ea0b51f7",
+      "fittedSha256": "03c79a5b3263987a3d943aa431edfb0c7184221d4f64533f688335a17991bc4c"
+    },
+    {
+      "id": "03-task",
+      "start": 27,
+      "end": 38,
+      "text": "I will ask for an accessible route from Entrance A to Platform 2 and ask whether the evidence is trustworthy.",
+      "rawDurationSeconds": 7.68,
+      "targetDurationSeconds": 11.0,
+      "speedup": 1.0,
+      "fittedDurationSeconds": 11.0,
+      "rawSha256": "003626e551d4c0f043fe09cc544a2470465f123fe3937276b6016df70cbd89fc",
+      "fittedSha256": "12a09a755b628dcf8a63a86bf62cbc088940dab4c66709fc59cecc488068a336"
+    },
+    {
+      "id": "04-baseline-route",
+      "start": 38,
+      "end": 60,
+      "text": "The agent reads the current page, finds the accessible gate, moves the shared camera, and draws a route through Lift 1. The result is visible and inspectable. It is not a route hidden in a backend response.",
+      "rawDurationSeconds": 12.0,
+      "targetDurationSeconds": 22.0,
+      "speedup": 1.0,
+      "fittedDurationSeconds": 22.0,
+      "rawSha256": "5104dab9d230fb9ff2ac832aa2586fd035bceb092c4f8b81360796036e08d3f5",
+      "fittedSha256": "53114d0d0c8e4ceb322199b43ceabe56baa809e61550dc9434deeee15d9b43fa"
+    },
+    {
+      "id": "05-close-lift",
+      "start": 60,
+      "end": 74,
+      "text": "Now I change the situation. Lift 1 is unavailable. The agent stages that state on the page. The lift turns red, and the change remains reversible.",
+      "rawDurationSeconds": 10.4,
+      "targetDurationSeconds": 14.0,
+      "speedup": 1.0,
+      "fittedDurationSeconds": 14.0,
+      "rawSha256": "70e072f4d2a1ac1663c13ffbf628fed5960f2b913566899cb8fef80e6d2ada0d",
+      "fittedSha256": "2dc059b4ea9147eb1039bc38206d017700df9d06fac80ec4d80e4c14dad80989"
+    },
+    {
+      "id": "06-alternate-route",
+      "start": 74,
+      "end": 95,
+      "text": "The original path is no longer valid. The new route uses Lift 2, but the West corridor has only 56 percent accessible-wayfinding readiness. Connectivity is known. The sign text is not visually verified.",
+      "rawDurationSeconds": 12.96,
+      "targetDurationSeconds": 21.0,
+      "speedup": 1.0,
+      "fittedDurationSeconds": 21.0,
+      "rawSha256": "f9e272c2ef26254b01ba202811d89d4f184efeb93788d0dd3a8fc06af3f60918",
+      "fittedSha256": "af113127021097e25fb551146b3229d05ce62b54420ffa4ccbc141494cf0393a"
+    },
+    {
+      "id": "07-evidence-gaps",
+      "start": 95,
+      "end": 113,
+      "text": "The agent opens the capture evidence instead of guessing. The page highlights the weak region and explains the unreadable sign and single-view coverage gap.",
+      "rawDurationSeconds": 9.44,
+      "targetDurationSeconds": 18.0,
+      "speedup": 1.0,
+      "fittedDurationSeconds": 18.0,
+      "rawSha256": "c6328e6baba7370b81186ad99694aa4bba57afa8e7e58e64cd72de82d9faa752",
+      "fittedSha256": "281aad8129433f0324022ff53f69cbc6f0e044145d6512a96b9eb1f606598759"
+    },
+    {
+      "id": "08-recapture",
+      "start": 113,
+      "end": 131,
+      "text": "It recommends a front-facing sign capture and a reverse corridor pass from the Lift 2 side. Capture quality becomes a task-specific decision, not one opaque percentage.",
+      "rawDurationSeconds": 11.2,
+      "targetDurationSeconds": 18.0,
+      "speedup": 1.0,
+      "fittedDurationSeconds": 18.0,
+      "rawSha256": "eab2985135b77c04bcddd692421879ed189bdadb252284b7aa2f16757245c891",
+      "fittedSha256": "011598f253d522b0a0b0dad6d45a7141fa975ab3f709bc0c250551fe5f7490db"
+    },
+    {
+      "id": "09-undo",
+      "start": 131,
+      "end": 147,
+      "text": "I can inspect, accept, or undo every change. Undo restores the baseline scene without reloading the page.",
+      "rawDurationSeconds": 6.72,
+      "targetDurationSeconds": 16.0,
+      "speedup": 1.0,
+      "fittedDurationSeconds": 16.0,
+      "rawSha256": "f3ee14b661eabf34d08c53a516e4eab44100959b2f53c53620d830785c92e8c7",
+      "fittedSha256": "dc089ef48b35c05c27b817307b8976415be91fe71484482bd40500f432d7949f"
+    },
+    {
+      "id": "10-webmcp",
+      "start": 147,
+      "end": 164,
+      "text": "The app exposes ten narrow tools through the current imperative WebMCP API. Human controls and agent calls share the same runtime, validation, viewer effects, and visible timeline.",
+      "rawDurationSeconds": 12.32,
+      "targetDurationSeconds": 17.0,
+      "speedup": 1.0,
+      "fittedDurationSeconds": 17.0,
+      "rawSha256": "56120004237ab53891f85ce83bc82b49331e5de686aebcb0236441ad86a2d015",
+      "fittedSha256": "0dd1833cc989babffe0144a09b2d82263d6d9fd08c1e2c667eef945782c88e76"
+    },
+    {
+      "id": "11-close",
+      "start": 164,
+      "end": 175,
+      "text": "The app, source, license, tests, provenance, and build receipts are public. Search a place. Understand it. Test what happens when it changes.",
+      "rawDurationSeconds": 8.16,
+      "targetDurationSeconds": 11.0,
+      "speedup": 1.0,
+      "fittedDurationSeconds": 11.0,
+      "rawSha256": "105bf44e24693b409ed43c86993a6c8ca1c244a4016f6cb25332b3831b00eea7",
+      "fittedSha256": "857266d81359b36cd414d93b325364569355972eb3d355a2a7acf1c62cdbb8dc"
+    }
+  ],
+  "output": {
+    "path": "submission/video/narration/demo-narration.wav",
+    "bytes": 25200102,
+    "sha256": "2d7cce3a9ae19a4f2fdcc2d84c4c207878a5f3340d2296823a66f54d2b9151f7",
+    "durationSeconds": 175.0,
+    "sampleRateHz": 48000,
+    "channels": 1,
+    "meanVolumeDb": -18.6,
+    "maxVolumeDb": -1.5
+  },
+  "result": "passed"
+}

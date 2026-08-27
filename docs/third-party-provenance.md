@@ -28,6 +28,15 @@ Spark's public `butterfly.spz` sample was used only for a local loader check. Th
 - `submission/screenshots/chrome-webmcp-flow.png` is an automated capture of this project's synthetic interface. `context-comparison.svg` and its PNG export are project-authored diagrams. None contains a captured station asset or third-party media.
 - Final screenshots and video must show only the project interface, the approved browser controls, and materials owned or licensed by the entrant.
 
+## Narration production
+
+| Component | Version | Use | Source | License | Distribution |
+|---|---:|---|---|---|---|
+| VoxCPM2 | upstream `bffb3df`, GGUF conversion `169f64d` | Local voice-cloned English narration | [OpenBMB/VoxCPM](https://github.com/OpenBMB/VoxCPM), [VoxCPM2-GGUF](https://huggingface.co/DennisHuang648/VoxCPM2-GGUF) | Apache-2.0 | Model weights remain in local caches and are not copied into this repository. |
+| llama.cpp-omni | `64d092c` | Metal-accelerated VoxCPM2 inference and voice cloning | [tc-mb/llama.cpp-omni](https://github.com/tc-mb/llama.cpp-omni) | MIT | Built in a dedicated local cache; source and binary are not copied into this repository. |
+
+The entrant supplied and authorized the voice reference identified in `docs/entrant-attestation.json`. The source recording is not committed or distributed. The generated narration is submission media, contains no music, and is verified separately before it is muxed into the final MP4.
+
 ## Final media review
 
 Before publication, the entrant must confirm these statements:

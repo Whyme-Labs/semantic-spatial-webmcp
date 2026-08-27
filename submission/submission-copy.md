@@ -87,4 +87,4 @@ The repository preserves `starter-v0.1.0` and its SHA as the first semantic vert
 
 - Public source: https://github.com/Whyme-Labs/semantic-spatial-webmcp
 - Live application: https://semantic-spatial-webmcp.swmengappdev.workers.dev/
-- Public demo video: pending production deployment and recording
+- Public demo video: pending owner upload of the verified 175-second MP4

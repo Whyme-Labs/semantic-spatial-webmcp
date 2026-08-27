@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "confirmedAt": "2026-08-27T09:50:50Z",
+  "entrant": {
+    "type": "individual",
+    "name": "Soh Wei Meng",
+    "eligibleRepresentative": "Soh Wei Meng",
+    "teamMembers": []
+  },
+  "confirmations": {
+    "eligibilityUnderOfficialRulesSection3": true,
+    "ownershipAndMediaRights": true,
+    "keepApplicationPublicThroughJudging": true
+  },
+  "voiceReference": {
+    "sourceFilename": "Tsinghua University Zijing Students' Apartment Building 23 2.m4a",
+    "sourceSha256": "18cdd2f295733b90b35b5504b4ec7578990009c0513d7858837fe91b29ed6d46",
+    "authorizedUse": "Local VoxCPM2 generation of the competition demo narration",
+    "includeSourceInRepository": false
+  },
+  "youtube": {
+    "ownerWillUpload": true
+  }
+}

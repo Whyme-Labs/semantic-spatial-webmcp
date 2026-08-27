@@ -1,0 +1,366 @@
+{
+  "verifiedAt": "2026-08-27T14:28:02.519Z",
+  "artifact": {
+    "path": "submission/video/semantic-spatial-webmcp-demo.mp4",
+    "bytes": 8743983,
+    "sha256": "ce0d234f869bf25fe8dff52b41dedab69826cd1ac7c5d2ad95d372c7bb12d7bc"
+  },
+  "durationSeconds": 175,
+  "underThreeMinutes": true,
+  "video": {
+    "codec": "h264",
+    "width": 1920,
+    "height": 1080,
+    "rotation": 0,
+    "frameRate": 30
+  },
+  "audio": {
+    "codec": "aac",
+    "channels": 1,
+    "channelLayout": "mono",
+    "sampleRateHz": 48000,
+    "meanVolumeDb": -18.6,
+    "maxVolumeDb": -1.4,
+    "nonSilent": true
+  },
+  "container": "mov,mp4,m4a,3gp,3g2,mj2",
+  "result": "passed",
+  "sources": {
+    "captureReceipt": {
+      "path": "submission/video/chrome-replay-receipt.json",
+      "sha256": "af2201d1d5f76a68a8cd76c023a99414401b472626f80fb22145a0ecbc8896e8"
+    },
+    "timelineFrame": {
+      "path": "submission/video/chrome-replay-timeline.png",
+      "sha256": "c77bb3b1d7a58dc673597b99e8f604f51bafd469cdb7ba9fa24ad40dc52213a3"
+    },
+    "outroFrame": {
+      "path": "submission/video/chrome-replay-outro.png",
+      "sha256": "39ddeea19a8f0a5f92e1434d7f0d0330b66644625e0e6453ae8975600ded83d2"
+    },
+    "narrationReceipt": {
+      "path": "docs/demo-narration-verification.json",
+      "sha256": "6d504de157fbce09ef22b643fd81348cae28e3d7d4bf971c78de7c64cb2ed272"
+    },
+    "alignmentReceipt": {
+      "path": "docs/demo-narration-alignment.json",
+      "sha256": "66b43c1dd28d516b8390887425066502f62bbe54829ebce2faea879cd4c4676d"
+    }
+  },
+  "assembly": {
+    "durationSeconds": 175,
+    "captureDurationSeconds": 335.8,
+    "timeScale": 0.521143537820131,
+    "timelineFrameIntervalSeconds": [
+      147,
+      164
+    ],
+    "outroFrameIntervalSeconds": [
+      164,
+      175
+    ]
+  },
+  "evidence": {
+    "capture": {
+      "url": "https://semantic-spatial-webmcp.swmengappdev.workers.dev/",
+      "artifact": {
+        "kind": "allowlisted-dist",
+        "manifestUrl": "https://semantic-spatial-webmcp.swmengappdev.workers.dev/build-manifest.json",
+        "manifestSha256": "363e735e33cb7a86b2b818055aba884badcdb6586e517f69e90e0715bfeb404b",
+        "builtAt": "2026-08-27T06:33:16.930Z",
+        "commit": "13143cb36672f45cbcfe534f269d7c2db47d76a2",
+        "dirty": false,
+        "fileCount": 15
+      },
+      "timing": {
+        "navigationToWebMcpReadyMs": 2820,
+        "underFiveSeconds": true,
+        "verificationLimitMs": 30000
+      },
+      "webmcpToolCount": 10,
+      "flow": {
+        "baseline": {
+          "stagedChangeCount": 0
+        },
+        "navigation": {
+          "entityId": "accessible_gate_1",
+          "selectedViewId": "view_accessible_gate_1",
+          "cameraPose": {
+            "position": [
+              -3.708,
+              1.67,
+              2.76
+            ],
+            "target": [
+              -1.98,
+              0.82,
+              0.36
+            ]
+          },
+          "currentRegion": null,
+          "nearbyHiddenEntityIds": [
+            "ticket_machine_1"
+          ],
+          "connectedSpaceIds": [
+            "entrance_a_zone",
+            "east_corridor",
+            "west_corridor"
+          ]
+        },
+        "initialRoute": {
+          "from": "Entrance A",
+          "to": "Platform 2",
+          "lift": "lift_1",
+          "entityIds": [
+            "entrance_a",
+            "ticket_machine_1",
+            "help_point_1",
+            "accessible_gate_1",
+            "barrier_east",
+            "lift_1",
+            "bench_1",
+            "bench_2"
+          ],
+          "warningRegions": []
+        },
+        "closure": {
+          "entityId": "lift_1",
+          "operational": "closed",
+          "stagedChangeCount": 1
+        },
+        "alternateRoute": {
+          "lift": "lift_2",
+          "entityIds": [
+            "entrance_a",
+            "ticket_machine_1",
+            "help_point_1",
+            "accessible_gate_1",
+            "sign_west_platform",
+            "lift_2",
+            "bench_1",
+            "bench_2"
+          ],
+          "warning": {
+            "regionId": "west_corridor",
+            "readiness": 0.56
+          }
+        },
+        "regionQuality": {
+          "regionId": "west_corridor",
+          "accessibleWayfindingReadiness": 0.56,
+          "bestEvidenceViewIds": [
+            "view_sign_west_oblique"
+          ],
+          "recommendationCount": 2,
+          "recaptureMarkerCount": 6
+        },
+        "undo": {
+          "entityId": "lift_1",
+          "restoredOperational": "open",
+          "stagedChangeCount": 0
+        },
+        "timeline": {
+          "entryCount": 10,
+          "allSourceLabelledAgent": true,
+          "allSuccessful": true,
+          "allVisible": true,
+          "tools": [
+            "get_scene_context",
+            "navigate_to_entity",
+            "get_scene_context",
+            "find_semantic_route",
+            "set_entity_state",
+            "find_semantic_route",
+            "get_region_quality",
+            "undo_scene_change",
+            "get_scene_context",
+            "get_entity"
+          ]
+        }
+      },
+      "console": {
+        "capturedByCdp": true,
+        "errors": []
+      },
+      "videoCapture": {
+        "path": "submission/video/chrome-replay-silent.mp4",
+        "framesPerSecond": 10,
+        "framesWritten": 3358,
+        "durationSeconds": 335.8
+      },
+      "replay": {
+        "headed": false,
+        "startDelayMs": 20000,
+        "stepDelayMs": 0,
+        "stepDelaysMs": [
+          3000,
+          7000,
+          5000,
+          22000,
+          14000,
+          21000,
+          36000,
+          16000,
+          8000,
+          9000
+        ],
+        "outroUrl": "https://github.com/Whyme-Labs/semantic-spatial-webmcp",
+        "outroDelayMs": 3000,
+        "holdMs": 11000
+      }
+    },
+    "narration": {
+      "reference": {
+        "sourceFilename": "Tsinghua University Zijing Students' Apartment Building 23 2.m4a",
+        "sourceSha256": "18cdd2f295733b90b35b5504b4ec7578990009c0513d7858837fe91b29ed6d46",
+        "derivedReferenceSha256": "ad84d7d9b58492ca355555579382624062a9193e8a5a03cb90021424c391067d",
+        "derivedReferenceDurationSeconds": 20
+      },
+      "generator": {
+        "backend": "gguf",
+        "package": "llama.cpp-omni",
+        "packageVersion": "64d092c60db4b4ee45768476bd752f03fdcc98ea",
+        "model": "openbmb/VoxCPM2",
+        "modelRevision": "169f64d8b98bbaab1761e4ca3a83e6af653456cc",
+        "conversionModel": "DennisHuang648/VoxCPM2-GGUF",
+        "baseModelSha256": "0113177abd11303503bf0b705e1613ec5f0a8508cc74a7dfd0f99312b962a962",
+        "acousticModelSha256": "5bde898488ad635ff55d24da53543768fa33d5e5cdc538ce190e5ef831038e85",
+        "device": "metal",
+        "cfgValue": 2,
+        "inferenceTimesteps": 10,
+        "maxDecodeSteps": 600,
+        "seed": 42
+      },
+      "script": {
+        "path": "submission/narration-script.json",
+        "sha256": "102b835813b6dd94c97b2034aa89f3a31d1f6f887162059d60ebc47c43fac2cd",
+        "targetDurationSeconds": 175
+      },
+      "output": {
+        "path": "submission/video/narration/demo-narration.wav",
+        "bytes": 25200102,
+        "sha256": "2d7cce3a9ae19a4f2fdcc2d84c4c207878a5f3340d2296823a66f54d2b9151f7",
+        "durationSeconds": 175,
+        "sampleRateHz": 48000,
+        "channels": 1,
+        "meanVolumeDb": -18.6,
+        "maxVolumeDb": -1.5
+      },
+      "alignmentMethod": "Torchaudio MMS_FA CTC forced alignment against the exact checked-in narration",
+      "alignmentMinimumMeanConfidence": 0.3,
+      "alignmentSegments": [
+        {
+          "id": "01-introduction",
+          "audioSha256": "c69396ce2b4f9413a3bac7d8e0350f011a59ef4f88c19ca33dc45d35ec96f3c0",
+          "durationSeconds": 12,
+          "wordCount": 26,
+          "alignedWordCount": 26,
+          "meanConfidence": 0.9429,
+          "minimumWordConfidence": 0.5584,
+          "maximumWordConfidence": 0.9999
+        },
+        {
+          "id": "02-shared-scene",
+          "audioSha256": "03c79a5b3263987a3d943aa431edfb0c7184221d4f64533f688335a17991bc4c",
+          "durationSeconds": 15,
+          "wordCount": 27,
+          "alignedWordCount": 27,
+          "meanConfidence": 0.9192,
+          "minimumWordConfidence": 0.4677,
+          "maximumWordConfidence": 0.9995
+        },
+        {
+          "id": "03-task",
+          "audioSha256": "12a09a755b628dcf8a63a86bf62cbc088940dab4c66709fc59cecc488068a336",
+          "durationSeconds": 11,
+          "wordCount": 19,
+          "alignedWordCount": 19,
+          "meanConfidence": 0.8843,
+          "minimumWordConfidence": 0.131,
+          "maximumWordConfidence": 0.9991
+        },
+        {
+          "id": "04-baseline-route",
+          "audioSha256": "53114d0d0c8e4ceb322199b43ceabe56baa809e61550dc9434deeee15d9b43fa",
+          "durationSeconds": 22,
+          "wordCount": 36,
+          "alignedWordCount": 36,
+          "meanConfidence": 0.9537,
+          "minimumWordConfidence": 0.6648,
+          "maximumWordConfidence": 0.9998
+        },
+        {
+          "id": "05-close-lift",
+          "audioSha256": "2dc059b4ea9147eb1039bc38206d017700df9d06fac80ec4d80e4c14dad80989",
+          "durationSeconds": 14,
+          "wordCount": 25,
+          "alignedWordCount": 25,
+          "meanConfidence": 0.9436,
+          "minimumWordConfidence": 0.4998,
+          "maximumWordConfidence": 0.999
+        },
+        {
+          "id": "06-alternate-route",
+          "audioSha256": "af113127021097e25fb551146b3229d05ce62b54420ffa4ccbc141494cf0393a",
+          "durationSeconds": 21,
+          "wordCount": 32,
+          "alignedWordCount": 32,
+          "meanConfidence": 0.8934,
+          "minimumWordConfidence": 0.0002,
+          "maximumWordConfidence": 0.9991
+        },
+        {
+          "id": "07-evidence-gaps",
+          "audioSha256": "281aad8129433f0324022ff53f69cbc6f0e044145d6512a96b9eb1f606598759",
+          "durationSeconds": 18,
+          "wordCount": 25,
+          "alignedWordCount": 25,
+          "meanConfidence": 0.9447,
+          "minimumWordConfidence": 0.4811,
+          "maximumWordConfidence": 0.9995
+        },
+        {
+          "id": "08-recapture",
+          "audioSha256": "011598f253d522b0a0b0dad6d45a7141fa975ab3f709bc0c250551fe5f7490db",
+          "durationSeconds": 18,
+          "wordCount": 27,
+          "alignedWordCount": 27,
+          "meanConfidence": 0.9613,
+          "minimumWordConfidence": 0.6977,
+          "maximumWordConfidence": 0.9992
+        },
+        {
+          "id": "09-undo",
+          "audioSha256": "dc089ef48b35c05c27b817307b8976415be91fe71484482bd40500f432d7949f",
+          "durationSeconds": 16,
+          "wordCount": 17,
+          "alignedWordCount": 17,
+          "meanConfidence": 0.937,
+          "minimumWordConfidence": 0.5919,
+          "maximumWordConfidence": 0.9998
+        },
+        {
+          "id": "10-webmcp",
+          "audioSha256": "0dd1833cc989babffe0144a09b2d82263d6d9fd08c1e2c667eef945782c88e76",
+          "durationSeconds": 17,
+          "wordCount": 27,
+          "alignedWordCount": 27,
+          "meanConfidence": 0.9249,
+          "minimumWordConfidence": 0.5158,
+          "maximumWordConfidence": 0.9995
+        },
+        {
+          "id": "11-close",
+          "audioSha256": "857266d81359b36cd414d93b325364569355972eb3d355a2a7acf1c62cdbb8dc",
+          "durationSeconds": 11,
+          "wordCount": 22,
+          "alignedWordCount": 22,
+          "meanConfidence": 0.8568,
+          "minimumWordConfidence": 0.3377,
+          "maximumWordConfidence": 0.9987
+        }
+      ],
+      "alignmentFailures": []
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "targetDurationSeconds": 175,
+  "voiceControl": "warm confident product-demo narrator explaining a spatial tool to a colleague; clear friendly English; measured pace; natural pauses; light emphasis on key evidence; not dramatic; do not read like a slide deck",
+  "segments": [
+    {
+      "id": "01-introduction",
+      "start": 0,
+      "end": 12,
+      "text": "A Gaussian-splat capture can show a place beautifully and still tell an agent almost nothing about what the place means. This is Semantic Spatial Browser."
+    },
+    {
+      "id": "02-shared-scene",
+      "start": 12,
+      "end": 27,
+      "text": "The page combines Gaussian appearance with persistent rooms, objects, relationships, routes, operational state, and capture evidence. The person and the agent work on the same live scene."
+    },
+    {
+      "id": "03-task",
+      "start": 27,
+      "end": 38,
+      "text": "I will ask for an accessible route from Entrance A to Platform 2 and ask whether the evidence is trustworthy."
+    },
+    {
+      "id": "04-baseline-route",
+      "start": 38,
+      "end": 60,
+      "text": "The agent reads the current page, finds the accessible gate, moves the shared camera, and draws a route through Lift 1. The result is visible and inspectable. It is not a route hidden in a backend response."
+    },
+    {
+      "id": "05-close-lift",
+      "start": 60,
+      "end": 74,
+      "text": "Now I change the situation. Lift 1 is unavailable. The agent stages that state on the page. The lift turns red, and the change remains reversible."
+    },
+    {
+      "id": "06-alternate-route",
+      "start": 74,
+      "end": 95,
+      "text": "The original path is no longer valid. The new route uses Lift 2, but the West corridor has only 56 percent accessible-wayfinding readiness. Connectivity is known. The sign text is not visually verified."
+    },
+    {
+      "id": "07-evidence-gaps",
+      "start": 95,
+      "end": 113,
+      "text": "The agent opens the capture evidence instead of guessing. The page highlights the weak region and explains the unreadable sign and single-view coverage gap."
+    },
+    {
+      "id": "08-recapture",
+      "start": 113,
+      "end": 131,
+      "text": "It recommends a front-facing sign capture and a reverse corridor pass from the Lift 2 side. Capture quality becomes a task-specific decision, not one opaque percentage."
+    },
+    {
+      "id": "09-undo",
+      "start": 131,
+      "end": 147,
+      "text": "I can inspect, accept, or undo every change. Undo restores the baseline scene without reloading the page."
+    },
+    {
+      "id": "10-webmcp",
+      "start": 147,
+      "end": 164,
+      "text": "The app exposes ten narrow tools through the current imperative WebMCP API. Human controls and agent calls share the same runtime, validation, viewer effects, and visible timeline."
+    },
+    {
+      "id": "11-close",
+      "start": 164,
+      "end": 175,
+      "text": "The app, source, license, tests, provenance, and build receipts are public. Search a place. Understand it. Test what happens when it changes."
+    }
+  ]
+}

@@ -25,6 +25,9 @@
     "verify": "node scripts/verify.mjs",
     "verify:deployment": "node scripts/verify-public-deployment.mjs",
     "verify:demo-video": "node scripts/verify-demo-video.mjs",
+    "generate:demo-narration": "python3.11 scripts/generate-demo-narration.py",
+    "verify:demo-narration": "python3.11 scripts/verify-demo-narration.py",
+    "assemble:demo-video": "node scripts/assemble-demo-video.mjs",
     "check:submission": "node scripts/check-submission.mjs",
     "check:submission:strict": "node scripts/check-submission.mjs --strict",
     "verify:webmcp:chrome": "node scripts/verify-webmcp-chrome.mjs"

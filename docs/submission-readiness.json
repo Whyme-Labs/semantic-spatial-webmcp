@@ -277,7 +277,10 @@
         { "type": "fileContains", "path": "submission/video-handoff.md", "contains": "## Verify the exact export" },
         { "type": "fileContains", "path": "submission/video-handoff.md", "contains": "--headed" },
         { "type": "fileContains", "path": "package.json", "contains": "verify:demo-video" },
+        { "type": "fileContains", "path": "package.json", "contains": "generate:demo-narration" },
         { "type": "fileExists", "path": "scripts/verify-demo-video.mjs" },
+        { "type": "fileExists", "path": "scripts/generate-demo-narration.py" },
+        { "type": "fileExists", "path": "submission/narration-script.json" },
         { "type": "fileExists", "path": "test/demo-video-verifier.test.js" },
         { "type": "fileExists", "path": "test/chrome-verifier-cli.test.js" }
       ]
@@ -286,17 +289,55 @@
       "id": "entrant-eligibility",
       "category": "eligibility",
       "requirement": "The entrant or team is eligible and an eligible representative is designated.",
-      "evidenceClass": "external",
-      "assertions": [],
-      "ownerAction": "Confirm the entrant identity, age, residency, team membership, conflicts, sanctions, and representative against Official Rules section 3."
+      "evidenceClass": "repository",
+      "assertions": [
+        { "type": "fileExists", "path": "docs/entrant-attestation.json" },
+        { "type": "jsonValue", "path": "docs/entrant-attestation.json", "pointer": "/entrant/name", "equals": "Soh Wei Meng" },
+        { "type": "jsonValue", "path": "docs/entrant-attestation.json", "pointer": "/entrant/eligibleRepresentative", "equals": "Soh Wei Meng" },
+        { "type": "jsonValue", "path": "docs/entrant-attestation.json", "pointer": "/entrant/teamMembers", "equals": [] },
+        { "type": "jsonValue", "path": "docs/entrant-attestation.json", "pointer": "/confirmations/eligibilityUnderOfficialRulesSection3", "equals": true }
+      ]
+    },
+    {
+      "id": "demo-video-candidate",
+      "category": "demo",
+      "requirement": "The exact final MP4 is a narrated 1080p production WebMCP replay under three minutes with verified voice provenance and transcript alignment.",
+      "evidenceClass": "runtime",
+      "assertions": [
+        { "type": "fileExists", "path": "docs/demo-narration-verification.json" },
+        { "type": "jsonValue", "path": "docs/demo-narration-verification.json", "pointer": "/generator/backend", "equals": "gguf" },
+        { "type": "jsonValue", "path": "docs/demo-narration-verification.json", "pointer": "/output/durationSeconds", "equals": 175.0 },
+        { "type": "jsonValue", "path": "docs/demo-narration-verification.json", "pointer": "/result", "equals": "passed" },
+        { "type": "fileExists", "path": "docs/demo-narration-alignment.json" },
+        { "type": "jsonValue", "path": "docs/demo-narration-alignment.json", "pointer": "/failures", "equals": [] },
+        { "type": "jsonValue", "path": "docs/demo-narration-alignment.json", "pointer": "/result", "equals": "passed" },
+        { "type": "fileExists", "path": "docs/demo-video-verification.json" },
+        { "type": "jsonValue", "path": "docs/demo-video-verification.json", "pointer": "/artifact/sha256", "equals": "ce0d234f869bf25fe8dff52b41dedab69826cd1ac7c5d2ad95d372c7bb12d7bc" },
+        { "type": "jsonValue", "path": "docs/demo-video-verification.json", "pointer": "/durationSeconds", "equals": 175 },
+        { "type": "jsonValue", "path": "docs/demo-video-verification.json", "pointer": "/underThreeMinutes", "equals": true },
+        { "type": "jsonValue", "path": "docs/demo-video-verification.json", "pointer": "/video/width", "equals": 1920 },
+        { "type": "jsonValue", "path": "docs/demo-video-verification.json", "pointer": "/video/height", "equals": 1080 },
+        { "type": "jsonValue", "path": "docs/demo-video-verification.json", "pointer": "/audio/nonSilent", "equals": true },
+        { "type": "jsonValue", "path": "docs/demo-video-verification.json", "pointer": "/evidence/capture/artifact/dirty", "equals": false },
+        { "type": "jsonValue", "path": "docs/demo-video-verification.json", "pointer": "/evidence/capture/flow/timeline/entryCount", "equals": 10 },
+        { "type": "jsonValue", "path": "docs/demo-video-verification.json", "pointer": "/evidence/capture/console/errors", "equals": [] },
+        { "type": "jsonValue", "path": "docs/demo-video-verification.json", "pointer": "/assembly/timelineFrameIntervalSeconds", "equals": [147, 164] },
+        { "type": "jsonValue", "path": "docs/demo-video-verification.json", "pointer": "/assembly/outroFrameIntervalSeconds", "equals": [164, 175] },
+        { "type": "fileExists", "path": "submission/demo-narration.srt" },
+        { "type": "jsonValue", "path": "docs/demo-video-verification.json", "pointer": "/result", "equals": "passed" }
+      ]
     },
     {
       "id": "ownership-and-media-rights",
       "category": "eligibility",
       "requirement": "The entrant owns the submission and has permission for every included code, asset, mark, music track, voice, and recorded person.",
-      "evidenceClass": "external",
-      "assertions": [],
-      "ownerAction": "Review the final provenance inventory and attest ownership, licenses, trademark use, music rights, and participant media consent."
+      "evidenceClass": "repository",
+      "assertions": [
+        { "type": "jsonValue", "path": "docs/entrant-attestation.json", "pointer": "/confirmations/ownershipAndMediaRights", "equals": true },
+        { "type": "jsonValue", "path": "docs/entrant-attestation.json", "pointer": "/voiceReference/authorizedUse", "equals": "Local VoxCPM2 generation of the competition demo narration" },
+        { "type": "jsonValue", "path": "docs/entrant-attestation.json", "pointer": "/voiceReference/includeSourceInRepository", "equals": false },
+        { "type": "fileContains", "path": "docs/third-party-provenance.md", "contains": "## Narration production" }
+      ]
     },
     {
       "id": "public-source-repository",
@@ -340,9 +381,12 @@
       "id": "judge-access-through-judging",
       "category": "deployment",
       "requirement": "Judges have free unrestricted access through September 21, 2026 at 5:00 PM PT, with credentials and testing instructions if needed.",
-      "evidenceClass": "external",
-      "assertions": [],
-      "ownerAction": "Keep the public app available through the judging period and provide any required credentials and test instructions in Devpost."
+      "evidenceClass": "repository",
+      "assertions": [
+        { "type": "jsonValue", "path": "docs/entrant-attestation.json", "pointer": "/confirmations/keepApplicationPublicThroughJudging", "equals": true },
+        { "type": "jsonValue", "path": "docs/public-deployment-verification.json", "pointer": "/anonymousAccess", "equals": true },
+        { "type": "jsonValue", "path": "docs/public-deployment-verification.json", "pointer": "/result", "equals": "passed" }
+      ]
     },
     {
       "id": "chrome-149-webmcp-verification",
@@ -373,7 +417,7 @@
       "requirement": "A public YouTube video with audio, under three minutes, shows the real deployed app and real WebMCP calls without unlicensed media.",
       "evidenceClass": "external",
       "assertions": [],
-      "ownerAction": "Choose the YouTube account, record the approved script against production, verify duration is below 3:00 and audio is clear, then publish publicly."
+      "ownerAction": "Upload the verified MP4 and English SRT to the owner's YouTube account as Public, then confirm the signed-out URL."
     },
     {
       "id": "devpost-submission",

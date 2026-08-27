@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { spawn } from "node:child_process";
+import { spawn, spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { accessSync, constants, mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { createServer } from "node:net";
@@ -19,9 +19,16 @@ function parseArgs(argv) {
     chrome: null,
     output: null,
     screenshot: null,
+    video: null,
+    videoFps: 10,
+    timelineFrame: null,
+    outroFrame: null,
     headed: false,
     startDelayMs: 0,
     stepDelayMs: 0,
+    stepDelaysMs: null,
+    outroUrl: null,
+    outroDelayMs: 0,
     holdMs: 0
   };
   for (let index = 0; index < argv.length; index += 1) {
@@ -34,21 +41,38 @@ function parseArgs(argv) {
       options.headed = true;
       continue;
     }
-    if (!["--url", "--chrome", "--output", "--screenshot", "--start-delay", "--step-delay", "--hold"].includes(argument)) {
+    if (!["--url", "--chrome", "--output", "--screenshot", "--video", "--video-fps", "--timeline-frame", "--outro-frame", "--start-delay", "--step-delay", "--step-delays", "--outro-url", "--outro-delay", "--hold"].includes(argument)) {
       throw new Error(`Unknown argument: ${argument}`);
     }
     const value = argv[index + 1];
     if (!value || value.startsWith("--")) throw new Error(`${argument} requires a value.`);
-    if (["--start-delay", "--step-delay", "--hold"].includes(argument)) {
+    if (argument === "--step-delays") {
+      const delays = value.split(",").map((item) => Number(item));
+      if (delays.length !== 10 || delays.some((item) => !Number.isInteger(item) || item < 0 || item > 60_000)) {
+        throw new Error("--step-delays must contain exactly ten comma-separated integers from 0 to 60000.");
+      }
+      options.stepDelaysMs = delays;
+    } else if (argument === "--video-fps") {
+      const framesPerSecond = Number(value);
+      if (!Number.isInteger(framesPerSecond) || framesPerSecond < 5 || framesPerSecond > 30) {
+        throw new Error("--video-fps must be an integer from 5 to 30.");
+      }
+      options.videoFps = framesPerSecond;
+    } else if (["--start-delay", "--step-delay", "--outro-delay", "--hold"].includes(argument)) {
       const milliseconds = Number(value);
       const maximum = argument === "--hold" ? 600_000 : 60_000;
       if (!Number.isInteger(milliseconds) || milliseconds < 0 || milliseconds > maximum) {
         throw new Error(`${argument} must be an integer from 0 to ${maximum}.`);
       }
-      const key = argument === "--start-delay" ? "startDelayMs" : argument === "--step-delay" ? "stepDelayMs" : "holdMs";
+      const key = argument === "--start-delay"
+        ? "startDelayMs"
+        : argument === "--step-delay" ? "stepDelayMs" : argument === "--outro-delay" ? "outroDelayMs" : "holdMs";
       options[key] = milliseconds;
     } else {
-      options[argument.slice(2)] = value;
+      const key = argument === "--outro-url"
+        ? "outroUrl"
+        : argument === "--timeline-frame" ? "timelineFrame" : argument === "--outro-frame" ? "outroFrame" : argument.slice(2);
+      options[key] = value;
     }
     index += 1;
   }
@@ -63,9 +87,16 @@ function usage() {
     "  --chrome <path>      Chrome executable (auto-detected on macOS)",
     "  --output <path>      Write the JSON receipt to this path",
     "  --screenshot <path>  Capture the final page as PNG",
+    "  --video <path>       Capture the paced viewport as a silent MP4",
+    "  --video-fps <n>      CDP capture frame rate from 5 to 30 (default: 10)",
+    "  --timeline-frame <path> Capture the verified timeline viewport",
+    "  --outro-frame <path> Capture the public outro viewport",
     "  --headed             Show the isolated Chrome verification window",
     "  --start-delay <ms>    Hold the loaded page before the first call",
     "  --step-delay <ms>     Hold each visible tool result before continuing",
+    "  --step-delays <csv>   Ten per-call hold durations; overrides --step-delay",
+    "  --outro-delay <ms>    Hold the verified timeline before the outro",
+    "  --outro-url <url>     Navigate to a public outro page after verification",
     "  --hold <ms>           Keep the final verified state visible before exit",
     "  --help               Show this help"
   ].join("\n");
@@ -218,6 +249,7 @@ async function waitForPage(connection) {
 
 async function evaluateFlow(connection, options = {}) {
   const stepDelayMs = options.stepDelayMs ?? 0;
+  const stepDelaysMs = options.stepDelaysMs ?? null;
   const expression = `(async () => {
     const fail = (message) => { throw new Error(message); };
     const check = (condition, message) => { if (!condition) fail(message); };
@@ -233,12 +265,16 @@ async function evaluateFlow(connection, options = {}) {
       if (typeof value !== 'string') return value;
       try { return JSON.parse(value); } catch { return value; }
     };
+    const stepDelays = ${JSON.stringify(stepDelaysMs)};
+    let executionIndex = 0;
     const execute = async (name, args) => {
       const tool = tools.find((candidate) => candidate.name === name);
       check(tool, 'Missing WebMCP tool: ' + name + '.');
       const result = normalizeResult(await modelContext.executeTool(tool, JSON.stringify(args)));
-      if (${JSON.stringify(stepDelayMs)} > 0) {
-        await new Promise((resolveDelay) => setTimeout(resolveDelay, ${JSON.stringify(stepDelayMs)}));
+      const delayMs = stepDelays?.[executionIndex] ?? ${JSON.stringify(stepDelayMs)};
+      executionIndex += 1;
+      if (delayMs > 0) {
+        await new Promise((resolveDelay) => setTimeout(resolveDelay, delayMs));
       }
       return result;
     };
@@ -423,6 +459,106 @@ async function captureScreenshot(connection, path) {
   writeFileSync(resolve(path), Buffer.from(result.data, "base64"));
 }
 
+async function captureViewportScreenshot(connection, path) {
+  const result = await connection.send("Page.captureScreenshot", {
+    format: "png",
+    captureBeyondViewport: false,
+    fromSurface: true
+  });
+  writeFileSync(resolve(path), Buffer.from(result.data, "base64"));
+}
+
+function probeMediaDuration(path) {
+  const result = spawnSync("ffprobe", [
+    "-v", "error", "-show_entries", "format=duration",
+    "-of", "default=noprint_wrappers=1:nokey=1", resolve(path)
+  ], { encoding: "utf8" });
+  if (result.error?.code === "ENOENT") throw new Error("ffprobe is required for video capture verification.");
+  if (result.status !== 0) throw new Error(`ffprobe failed: ${(result.stderr || result.stdout).trim()}`);
+  return Number(result.stdout.trim());
+}
+
+async function startVideoCapture(connection, path, framesPerSecond, minimumDurationMs = 0) {
+  const outputPath = resolve(path);
+  const ffmpeg = spawn("ffmpeg", [
+    "-y", "-hide_banner", "-loglevel", "error",
+    "-f", "image2pipe", "-framerate", String(framesPerSecond), "-vcodec", "mjpeg", "-i", "pipe:0",
+    "-an", "-c:v", "libx264", "-preset", "medium", "-crf", "18",
+    "-pix_fmt", "yuv420p", "-movflags", "+faststart", "-r", "30", outputPath
+  ], { stdio: ["pipe", "ignore", "pipe"] });
+  let ffmpegError = "";
+  ffmpeg.stderr.setEncoding("utf8");
+  ffmpeg.stderr.on("data", (chunk) => { ffmpegError += chunk; });
+  const ffmpegExit = new Promise((resolveExit, rejectExit) => {
+    ffmpeg.once("error", rejectExit);
+    ffmpeg.once("exit", resolveExit);
+  });
+
+  let framesWritten = 0;
+  let lastFrame = null;
+  let firstFrameTimestamp = null;
+  let lastFrameTimestamp = null;
+  let stopped = false;
+  connection.on("Page.screencastFrame", (params) => {
+    if (stopped) return;
+    void connection.send("Page.screencastFrameAck", { sessionId: params.sessionId });
+    const currentFrame = Buffer.from(params.data, "base64");
+    const timestamp = Number(params.metadata?.timestamp);
+    if (Number.isFinite(timestamp)) {
+      firstFrameTimestamp ??= timestamp;
+      lastFrameTimestamp = timestamp;
+    }
+    const elapsedSeconds = firstFrameTimestamp === null || lastFrameTimestamp === null
+      ? 0
+      : Math.max(lastFrameTimestamp - firstFrameTimestamp, 0);
+    const desiredFrames = Math.max(1, Math.floor(elapsedSeconds * framesPerSecond) + 1);
+    const frameToRepeat = lastFrame ?? currentFrame;
+    while (framesWritten < desiredFrames - 1) {
+      ffmpeg.stdin.write(frameToRepeat);
+      framesWritten += 1;
+    }
+    ffmpeg.stdin.write(currentFrame);
+    framesWritten += 1;
+    lastFrame = currentFrame;
+  });
+
+  await connection.send("Page.startScreencast", {
+    format: "jpeg",
+    quality: 88,
+    maxWidth: 1920,
+    maxHeight: 1080,
+    everyNthFrame: 1
+  });
+
+  return {
+    async stop() {
+      stopped = true;
+      await connection.send("Page.stopScreencast");
+      if (!lastFrame) {
+        ffmpeg.stdin.end();
+        await ffmpegExit;
+        throw new Error("Chrome did not provide a screencast frame.");
+      }
+      const metadataDurationMs = firstFrameTimestamp === null || lastFrameTimestamp === null
+        ? 0
+        : Math.max(lastFrameTimestamp - firstFrameTimestamp, 0) * 1000;
+      const desiredFrames = Math.max(
+        framesWritten,
+        Math.round(Math.max(metadataDurationMs, minimumDurationMs) / 1000 * framesPerSecond)
+      );
+      while (framesWritten < desiredFrames) {
+        ffmpeg.stdin.write(lastFrame);
+        framesWritten += 1;
+      }
+      ffmpeg.stdin.end();
+      const exitCode = await ffmpegExit;
+      assert(exitCode === 0, `ffmpeg video capture failed: ${ffmpegError.trim() || `exit ${exitCode}`}`);
+      const durationSeconds = probeMediaDuration(outputPath);
+      return { path, framesPerSecond, framesWritten, durationSeconds };
+    }
+  };
+}
+
 function describeConsoleCall(params) {
   return params.args.map((argument) => argument.value ?? argument.description ?? argument.type).join(" ");
 }
@@ -453,6 +589,7 @@ async function main() {
   const profileDirectory = mkdtempSync(resolve(tmpdir(), "webmcp-chrome-profile-"));
   let chrome;
   let connection;
+  let videoCapture;
   let cleanupPromise;
   let chromeStderr = "";
 
@@ -528,16 +665,35 @@ async function main() {
       connection.send("Page.enable"),
       connection.send("Log.enable")
     ]);
+    if (options.video) {
+      await connection.send("Emulation.setDeviceMetricsOverride", {
+        width: 1920,
+        height: 1080,
+        deviceScaleFactor: 1,
+        mobile: false
+      });
+    }
     const pageNavigationStartedAt = Date.now();
     await connection.send("Page.navigate", { url: targetUrl });
     const registration = await waitForPage(connection);
     const navigationToWebMcpReadyMs = Date.now() - pageNavigationStartedAt;
     assert(registration.registered === true, `WebMCP registration did not activate: ${registration.statusText}`);
     assert(registration.count === 10, `The page reported ${registration.count} registered tools instead of 10.`);
-    assert(navigationToWebMcpReadyMs < 5_000, `WebMCP readiness took ${navigationToWebMcpReadyMs} ms, exceeding five seconds.`);
+    const readinessLimitMs = options.video ? WAIT_TIMEOUT_MS : 5_000;
+    assert(navigationToWebMcpReadyMs < readinessLimitMs, `WebMCP readiness took ${navigationToWebMcpReadyMs} ms, exceeding ${readinessLimitMs} ms.`);
 
+    const scheduledReplayDurationMs = options.startDelayMs
+      + (options.stepDelaysMs?.reduce((total, milliseconds) => total + milliseconds, 0) ?? options.stepDelayMs * 10)
+      + options.outroDelayMs
+      + options.holdMs;
+    videoCapture = options.video
+      ? await startVideoCapture(connection, options.video, options.videoFps, scheduledReplayDurationMs)
+      : null;
     if (options.startDelayMs > 0) await delay(options.startDelayMs);
-    const evidence = await evaluateFlow(connection, { stepDelayMs: options.stepDelayMs });
+    const evidence = await evaluateFlow(connection, {
+      stepDelayMs: options.stepDelayMs,
+      stepDelaysMs: options.stepDelaysMs
+    });
     const artifact = await readBuildArtifact(targetUrl);
     let screenshotEvidenceMarkerCount = null;
     if (options.screenshot) {
@@ -549,7 +705,21 @@ async function main() {
     assert(uniqueConsoleErrors.length === 0, `Chrome recorded console errors: ${uniqueConsoleErrors.join(" | ")}`);
 
     if (options.screenshot) await captureScreenshot(connection, options.screenshot);
+    if (options.timelineFrame) await captureViewportScreenshot(connection, options.timelineFrame);
+    if (options.outroDelayMs > 0) await delay(options.outroDelayMs);
+    if (options.outroUrl) {
+      let outroUrl;
+      try {
+        outroUrl = new URL(options.outroUrl).href;
+      } catch {
+        throw new Error(`Invalid --outro-url value: ${options.outroUrl}`);
+      }
+      await connection.send("Page.navigate", { url: outroUrl });
+    }
     if (options.holdMs > 0) await delay(options.holdMs);
+    if (options.outroFrame) await captureViewportScreenshot(connection, options.outroFrame);
+    const capturedVideo = videoCapture ? await videoCapture.stop() : null;
+    videoCapture = null;
     receipt = {
       verifiedAt: new Date().toISOString(),
       chrome: {
@@ -561,7 +731,8 @@ async function main() {
       artifact,
       timing: {
         navigationToWebMcpReadyMs,
-        underFiveSeconds: true
+        underFiveSeconds: navigationToWebMcpReadyMs < 5_000,
+        verificationLimitMs: readinessLimitMs
       },
       webmcp: {
         status: "active",
@@ -578,10 +749,16 @@ async function main() {
         description: "Verified flow after undo, followed by a fresh West corridor evidence overlay for the screenshot.",
         recaptureMarkerCount: screenshotEvidenceMarkerCount
       } : null,
+      videoCapture: capturedVideo,
       replay: {
         headed: options.headed,
         startDelayMs: options.startDelayMs,
         stepDelayMs: options.stepDelayMs,
+        stepDelaysMs: options.stepDelaysMs,
+        outroUrl: options.outroUrl,
+        outroDelayMs: options.outroDelayMs,
+        timelineFrame: options.timelineFrame,
+        outroFrame: options.outroFrame,
         holdMs: options.holdMs
       },
       result: "passed"
@@ -597,6 +774,13 @@ async function main() {
   } finally {
     process.removeListener("SIGINT", stopForSignal);
     process.removeListener("SIGTERM", stopForSignal);
+    if (videoCapture) {
+      try {
+        await videoCapture.stop();
+      } catch {
+        // Preserve the original verification failure; cleanup still terminates Chrome.
+      }
+    }
     await cleanup();
   }
 

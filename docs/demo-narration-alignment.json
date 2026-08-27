@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-08-27T11:27:36.247613+00:00",
+  "method": "Torchaudio MMS_FA CTC forced alignment against the exact checked-in narration",
+  "model": "torchaudio.pipelines.MMS_FA",
+  "device": "cpu",
+  "script": {
+    "path": "submission/narration-script.json",
+    "sha256": "102b835813b6dd94c97b2034aa89f3a31d1f6f887162059d60ebc47c43fac2cd"
+  },
+  "minimumMeanConfidence": 0.3,
+  "segments": [
+    {
+      "id": "01-introduction",
+      "audioSha256": "c69396ce2b4f9413a3bac7d8e0350f011a59ef4f88c19ca33dc45d35ec96f3c0",
+      "durationSeconds": 12.0,
+      "wordCount": 26,
+      "alignedWordCount": 26,
+      "meanConfidence": 0.9429,
+      "minimumWordConfidence": 0.5584,
+      "maximumWordConfidence": 0.9999
+    },
+    {
+      "id": "02-shared-scene",
+      "audioSha256": "03c79a5b3263987a3d943aa431edfb0c7184221d4f64533f688335a17991bc4c",
+      "durationSeconds": 15.0,
+      "wordCount": 27,
+      "alignedWordCount": 27,
+      "meanConfidence": 0.9192,
+      "minimumWordConfidence": 0.4677,
+      "maximumWordConfidence": 0.9995
+    },
+    {
+      "id": "03-task",
+      "audioSha256": "12a09a755b628dcf8a63a86bf62cbc088940dab4c66709fc59cecc488068a336",
+      "durationSeconds": 11.0,
+      "wordCount": 19,
+      "alignedWordCount": 19,
+      "meanConfidence": 0.8843,
+      "minimumWordConfidence": 0.131,
+      "maximumWordConfidence": 0.9991
+    },
+    {
+      "id": "04-baseline-route",
+      "audioSha256": "53114d0d0c8e4ceb322199b43ceabe56baa809e61550dc9434deeee15d9b43fa",
+      "durationSeconds": 22.0,
+      "wordCount": 36,
+      "alignedWordCount": 36,
+      "meanConfidence": 0.9537,
+      "minimumWordConfidence": 0.6648,
+      "maximumWordConfidence": 0.9998
+    },
+    {
+      "id": "05-close-lift",
+      "audioSha256": "2dc059b4ea9147eb1039bc38206d017700df9d06fac80ec4d80e4c14dad80989",
+      "durationSeconds": 14.0,
+      "wordCount": 25,
+      "alignedWordCount": 25,
+      "meanConfidence": 0.9436,
+      "minimumWordConfidence": 0.4998,
+      "maximumWordConfidence": 0.999
+    },
+    {
+      "id": "06-alternate-route",
+      "audioSha256": "af113127021097e25fb551146b3229d05ce62b54420ffa4ccbc141494cf0393a",
+      "durationSeconds": 21.0,
+      "wordCount": 32,
+      "alignedWordCount": 32,
+      "meanConfidence": 0.8934,
+      "minimumWordConfidence": 0.0002,
+      "maximumWordConfidence": 0.9991
+    },
+    {
+      "id": "07-evidence-gaps",
+      "audioSha256": "281aad8129433f0324022ff53f69cbc6f0e044145d6512a96b9eb1f606598759",
+      "durationSeconds": 18.0,
+      "wordCount": 25,
+      "alignedWordCount": 25,
+      "meanConfidence": 0.9447,
+      "minimumWordConfidence": 0.4811,
+      "maximumWordConfidence": 0.9995
+    },
+    {
+      "id": "08-recapture",
+      "audioSha256": "011598f253d522b0a0b0dad6d45a7141fa975ab3f709bc0c250551fe5f7490db",
+      "durationSeconds": 18.0,
+      "wordCount": 27,
+      "alignedWordCount": 27,
+      "meanConfidence": 0.9613,
+      "minimumWordConfidence": 0.6977,
+      "maximumWordConfidence": 0.9992
+    },
+    {
+      "id": "09-undo",
+      "audioSha256": "dc089ef48b35c05c27b817307b8976415be91fe71484482bd40500f432d7949f",
+      "durationSeconds": 16.0,
+      "wordCount": 17,
+      "alignedWordCount": 17,
+      "meanConfidence": 0.937,
+      "minimumWordConfidence": 0.5919,
+      "maximumWordConfidence": 0.9998
+    },
+    {
+      "id": "10-webmcp",
+      "audioSha256": "0dd1833cc989babffe0144a09b2d82263d6d9fd08c1e2c667eef945782c88e76",
+      "durationSeconds": 17.0,
+      "wordCount": 27,
+      "alignedWordCount": 27,
+      "meanConfidence": 0.9249,
+      "minimumWordConfidence": 0.5158,
+      "maximumWordConfidence": 0.9995
+    },
+    {
+      "id": "11-close",
+      "audioSha256": "857266d81359b36cd414d93b325364569355972eb3d355a2a7acf1c62cdbb8dc",
+      "durationSeconds": 11.0,
+      "wordCount": 22,
+      "alignedWordCount": 22,
+      "meanConfidence": 0.8568,
+      "minimumWordConfidence": 0.3377,
+      "maximumWordConfidence": 0.9987
+    }
+  ],
+  "failures": [],
+  "result": "passed"
+}

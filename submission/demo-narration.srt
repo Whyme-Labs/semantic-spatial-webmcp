@@ -1,0 +1,53 @@
+1
+00:00:00,000 --> 00:00:12,000
+A Gaussian-splat capture can show a place beautifully and still tell an agent almost nothing about what the place means.
+This is Semantic Spatial Browser.
+
+2
+00:00:12,000 --> 00:00:27,000
+The page combines Gaussian appearance with persistent rooms, objects, relationships, routes, operational state, and capture evidence.
+The person and the agent work on the same live scene.
+
+3
+00:00:27,000 --> 00:00:38,000
+I will ask for an accessible route from Entrance A to Platform 2 and ask whether the evidence is trustworthy.
+
+4
+00:00:38,000 --> 00:01:00,000
+The agent reads the current page, finds the accessible gate, moves the shared camera, and draws a route through Lift 1.
+The result is visible and inspectable. It is not a route hidden in a backend response.
+
+5
+00:01:00,000 --> 00:01:14,000
+Now I change the situation. Lift 1 is unavailable. The agent stages that state on the page.
+The lift turns red, and the change remains reversible.
+
+6
+00:01:14,000 --> 00:01:35,000
+The original path is no longer valid. The new route uses Lift 2, but the West corridor has only 56 percent accessible-wayfinding readiness.
+Connectivity is known. The sign text is not visually verified.
+
+7
+00:01:35,000 --> 00:01:53,000
+The agent opens the capture evidence instead of guessing.
+The page highlights the weak region and explains the unreadable sign and single-view coverage gap.
+
+8
+00:01:53,000 --> 00:02:11,000
+It recommends a front-facing sign capture and a reverse corridor pass from the Lift 2 side.
+Capture quality becomes a task-specific decision, not one opaque percentage.
+
+9
+00:02:11,000 --> 00:02:27,000
+I can inspect, accept, or undo every change.
+Undo restores the baseline scene without reloading the page.
+
+10
+00:02:27,000 --> 00:02:44,000
+The app exposes ten narrow tools through the current imperative WebMCP API.
+Human controls and agent calls share the same runtime, validation, viewer effects, and visible timeline.
+
+11
+00:02:44,000 --> 00:02:55,000
+The app, source, license, tests, provenance, and build receipts are public.
+Search a place. Understand it. Test what happens when it changes.

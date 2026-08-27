@@ -1,6 +1,6 @@
 # Demo script
 
-Target duration: 170 seconds. Hard limit: 179 seconds. Record the public production build through the paced Chrome WebMCP replay in `submission/video-handoff.md`.
+Target duration: 175 seconds. Hard limit: 179 seconds. Record the public production build through the paced Chrome WebMCP replay in `submission/video-handoff.md`.
 
 ## Shot list
 
@@ -9,14 +9,14 @@ Target duration: 170 seconds. Hard limit: 179 seconds. Record the public product
 | 0:00–0:12 | Open the public app on the full station view. Show `WebMCP active: 10 tools registered`. | "A Gaussian-splat capture can show a place beautifully and still tell an agent almost nothing about what the place means. This is Semantic Spatial Browser." |
 | 0:12–0:27 | Orbit the scene. Point to entity labels and the WebMCP status. | "The page combines Gaussian appearance with persistent rooms, objects, relationships, routes, operational state, and capture evidence. The person and the agent work on the same live scene." |
 | 0:27–0:38 | Hold on the combined agent prompt already visible in the 30-second-proof card. | "I will ask for an accessible route from Entrance A to Platform 2 and ask whether the evidence is trustworthy." |
-| 0:38–1:03 | Let the paced Chrome replay call context, navigation, and route tools. Keep the 3D route and details visible; the timeline is shown at the end. | "The agent reads the current page, finds the accessible gate, moves the shared camera, and draws a route through Lift 1. The result is visible and inspectable. It is not a route hidden in a backend response." |
-| 1:03–1:17 | Let the replay stage Lift 1 as closed. | "Now I change the situation. Lift 1 is unavailable. The agent stages that state on the page. The lift turns red, and the change remains reversible." |
-| 1:17–1:39 | Let the agent reroute through Lift 2. Hold on the evidence warning. | "The original path is no longer valid. The new route uses Lift 2, but the West corridor has only 56 percent accessible-wayfinding readiness. Connectivity is known. The sign text is not visually verified." |
-| 1:39–1:57 | Show the amber quality volume, evidence gaps, and recapture instructions. | "The agent opens the capture evidence instead of guessing. The page highlights the weak region and explains the unreadable sign and single-view coverage gap." |
-| 1:57–2:15 | Navigate to the recapture position or point to the two recommendations. | "It recommends a front-facing sign capture and a reverse corridor pass from the Lift 2 side. Capture quality becomes a task-specific decision, not one opaque percentage." |
-| 2:15–2:31 | Undo the scenario. Show Lift 1 and the route return to baseline. | "I can inspect, accept, or undo every change. Undo restores the baseline scene without reloading the page." |
-| 2:31–2:48 | Hold on the visible ten-call agent timeline and WebMCP status. | "The app exposes ten narrow tools through the current imperative WebMCP API. Human controls and agent calls share the same runtime, validation, viewer effects, and visible timeline." |
-| 2:48–2:55 | Show the public repository and challenge-delta file. Return to the app title. | "The app, source, license, tests, provenance, and build receipts are public. Search a place. Understand it. Test what happens when it changes." |
+| 0:38–1:00 | Let the paced Chrome replay call context, navigation, and route tools. Keep the 3D route and details visible; the timeline is shown at the end. | "The agent reads the current page, finds the accessible gate, moves the shared camera, and draws a route through Lift 1. The result is visible and inspectable. It is not a route hidden in a backend response." |
+| 1:00–1:14 | Let the replay stage Lift 1 as closed. | "Now I change the situation. Lift 1 is unavailable. The agent stages that state on the page. The lift turns red, and the change remains reversible." |
+| 1:14–1:35 | Let the agent reroute through Lift 2. Hold on the evidence warning. | "The original path is no longer valid. The new route uses Lift 2, but the West corridor has only 56 percent accessible-wayfinding readiness. Connectivity is known. The sign text is not visually verified." |
+| 1:35–1:53 | Show the amber quality volume, evidence gaps, and recapture instructions. | "The agent opens the capture evidence instead of guessing. The page highlights the weak region and explains the unreadable sign and single-view coverage gap." |
+| 1:53–2:11 | Hold on the two recapture recommendations. | "It recommends a front-facing sign capture and a reverse corridor pass from the Lift 2 side. Capture quality becomes a task-specific decision, not one opaque percentage." |
+| 2:11–2:27 | Undo the scenario. Show Lift 1 and the route return to baseline. | "I can inspect, accept, or undo every change. Undo restores the baseline scene without reloading the page." |
+| 2:27–2:44 | Hold on the visible ten-call agent timeline and WebMCP status. | "The app exposes ten narrow tools through the current imperative WebMCP API. Human controls and agent calls share the same runtime, validation, viewer effects, and visible timeline." |
+| 2:44–2:55 | Show the public repository and its recognized MIT license. | "The app, source, license, tests, provenance, and build receipts are public. Search a place. Understand it. Test what happens when it changes." |
 
 ## Demo prompts
 

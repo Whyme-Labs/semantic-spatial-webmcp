@@ -4,11 +4,11 @@ Complete this checklist against the final public artifacts. Do not mark an item 
 
 ## Entrant
 
-- [ ] Confirm the entrant is eligible under Official Rules section 3.
-- [ ] Record the individual, team, or organization name used on Devpost.
-- [ ] If entering as a team or organization, appoint the eligible representative.
-- [ ] Confirm that no conflict-of-interest or excluded-party rule applies.
-- [ ] Confirm ownership of the code, assets, voice, marks, screenshots, and video.
+- [x] Confirm the entrant is eligible under Official Rules section 3.
+- [x] Record the individual, team, or organization name used on Devpost.
+- [x] If entering as a team or organization, appoint the eligible representative. Not applicable: individual entrant with no team members.
+- [x] Confirm that no conflict-of-interest or excluded-party rule applies.
+- [x] Confirm ownership of the code, assets, voice, marks, screenshots, and video.
 
 ## Public application
 
@@ -20,7 +20,7 @@ Complete this checklist against the final public artifacts. Do not mark an item 
 - [x] Run the full human-interface flow with no console errors.
 - [x] Run the full WebMCP flow in an official judge environment: Chrome 151 with WebMCP testing enabled.
 - Optional: repeat the flow in ChatGPT's desktop built-in browser if Site Tools access is available.
-- [ ] Keep the app free and available until September 21, 2026 at 5:00 PM Pacific Time.
+- [x] Keep the app free and available until September 21, 2026 at 5:00 PM Pacific Time. Owner attestation recorded.
 
 ## Public repository
 
@@ -32,15 +32,15 @@ Complete this checklist against the final public artifacts. Do not mark an item 
 - [x] Run `npm run verify` from a clean clone.
 - [x] Run `npm run check:submission` from a clean clone.
 - [x] Confirm the public repository's **Verify release** workflow is green for the submitted commit.
-- [ ] Review `docs/third-party-provenance.md` against the final media.
+- [x] Review `docs/third-party-provenance.md` against the final media.
 
 ## Demo video
 
-- [ ] Record the production URL and real WebMCP calls in the paced Chrome replay.
-- [ ] Use the prompts and shot list in `submission/demo-script.md`.
-- [ ] Include clear English narration.
-- [ ] Do not use music.
-- [ ] Confirm the final duration is below 3:00.
+- [x] Record the production URL and real WebMCP calls in the paced Chrome replay.
+- [x] Use the prompts and shot list in `submission/demo-script.md`.
+- [x] Include clear English narration. Exact-script forced alignment passed for all eleven segments.
+- [x] Do not use music.
+- [x] Confirm the final duration is below 3:00.
 - [ ] Watch the exported video with sound.
 - [ ] Publish the video as Public on YouTube.
 - [ ] Open the YouTube link while signed out.
@@ -59,8 +59,8 @@ Complete this checklist against the final public artifacts. Do not mark an item 
 
 ## Final no-receipt-no-claim check
 
-- [ ] The video shows the same build as the public URL.
-- [ ] The public repository contains the commit that produced the deployed manifest.
-- [ ] Every number in the entry has a repository or browser receipt.
-- [ ] The entry calls the default station synthetic, never captured.
-- [ ] No item is marked complete because an upload or deployment was merely started.
+- [x] The video shows the same build as the public URL.
+- [x] The public repository contains the commit that produced the deployed manifest.
+- [x] Every number in the entry has a repository or browser receipt.
+- [x] The entry calls the default station synthetic, never captured.
+- [x] No item is marked complete because an upload or deployment was merely started.
