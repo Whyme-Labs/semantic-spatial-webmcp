@@ -10,13 +10,19 @@ npm run build
 
 Run the build again before every deployment. The builder removes the prior `dist/` directory, copies the allowlisted application files, and records SHA-256 hashes in `dist/build-manifest.json`.
 
-## Configure the host
+## Deploy to Cloudflare Workers
 
-Set the build command to `npm run build` and the publish directory to `dist`.
+The checked-in `wrangler.jsonc` deploys `dist/` with Workers Static Assets. It intentionally has no Worker script and sets `run_worker_first` to `false`, so Cloudflare serves assets directly from its nearest asset location.
 
-Cloudflare Pages and Netlify read `dist/_headers`. For another static host, configure the same response headers in that host's settings. WebMCP needs an HTTPS secure context and an origin-keyed document. Do not send `Origin-Agent-Cluster: ?0`.
+```bash
+npm ci
+npm run deploy:dry-run
+npm run deploy
+```
 
-The Content Security Policy allows the two pinned renderer module hosts and HTTPS splat files supplied through the optional `splat` query parameter. The checked-in demo does not need an external splat file.
+Cloudflare parses `dist/_headers` and applies its rules to static asset responses. WebMCP needs the resulting HTTPS secure context and origin-keyed document. Do not send `Origin-Agent-Cluster: ?0`.
+
+The Content Security Policy allows the two pinned renderer module hosts and HTTPS splat files supplied through the optional `splat` query parameter. The checked-in demo does not need an external splat file. No Cloudflare account ID or credential is stored in the repository.
 
 ## Verify the public deployment
 

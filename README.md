@@ -27,7 +27,7 @@ npm run serve
 
 Open `http://localhost:4173`.
 
-No package installation is required. The implementation uses browser ES modules and Node's built-in test runner.
+Running the app and its deterministic tests requires no package installation. Cloudflare deployment uses the pinned Wrangler development dependency, installed with `npm ci`.
 
 The repository verification scripts require Node.js 22 or later. The static app itself has no server-side runtime dependency.
 
@@ -147,18 +147,23 @@ This reruns the syntax check and all deterministic tests, then refreshes `docs/t
 
 The prompt-level deterministic evaluation set is in `evals/webmcp-cases.json`. To exercise the exact production artifact in Chrome with `WebMCPTesting` enabled, run `npm run build`, serve `dist/` with `npm run serve:dist`, then run `npm run verify:webmcp:chrome`. The Chrome verifier requires the build manifest and refuses to treat the source server as the publish artifact.
 
-The public repository workflow at `.github/workflows/verify.yml` reruns syntax, all deterministic tests, the production build, baseline-tag verification, and submission gates on Node.js 22. It has read-only repository permissions and fails if verification rewrites tracked evidence.
+The public repository workflow at `.github/workflows/verify.yml` reruns syntax, all deterministic tests, a Wrangler deployment dry run, baseline-tag verification, and submission gates on Node.js 22. It has read-only repository permissions and fails if verification rewrites tracked evidence.
 
 ## Deploy
 
-Build the allowlisted static artifact:
+Install the pinned deployment tool and validate the exact Workers upload:
 
 ```bash
-npm run build
+npm ci
+npm run deploy:dry-run
 ```
 
-Publish `dist/` on any HTTPS static host. Set the build command to `npm run build` and the publish directory to `dist`.
+Deploy the allowlisted `dist/` artifact as Cloudflare Workers Static Assets:
 
-The artifact includes `_headers` for Cloudflare Pages and Netlify. Other hosts must apply the same headers, including `Origin-Agent-Cluster: ?1` and `Permissions-Policy: tools=(self)`. Do not send `Origin-Agent-Cluster: ?0`, because that disables WebMCP.
+```bash
+npm run deploy
+```
+
+`wrangler.jsonc` keeps assets on Cloudflare's direct static path. Cloudflare parses `dist/_headers` and applies the WebMCP headers without invoking Worker code for each asset. Do not send `Origin-Agent-Cluster: ?0`, because that disables WebMCP.
 
 See `deployment/README.md` for the production header checks, clean-browser test, and judge-access requirements.

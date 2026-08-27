@@ -29,4 +29,4 @@ The fallback proves product continuity. It does not replace the Site Tools test 
 
 ## Repository receipts
 
-Run `npm run verify`, `npm run eval`, and, while the app is served locally, `npm run verify:webmcp:chrome`. The deterministic prompt fixture receipt does not claim model selection; the final model-backed result must be recorded against the deployed build.
+Run `npm run verify`, `npm run eval`, and `npm run deploy:dry-run`. While the built app is served locally, run `npm run verify:webmcp:chrome`. The deterministic prompt fixture receipt does not claim model selection; the final model-backed result must be recorded against the deployed build.

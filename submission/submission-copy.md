@@ -81,7 +81,7 @@ The repository preserves `starter-v0.1.0` and its SHA as the first semantic vert
 - Spark 2.1.0 and Three.js 0.180.0
 - A dependency-free semantic store and route planner
 - Node's built-in test runner
-- Static HTTPS hosting with origin isolation and a `tools=(self)` permissions policy
+- Cloudflare Workers Static Assets with origin isolation and a `tools=(self)` permissions policy
 
 ## Links
 

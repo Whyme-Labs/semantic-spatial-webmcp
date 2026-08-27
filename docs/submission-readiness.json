@@ -173,9 +173,24 @@
         { "type": "fileExists", "path": ".github/workflows/verify.yml" },
         { "type": "fileContains", "path": ".github/workflows/verify.yml", "contains": "node-version: 22" },
         { "type": "fileContains", "path": ".github/workflows/verify.yml", "contains": "npm test" },
-        { "type": "fileContains", "path": ".github/workflows/verify.yml", "contains": "npm run build" },
+        { "type": "fileContains", "path": ".github/workflows/verify.yml", "contains": "npm run deploy:dry-run" },
         { "type": "fileContains", "path": ".github/workflows/verify.yml", "contains": "npm run check:submission" },
         { "type": "fileContains", "path": ".github/workflows/verify.yml", "contains": "git diff --exit-code" }
+      ]
+    },
+    {
+      "id": "cloudflare-workers-static-assets",
+      "category": "deployment",
+      "requirement": "Cloudflare Workers deploys the allowlisted dist artifact directly, with the checked-in WebMCP header policy and no committed account credential.",
+      "evidenceClass": "repository",
+      "assertions": [
+        { "type": "fileExists", "path": "wrangler.jsonc" },
+        { "type": "jsonValue", "path": "wrangler.jsonc", "pointer": "/name", "equals": "semantic-spatial-webmcp" },
+        { "type": "jsonValue", "path": "wrangler.jsonc", "pointer": "/assets/directory", "equals": "./dist" },
+        { "type": "jsonValue", "path": "wrangler.jsonc", "pointer": "/assets/run_worker_first", "equals": false },
+        { "type": "fileNotContains", "path": "wrangler.jsonc", "contains": "account_id" },
+        { "type": "fileContains", "path": "package.json", "contains": "wrangler deploy --dry-run" },
+        { "type": "fileContains", "path": "deployment/README.md", "contains": "Workers Static Assets" }
       ]
     },
     {

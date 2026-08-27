@@ -22,14 +22,17 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
+      - name: Install deployment tooling
+        run: npm ci
       - name: Verify baseline tag
         run: git rev-parse --verify 'starter-v0.1.0^{commit}'
       - name: Check JavaScript syntax
         run: npm run check
       - name: Run deterministic tests
         run: npm test
-      - name: Build production artifact
-        run: npm run build
+      - name: Validate Cloudflare Workers deployment
+        run: npm run deploy:dry-run
       - name: Check repository submission gates
         run: npm run check:submission
       - name: Confirm verification did not rewrite tracked evidence
