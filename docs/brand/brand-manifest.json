@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "brand": "SceneIndex",
+  "descriptor": "Semantic spatial browser",
+  "source": {
+    "kind": "user-approved raster brand board",
+    "originalSha256": "55428df8bf336383cda5e149aa0ea7bad49f94dd74ea1a522a2176aa8a293dba",
+    "normalizedPath": "docs/brand/source-board.png",
+    "normalizedSha256": "a7761272e786f4858c8a810231ad14ef8cf48ad995aca80891544d08febd03b1"
+  },
+  "palette": {
+    "charcoal": "#111418",
+    "deepTeal": "#0D4D57",
+    "lightGray": "#F2F4F6",
+    "stone": "#8A8F98",
+    "offWhite": "#FAFBFC"
+  },
+  "assets": [
+    {
+      "path": "assets/brand/mark.svg",
+      "sha256": "08fa8ee3982126a147e9b41621efaafc6885e9ca7d7fd64e399cb991820f57e3"
+    },
+    {
+      "path": "assets/brand/mark-inverse.svg",
+      "sha256": "2ef7ccdbfd16c7940dbae938f1c26ac6fa5bf2d3c363fc1b49a52c54cd80784e"
+    },
+    {
+      "path": "assets/brand/logo.svg",
+      "sha256": "08fc751fbd47959c1c3c52b7f1de61c9d53b4c79a362dead6d2d0d328b807081"
+    },
+    {
+      "path": "assets/brand/logo-inverse.svg",
+      "sha256": "320f2efef9362cf50d1a362b4e4a94ca1f17bd2f5a56833889dc61630c4d7c9e"
+    },
+    {
+      "path": "assets/brand/app-icon.svg",
+      "sha256": "544e4150cf98abc98d05fa6012dda272d6530e7f87c784ee3c0b61d4a33ac7d1"
+    }
+  ],
+  "vectorQa": {
+    "selectedIteration": "02_refined",
+    "fitIou": 0.8485,
+    "pathSegments": 23,
+    "cubicSegments": 10,
+    "segmentBudget": 24,
+    "shortSegmentWarnings": 0,
+    "progressStrip": "docs/brand/outputs/fit-progress-strip.png"
+  },
+  "motionQa": {
+    "html": "docs/brand/logo_motion.html",
+    "durationMs": 900,
+    "personality": "trustworthy-professional",
+    "stallPopTimesMs": [],
+    "finalFrameAbsoluteErrorPixels": 0,
+    "result": "passed"
+  },
+  "contrast": [
+    {
+      "foreground": "#FAFBFC",
+      "background": "#111418",
+      "ratio": 17.83
+    },
+    {
+      "foreground": "#F2F4F6",
+      "background": "#111418",
+      "ratio": 16.75
+    },
+    {
+      "foreground": "#8A8F98",
+      "background": "#111418",
+      "ratio": 5.68
+    },
+    {
+      "foreground": "#FAFBFC",
+      "background": "#0D4D57",
+      "ratio": 9.15
+    }
+  ]
+}

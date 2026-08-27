@@ -1,0 +1,8 @@
+{
+  "svg": "assets/brand/mark.svg",
+  "source": "/tmp/sceneindex-brand.oWiwDK/icon-source.png",
+  "overlay": "docs/brand/outputs/fit_iterations/01_analytic-overlay.png",
+  "iou": 0.7678,
+  "src_only_px": 2048,
+  "render_only_px": 1314
+}

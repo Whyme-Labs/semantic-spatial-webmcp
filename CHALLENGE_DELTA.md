@@ -58,6 +58,7 @@ The following capabilities already existed at `starter-v0.1.0`. They remain part
 - Prompt fixture evaluation suite with explicit model-evidence boundaries
 - Repeatable Chrome WebMCP discovery and execution verifier
 - Allowlisted production builder, security headers, readiness registry, and submission package
+- SceneIndex identity system, production SVG assets, vector-fit evidence, and motion study
 
 The standalone starter had no pre-existing browser renderer to attach to. The challenge work therefore adds the smallest Spark/Three bridge needed to make the semantic runtime visible and testable; it does not claim a new rendering algorithm or replace Spark.
 

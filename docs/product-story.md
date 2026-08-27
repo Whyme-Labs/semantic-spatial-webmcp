@@ -1,4 +1,4 @@
-# Product story: semantic spatial browser
+# Product story: SceneIndex
 
 ## The observation
 

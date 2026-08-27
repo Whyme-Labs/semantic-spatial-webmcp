@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 360" role="img" aria-labelledby="title desc">
+  <title id="title">SceneIndex mark, inverse</title>
+  <desc id="desc">The light SceneIndex spatial-path mark for dark backgrounds.</desc>
+  <defs>
+    <mask id="node-cutout" maskUnits="userSpaceOnUse" x="0" y="0" width="360" height="360">
+      <rect width="360" height="360" fill="white"/>
+      <circle cx="164" cy="310" r="9" fill="black"/>
+    </mask>
+  </defs>
+  <g id="mark" fill="none" stroke="#FAFBFC" stroke-linecap="round" stroke-linejoin="round" mask="url(#node-cutout)">
+    <path id="mark-path" pathLength="1" stroke-width="9" d="M164 310H70Q62 310 62 302V281Q62 271 72 271H127C144 271 153 262 153 243V175Q153 151 130 151H72Q62 151 62 143V66Q62 51 75 52L281 114Q288 116 288 126V256Q288 267 278 267H254Q244 267 244 257V192H212V287Q212 310 194 310H164"/>
+    <circle id="node" cx="164" cy="310" r="16.5" fill="#FAFBFC" stroke="none"/>
+  </g>
+</svg>

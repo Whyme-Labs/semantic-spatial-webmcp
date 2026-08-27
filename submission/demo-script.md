@@ -6,7 +6,7 @@ Target duration: 175 seconds. Hard limit: 179 seconds. Record the public product
 
 | Time | Picture | Narration |
 |---:|---|---|
-| 0:00–0:12 | Open the public app on the full station view. Show `WebMCP active: 10 tools registered`. | "A Gaussian-splat capture can show a place beautifully and still tell an agent almost nothing about what the place means. This is Semantic Spatial Browser." |
+| 0:00–0:12 | Open the public app on the full station view. Show `WebMCP active: 10 tools registered`. | "A Gaussian-splat capture can show a place beautifully and still tell an agent almost nothing about what the place means. This is SceneIndex." |
 | 0:12–0:27 | Orbit the scene. Point to entity labels and the WebMCP status. | "The page combines Gaussian appearance with persistent rooms, objects, relationships, routes, operational state, and capture evidence. The person and the agent work on the same live scene." |
 | 0:27–0:38 | Hold on the combined agent prompt already visible in the 30-second-proof card. | "I will ask for an accessible route from Entrance A to Platform 2 and ask whether the evidence is trustworthy." |
 | 0:38–1:00 | Let the paced Chrome replay call context, navigation, and route tools. Keep the 3D route and details visible; the timeline is shown at the end. | "The agent reads the current page, finds the accessible gate, moves the shared camera, and draws a route through Lift 1. The result is visible and inspectable. It is not a route hidden in a backend response." |

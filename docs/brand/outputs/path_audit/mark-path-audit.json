@@ -1,0 +1,28 @@
+{
+  "segment_count": 23,
+  "cubic_segments": 10,
+  "line_segments": 13,
+  "closed": false,
+  "budget": 24,
+  "over_budget": false,
+  "median_segment_length": 33.368,
+  "short_segment_warnings": [],
+  "join_angle_threshold_degrees": 8.0,
+  "join_angle_warnings": [
+    {
+      "join_after_segment": 12,
+      "angle_degrees": 12.352
+    },
+    {
+      "join_after_segment": 19,
+      "angle_degrees": 90.0
+    },
+    {
+      "join_after_segment": 20,
+      "angle_degrees": 90.0
+    }
+  ],
+  "input_svg": "assets/brand/mark.svg",
+  "selected_path_index": 0,
+  "path_count": 1
+}

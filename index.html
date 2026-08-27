@@ -3,9 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Semantic spatial WebMCP demonstration for 3DGS scenes.">
-  <title>Semantic spatial browser</title>
-  <link rel="icon" href="data:,">
+  <meta name="description" content="SceneIndex is a semantic spatial browser where people and agents inspect, route through, and test 3D Gaussian-splat scenes together.">
+  <meta name="theme-color" content="#111418">
+  <title>SceneIndex | Semantic spatial browser</title>
+  <link rel="icon" href="assets/brand/app-icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
   <script type="importmap">
     {
@@ -19,10 +20,16 @@
 </head>
 <body>
   <header class="topbar">
-    <div>
-      <p class="eyebrow">WebMCP challenge vertical slice</p>
-      <h1>Semantic spatial browser</h1>
-      <p>Search a place. Understand it. Test what happens when it changes.</p>
+    <div class="brand-intro">
+      <div class="brand-lockup">
+        <img class="brand-mark" src="assets/brand/mark-inverse.svg" alt="">
+        <div>
+          <p class="eyebrow">WebMCP challenge vertical slice</p>
+          <h1>SceneIndex</h1>
+          <p class="brand-descriptor">Semantic spatial browser</p>
+        </div>
+      </div>
+      <p class="tagline">Search a place. Understand it. Test what happens when it changes.</p>
     </div>
     <output id="webmcp-status" class="status">Starting semantic runtime…</output>
   </header>

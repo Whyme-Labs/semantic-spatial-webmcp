@@ -1,8 +1,8 @@
-# Semantic Spatial Browser
+# SceneIndex
 
 ## Short description
 
-Semantic Spatial Browser turns a Gaussian-splat scene into a place that people and agents can search, inspect, route through, test, and verify together.
+SceneIndex turns a Gaussian-splat scene into a place that people and agents can search, inspect, route through, test, and verify together.
 
 ## Tagline
 
@@ -12,7 +12,7 @@ Search a place. Understand it. Test what happens when it changes.
 
 A photorealistic 3D capture shows what a place looks like, but it does not tell an agent where the accessible gate is, which lift connects to the platform, whether an obstacle blocks a route, or whether the available visual evidence is good enough to trust.
 
-Semantic Spatial Browser adds that missing layer. The demo models a two-level transit station with persistent entities, regions, relationships, route constraints, capture-quality records, and reversible scenario state. A person can inspect the Gaussian-splat scene while an agent uses page-provided WebMCP tools to search it, move the live camera, calculate an accessible route, close a lift, find the alternate route, identify weak capture evidence, recommend a recapture position, and undo the change.
+SceneIndex adds that missing layer. The demo models a two-level transit station with persistent entities, regions, relationships, route constraints, capture-quality records, and reversible scenario state. A person can inspect the Gaussian-splat scene while an agent uses page-provided WebMCP tools to search it, move the live camera, calculate an accessible route, close a lift, find the alternate route, identify weak capture evidence, recommend a recapture position, and undo the change.
 
 The checked-in station is a deterministic synthetic Gaussian-splat fixture. It demonstrates the complete product and WebMCP behavior without claiming that generated data is a captured site. The renderer also accepts licensed, spatially registered splat files.
 

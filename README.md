@@ -1,10 +1,12 @@
-# Semantic spatial WebMCP starter
+# SceneIndex
 
-This repository is a working vertical slice of a semantic spatial browser for 3D Gaussian Splatting scenes.
+SceneIndex is a semantic spatial browser for 3D Gaussian Splatting scenes. This repository contains the working WebMCP challenge vertical slice.
 
 Public source: [Whyme-Labs/semantic-spatial-webmcp](https://github.com/Whyme-Labs/semantic-spatial-webmcp)
 
 Live application: [semantic-spatial-webmcp.swmengappdev.workers.dev](https://semantic-spatial-webmcp.swmengappdev.workers.dev/)
+
+Brand assets, palette rules, vector-fit evidence, and the motion study live in [`docs/brand/brand-guidelines.md`](docs/brand/brand-guidelines.md). The public repository and Worker keep the original technical slug so existing judge links remain stable.
 
 The browser now renders an interactive Gaussian-splat station fixture through [Spark 2.1.0](https://github.com/sparkjsdev/spark) and Three.js 0.180.0. Semantic IDs are bound to lightweight spatial proxies in that scene. The same camera, selection, routes, capture-quality overlays, and reversible state changes are available to the human interface and the WebMCP tools.
 

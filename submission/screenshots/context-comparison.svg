@@ -1,64 +1,64 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" role="img" aria-labelledby="title desc">
-  <title id="title">Screenshot-only vision versus semantic spatial context</title>
+  <title id="title">Screenshot-only vision versus SceneIndex spatial context</title>
   <desc id="desc">A side-by-side comparison showing why an accessible route decision needs WebMCP spatial tools instead of one screenshot.</desc>
-  <rect width="1440" height="900" fill="#07100e"/>
-  <circle cx="90" cy="60" r="240" fill="#123026" opacity="0.65"/>
-  <text x="70" y="70" fill="#8fffcf" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="15" font-weight="800" letter-spacing="2.4">WHY A SPATIAL INTERFACE</text>
-  <text x="70" y="125" fill="#edf7f3" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="42" font-weight="780">A screenshot shows pixels.</text>
-  <text x="70" y="172" fill="#edf7f3" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="42" font-weight="780">WebMCP exposes the decision.</text>
-  <text x="70" y="211" fill="#9db1aa" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="19">Same request: Lift 1 is closed. Find a trustworthy accessible route to Platform 2.</text>
+  <rect width="1440" height="900" fill="#111418"/>
+  <circle cx="90" cy="60" r="240" fill="#0D4D57" opacity="0.72"/>
+  <text x="70" y="70" fill="#F2F4F6" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="15" font-weight="800" letter-spacing="2.4">SCENEINDEX / WHY A SPATIAL INTERFACE</text>
+  <text x="70" y="125" fill="#FAFBFC" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="42" font-weight="780">A screenshot shows pixels.</text>
+  <text x="70" y="172" fill="#FAFBFC" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="42" font-weight="780">WebMCP exposes the decision.</text>
+  <text x="70" y="211" fill="#8A8F98" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="19">Same request: Lift 1 is closed. Find a trustworthy accessible route to Platform 2.</text>
 
-  <rect x="70" y="258" width="610" height="460" rx="24" fill="#101c19" stroke="#29403a" stroke-width="2"/>
+  <rect x="70" y="258" width="610" height="460" rx="24" fill="#171C21" stroke="#343A42" stroke-width="2"/>
   <text x="102" y="305" fill="#ffb5aa" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14" font-weight="800" letter-spacing="2">SCREENSHOT ONLY</text>
-  <text x="102" y="343" fill="#edf7f3" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="25" font-weight="750">One camera frame, no persistent state</text>
-  <rect x="102" y="372" width="546" height="190" rx="16" fill="#091411" stroke="#29403a"/>
-  <path d="M126 522 L208 428 L286 503 L370 402 L468 482 L622 398 L622 538 L126 538 Z" fill="#172622" stroke="#36544c" stroke-width="2"/>
-  <circle cx="214" cy="474" r="22" fill="#8fffcf" opacity="0.22"/>
-  <circle cx="414" cy="456" r="18" fill="#8fffcf" opacity="0.18"/>
-  <rect x="183" y="448" width="66" height="52" rx="7" fill="none" stroke="#8fffcf" opacity="0.42"/>
-  <rect x="389" y="432" width="58" height="48" rx="7" fill="none" stroke="#8fffcf" opacity="0.35"/>
-  <text x="122" y="594" fill="#9db1aa" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="17">Visible now</text>
-  <text x="300" y="594" fill="#edf7f3" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="17">Shapes, signs, one viewpoint</text>
-  <text x="122" y="626" fill="#9db1aa" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="17">Missing</text>
-  <text x="300" y="626" fill="#edf7f3" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="17">Hidden connectivity, lift state, evidence history</text>
+  <text x="102" y="343" fill="#FAFBFC" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="25" font-weight="750">One camera frame, no persistent state</text>
+  <rect x="102" y="372" width="546" height="190" rx="16" fill="#111418" stroke="#343A42"/>
+  <path d="M126 522 L208 428 L286 503 L370 402 L468 482 L622 398 L622 538 L126 538 Z" fill="#1C2B30" stroke="#51656B" stroke-width="2"/>
+  <circle cx="214" cy="474" r="22" fill="#F2F4F6" opacity="0.22"/>
+  <circle cx="414" cy="456" r="18" fill="#F2F4F6" opacity="0.18"/>
+  <rect x="183" y="448" width="66" height="52" rx="7" fill="none" stroke="#F2F4F6" opacity="0.42"/>
+  <rect x="389" y="432" width="58" height="48" rx="7" fill="none" stroke="#F2F4F6" opacity="0.35"/>
+  <text x="122" y="594" fill="#8A8F98" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="17">Visible now</text>
+  <text x="300" y="594" fill="#FAFBFC" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="17">Shapes, signs, one viewpoint</text>
+  <text x="122" y="626" fill="#8A8F98" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="17">Missing</text>
+  <text x="300" y="626" fill="#FAFBFC" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="17">Hidden connectivity, lift state, evidence history</text>
   <rect x="102" y="651" width="546" height="42" rx="10" fill="#2b1b19" stroke="#6f3731"/>
   <text x="122" y="678" fill="#ffb5aa" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="16" font-weight="700">Result: cannot answer safely without guessing.</text>
 
-  <rect x="760" y="258" width="610" height="460" rx="24" fill="#10231e" stroke="#3c7e68" stroke-width="2"/>
-  <text x="792" y="305" fill="#8fffcf" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14" font-weight="800" letter-spacing="2">WEBMCP + SPATIAL CONTEXT</text>
-  <text x="792" y="343" fill="#edf7f3" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="25" font-weight="750">Typed tools over the live scene</text>
-  <rect x="792" y="372" width="546" height="74" rx="14" fill="#091411" stroke="#29403a"/>
-  <rect x="812" y="391" width="153" height="34" rx="17" fill="#172622" stroke="#38c894"/>
-  <text x="832" y="413" fill="#bfffe3" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13">set_entity_state</text>
-  <rect x="978" y="391" width="175" height="34" rx="17" fill="#172622" stroke="#38c894"/>
-  <text x="998" y="413" fill="#bfffe3" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13">find_semantic_route</text>
-  <rect x="1166" y="391" width="152" height="34" rx="17" fill="#172622" stroke="#38c894"/>
-  <text x="1185" y="413" fill="#bfffe3" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13">get_region_quality</text>
-  <path d="M816 487 H894 L923 474 L956 501 L1005 468 L1051 490 L1108 450 L1170 478 L1237 438 L1310 438" fill="none" stroke="#edf7f3" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="816" cy="487" r="9" fill="#8fffcf"/><circle cx="1108" cy="450" r="9" fill="#ffd18b"/><circle cx="1310" cy="438" r="9" fill="#8fffcf"/>
-  <text x="792" y="548" fill="#9db1aa" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="17">Route</text>
-  <text x="955" y="548" fill="#edf7f3" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="17">Entrance A → Lift 2 → Platform 2</text>
-  <text x="792" y="582" fill="#9db1aa" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="17">Evidence</text>
+  <rect x="760" y="258" width="610" height="460" rx="24" fill="#143137" stroke="#0D4D57" stroke-width="2"/>
+  <text x="792" y="305" fill="#F2F4F6" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14" font-weight="800" letter-spacing="2">WEBMCP + SPATIAL CONTEXT</text>
+  <text x="792" y="343" fill="#FAFBFC" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="25" font-weight="750">Typed tools over the live scene</text>
+  <rect x="792" y="372" width="546" height="74" rx="14" fill="#111418" stroke="#343A42"/>
+  <rect x="812" y="391" width="153" height="34" rx="17" fill="#1C2B30" stroke="#F2F4F6"/>
+  <text x="832" y="413" fill="#FAFBFC" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13">set_entity_state</text>
+  <rect x="978" y="391" width="175" height="34" rx="17" fill="#1C2B30" stroke="#F2F4F6"/>
+  <text x="998" y="413" fill="#FAFBFC" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13">find_semantic_route</text>
+  <rect x="1166" y="391" width="152" height="34" rx="17" fill="#1C2B30" stroke="#F2F4F6"/>
+  <text x="1185" y="413" fill="#FAFBFC" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13">get_region_quality</text>
+  <path d="M816 487 H894 L923 474 L956 501 L1005 468 L1051 490 L1108 450 L1170 478 L1237 438 L1310 438" fill="none" stroke="#FAFBFC" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="816" cy="487" r="9" fill="#FAFBFC"/><circle cx="1108" cy="450" r="9" fill="#ffd18b"/><circle cx="1310" cy="438" r="9" fill="#FAFBFC"/>
+  <text x="792" y="548" fill="#8A8F98" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="17">Route</text>
+  <text x="955" y="548" fill="#FAFBFC" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="17">Entrance A → Lift 2 → Platform 2</text>
+  <text x="792" y="582" fill="#8A8F98" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="17">Evidence</text>
   <text x="955" y="582" fill="#ffd18b" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="17">West corridor · 56% readiness</text>
-  <text x="792" y="616" fill="#9db1aa" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="17">Recovery</text>
-  <text x="955" y="616" fill="#edf7f3" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="17">2 recapture views · reversible undo</text>
-  <rect x="792" y="651" width="546" height="42" rx="10" fill="#12372d" stroke="#38c894"/>
-  <text x="812" y="678" fill="#8fffcf" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="16" font-weight="700">Result: route found, uncertainty exposed, change reversible.</text>
+  <text x="792" y="616" fill="#8A8F98" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="17">Recovery</text>
+  <text x="955" y="616" fill="#FAFBFC" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="17">2 recapture views · reversible undo</text>
+  <rect x="792" y="651" width="546" height="42" rx="10" fill="#0D4D57" stroke="#F2F4F6"/>
+  <text x="812" y="678" fill="#FAFBFC" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="16" font-weight="700">Result: route found, uncertainty exposed, change reversible.</text>
 
-  <rect x="70" y="752" width="1300" height="93" rx="20" fill="#101c19" stroke="#29403a"/>
-  <text x="101" y="789" fill="#9db1aa" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14" font-weight="700">PERSISTENT IDENTITY</text>
-  <text x="101" y="818" fill="#edf7f3" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="18">Stable entities</text>
-  <line x1="330" y1="774" x2="330" y2="827" stroke="#29403a"/>
-  <text x="361" y="789" fill="#9db1aa" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14" font-weight="700">HIDDEN CONTEXT</text>
-  <text x="361" y="818" fill="#edf7f3" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="18">Connected rooms</text>
-  <line x1="590" y1="774" x2="590" y2="827" stroke="#29403a"/>
-  <text x="621" y="789" fill="#9db1aa" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14" font-weight="700">LIVE STATE</text>
-  <text x="621" y="818" fill="#edf7f3" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="18">Outages + barriers</text>
-  <line x1="850" y1="774" x2="850" y2="827" stroke="#29403a"/>
-  <text x="881" y="789" fill="#9db1aa" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14" font-weight="700">TRUST</text>
-  <text x="881" y="818" fill="#edf7f3" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="18">Evidence confidence</text>
-  <line x1="1110" y1="774" x2="1110" y2="827" stroke="#29403a"/>
-  <text x="1141" y="789" fill="#9db1aa" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14" font-weight="700">CONTROL</text>
-  <text x="1141" y="818" fill="#edf7f3" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="18">Visible + undoable</text>
-  <text x="70" y="879" fill="#658178" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14">Semantic Spatial Browser · deterministic challenge fixture · no captured station asset</text>
+  <rect x="70" y="752" width="1300" height="93" rx="20" fill="#171C21" stroke="#343A42"/>
+  <text x="101" y="789" fill="#8A8F98" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14" font-weight="700">PERSISTENT IDENTITY</text>
+  <text x="101" y="818" fill="#FAFBFC" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="18">Stable entities</text>
+  <line x1="330" y1="774" x2="330" y2="827" stroke="#343A42"/>
+  <text x="361" y="789" fill="#8A8F98" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14" font-weight="700">HIDDEN CONTEXT</text>
+  <text x="361" y="818" fill="#FAFBFC" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="18">Connected rooms</text>
+  <line x1="590" y1="774" x2="590" y2="827" stroke="#343A42"/>
+  <text x="621" y="789" fill="#8A8F98" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14" font-weight="700">LIVE STATE</text>
+  <text x="621" y="818" fill="#FAFBFC" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="18">Outages + barriers</text>
+  <line x1="850" y1="774" x2="850" y2="827" stroke="#343A42"/>
+  <text x="881" y="789" fill="#8A8F98" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14" font-weight="700">TRUST</text>
+  <text x="881" y="818" fill="#FAFBFC" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="18">Evidence confidence</text>
+  <line x1="1110" y1="774" x2="1110" y2="827" stroke="#343A42"/>
+  <text x="1141" y="789" fill="#8A8F98" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14" font-weight="700">CONTROL</text>
+  <text x="1141" y="818" fill="#FAFBFC" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="18">Visible + undoable</text>
+  <text x="70" y="879" fill="#8A8F98" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14">SceneIndex · deterministic challenge fixture · no captured station asset</text>
 </svg>

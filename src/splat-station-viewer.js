@@ -113,7 +113,7 @@ export class SplatStationViewer {
     if (!globalThis.WebGL2RenderingContext) throw new Error("This browser does not expose WebGL 2.");
 
     this.scene = new THREE.Scene();
-    this.scene.background = new THREE.Color(0x07100e);
+    this.scene.background = new THREE.Color(0x111418);
     this.camera = new THREE.PerspectiveCamera(48, 1, 0.05, 200);
     this.camera.position.set(-9.5, 7.2, 10.5);
 

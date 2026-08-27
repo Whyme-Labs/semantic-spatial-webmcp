@@ -22,10 +22,10 @@ Spark's public `butterfly.spz` sample was used only for a local loader check. Th
 ## Fonts, icons, marks, and media
 
 - The interface uses the operating system's font stack. No font files are bundled.
-- The interface uses CSS shapes and text. No icon set is bundled.
-- No music, stock footage, photographs, logos, or third-party trademarks are included.
+- The SceneIndex mark and source brand board were supplied and approved by the entrant. The production SVGs, fit evidence, palette rules, and motion study are recorded under `assets/brand/` and `docs/brand/`.
+- No icon set, music, stock footage, photographs, or third-party trademarks are included.
 - Local Playwright screenshots under `output/playwright/` are ignored. They are engineering receipts, not submission media.
-- `submission/screenshots/chrome-webmcp-flow.png` is an automated capture of this project's synthetic interface. `context-comparison.svg` and its PNG export are project-authored diagrams. None contains a captured station asset or third-party media.
+- `submission/screenshots/chrome-webmcp-flow.png` is an automated capture of this project's synthetic interface. `context-comparison.svg` and its PNG export are project-authored SceneIndex diagrams. None contains a captured station asset or third-party media.
 - Final screenshots and video must show only the project interface, the approved browser controls, and materials owned or licensed by the entrant.
 
 ## Narration production

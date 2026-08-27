@@ -1,0 +1,145 @@
+{
+  "html": "docs/brand/logo_motion.html",
+  "personality": "trustworthy-professional",
+  "durationMs": 900,
+  "computedStyleProbe": [
+    {
+      "t": 0,
+      "pathDashoffset": "1.1px",
+      "pathTiming": "cubic-bezier(0, 0, 0.2, 1)",
+      "wordmarkClip": "inset(0px 100% 0px 0px)",
+      "wordmarkOpacity": "0",
+      "nodeOpacity": "0",
+      "nodeTransform": "matrix(0.78, 0, 0, 0.78, 0, 0)"
+    },
+    {
+      "t": 120,
+      "pathDashoffset": "1.1px",
+      "pathTiming": "cubic-bezier(0, 0, 0.2, 1)",
+      "wordmarkClip": "inset(0px 100% 0px 0px)",
+      "wordmarkOpacity": "0",
+      "nodeOpacity": "0",
+      "nodeTransform": "matrix(0.78, 0, 0, 0.78, 0, 0)"
+    },
+    {
+      "t": 240,
+      "pathDashoffset": "0.573349px",
+      "pathTiming": "cubic-bezier(0, 0, 0.2, 1)",
+      "wordmarkClip": "inset(0px 100% 0px 0px)",
+      "wordmarkOpacity": "0",
+      "nodeOpacity": "0",
+      "nodeTransform": "matrix(0.78, 0, 0, 0.78, 0, 0)"
+    },
+    {
+      "t": 360,
+      "pathDashoffset": "0.296544px",
+      "pathTiming": "cubic-bezier(0, 0, 0.2, 1)",
+      "wordmarkClip": "inset(0px 100% 0px 0px)",
+      "wordmarkOpacity": "0",
+      "nodeOpacity": "0",
+      "nodeTransform": "matrix(0.78, 0, 0, 0.78, 0, 0)"
+    },
+    {
+      "t": 500,
+      "pathDashoffset": "0.111399px",
+      "pathTiming": "cubic-bezier(0, 0, 0.2, 1)",
+      "wordmarkClip": "inset(0px 100% 0px 0px)",
+      "wordmarkOpacity": "0",
+      "nodeOpacity": "0",
+      "nodeTransform": "matrix(0.78, 0, 0, 0.78, 0, 0)"
+    },
+    {
+      "t": 620,
+      "pathDashoffset": "0.0297533px",
+      "pathTiming": "cubic-bezier(0, 0, 0.2, 1)",
+      "wordmarkClip": "inset(0px 33.5563% 0px 0px)",
+      "wordmarkOpacity": "0.664437",
+      "nodeOpacity": "0",
+      "nodeTransform": "matrix(0.78, 0, 0, 0.78, 0, 0)"
+    },
+    {
+      "t": 760,
+      "pathDashoffset": "0px",
+      "pathTiming": "cubic-bezier(0, 0, 0.2, 1)",
+      "wordmarkClip": "inset(0px 5.87182% 0px 0px)",
+      "wordmarkOpacity": "0.941282",
+      "nodeOpacity": "0.646246",
+      "nodeTransform": "matrix(0.922174, 0, 0, 0.922174, 0, 0)"
+    },
+    {
+      "t": 900,
+      "pathDashoffset": "0px",
+      "pathTiming": "ease",
+      "wordmarkClip": "inset(0px)",
+      "wordmarkOpacity": "1",
+      "nodeOpacity": "1",
+      "nodeTransform": "none"
+    }
+  ],
+  "inkSweep": {
+    "timesMs": [
+      120,
+      160,
+      200,
+      240,
+      280,
+      320,
+      360,
+      400,
+      440,
+      480,
+      520,
+      560,
+      600,
+      640,
+      680,
+      720,
+      760
+    ],
+    "inkPixels": [
+      0,
+      493,
+      1145,
+      1716,
+      2144,
+      2503,
+      2845,
+      3114,
+      3320,
+      3485,
+      3649,
+      3785,
+      9201,
+      10488,
+      11741,
+      12525,
+      13285
+    ],
+    "deltas": [
+      493,
+      652,
+      571,
+      428,
+      359,
+      342,
+      269,
+      206,
+      165,
+      164,
+      136,
+      5416,
+      1287,
+      1253,
+      784,
+      760
+    ],
+    "medianPositiveDelta": 493,
+    "stallPopTimesMs": []
+  },
+  "finalFrameContract": {
+    "animatedFrame": "docs/brand/outputs/motion_frames/frame_000900ms.png",
+    "staticFrame": "docs/brand/outputs/motion_frames/static.png",
+    "absoluteErrorPixels": 0,
+    "result": "passed"
+  }
+}

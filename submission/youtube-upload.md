@@ -8,13 +8,13 @@ Upload these two local files:
 ## Title
 
 ```text
-Semantic Spatial Browser | WebMCP Challenge
+SceneIndex | Semantic Spatial Browser | WebMCP Challenge
 ```
 
 ## Description
 
 ```text
-Semantic Spatial Browser turns a Gaussian-splat scene into a place that people and agents can search, inspect, route through, test, and verify together.
+SceneIndex is a semantic spatial browser that turns a Gaussian-splat scene into a place people and agents can search, inspect, route through, test, and verify together.
 
 The demo follows one accessible-wayfinding task through the live page's WebMCP tools: establish a route through Lift 1, stage the lift as closed, reroute through Lift 2, inspect weak West corridor evidence, retrieve recapture guidance, and undo the outage.
 

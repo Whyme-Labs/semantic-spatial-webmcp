@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "A dependency-free semantic spatial browser and WebMCP control plane for 3DGS scenes.",
+  "description": "SceneIndex, a dependency-free semantic spatial browser and WebMCP control plane for 3DGS scenes.",
   "homepage": "https://semantic-spatial-webmcp.swmengappdev.workers.dev/",
   "repository": {
     "type": "git",

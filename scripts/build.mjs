@@ -8,7 +8,7 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const output = resolve(root, "dist");
 if (output !== join(root, "dist")) throw new Error("Refusing to build outside the repository dist directory.");
 
-const inputs = ["index.html", "styles.css", "src", "LICENSE"];
+const inputs = ["index.html", "styles.css", "assets", "src", "LICENSE"];
 rmSync(output, { recursive: true, force: true });
 mkdirSync(output, { recursive: true });
 

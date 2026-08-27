@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SceneIndex logo motion</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+      color: #111418;
+      background: #F2F4F6;
+      --p2m-duration: 900ms;
+      --p2m-ease-enter: cubic-bezier(0, 0, 0.2, 1);
+      --p2m-ease-settle: cubic-bezier(0.4, 0, 0.2, 1);
+      --p2m-squash: 0;
+      --p2m-overshoot: 1;
+    }
+
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; }
+    button, input { font: inherit; }
+
+    main {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 40px;
+    }
+
+    header { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; margin-bottom: 14px; }
+    h1 { margin: 0; font-size: 18px; font-weight: 650; letter-spacing: -.02em; }
+    header p { margin: 0; color: #8A8F98; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; }
+
+    .stage {
+      display: grid;
+      min-height: 430px;
+      place-items: center;
+      overflow: hidden;
+      border: 1px solid #d9dde2;
+      border-radius: 28px;
+      background: #FAFBFC;
+    }
+
+    #logo-root {
+      display: grid;
+      width: min(70%, 760px);
+      aspect-ratio: 820 / 220;
+      place-items: center;
+    }
+
+    #logo-root svg { display: block; width: 100%; height: auto; overflow: visible; }
+    #logo-root #mark-path { stroke-dasharray: none; stroke-dashoffset: 0; }
+    #logo-root #node { opacity: 1; transform-box: fill-box; transform-origin: center; }
+    #logo-root #wordmark { opacity: 1; clip-path: inset(0); }
+
+    #logo-root.is-playing #mark-path {
+      stroke-dasharray: 1 1.2;
+      stroke-dashoffset: 1.1;
+      animation: route-draw 640ms cubic-bezier(0, 0, 0.2, 1) 120ms both;
+    }
+
+    #logo-root.is-playing #wordmark {
+      animation: name-wipe 380ms cubic-bezier(0, 0, 0.2, 1) 500ms both;
+    }
+
+    #logo-root.is-playing #node {
+      animation: node-settle 240ms cubic-bezier(0.4, 0, 0.2, 1) 660ms both;
+    }
+
+    @keyframes route-draw {
+      from { stroke-dashoffset: 1.1; }
+      to { stroke-dashoffset: 0; }
+    }
+
+    @keyframes name-wipe {
+      from { opacity: 0; clip-path: inset(0 100% 0 0); transform: translateX(-3px); }
+      to { opacity: 1; clip-path: inset(0); transform: translateX(0); }
+    }
+
+    @keyframes node-settle {
+      from { opacity: 0; transform: scale(.78); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .principles { display: flex; flex-wrap: wrap; gap: 7px; margin: 14px 0; }
+    .principles span { padding: 6px 9px; border: 1px solid #d9dde2; border-radius: 999px; background: #FAFBFC; color: #59606a; font-size: 11px; }
+    .principles .primary { border-color: #0D4D57; color: #0D4D57; }
+
+    .controls { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
+    button { border: 1px solid #111418; border-radius: 10px; padding: 9px 13px; background: #111418; color: #FAFBFC; cursor: pointer; }
+    button.secondary { border-color: #c7ccd2; background: #FAFBFC; color: #111418; }
+    label { display: flex; align-items: center; gap: 9px; color: #59606a; font-size: 12px; }
+    input[type="range"] { accent-color: #0D4D57; }
+
+    .atoms { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .atom { display: grid; min-height: 180px; place-items: center; border: 1px solid #d9dde2; border-radius: 18px; background: #FAFBFC; }
+    .atom figure { display: grid; margin: 0; place-items: center; gap: 14px; }
+    .atom img { display: block; width: 74px; height: 74px; object-fit: contain; }
+    .atom figcaption { color: #8A8F98; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+    .atom.lift img { transition: transform 200ms cubic-bezier(0, 0, 0.2, 1); }
+    .atom.lift:hover img, .atom.lift:focus-within img { transform: translateY(-2px); }
+    .atom.pulse img { animation: waypoint-pulse 1800ms cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+    .atom.press:active img { transform: scale(.97); transition: transform 120ms cubic-bezier(0, 0, 0.2, 1); }
+
+    @keyframes waypoint-pulse {
+      0%, 100% { opacity: .76; }
+      50% { opacity: 1; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #logo-root.is-playing #mark-path,
+      #logo-root.is-playing #wordmark,
+      #logo-root.is-playing #node,
+      .atom.pulse img { animation: none; }
+      .atom img { transition: none !important; }
+    }
+
+    @media (max-width: 700px) {
+      .stage { min-height: 300px; }
+      #logo-root { width: 88%; }
+      .atoms { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>SceneIndex logo motion</h1>
+      <p>Precise · spatial · settled</p>
+    </header>
+
+    <section class="stage" aria-label="Primary SceneIndex logo animation">
+      <div id="logo-root">
+        <svg viewBox="0 0 820 220" role="img" aria-labelledby="logo-title logo-desc">
+          <title id="logo-title">SceneIndex</title>
+          <desc id="logo-desc">A continuous spatial route draws into the SceneIndex wordmark and ends at a waypoint.</desc>
+          <defs>
+            <mask id="node-cutout" maskUnits="userSpaceOnUse" x="0" y="0" width="360" height="360">
+              <rect width="360" height="360" fill="white"/>
+              <circle cx="164" cy="310" r="9" fill="black"/>
+            </mask>
+          </defs>
+          <g id="sceneindex-lockup">
+            <g id="mark" transform="translate(-20 -4) scale(.68)" fill="none" stroke="#111418" stroke-linecap="round" stroke-linejoin="round" mask="url(#node-cutout)">
+              <path id="mark-path" pathLength="1" stroke-width="9" d="M164 310H70Q62 310 62 302V281Q62 271 72 271H127C144 271 153 262 153 243V175Q153 151 130 151H72Q62 151 62 143V66Q62 51 75 52L281 114Q288 116 288 126V256Q288 267 278 267H254Q244 267 244 257V192H212V287Q212 310 194 310H164"/>
+              <circle id="node" cx="164" cy="310" r="16.5" fill="#111418" stroke="none"/>
+            </g>
+            <text id="wordmark" x="218" y="151" fill="#111418" font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="96" font-weight="400" letter-spacing="-4">SceneIndex</text>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <div class="principles" aria-label="Animation principles">
+      <span class="primary">Staging</span>
+      <span class="primary">Timing</span>
+      <span class="primary">Slow in / slow out</span>
+      <span>Overlapping action</span>
+      <span>Solid drawing</span>
+      <span>Appeal</span>
+    </div>
+
+    <div class="controls" aria-label="Playback controls">
+      <button id="replay" type="button">Replay</button>
+      <button id="slow" class="secondary" type="button" aria-pressed="false">Slow motion</button>
+      <label>Speed <input id="speed" type="range" min="0.25" max="1.5" value="0.6" step="0.05"><output id="speed-value">0.60×</output></label>
+    </div>
+
+    <section class="atoms" aria-label="Atomic SceneIndex motion studies">
+      <div class="atom lift" tabindex="0"><figure><img src="../../assets/brand/mark.svg" alt=""><figcaption>Hover lift</figcaption></figure></div>
+      <div class="atom pulse"><figure><img src="../../assets/brand/mark.svg" alt=""><figcaption>Waypoint pulse</figcaption></figure></div>
+      <div class="atom press"><figure><img src="../../assets/brand/app-icon.svg" alt=""><figcaption>App-icon press</figcaption></figure></div>
+    </section>
+  </main>
+
+  <script>
+    const root = document.querySelector("#logo-root");
+    const speed = document.querySelector("#speed");
+    const speedValue = document.querySelector("#speed-value");
+    let playbackRate = Number(speed.value);
+
+    function animations() {
+      return root.getAnimations({ subtree: true });
+    }
+
+    function applyRate() {
+      animations().forEach((animation) => { animation.playbackRate = playbackRate; });
+      speedValue.value = `${playbackRate.toFixed(2)}×`;
+    }
+
+    function setFinalLogo() {
+      root.classList.remove("is-playing");
+      root.querySelector("#mark-path").style.strokeDasharray = "none";
+      root.querySelector("#mark-path").style.strokeDashoffset = "0";
+      root.querySelector("#wordmark").style.cssText = "opacity:1;clip-path:inset(0);transform:none";
+      root.querySelector("#node").style.cssText = "opacity:1;transform:none";
+    }
+
+    function replay() {
+      setFinalLogo();
+      void root.offsetWidth;
+      root.querySelectorAll("[style]").forEach((element) => element.removeAttribute("style"));
+      root.classList.add("is-playing");
+      applyRate();
+    }
+
+    document.querySelector("#replay").addEventListener("click", replay);
+    document.querySelector("#slow").addEventListener("click", (event) => {
+      const active = event.currentTarget.getAttribute("aria-pressed") !== "true";
+      event.currentTarget.setAttribute("aria-pressed", String(active));
+      playbackRate = active ? 0.25 : Number(speed.value);
+      applyRate();
+    });
+    speed.addEventListener("input", () => {
+      playbackRate = Number(speed.value);
+      document.querySelector("#slow").setAttribute("aria-pressed", "false");
+      applyRate();
+    });
+
+    const params = new URLSearchParams(location.search);
+    if (params.get("static") === "1" || matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setFinalLogo();
+      window.__p2mReady = true;
+    } else {
+      replay();
+      const seek = params.get("t");
+      if (seek !== null) {
+        requestAnimationFrame(() => {
+          const time = Math.max(0, Number(seek));
+          if (time >= 900) {
+            setFinalLogo();
+            window.__p2mReady = true;
+            return;
+          }
+          animations().forEach((animation) => {
+            animation.playbackRate = 1;
+            animation.currentTime = time;
+            animation.pause();
+          });
+          window.__p2mReady = true;
+        });
+      } else {
+        window.__p2mReady = true;
+      }
+    }
+  </script>
+</body>
+</html>
