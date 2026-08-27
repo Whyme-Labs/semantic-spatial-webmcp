@@ -13,7 +13,7 @@ Before merging this package into the viewer repository:
 ```text
 Baseline tag: starter-v0.1.0
 Baseline SHA: 8949b3c2bb0a3bf85b33104279c57301185211c1
-Working branch: master in the standalone starter
+Working branch: main in the standalone starter
 Recorded: August 26, 2026
 ```
 
