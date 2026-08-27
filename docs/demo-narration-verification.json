@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-27T11:23:09.727249+00:00",
+  "generatedAt": "2026-08-27T15:17:16.790796+00:00",
   "authorization": "Owner-authorized voice reference; source audio is not stored in the repository",
   "reference": {
     "sourceFilename": "Tsinghua University Zijing Students' Apartment Building 23 2.m4a",
@@ -25,7 +25,7 @@
   },
   "script": {
     "path": "submission/narration-script.json",
-    "sha256": "102b835813b6dd94c97b2034aa89f3a31d1f6f887162059d60ebc47c43fac2cd",
+    "sha256": "893d1acee7e14f424546dc1b67afa6c77858bb044da719a5bdc3bfb734cd41ce",
     "targetDurationSeconds": 175.0
   },
   "segments": [
@@ -33,13 +33,13 @@
       "id": "01-introduction",
       "start": 0,
       "end": 12,
-      "text": "A Gaussian-splat capture can show a place beautifully and still tell an agent almost nothing about what the place means. This is Semantic Spatial Browser.",
+      "text": "A Gaussian-splat capture can show a place beautifully and still tell an agent almost nothing about what the place means. This is SceneIndex.",
       "rawDurationSeconds": 9.12,
       "targetDurationSeconds": 12.0,
       "speedup": 1.0,
       "fittedDurationSeconds": 12.0,
-      "rawSha256": "a75517d9dd81c60f07cb8dfc14d93120203b6c6d50f100d9b1fab90327512f55",
-      "fittedSha256": "c69396ce2b4f9413a3bac7d8e0350f011a59ef4f88c19ca33dc45d35ec96f3c0"
+      "rawSha256": "69fe6425fdfa1f0430dd0b7ed9a429b284997739ab22ae79d7bff15cb42906da",
+      "fittedSha256": "7f2e71c3e3bffdb827ef5609e6776ef52b3a43f73b98bff7768f771be5974e81"
     },
     {
       "id": "02-shared-scene",
@@ -165,11 +165,11 @@
   "output": {
     "path": "submission/video/narration/demo-narration.wav",
     "bytes": 25200102,
-    "sha256": "2d7cce3a9ae19a4f2fdcc2d84c4c207878a5f3340d2296823a66f54d2b9151f7",
+    "sha256": "07654560d0ed0216ce9bd3a78c41fb939f01f5303d147dd7d5417039b5b79486",
     "durationSeconds": 175.0,
     "sampleRateHz": 48000,
     "channels": 1,
-    "meanVolumeDb": -18.6,
+    "meanVolumeDb": -18.5,
     "maxVolumeDb": -1.5
   },
   "result": "passed"

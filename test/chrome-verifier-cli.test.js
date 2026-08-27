@@ -17,7 +17,7 @@ test("Chrome verifier parses a paced headed replay", () => {
     output: "receipt.json",
     screenshot: null,
     video: null,
-    videoFps: 10,
+    videoFps: 30,
     timelineFrame: null,
     outroFrame: null,
     headed: true,

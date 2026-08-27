@@ -1,5 +1,5 @@
 {
-  "verifiedAt": "2026-08-27T06:34:03.649Z",
+  "verifiedAt": "2026-08-27T15:16:04.306Z",
   "chrome": {
     "product": "Chrome/151.0.7922.174",
     "protocolVersion": "1.3",
@@ -9,15 +9,16 @@
   "artifact": {
     "kind": "allowlisted-dist",
     "manifestUrl": "https://semantic-spatial-webmcp.swmengappdev.workers.dev/build-manifest.json",
-    "manifestSha256": "363e735e33cb7a86b2b818055aba884badcdb6586e517f69e90e0715bfeb404b",
-    "builtAt": "2026-08-27T06:33:16.930Z",
-    "commit": "13143cb36672f45cbcfe534f269d7c2db47d76a2",
+    "manifestSha256": "95d2c6feec13e84b39bc33117f6e6c0ec66c2e8cd749d846f570ecb4a99c3504",
+    "builtAt": "2026-08-27T15:14:33.509Z",
+    "commit": "1aad8aaa842dcddfdbb8f7743f9bf8300dc4edc4",
     "dirty": false,
-    "fileCount": 15
+    "fileCount": 20
   },
   "timing": {
-    "navigationToWebMcpReadyMs": 3189,
-    "underFiveSeconds": true
+    "navigationToWebMcpReadyMs": 2670,
+    "underFiveSeconds": true,
+    "verificationLimitMs": 5000
   },
   "webmcp": {
     "status": "active",
@@ -203,6 +204,18 @@
   "screenshotState": {
     "description": "Verified flow after undo, followed by a fresh West corridor evidence overlay for the screenshot.",
     "recaptureMarkerCount": 6
+  },
+  "videoCapture": null,
+  "replay": {
+    "headed": false,
+    "startDelayMs": 0,
+    "stepDelayMs": 0,
+    "stepDelaysMs": null,
+    "outroUrl": null,
+    "outroDelayMs": 0,
+    "timelineFrame": null,
+    "outroFrame": null,
+    "holdMs": 0
   },
   "result": "passed"
 }

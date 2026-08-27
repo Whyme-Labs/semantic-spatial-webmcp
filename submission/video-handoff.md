@@ -12,12 +12,13 @@ npm run generate:demo-narration -- --reference-audio <owner-authorized-voice-sam
 npm run verify:demo-narration
 ```
 
-3. Capture the paced Chrome 151 WebMCP replay. It uses an isolated profile and ten storyboard-specific hold durations so each real WebMCP result remains visible for its narration section. CDP captures only the page viewport. It never captures private tabs, notifications, bookmarks, or account details.
+3. Capture the paced Chrome 151 WebMCP replay. It uses an isolated profile, a 30 fps output timeline, and ten storyboard-specific hold durations so each real WebMCP result remains visible for its narration section. CDP captures only the page viewport. It never captures private tabs, notifications, bookmarks, or account details.
 
 ```bash
 npm run verify:webmcp:chrome -- \
   --url https://semantic-spatial-webmcp.swmengappdev.workers.dev/ \
   --headed \
+  --video-fps 30 \
   --start-delay 20000 \
   --step-delays 3000,7000,5000,22000,14000,21000,36000,16000,8000,9000 \
   --outro-delay 3000 \

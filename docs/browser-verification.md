@@ -42,7 +42,7 @@ The same proof was repeated from a fresh tab against the public Cloudflare Worke
 
 ## Public Cloudflare Workers deployment
 
-The public app is https://semantic-spatial-webmcp.swmengappdev.workers.dev/. The deployment verifier accepted clean commit `13143cb36672f45cbcfe534f269d7c2db47d76a2`, checked all 14 publicly served files against the build-manifest byte counts and SHA-256 hashes, verified the required WebMCP and security headers, and confirmed that both `_headers` and an unknown path return 404. The machine-readable receipt is `docs/public-deployment-verification.json`.
+The public app is https://semantic-spatial-webmcp.swmengappdev.workers.dev/. The deployment verifier accepted clean SceneIndex commit `1aad8aaa842dcddfdbb8f7743f9bf8300dc4edc4`, checked all 19 publicly served files against the build-manifest byte counts and SHA-256 hashes, verified the required WebMCP and security headers, and confirmed that both `_headers` and an unknown path return 404. The machine-readable receipt is `docs/public-deployment-verification.json`.
 
 ## Real Chrome WebMCP check
 

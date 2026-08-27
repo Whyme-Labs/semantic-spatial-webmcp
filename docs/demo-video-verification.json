@@ -1,9 +1,9 @@
 {
-  "verifiedAt": "2026-08-27T14:28:02.519Z",
+  "verifiedAt": "2026-08-27T15:26:52.717Z",
   "artifact": {
     "path": "submission/video/semantic-spatial-webmcp-demo.mp4",
-    "bytes": 8743983,
-    "sha256": "ce0d234f869bf25fe8dff52b41dedab69826cd1ac7c5d2ad95d372c7bb12d7bc"
+    "bytes": 8655643,
+    "sha256": "1ae9361035f82b7d8983e5bef33254012419faa6af1157a35fb10f238bd790c8"
   },
   "durationSeconds": 175,
   "underThreeMinutes": true,
@@ -19,7 +19,7 @@
     "channels": 1,
     "channelLayout": "mono",
     "sampleRateHz": 48000,
-    "meanVolumeDb": -18.6,
+    "meanVolumeDb": -18.5,
     "maxVolumeDb": -1.4,
     "nonSilent": true
   },
@@ -28,29 +28,29 @@
   "sources": {
     "captureReceipt": {
       "path": "submission/video/chrome-replay-receipt.json",
-      "sha256": "af2201d1d5f76a68a8cd76c023a99414401b472626f80fb22145a0ecbc8896e8"
+      "sha256": "93b48b41d37f8a735a921b5d207f71d4b0390c5c40579c1700e778be3e6e3bdb"
     },
     "timelineFrame": {
       "path": "submission/video/chrome-replay-timeline.png",
-      "sha256": "c77bb3b1d7a58dc673597b99e8f604f51bafd469cdb7ba9fa24ad40dc52213a3"
+      "sha256": "d9a309658281195088920f669b6305df7ea615fcf16ad0fd64045d3dba302550"
     },
     "outroFrame": {
       "path": "submission/video/chrome-replay-outro.png",
-      "sha256": "39ddeea19a8f0a5f92e1434d7f0d0330b66644625e0e6453ae8975600ded83d2"
+      "sha256": "88dcc92f1f90362695def08b090c926b1af2c39d550a8fbc25821bc003aecb2c"
     },
     "narrationReceipt": {
       "path": "docs/demo-narration-verification.json",
-      "sha256": "6d504de157fbce09ef22b643fd81348cae28e3d7d4bf971c78de7c64cb2ed272"
+      "sha256": "410a1115e4c9b21bb679ead0e858f1c70561e9e22c437c12287316f07b2c86d7"
     },
     "alignmentReceipt": {
       "path": "docs/demo-narration-alignment.json",
-      "sha256": "66b43c1dd28d516b8390887425066502f62bbe54829ebce2faea879cd4c4676d"
+      "sha256": "04181afa16139fe80b0b7ad6dcd3a2b3456597d94c2e2db87df2eec205ab5162"
     }
   },
   "assembly": {
     "durationSeconds": 175,
-    "captureDurationSeconds": 335.8,
-    "timeScale": 0.521143537820131,
+    "captureDurationSeconds": 277.5,
+    "timeScale": 0.6306306306306306,
     "timelineFrameIntervalSeconds": [
       147,
       164
@@ -66,14 +66,14 @@
       "artifact": {
         "kind": "allowlisted-dist",
         "manifestUrl": "https://semantic-spatial-webmcp.swmengappdev.workers.dev/build-manifest.json",
-        "manifestSha256": "363e735e33cb7a86b2b818055aba884badcdb6586e517f69e90e0715bfeb404b",
-        "builtAt": "2026-08-27T06:33:16.930Z",
-        "commit": "13143cb36672f45cbcfe534f269d7c2db47d76a2",
+        "manifestSha256": "95d2c6feec13e84b39bc33117f6e6c0ec66c2e8cd749d846f570ecb4a99c3504",
+        "builtAt": "2026-08-27T15:14:33.509Z",
+        "commit": "1aad8aaa842dcddfdbb8f7743f9bf8300dc4edc4",
         "dirty": false,
-        "fileCount": 15
+        "fileCount": 20
       },
       "timing": {
-        "navigationToWebMcpReadyMs": 2820,
+        "navigationToWebMcpReadyMs": 2308,
         "underFiveSeconds": true,
         "verificationLimitMs": 30000
       },
@@ -184,9 +184,9 @@
       },
       "videoCapture": {
         "path": "submission/video/chrome-replay-silent.mp4",
-        "framesPerSecond": 10,
-        "framesWritten": 3358,
-        "durationSeconds": 335.8
+        "framesPerSecond": 30,
+        "framesWritten": 8325,
+        "durationSeconds": 277.5
       },
       "replay": {
         "headed": false,
@@ -206,6 +206,8 @@
         ],
         "outroUrl": "https://github.com/Whyme-Labs/semantic-spatial-webmcp",
         "outroDelayMs": 3000,
+        "timelineFrame": "submission/video/chrome-replay-timeline.png",
+        "outroFrame": "submission/video/chrome-replay-outro.png",
         "holdMs": 11000
       }
     },
@@ -233,17 +235,17 @@
       },
       "script": {
         "path": "submission/narration-script.json",
-        "sha256": "102b835813b6dd94c97b2034aa89f3a31d1f6f887162059d60ebc47c43fac2cd",
+        "sha256": "893d1acee7e14f424546dc1b67afa6c77858bb044da719a5bdc3bfb734cd41ce",
         "targetDurationSeconds": 175
       },
       "output": {
         "path": "submission/video/narration/demo-narration.wav",
         "bytes": 25200102,
-        "sha256": "2d7cce3a9ae19a4f2fdcc2d84c4c207878a5f3340d2296823a66f54d2b9151f7",
+        "sha256": "07654560d0ed0216ce9bd3a78c41fb939f01f5303d147dd7d5417039b5b79486",
         "durationSeconds": 175,
         "sampleRateHz": 48000,
         "channels": 1,
-        "meanVolumeDb": -18.6,
+        "meanVolumeDb": -18.5,
         "maxVolumeDb": -1.5
       },
       "alignmentMethod": "Torchaudio MMS_FA CTC forced alignment against the exact checked-in narration",
@@ -251,12 +253,12 @@
       "alignmentSegments": [
         {
           "id": "01-introduction",
-          "audioSha256": "c69396ce2b4f9413a3bac7d8e0350f011a59ef4f88c19ca33dc45d35ec96f3c0",
+          "audioSha256": "7f2e71c3e3bffdb827ef5609e6776ef52b3a43f73b98bff7768f771be5974e81",
           "durationSeconds": 12,
-          "wordCount": 26,
-          "alignedWordCount": 26,
-          "meanConfidence": 0.9429,
-          "minimumWordConfidence": 0.5584,
+          "wordCount": 24,
+          "alignedWordCount": 24,
+          "meanConfidence": 0.9273,
+          "minimumWordConfidence": 0.5018,
           "maximumWordConfidence": 0.9999
         },
         {

@@ -1,5 +1,5 @@
 {
-  "verifiedAt": "2026-08-27T06:34:01.420Z",
+  "verifiedAt": "2026-08-27T15:15:19.315Z",
   "url": "https://semantic-spatial-webmcp.swmengappdev.workers.dev/",
   "https": true,
   "anonymousAccess": true,
@@ -16,16 +16,21 @@
   },
   "manifest": {
     "url": "https://semantic-spatial-webmcp.swmengappdev.workers.dev/build-manifest.json",
-    "sha256": "363e735e33cb7a86b2b818055aba884badcdb6586e517f69e90e0715bfeb404b",
-    "builtAt": "2026-08-27T06:33:16.930Z",
-    "commit": "13143cb36672f45cbcfe534f269d7c2db47d76a2",
+    "sha256": "95d2c6feec13e84b39bc33117f6e6c0ec66c2e8cd749d846f570ecb4a99c3504",
+    "builtAt": "2026-08-27T15:14:33.509Z",
+    "commit": "1aad8aaa842dcddfdbb8f7743f9bf8300dc4edc4",
     "dirty": false,
-    "fileCount": 15
+    "fileCount": 20
   },
   "assets": {
-    "verifiedCount": 14,
+    "verifiedCount": 19,
     "verifiedFiles": [
       "LICENSE",
+      "assets/brand/app-icon.svg",
+      "assets/brand/logo-inverse.svg",
+      "assets/brand/logo.svg",
+      "assets/brand/mark-inverse.svg",
+      "assets/brand/mark.svg",
       "index.html",
       "src/app.js",
       "src/demo-scene.js",
