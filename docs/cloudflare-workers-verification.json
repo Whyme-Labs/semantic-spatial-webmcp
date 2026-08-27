@@ -1,0 +1,208 @@
+{
+  "verifiedAt": "2026-08-27T06:28:11.914Z",
+  "chrome": {
+    "product": "Chrome/151.0.7922.174",
+    "protocolVersion": "1.3",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36"
+  },
+  "url": "https://semantic-spatial-webmcp.swmengappdev.workers.dev/",
+  "artifact": {
+    "kind": "allowlisted-dist",
+    "manifestUrl": "https://semantic-spatial-webmcp.swmengappdev.workers.dev/build-manifest.json",
+    "manifestSha256": "6de333aecebfe2685a9deabda8099f8d5330decc66fd9e9235596f58594999eb",
+    "builtAt": "2026-08-27T06:27:00.652Z",
+    "commit": "90fa1ac68b0e08317ce572ec2ae52f19e4c4ebdc",
+    "dirty": true,
+    "fileCount": 15
+  },
+  "timing": {
+    "navigationToWebMcpReadyMs": 2940,
+    "underFiveSeconds": true
+  },
+  "webmcp": {
+    "status": "active",
+    "toolCount": 10,
+    "tools": [
+      {
+        "name": "find_semantic_route",
+        "annotations": {
+          "readOnlyHint": false,
+          "untrustedContentHint": false
+        }
+      },
+      {
+        "name": "get_entity",
+        "annotations": {
+          "readOnlyHint": true,
+          "untrustedContentHint": false
+        }
+      },
+      {
+        "name": "get_region_quality",
+        "annotations": {
+          "readOnlyHint": false,
+          "untrustedContentHint": false
+        }
+      },
+      {
+        "name": "get_scene_context",
+        "annotations": {
+          "readOnlyHint": true,
+          "untrustedContentHint": false
+        }
+      },
+      {
+        "name": "list_uncertain_entities",
+        "annotations": {
+          "readOnlyHint": false,
+          "untrustedContentHint": false
+        }
+      },
+      {
+        "name": "navigate_to_entity",
+        "annotations": {
+          "readOnlyHint": false,
+          "untrustedContentHint": false
+        }
+      },
+      {
+        "name": "reset_scene",
+        "annotations": {
+          "readOnlyHint": false,
+          "untrustedContentHint": false
+        }
+      },
+      {
+        "name": "search_entities",
+        "annotations": {
+          "readOnlyHint": false,
+          "untrustedContentHint": true
+        }
+      },
+      {
+        "name": "set_entity_state",
+        "annotations": {
+          "readOnlyHint": false,
+          "untrustedContentHint": false
+        }
+      },
+      {
+        "name": "undo_scene_change",
+        "annotations": {
+          "readOnlyHint": false,
+          "untrustedContentHint": false
+        }
+      }
+    ]
+  },
+  "flow": {
+    "baseline": {
+      "stagedChangeCount": 0
+    },
+    "navigation": {
+      "entityId": "accessible_gate_1",
+      "selectedViewId": "view_accessible_gate_1",
+      "cameraPose": {
+        "position": [
+          -3.708,
+          1.67,
+          2.76
+        ],
+        "target": [
+          -1.98,
+          0.82,
+          0.36
+        ]
+      },
+      "currentRegion": null,
+      "nearbyHiddenEntityIds": [
+        "ticket_machine_1"
+      ],
+      "connectedSpaceIds": [
+        "entrance_a_zone",
+        "east_corridor",
+        "west_corridor"
+      ]
+    },
+    "initialRoute": {
+      "from": "Entrance A",
+      "to": "Platform 2",
+      "lift": "lift_1",
+      "entityIds": [
+        "entrance_a",
+        "ticket_machine_1",
+        "help_point_1",
+        "accessible_gate_1",
+        "barrier_east",
+        "lift_1",
+        "bench_1",
+        "bench_2"
+      ],
+      "warningRegions": []
+    },
+    "closure": {
+      "entityId": "lift_1",
+      "operational": "closed",
+      "stagedChangeCount": 1
+    },
+    "alternateRoute": {
+      "lift": "lift_2",
+      "entityIds": [
+        "entrance_a",
+        "ticket_machine_1",
+        "help_point_1",
+        "accessible_gate_1",
+        "sign_west_platform",
+        "lift_2",
+        "bench_1",
+        "bench_2"
+      ],
+      "warning": {
+        "regionId": "west_corridor",
+        "readiness": 0.56
+      }
+    },
+    "regionQuality": {
+      "regionId": "west_corridor",
+      "accessibleWayfindingReadiness": 0.56,
+      "bestEvidenceViewIds": [
+        "view_sign_west_oblique"
+      ],
+      "recommendationCount": 2,
+      "recaptureMarkerCount": 6
+    },
+    "undo": {
+      "entityId": "lift_1",
+      "restoredOperational": "open",
+      "stagedChangeCount": 0
+    },
+    "timeline": {
+      "entryCount": 10,
+      "allSourceLabelledAgent": true,
+      "allSuccessful": true,
+      "allVisible": true,
+      "tools": [
+        "get_scene_context",
+        "navigate_to_entity",
+        "get_scene_context",
+        "find_semantic_route",
+        "set_entity_state",
+        "find_semantic_route",
+        "get_region_quality",
+        "undo_scene_change",
+        "get_scene_context",
+        "get_entity"
+      ]
+    }
+  },
+  "console": {
+    "capturedByCdp": true,
+    "errors": []
+  },
+  "screenshot": "submission/screenshots/cloudflare-workers-webmcp.png",
+  "screenshotState": {
+    "description": "Verified flow after undo, followed by a fresh West corridor evidence overlay for the screenshot.",
+    "recaptureMarkerCount": 6
+  },
+  "result": "passed"
+}

@@ -33,6 +33,7 @@ The Content Security Policy allows the two pinned renderer module hosts and HTTP
 Replace the example URL and run:
 
 ```bash
+node scripts/verify-public-deployment.mjs --url https://example.com --expect-commit "$(git rev-parse HEAD)"
 curl -sSI https://example.com/ | rg -i 'origin-agent-cluster|permissions-policy|content-security-policy|x-content-type-options'
 curl -sS https://example.com/build-manifest.json
 ```

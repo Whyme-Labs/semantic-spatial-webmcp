@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "description": "A dependency-free semantic spatial browser and WebMCP control plane for 3DGS scenes.",
+  "homepage": "https://semantic-spatial-webmcp.swmengappdev.workers.dev/",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Whyme-Labs/semantic-spatial-webmcp.git"
@@ -22,6 +23,7 @@
     "test": "node --test",
     "check": "node scripts/verify.mjs --syntax-only",
     "verify": "node scripts/verify.mjs",
+    "verify:deployment": "node scripts/verify-public-deployment.mjs",
     "check:submission": "node scripts/check-submission.mjs",
     "check:submission:strict": "node scripts/check-submission.mjs --strict",
     "verify:webmcp:chrome": "node scripts/verify-webmcp-chrome.mjs"
