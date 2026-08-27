@@ -18,8 +18,8 @@ Complete this checklist against the final public artifacts. Do not mark an item 
 - [x] Confirm `Permissions-Policy: tools=(self)`.
 - [x] Open the app from a signed-out clean browser profile.
 - [x] Run the full human-interface flow with no console errors.
-- [ ] Run the full Site Tools flow in ChatGPT's in-app browser.
-- [x] Run tool discovery and execution in Chrome 149 or later with WebMCP testing enabled.
+- [x] Run the full WebMCP flow in an official judge environment: Chrome 151 with WebMCP testing enabled.
+- Optional: repeat the flow in ChatGPT's desktop built-in browser if Site Tools access is available.
 - [ ] Keep the app free and available until September 21, 2026 at 5:00 PM Pacific Time.
 
 ## Public repository
@@ -36,7 +36,7 @@ Complete this checklist against the final public artifacts. Do not mark an item 
 
 ## Demo video
 
-- [ ] Record the production URL and real Site Tools calls.
+- [ ] Record the production URL and real WebMCP calls in the paced Chrome replay.
 - [ ] Use the prompts and shot list in `submission/demo-script.md`.
 - [ ] Include clear English narration.
 - [ ] Do not use music.

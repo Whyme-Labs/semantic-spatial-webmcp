@@ -44,6 +44,6 @@ Confirm these results:
 - `Permissions-Policy` contains `tools=(self)`.
 - The page loads without console errors in a fresh browser profile.
 - The 2D map works when site tools or WebGL are unavailable.
-- Site tools register in ChatGPT's browser and Chrome 149 or later with WebMCP testing enabled.
+- WebMCP tools register in at least one official judge environment. The checked-in production receipt uses Chrome 151 with WebMCP testing enabled.
 
 Keep the deployment public and free to access until the judging period ends on September 21, 2026 at 5:00 PM Pacific Time.

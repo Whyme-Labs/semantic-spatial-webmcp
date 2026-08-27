@@ -12,4 +12,4 @@ The comparison asset at `submission/screenshots/context-comparison.png` explains
 | Trust | Confidence inferred from appearance | West corridor reports 56% accessible-wayfinding readiness |
 | Recovery | No structured next step | Two concrete recapture views and undo |
 
-The left panel is a conceptual limitation diagram, not a model benchmark. The right-panel values are receipts from the deterministic fixture and Chrome WebMCP verification. The final model-backed evaluation remains a separate external gate.
+The left panel is a conceptual limitation diagram, not a model benchmark. The right-panel values are receipts from the deterministic fixture and Chrome WebMCP verification. No model-backed selection result is claimed.

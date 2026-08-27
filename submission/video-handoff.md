@@ -5,12 +5,24 @@ The public app, Chrome WebMCP flow, narration, prompts, and shot timings are rea
 ## Record
 
 1. Use the production app at https://semantic-spatial-webmcp.swmengappdev.workers.dev/.
-2. Open a fresh ChatGPT conversation with GPT-5.6 Sol or GPT-5.6 Terra and confirm that all ten Site Tools are available.
-3. Hide private tabs, notifications, bookmarks, account details, and unrelated marks.
-4. Record the three prompts and shot sequence in `submission/demo-script.md` with clear English narration and no music.
-5. Export a landscape MP4 at 1920 by 1080 or higher. Aim for 2:45 to 2:55 and never reach 3:00.
+2. Hide private tabs, notifications, bookmarks, account details, and unrelated marks.
+3. Start the paced, visible Chrome 151 WebMCP replay below. It uses an isolated profile, waits 20 seconds before the first call, holds each of ten real WebMCP results for 11 seconds, and keeps the final evidence state open for 35 seconds.
 
-The production screenshot in `submission/screenshots/cloudflare-workers-webmcp.png` is the visual reference for the final tool timeline and evidence-overlay state.
+```bash
+npm run verify:webmcp:chrome -- \
+  --url https://semantic-spatial-webmcp.swmengappdev.workers.dev/ \
+  --headed \
+  --start-delay 20000 \
+  --step-delay 11000 \
+  --hold 35000 \
+  --output submission/video/chrome-replay-receipt.json \
+  --screenshot submission/video/chrome-replay-final.png
+```
+
+4. Begin screen recording while the initial full-station view is held. Narrate `submission/demo-script.md`; the replay advances through the same verified ten-call flow and ends on the visible agent timeline.
+5. Stop recording before the isolated Chrome window closes. Export a landscape MP4 at 1920 by 1080 or higher. Aim for 2:45 to 2:55 and never reach 3:00.
+
+The production screenshot in `submission/screenshots/cloudflare-workers-webmcp.png` is the visual reference for the final tool timeline and evidence-overlay state. The replay receipt must finish with `result: "passed"`; ordinary browsing or repository inspection is not a substitute for WebMCP execution.
 
 ## Verify the exact export
 

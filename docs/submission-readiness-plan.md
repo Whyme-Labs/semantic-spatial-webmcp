@@ -8,10 +8,10 @@ The project is submission-ready only when all statements below are true.
 
 - A public HTTPS URL loads the app without an account.
 - The public repository contains the source, an OSI license, setup steps, challenge provenance, and fresh verification receipts.
-- The app registers valid site tools in the supported ChatGPT browser.
+- The app registers valid WebMCP tools in an official judge browser.
 - A judge can complete the route, outage, alternate-route, evidence-warning, recapture, and undo flow from a fresh session.
 - The submission folder contains final English copy, screenshots, a video script shorter than three minutes, and every required link or field.
-- The recorded demo shows the real public build and the real site-tool calls.
+- The recorded demo shows the real public build and real WebMCP calls.
 - No artifact claims that the synthetic station is a captured site.
 
 ## Scope and rigor
@@ -38,14 +38,14 @@ Exit condition: one command reports each gate as passed, failed, or external.
 
 ## Phase 2. Finish the judged product path
 
-1. Test actual site-tool registration in the supported ChatGPT browser.
+1. Test actual WebMCP registration in an official judge browser.
 2. Add a guided demo control that runs the complete multi-tool story without hidden state.
 3. Add visible scenario history and a clear review state for writes.
 4. Add recapture camera markers and navigation.
 5. Add error, loading, reduced-motion, keyboard, and narrow-screen behavior.
 6. Add deterministic evaluation cases for tool outputs and state transitions.
 
-Exit condition: a fresh browser completes the full story twice, once through the UI and once through site tools.
+Exit condition: a fresh browser completes the full story twice, once through the UI and once through WebMCP.
 
 ## Phase 3. Prepare the public build
 
@@ -71,7 +71,7 @@ Exit condition: `submission/` contains every field and media artifact except lin
 1. Run the repository verifier.
 2. Run all deterministic tests.
 3. Test the public app from a fresh browser profile.
-4. Test site tools in the supported ChatGPT desktop browser.
+4. Test WebMCP in at least one supported judge browser.
 5. Compare the final package with every official requirement.
 6. Review the decision trail against the actual work.
 
@@ -82,7 +82,5 @@ Exit condition: every gate is verified or names one external owner action. An un
 These choices cannot be inferred from the repository.
 
 - The eligible entrant name and team members.
-- The public GitHub organization or personal account.
-- The production hosting account and domain.
 - The YouTube account used for the public video.
-- Permission to publish, deploy, upload, and submit.
+- Permission to upload the video and submit the final Devpost entry.

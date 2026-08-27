@@ -14,19 +14,42 @@ const WAIT_TIMEOUT_MS = 30_000;
 const POLL_INTERVAL_MS = 100;
 
 function parseArgs(argv) {
-  const options = { url: DEFAULT_URL, chrome: null, output: null, screenshot: null };
+  const options = {
+    url: DEFAULT_URL,
+    chrome: null,
+    output: null,
+    screenshot: null,
+    headed: false,
+    startDelayMs: 0,
+    stepDelayMs: 0,
+    holdMs: 0
+  };
   for (let index = 0; index < argv.length; index += 1) {
     const argument = argv[index];
     if (argument === "--help" || argument === "-h") {
       options.help = true;
       continue;
     }
-    if (!["--url", "--chrome", "--output", "--screenshot"].includes(argument)) {
+    if (argument === "--headed") {
+      options.headed = true;
+      continue;
+    }
+    if (!["--url", "--chrome", "--output", "--screenshot", "--start-delay", "--step-delay", "--hold"].includes(argument)) {
       throw new Error(`Unknown argument: ${argument}`);
     }
     const value = argv[index + 1];
     if (!value || value.startsWith("--")) throw new Error(`${argument} requires a value.`);
-    options[argument.slice(2)] = value;
+    if (["--start-delay", "--step-delay", "--hold"].includes(argument)) {
+      const milliseconds = Number(value);
+      const maximum = argument === "--hold" ? 600_000 : 60_000;
+      if (!Number.isInteger(milliseconds) || milliseconds < 0 || milliseconds > maximum) {
+        throw new Error(`${argument} must be an integer from 0 to ${maximum}.`);
+      }
+      const key = argument === "--start-delay" ? "startDelayMs" : argument === "--step-delay" ? "stepDelayMs" : "holdMs";
+      options[key] = milliseconds;
+    } else {
+      options[argument.slice(2)] = value;
+    }
     index += 1;
   }
   return options;
@@ -40,6 +63,10 @@ function usage() {
     "  --chrome <path>      Chrome executable (auto-detected on macOS)",
     "  --output <path>      Write the JSON receipt to this path",
     "  --screenshot <path>  Capture the final page as PNG",
+    "  --headed             Show the isolated Chrome verification window",
+    "  --start-delay <ms>    Hold the loaded page before the first call",
+    "  --step-delay <ms>     Hold each visible tool result before continuing",
+    "  --hold <ms>           Keep the final verified state visible before exit",
     "  --help               Show this help"
   ].join("\n");
 }
@@ -189,7 +216,8 @@ async function waitForPage(connection) {
   throw new Error("Timed out waiting for window.spatialDemo.webmcp to reach a final status.");
 }
 
-async function evaluateFlow(connection) {
+async function evaluateFlow(connection, options = {}) {
+  const stepDelayMs = options.stepDelayMs ?? 0;
   const expression = `(async () => {
     const fail = (message) => { throw new Error(message); };
     const check = (condition, message) => { if (!condition) fail(message); };
@@ -208,7 +236,11 @@ async function evaluateFlow(connection) {
     const execute = async (name, args) => {
       const tool = tools.find((candidate) => candidate.name === name);
       check(tool, 'Missing WebMCP tool: ' + name + '.');
-      return normalizeResult(await modelContext.executeTool(tool, JSON.stringify(args)));
+      const result = normalizeResult(await modelContext.executeTool(tool, JSON.stringify(args)));
+      if (${JSON.stringify(stepDelayMs)} > 0) {
+        await new Promise((resolveDelay) => setTimeout(resolveDelay, ${JSON.stringify(stepDelayMs)}));
+      }
+      return result;
     };
 
     const baseline = await execute('get_scene_context', {});
@@ -455,8 +487,8 @@ async function main() {
 
   let receipt;
   try {
-    chrome = spawn(chromePath, [
-      "--headless=new",
+    const chromeArguments = [
+      ...(options.headed ? [] : ["--headless=new"]),
       "--enable-features=WebMCPTesting",
       `--remote-debugging-port=${port}`,
       "--remote-debugging-address=127.0.0.1",
@@ -466,9 +498,10 @@ async function main() {
       "--disable-background-networking",
       "--disable-component-update",
       "--disable-sync",
-      "--window-size=1440,1000",
+      "--window-size=1920,1080",
       "about:blank"
-    ], { stdio: ["ignore", "ignore", "pipe"] });
+    ];
+    chrome = spawn(chromePath, chromeArguments, { stdio: ["ignore", "ignore", "pipe"] });
     chrome.stderr.setEncoding("utf8");
     chrome.stderr.on("data", (chunk) => { chromeStderr += chunk; });
     chrome.once("error", (error) => { chromeStderr += `\n${error.message}`; });
@@ -503,7 +536,8 @@ async function main() {
     assert(registration.count === 10, `The page reported ${registration.count} registered tools instead of 10.`);
     assert(navigationToWebMcpReadyMs < 5_000, `WebMCP readiness took ${navigationToWebMcpReadyMs} ms, exceeding five seconds.`);
 
-    const evidence = await evaluateFlow(connection);
+    if (options.startDelayMs > 0) await delay(options.startDelayMs);
+    const evidence = await evaluateFlow(connection, { stepDelayMs: options.stepDelayMs });
     const artifact = await readBuildArtifact(targetUrl);
     let screenshotEvidenceMarkerCount = null;
     if (options.screenshot) {
@@ -515,6 +549,7 @@ async function main() {
     assert(uniqueConsoleErrors.length === 0, `Chrome recorded console errors: ${uniqueConsoleErrors.join(" | ")}`);
 
     if (options.screenshot) await captureScreenshot(connection, options.screenshot);
+    if (options.holdMs > 0) await delay(options.holdMs);
     receipt = {
       verifiedAt: new Date().toISOString(),
       chrome: {
@@ -543,6 +578,12 @@ async function main() {
         description: "Verified flow after undo, followed by a fresh West corridor evidence overlay for the screenshot.",
         recaptureMarkerCount: screenshotEvidenceMarkerCount
       } : null,
+      replay: {
+        headed: options.headed,
+        startDelayMs: options.startDelayMs,
+        stepDelayMs: options.stepDelayMs,
+        holdMs: options.holdMs
+      },
       result: "passed"
     };
   } catch (error) {

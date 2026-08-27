@@ -1,26 +1,26 @@
 # Demo script
 
-Target duration: 170 seconds. Hard limit: 179 seconds. Record against the public production build with real Site Tools enabled.
+Target duration: 170 seconds. Hard limit: 179 seconds. Record the public production build through the paced Chrome WebMCP replay in `submission/video-handoff.md`.
 
 ## Shot list
 
 | Time | Picture | Narration |
 |---:|---|---|
-| 0:00–0:12 | Open the public app on the full station view. Show the Site Tools indicator. | "A Gaussian-splat capture can show a place beautifully and still tell an agent almost nothing about what the place means. This is Semantic Spatial Browser." |
+| 0:00–0:12 | Open the public app on the full station view. Show `WebMCP active: 10 tools registered`. | "A Gaussian-splat capture can show a place beautifully and still tell an agent almost nothing about what the place means. This is Semantic Spatial Browser." |
 | 0:12–0:27 | Orbit the scene. Point to entity labels and the WebMCP status. | "The page combines Gaussian appearance with persistent rooms, objects, relationships, routes, operational state, and capture evidence. The person and the agent work on the same live scene." |
-| 0:27–0:38 | Show the first prompt in ChatGPT. | "I will ask for an accessible route from Entrance A to Platform 2 and ask whether the evidence is trustworthy." |
-| 0:38–1:03 | Let the agent call context, search, navigation, and route tools. Keep the 3D route and call timeline visible. | "The agent reads the current page, finds the accessible gate, moves the shared camera, and draws a route through Lift 1. The result is visible and inspectable. It is not a route hidden in a backend response." |
-| 1:03–1:17 | Show the second prompt. Let the agent stage Lift 1 as closed. | "Now I change the situation. Lift 1 is unavailable. The agent stages that state on the page. The lift turns red, and the change remains reversible." |
+| 0:27–0:38 | Hold on the combined agent prompt already visible in the 30-second-proof card. | "I will ask for an accessible route from Entrance A to Platform 2 and ask whether the evidence is trustworthy." |
+| 0:38–1:03 | Let the paced Chrome replay call context, navigation, and route tools. Keep the 3D route and details visible; the timeline is shown at the end. | "The agent reads the current page, finds the accessible gate, moves the shared camera, and draws a route through Lift 1. The result is visible and inspectable. It is not a route hidden in a backend response." |
+| 1:03–1:17 | Let the replay stage Lift 1 as closed. | "Now I change the situation. Lift 1 is unavailable. The agent stages that state on the page. The lift turns red, and the change remains reversible." |
 | 1:17–1:39 | Let the agent reroute through Lift 2. Hold on the evidence warning. | "The original path is no longer valid. The new route uses Lift 2, but the West corridor has only 56 percent accessible-wayfinding readiness. Connectivity is known. The sign text is not visually verified." |
 | 1:39–1:57 | Show the amber quality volume, evidence gaps, and recapture instructions. | "The agent opens the capture evidence instead of guessing. The page highlights the weak region and explains the unreadable sign and single-view coverage gap." |
 | 1:57–2:15 | Navigate to the recapture position or point to the two recommendations. | "It recommends a front-facing sign capture and a reverse corridor pass from the Lift 2 side. Capture quality becomes a task-specific decision, not one opaque percentage." |
 | 2:15–2:31 | Undo the scenario. Show Lift 1 and the route return to baseline. | "I can inspect, accept, or undo every change. Undo restores the baseline scene without reloading the page." |
-| 2:31–2:48 | Open Available Site Tools and the visible timeline. | "The app exposes ten narrow tools through the current imperative WebMCP API. Human controls and agent calls share the same runtime, validation, viewer effects, and visible timeline." |
+| 2:31–2:48 | Hold on the visible ten-call agent timeline and WebMCP status. | "The app exposes ten narrow tools through the current imperative WebMCP API. Human controls and agent calls share the same runtime, validation, viewer effects, and visible timeline." |
 | 2:48–2:55 | Show the public repository and challenge-delta file. Return to the app title. | "The app, source, license, tests, provenance, and build receipts are public. Search a place. Understand it. Test what happens when it changes." |
 
 ## Demo prompts
 
-Use these prompts verbatim in a fresh Site Tools session.
+These prompts define the story reproduced by the paced Chrome WebMCP replay. They can also be used verbatim in ChatGPT's desktop built-in browser when Site Tools are available.
 
 ### Prompt 1
 
@@ -67,9 +67,8 @@ get_scene_context
 ## Recording checklist
 
 - Record the final public HTTPS URL, not localhost.
-- Start from a fresh browser profile and a fresh Site Tools conversation.
-- Use GPT-5.6 Sol or GPT-5.6 Terra.
-- Show the Site Tools indicator and Available Site Tools list.
+- Start from the verifier's fresh isolated Chrome profile.
+- Show the `WebMCP active: 10 tools registered` indicator.
 - Keep the 3D scene, details panel, and source-labelled timeline readable.
 - Confirm that the first route uses Lift 1.
 - Confirm that the alternate route uses Lift 2 and reports 56 percent readiness.

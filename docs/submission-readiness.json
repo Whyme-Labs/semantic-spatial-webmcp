@@ -275,9 +275,11 @@
         { "type": "fileContains", "path": "submission/demo-script.md", "contains": "Demo prompts" },
         { "type": "fileContains", "path": "submission/demo-script.md", "contains": "Recording checklist" },
         { "type": "fileContains", "path": "submission/video-handoff.md", "contains": "## Verify the exact export" },
+        { "type": "fileContains", "path": "submission/video-handoff.md", "contains": "--headed" },
         { "type": "fileContains", "path": "package.json", "contains": "verify:demo-video" },
         { "type": "fileExists", "path": "scripts/verify-demo-video.mjs" },
-        { "type": "fileExists", "path": "test/demo-video-verifier.test.js" }
+        { "type": "fileExists", "path": "test/demo-video-verifier.test.js" },
+        { "type": "fileExists", "path": "test/chrome-verifier-cli.test.js" }
       ]
     },
     {
@@ -343,17 +345,9 @@
       "ownerAction": "Keep the public app available through the judging period and provide any required credentials and test instructions in Devpost."
     },
     {
-      "id": "chatgpt-site-tools-verification",
-      "category": "judge-runtime",
-      "requirement": "The deployed app is discovered and the complete multi-tool flow executes in the supported ChatGPT in-app browser.",
-      "evidenceClass": "external",
-      "assertions": [],
-      "ownerAction": "Run and record a fresh-session discovery, route, outage, alternate-route, evidence, recapture, and undo flow in a supported ChatGPT Site Tools environment."
-    },
-    {
       "id": "chrome-149-webmcp-verification",
       "category": "judge-runtime",
-      "requirement": "The deployed app registers and executes its tools in Chrome 149 or later with WebMCP testing enabled.",
+      "requirement": "The deployed app registers and executes its tools in one official judge environment: ChatGPT's built-in browser or Chrome 149 or later with WebMCP enabled.",
       "evidenceClass": "runtime",
       "assertions": [
         { "type": "fileExists", "path": "docs/cloudflare-workers-verification.json" },
@@ -372,14 +366,6 @@
         { "type": "jsonValue", "path": "docs/cloudflare-workers-verification.json", "pointer": "/console/errors", "equals": [] },
         { "type": "jsonValue", "path": "docs/cloudflare-workers-verification.json", "pointer": "/result", "equals": "passed" }
       ]
-    },
-    {
-      "id": "model-backed-tool-evaluation",
-      "category": "quality",
-      "requirement": "Model-backed evaluations cover tool selection, arguments, chaining, visible effects, and failure recovery.",
-      "evidenceClass": "external",
-      "assertions": [],
-      "ownerAction": "Run the final prompt suite against the deployed build in a supported model and preserve the results and failure-recovery receipts."
     },
     {
       "id": "public-youtube-demo",

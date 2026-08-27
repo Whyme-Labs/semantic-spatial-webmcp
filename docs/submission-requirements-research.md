@@ -1,6 +1,6 @@
 # WebMCP Challenge submission requirements
 
-Current as of **August 26, 2026**. This report uses only first-party sources: OpenAI, the official Devpost challenge pages, the Web Machine Learning Community Group draft, and Chrome's implementation documentation.
+Current as of **August 27, 2026**. This report uses only first-party sources: OpenAI, the official Devpost challenge pages, the Web Machine Learning Community Group draft, and Chrome's implementation documentation.
 
 ## Controlling sources and dates
 
@@ -96,9 +96,11 @@ Both default to false. These are hints, not enforcement or proof of behavior. `d
 ## Supported judging and test environments
 
 - **Challenge baseline:** latest ChatGPT desktop app with its in-app browser, or **Chrome 149 or later** with `chrome://flags/#enable-webmcp-testing` enabled and the browser restarted ([Official Rules, “How To Enter”](https://webmcp.devpost.com/rules)).
-- **ChatGPT Site Tools:** use **GPT-5.6 Sol or GPT-5.6 Terra**. GPT-5.6 Luna currently has WebMCP disabled. Site tools are not available in Enterprise or Edu workspaces and availability remains rollout-dependent ([OpenAI Site Tools guide](https://learn.chatgpt.com/docs/webmcp)). The challenge rules do not mandate a particular model.
+- **ChatGPT Site Tools:** Site tools are available only in the ChatGPT desktop app's built-in browser, not on `chatgpt.com` in Chrome. Availability still depends on the account and selected model ([OpenAI Site Tools guide](https://help.openai.com/en/articles/20001423-using-site-tools-in-the-chatgpt-desktop-app)). The challenge rules do not mandate this environment when the Chrome alternative is used.
 - **Chrome:** the origin trial starts with Chrome 149; the local flag is the official development path. Chrome says the API is designed mainly for local, human-in-the-loop browser workflows, not headless-only operation, and a client must visit the page to discover its tools ([Chrome WebMCP guide](https://developer.chrome.com/docs/ai/webmcp?hl=en)).
 - Deterministic tests should prove tool logic, side effects, UI updates, validation, and results. Model-backed evals should prove correct tool selection, arguments, chaining, and end-to-end user journeys, including failure recovery ([Chrome WebMCP evals](https://developer.chrome.com/docs/ai/webmcp/evals)).
+
+The word **or** in the Official Rules is material: a passing result in either supported environment satisfies the live-browser requirement. This submission uses the checked-in Chrome 151 production receipt as its controlling judge-runtime evidence. A ChatGPT web attempt on August 27 fell back to ordinary web and repository research, exactly as the desktop-only Site Tools documentation predicts; it is not counted as a Site Tools or model-backed result.
 
 There is implementation drift in current primary sources: the Community Group draft defines `executeTool()` with an object input, while Chrome's imperative guide currently describes manual execution with a JSON string. This does not change page-side `registerTool()`/`execute()` registration. Avoid depending on in-page `executeTool()` for the submission's product path, and test the deployed registration with the actual judge environments.
 
@@ -109,10 +111,10 @@ Local Chrome 151 evidence on August 27 confirmed that drift. Manual `executeTool
 | Requirement | Evidence the final repository/package must provide |
 |---|---|
 | In-period work | Preserved Git history, earliest/baseline SHA and timestamp, and a clear challenge delta. |
-| Real WebMCP | Visible `document.modelContext.registerTool(...)` source; awaited registration with errors surfaced; discovery and execution proven in ChatGPT's browser and Chrome 149+. |
-| Non-trivial human-agent experience | A fresh-session UI and site-tool flow in which both act on the same live 3D scene, with visible, verifiable state changes. |
+| Real WebMCP | Visible `document.modelContext.registerTool(...)` source; awaited registration with errors surfaced; discovery and execution proven in an official judge environment. The checked-in receipt uses Chrome 151. |
+| Non-trivial human-agent experience | A fresh-session UI and WebMCP flow in which both act on the same live 3D scene, with visible, verifiable state changes. |
 | Complete runnable product | Public HTTPS app, clean fresh-profile load, no private dependencies, complete setup/deploy instructions, and graceful non-WebMCP behavior. |
-| Tool reliability | Schema/logic tests, real browser receipts, model-backed selection/chaining evals, failure cases, and outputs that fit security budgets. |
+| Tool reliability | Schema/logic tests, deterministic prompt fixtures, real browser receipts, failure cases, and outputs that fit security budgets. |
 | Security | Correct standardized annotations, narrow inputs, authorization/validation parity, safe external-content handling, and confirmation/review for consequential actions. |
 | Public source and license | Public GitHub/GitLab/Bitbucket URL, root license recognized by the host, all necessary source/assets, and third-party license/provenance inventory. |
 | Judge access | Live URL and any credentials/test instructions; free unrestricted access until September 21 at 5:00 PM PT. |
@@ -131,7 +133,7 @@ Local Chrome 151 evidence on August 27 confirmed that drift. Manual `executeTool
 ## Questions that still require owner or organizer confirmation
 
 1. Who is the eligible entrant/representative, and are there team members whose prize eligibility or media consent must be recorded?
-2. Which public repository, hosting account/domain, and YouTube account should be used? Publishing, deploying, uploading, and submitting require those account-owner decisions.
+2. Which YouTube account should publish the final verified MP4? Uploading and submitting require that account-owner decision.
 3. Does Devpost intend the contradictory multiple-submission clause to mean exactly one entry per person across individual and team identities? Use one until written clarification says otherwise.
 4. Does Devpost require the literal imperative API for eligibility, or is an entirely declarative WebMCP app acceptable? This repository already uses the imperative API, so no decision is needed for the current implementation.
 5. The rules' optional-plugin section mistakenly names `openai.devpost.com`; use the functioning `webmcp.devpost.com` site unless the organizer says otherwise.

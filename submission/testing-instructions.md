@@ -4,13 +4,13 @@ The submitted production app must be public and require no account. Verify both 
 
 ## Recommended environment
 
-Use the latest ChatGPT desktop app with GPT-5.6 Sol or GPT-5.6 Terra. Open the submitted app URL in the built-in browser.
+Use either official environment named by the rules. In the ChatGPT desktop app, open the submitted URL in its built-in browser; Site Tools are not available on `chatgpt.com` in Chrome.
 
-Chrome 149 or later also works. Enable `chrome://flags/#enable-webmcp-testing`, relaunch Chrome, and open the submitted app URL.
+Alternatively, use Chrome 149 or later. Enable `chrome://flags/#enable-webmcp-testing`, relaunch Chrome, and open the submitted app URL. The checked-in production receipt uses Chrome 151.
 
 ## Two-minute test
 
-1. Confirm that the page status reports the registered Site Tools count.
+1. Confirm that the page status reports `WebMCP active: 10 tools registered`.
 2. Click **Run guided proof** for a 30-second human-interface preview. Confirm that all five steps complete and the scene returns to a clean baseline.
 3. Ask: "Find the accessible gate, then take me from Entrance A to Platform 2 without stairs. Draw the route and tell me whether the evidence is trustworthy."
 4. Confirm that the route uses Lift 1 and appears in the 3D scene.
@@ -25,8 +25,8 @@ Chrome 149 or later also works. Enable `chrome://flags/#enable-webmcp-testing`, 
 
 If Site Tools are unavailable, the same route, outage, quality, undo, and reset operations remain available as page controls. Use **Show 2D map** if WebGL is unavailable.
 
-The fallback proves product continuity. It does not replace the Site Tools test used for judging.
+The fallback proves product continuity. It does not replace WebMCP verification; `docs/cloudflare-workers-verification.json` records the complete flow in the rules' Chrome alternative.
 
 ## Repository receipts
 
-Run `npm run verify`, `npm run eval`, and `npm run deploy:dry-run`. While the built app is served locally, run `npm run verify:webmcp:chrome`. The deterministic prompt fixture receipt does not claim model selection; the final model-backed result must be recorded against the deployed build.
+Run `npm run verify`, `npm run eval`, and `npm run deploy:dry-run`. While the built app is served locally, run `npm run verify:webmcp:chrome`. The deterministic prompt fixture and Chrome receipts prove WebMCP behavior, not model selection; no model-backed result is claimed.

@@ -48,6 +48,8 @@ The public app is https://semantic-spatial-webmcp.swmengappdev.workers.dev/. The
 
 Verified on August 27, 2026 against the public Cloudflare Workers URL with Google Chrome 151.0.7922.174 and the `WebMCPTesting` feature enabled in an isolated profile.
 
+The Official Rules accept either ChatGPT's desktop built-in browser or Chrome 149+ with WebMCP enabled. This Chrome 151 receipt is therefore the submission's controlling judge-runtime evidence; a second ChatGPT Site Tools receipt is optional, not a separate eligibility gate.
+
 - The URL exposed `build-manifest.json` from the allowlisted `dist/` artifact; the receipt records its SHA-256, build commit, dirty flag, and file count.
 - Navigation-to-WebMCP-ready time stayed below the five-second launch criterion; the exact conservative timing is in the JSON receipt.
 - The page reported `WebMCP active: 10 tools registered` only after the shared viewer loaded.
