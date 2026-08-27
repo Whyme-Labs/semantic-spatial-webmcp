@@ -1,7 +1,7 @@
 /*
   Origin-Agent-Cluster: ?1
   Permissions-Policy: tools=(self)
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-hge7hpFkgFGA3xZR2xdtH/p02Yj4fINHQdyI9zNChfI=' 'wasm-unsafe-eval' https://cdn.jsdelivr.net https://sparkjs.dev; connect-src 'self' https:; style-src 'self' 'unsafe-inline'; img-src 'self' data:; worker-src 'self' blob:; object-src 'none'; base-uri 'none'; frame-ancestors 'none'
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-hge7hpFkgFGA3xZR2xdtH/p02Yj4fINHQdyI9zNChfI=' 'wasm-unsafe-eval' https://cdn.jsdelivr.net https://sparkjs.dev; connect-src 'self' https: data:; style-src 'self' 'unsafe-inline'; img-src 'self' data:; worker-src 'self' blob:; object-src 'none'; base-uri 'none'; frame-ancestors 'none'
   Referrer-Policy: strict-origin-when-cross-origin
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY

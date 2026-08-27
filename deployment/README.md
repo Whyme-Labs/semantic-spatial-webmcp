@@ -24,6 +24,8 @@ Cloudflare parses `dist/_headers` and applies its rules to static asset response
 
 The CSP allowlists the inline import map by its SHA-256 hash. `test/cloudflare-workers.test.js` recalculates that hash from `index.html`; changing the import map without updating the policy fails the test instead of silently disabling the 3D renderer.
 
+Spark 2.1.0 embeds its WASM as a `data:application/wasm` URL and initializes it with `fetch()`. The policy therefore permits `data:` only in `connect-src`; scripts still cannot execute from arbitrary inline or data URLs.
+
 The Content Security Policy allows the two pinned renderer module hosts and HTTPS splat files supplied through the optional `splat` query parameter. The checked-in demo does not need an external splat file. No Cloudflare account ID or credential is stored in the repository.
 
 ## Verify the public deployment

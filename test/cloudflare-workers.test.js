@@ -33,4 +33,5 @@ test("the production CSP allows only the exact inline import map", () => {
   const hash = `sha256-${createHash("sha256").update(importMap).digest("base64")}`;
   assert.ok(headers.includes(`script-src 'self' '${hash}'`));
   assert.doesNotMatch(headers, /script-src:[^\n]*'unsafe-inline'/);
+  assert.match(headers, /connect-src 'self' https: data:/);
 });
