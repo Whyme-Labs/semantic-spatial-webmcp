@@ -30,7 +30,7 @@ The Content Security Policy allows the two pinned renderer module hosts and HTTP
 
 ## Verify the public deployment
 
-Replace the example URL and run:
+The production URL is https://semantic-spatial-webmcp.swmengappdev.workers.dev/. To verify a deployment from its source commit, run:
 
 ```bash
 node scripts/verify-public-deployment.mjs --url https://example.com --expect-commit "$(git rev-parse HEAD)"

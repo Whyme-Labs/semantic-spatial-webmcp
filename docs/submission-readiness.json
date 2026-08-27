@@ -313,9 +313,22 @@
       "id": "public-https-app",
       "category": "deployment",
       "requirement": "A public HTTPS URL loads the complete app without private dependencies or mandatory account creation.",
-      "evidenceClass": "external",
-      "assertions": [],
-      "ownerAction": "Choose the hosting account/domain, authorize deployment, and verify the live URL from a clean browser profile."
+      "evidenceClass": "runtime",
+      "assertions": [
+        { "type": "fileExists", "path": "docs/public-deployment-verification.json" },
+        { "type": "jsonValue", "path": "docs/public-deployment-verification.json", "pointer": "/url", "equals": "https://semantic-spatial-webmcp.swmengappdev.workers.dev/" },
+        { "type": "jsonValue", "path": "docs/public-deployment-verification.json", "pointer": "/https", "equals": true },
+        { "type": "jsonValue", "path": "docs/public-deployment-verification.json", "pointer": "/anonymousAccess", "equals": true },
+        { "type": "jsonValue", "path": "docs/public-deployment-verification.json", "pointer": "/rootStatus", "equals": 200 },
+        { "type": "jsonValue", "path": "docs/public-deployment-verification.json", "pointer": "/headers/origin-agent-cluster", "equals": "?1" },
+        { "type": "jsonValue", "path": "docs/public-deployment-verification.json", "pointer": "/headers/permissions-policy", "equals": "tools=(self)" },
+        { "type": "jsonValue", "path": "docs/public-deployment-verification.json", "pointer": "/manifest/commit", "equals": "13143cb36672f45cbcfe534f269d7c2db47d76a2" },
+        { "type": "jsonValue", "path": "docs/public-deployment-verification.json", "pointer": "/manifest/dirty", "equals": false },
+        { "type": "jsonValue", "path": "docs/public-deployment-verification.json", "pointer": "/assets/verifiedCount", "equals": 14 },
+        { "type": "jsonValue", "path": "docs/public-deployment-verification.json", "pointer": "/assets/policyFile/status", "equals": 404 },
+        { "type": "jsonValue", "path": "docs/public-deployment-verification.json", "pointer": "/missingPathStatus", "equals": 404 },
+        { "type": "jsonValue", "path": "docs/public-deployment-verification.json", "pointer": "/result", "equals": "passed" }
+      ]
     },
     {
       "id": "judge-access-through-judging",
@@ -337,9 +350,24 @@
       "id": "chrome-149-webmcp-verification",
       "category": "judge-runtime",
       "requirement": "The deployed app registers and executes its tools in Chrome 149 or later with WebMCP testing enabled.",
-      "evidenceClass": "external",
-      "assertions": [],
-      "ownerAction": "Run and record tool discovery and execution in Chrome 149+ after enabling chrome://flags/#enable-webmcp-testing."
+      "evidenceClass": "runtime",
+      "assertions": [
+        { "type": "fileExists", "path": "docs/cloudflare-workers-verification.json" },
+        { "type": "jsonValue", "path": "docs/cloudflare-workers-verification.json", "pointer": "/url", "equals": "https://semantic-spatial-webmcp.swmengappdev.workers.dev/" },
+        { "type": "jsonValue", "path": "docs/cloudflare-workers-verification.json", "pointer": "/artifact/kind", "equals": "allowlisted-dist" },
+        { "type": "jsonValue", "path": "docs/cloudflare-workers-verification.json", "pointer": "/artifact/commit", "equals": "13143cb36672f45cbcfe534f269d7c2db47d76a2" },
+        { "type": "jsonValue", "path": "docs/cloudflare-workers-verification.json", "pointer": "/artifact/dirty", "equals": false },
+        { "type": "jsonValue", "path": "docs/cloudflare-workers-verification.json", "pointer": "/timing/underFiveSeconds", "equals": true },
+        { "type": "jsonValue", "path": "docs/cloudflare-workers-verification.json", "pointer": "/webmcp/toolCount", "equals": 10 },
+        { "type": "jsonValue", "path": "docs/cloudflare-workers-verification.json", "pointer": "/flow/navigation/selectedViewId", "equals": "view_accessible_gate_1" },
+        { "type": "jsonValue", "path": "docs/cloudflare-workers-verification.json", "pointer": "/flow/alternateRoute/lift", "equals": "lift_2" },
+        { "type": "jsonValue", "path": "docs/cloudflare-workers-verification.json", "pointer": "/flow/regionQuality/accessibleWayfindingReadiness", "equals": 0.56 },
+        { "type": "jsonValue", "path": "docs/cloudflare-workers-verification.json", "pointer": "/flow/regionQuality/recaptureMarkerCount", "equals": 6 },
+        { "type": "jsonValue", "path": "docs/cloudflare-workers-verification.json", "pointer": "/flow/undo/stagedChangeCount", "equals": 0 },
+        { "type": "jsonValue", "path": "docs/cloudflare-workers-verification.json", "pointer": "/flow/timeline/entryCount", "equals": 10 },
+        { "type": "jsonValue", "path": "docs/cloudflare-workers-verification.json", "pointer": "/console/errors", "equals": [] },
+        { "type": "jsonValue", "path": "docs/cloudflare-workers-verification.json", "pointer": "/result", "equals": "passed" }
+      ]
     },
     {
       "id": "model-backed-tool-evaluation",

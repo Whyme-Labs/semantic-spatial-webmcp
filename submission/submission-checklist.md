@@ -12,14 +12,14 @@ Complete this checklist against the final public artifacts. Do not mark an item 
 
 ## Public application
 
-- [ ] Deploy `dist/` to a public HTTPS URL.
-- [ ] Confirm that no account is required.
-- [ ] Confirm `Origin-Agent-Cluster: ?1`.
-- [ ] Confirm `Permissions-Policy: tools=(self)`.
-- [ ] Open the app from a signed-out clean browser profile.
-- [ ] Run the full human-interface flow with no console errors.
+- [x] Deploy `dist/` to a public HTTPS URL.
+- [x] Confirm that no account is required.
+- [x] Confirm `Origin-Agent-Cluster: ?1`.
+- [x] Confirm `Permissions-Policy: tools=(self)`.
+- [x] Open the app from a signed-out clean browser profile.
+- [x] Run the full human-interface flow with no console errors.
 - [ ] Run the full Site Tools flow in ChatGPT's in-app browser.
-- [ ] Run tool discovery and execution in Chrome 149 or later with WebMCP testing enabled.
+- [x] Run tool discovery and execution in Chrome 149 or later with WebMCP testing enabled.
 - [ ] Keep the app free and available until September 21, 2026 at 5:00 PM Pacific Time.
 
 ## Public repository

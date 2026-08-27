@@ -1,0 +1,50 @@
+{
+  "verifiedAt": "2026-08-27T06:34:01.420Z",
+  "url": "https://semantic-spatial-webmcp.swmengappdev.workers.dev/",
+  "https": true,
+  "anonymousAccess": true,
+  "rootStatus": 200,
+  "headers": {
+    "origin-agent-cluster": "?1",
+    "permissions-policy": "tools=(self)",
+    "referrer-policy": "strict-origin-when-cross-origin",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "cross-origin-opener-policy": "same-origin",
+    "cross-origin-resource-policy": "same-origin",
+    "content-security-policy": "default-src 'self'; script-src 'self' 'sha256-hge7hpFkgFGA3xZR2xdtH/p02Yj4fINHQdyI9zNChfI=' 'wasm-unsafe-eval' https://cdn.jsdelivr.net https://sparkjs.dev; connect-src 'self' https: data:; style-src 'self' 'unsafe-inline'; img-src 'self' data:; worker-src 'self' blob:; object-src 'none'; base-uri 'none'; frame-ancestors 'none'"
+  },
+  "manifest": {
+    "url": "https://semantic-spatial-webmcp.swmengappdev.workers.dev/build-manifest.json",
+    "sha256": "363e735e33cb7a86b2b818055aba884badcdb6586e517f69e90e0715bfeb404b",
+    "builtAt": "2026-08-27T06:33:16.930Z",
+    "commit": "13143cb36672f45cbcfe534f269d7c2db47d76a2",
+    "dirty": false,
+    "fileCount": 15
+  },
+  "assets": {
+    "verifiedCount": 14,
+    "verifiedFiles": [
+      "LICENSE",
+      "index.html",
+      "src/app.js",
+      "src/demo-scene.js",
+      "src/route-planner.js",
+      "src/scene-store.js",
+      "src/schema-validator.js",
+      "src/spatial-coordinates.js",
+      "src/splat-station-viewer.js",
+      "src/tool-runtime.js",
+      "src/types.js",
+      "src/viewer-adapter.js",
+      "src/webmcp-adapter.js",
+      "styles.css"
+    ],
+    "policyFile": {
+      "path": "_headers",
+      "status": 404
+    }
+  },
+  "missingPathStatus": 404,
+  "result": "passed"
+}

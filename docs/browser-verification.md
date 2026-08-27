@@ -38,9 +38,15 @@ At a 390 by 844 viewport, the page used a single-column layout. The 3D scene, mo
 
 The one-click guided proof completed in the normal human interface with six successful, source-labelled runtime calls. All five mission steps reached their completed state. After undo, Lift 1 was open, the staged-change count was zero, and both the derived route and quality overlays were empty. This caught and closed a stale-overlay bug: scene-state changes now invalidate any route or evidence overlay computed against the previous state.
 
+The same proof was repeated from a fresh tab against the public Cloudflare Workers URL on August 27, 2026. The production page rendered the 12,026-splat fixture, completed all five steps, restored the baseline, retained the West corridor evidence explanation, and produced no browser console messages.
+
+## Public Cloudflare Workers deployment
+
+The public app is https://semantic-spatial-webmcp.swmengappdev.workers.dev/. The deployment verifier accepted clean commit `13143cb36672f45cbcfe534f269d7c2db47d76a2`, checked all 14 publicly served files against the build-manifest byte counts and SHA-256 hashes, verified the required WebMCP and security headers, and confirmed that both `_headers` and an unknown path return 404. The machine-readable receipt is `docs/public-deployment-verification.json`.
+
 ## Real Chrome WebMCP check
 
-Verified on August 27, 2026 with Google Chrome 151.0.7922.174 and the `WebMCPTesting` feature enabled in an isolated profile.
+Verified on August 27, 2026 against the public Cloudflare Workers URL with Google Chrome 151.0.7922.174 and the `WebMCPTesting` feature enabled in an isolated profile.
 
 - The URL exposed `build-manifest.json` from the allowlisted `dist/` artifact; the receipt records its SHA-256, build commit, dirty flag, and file count.
 - Navigation-to-WebMCP-ready time stayed below the five-second launch criterion; the exact conservative timing is in the JSON receipt.
@@ -56,10 +62,10 @@ Verified on August 27, 2026 with Google Chrome 151.0.7922.174 and the `WebMCPTes
 - The visible timeline labelled each call `agent`. A subsequent page-button route call was labelled `human`.
 - The browser console contained no application errors.
 
-The repeatable receipt is `docs/webmcp-chrome-verification.json`; its final-state screenshot is `submission/screenshots/chrome-webmcp-flow.png`.
+The public-production receipt is `docs/cloudflare-workers-verification.json`; its final-state screenshot is `submission/screenshots/cloudflare-workers-webmcp.png`. The earlier local artifact receipt remains in `docs/webmcp-chrome-verification.json` with `submission/screenshots/chrome-webmcp-flow.png`.
 
 Chrome 151's manual execution API required a JSON string. Passing an object produced `UnknownError: Failed to parse input arguments`. Chrome 151 also passed no second argument to the page's `execute` callback. An outer `AbortSignal` rejected the caller with `AbortError`, but the page tool continued and logged success. Cancellation remains unit-tested for clients that provide the documented execution signal; it is not claimed as verified in Chrome 151.
 
 ## Artifacts
 
-Transient Playwright screenshots remain under ignored `output/playwright/`. The checked-in Chrome receipt and project-only screenshot are the public challenge evidence for the imperative WebMCP flow.
+Transient Playwright screenshots remain under ignored `output/playwright/`. The checked-in production receipt and project-only screenshot are the public challenge evidence for the imperative WebMCP flow.

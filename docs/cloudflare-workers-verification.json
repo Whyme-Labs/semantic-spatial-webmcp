@@ -1,5 +1,5 @@
 {
-  "verifiedAt": "2026-08-27T06:28:11.914Z",
+  "verifiedAt": "2026-08-27T06:34:03.649Z",
   "chrome": {
     "product": "Chrome/151.0.7922.174",
     "protocolVersion": "1.3",
@@ -9,14 +9,14 @@
   "artifact": {
     "kind": "allowlisted-dist",
     "manifestUrl": "https://semantic-spatial-webmcp.swmengappdev.workers.dev/build-manifest.json",
-    "manifestSha256": "6de333aecebfe2685a9deabda8099f8d5330decc66fd9e9235596f58594999eb",
-    "builtAt": "2026-08-27T06:27:00.652Z",
-    "commit": "90fa1ac68b0e08317ce572ec2ae52f19e4c4ebdc",
-    "dirty": true,
+    "manifestSha256": "363e735e33cb7a86b2b818055aba884badcdb6586e517f69e90e0715bfeb404b",
+    "builtAt": "2026-08-27T06:33:16.930Z",
+    "commit": "13143cb36672f45cbcfe534f269d7c2db47d76a2",
+    "dirty": false,
     "fileCount": 15
   },
   "timing": {
-    "navigationToWebMcpReadyMs": 2940,
+    "navigationToWebMcpReadyMs": 3189,
     "underFiveSeconds": true
   },
   "webmcp": {
