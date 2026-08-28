@@ -4,21 +4,24 @@ The upload candidate is a 24-shot edit built from the verified public Chrome rep
 
 ## Generate the full narration
 
-The local GGUF engine needs the checked-in graph-capacity patch for a 406-word cloned-voice prompt:
+The local GGUF engine uses the checked-in graph-capacity patch for the 247-word cloned-voice prompt:
 
 ```bash
 git -C <voxcpm2-llama.cpp-omni-root> apply --unidiff-zero "$PWD/patches/voxcpm2-long-form-graph.patch"
 cmake --build <voxcpm2-llama.cpp-omni-root>/build --target voxcpm2-cli -j 8
 ```
 
-Generate the entire performance in one inference. Seed 42 produced a rejected mid-track vocal artifact; seed 43 is the verified take.
+Generate the entire performance in one inference. Earlier takes were rejected for boundary words, a dropped spoken score, or background vocal energy. Seed 44 at temperature 0.75 is the verified Metal take.
 
 ```bash
 npm run generate:demo-narration -- \
   --reference-audio <owner-authorized-voice-sample.m4a> \
   --backend gguf \
-  --seed 43
+  --seed 44 \
+  --temperature 0.75
 
+npm run verify:demo-narration
+npm run clean:demo-narration
 npm run verify:demo-narration
 npm run verify:demo-audio
 ```
@@ -27,9 +30,11 @@ The accepted master must satisfy all of these:
 
 - `generator.mode` is `single-pass`;
 - 12 of 12 story beats align with no failures;
-- total silence stays below 12 percent;
+- no individual aligned word falls below the pronunciation confidence floor;
+- total quiet time stays below 20 percent after the aligned gaps are cleaned;
 - the longest silent gap stays below two seconds; and
-- the measured 330–346 Hz tone stays at or below the surrounding-spectrum limit.
+- the measured 330–346 Hz tone stays at or below the surrounding-spectrum limit; and
+- inter-beat gaps stay below the background-vocal energy limit.
 
 ## Capture the real WebMCP flow
 
@@ -58,7 +63,7 @@ npm run assemble:demo-video
 npm run verify:media-dynamics
 ```
 
-The editor reads the forced-alignment receipt and places cuts only between speech beats. It creates 24 shots with live-scene crops, evidence close-ups, timeline pans, a context-comparison beat, and a branded resolution. The final dynamics gate requires at least eight detected cuts and rejects freeze events longer than eight seconds.
+The editor reads the forced-alignment receipt and places short brand-color fades only between speech beats. It creates 24 shots with exact live tool-call overlays, evidence punch-ins, readable timeline crops, a context-comparison beat, and a branded resolution. Project-authored UI ticks accent key calls; there is no music. The final dynamics gate requires at least eight detected cuts and rejects freeze events longer than eight seconds.
 
 ## Verify the exact export
 

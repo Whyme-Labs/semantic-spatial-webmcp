@@ -142,9 +142,10 @@ def main() -> None:
     parser.add_argument("--attestation", type=Path, default=DEFAULT_ATTESTATION)
     parser.add_argument("--backend", choices=["auto", "gguf", "pytorch"], default="auto")
     parser.add_argument("--gguf-root", type=Path, default=DEFAULT_GGUF_ROOT)
+    parser.add_argument("--gguf-device", choices=["metal", "cpu"], default="metal")
     parser.add_argument("--device", default="cpu")
     parser.add_argument("--steps", type=int, default=10)
-    parser.add_argument("--max-decode-steps", type=int, default=1400)
+    parser.add_argument("--max-decode-steps", type=int, default=1000)
     parser.add_argument("--cfg-value", type=float, default=2.0)
     parser.add_argument("--temperature", type=float, default=0.75)
     parser.add_argument("--seed", type=int, default=42)
@@ -164,7 +165,9 @@ def main() -> None:
         raise ValueError("Narration script must use schemaVersion 2 and contain beats")
     minimum_duration = float(script["minimumDurationSeconds"])
     maximum_duration = float(script["maximumDurationSeconds"])
-    full_text = "\n\n".join(beat["text"].strip() for beat in script["beats"])
+    # VoxCPM2 can vocalize long blank-line boundaries as words such as "switch".
+    # Keep the performance continuous and let sentence punctuation carry the pacing.
+    full_text = " ".join(beat["text"].strip() for beat in script["beats"])
     word_count = len(WORD_RE.findall(full_text))
 
     source_hash = sha256_file(reference_source)
@@ -205,6 +208,7 @@ def main() -> None:
         "cfgValue": args.cfg_value,
         "temperature": args.temperature if backend == "gguf" else None,
         "seed": args.seed,
+        "device": args.gguf_device if backend == "gguf" else args.device,
         "voiceControl": script["voiceControl"],
         "referenceSha256": sha256_file(reference_wav),
     }
@@ -214,17 +218,24 @@ def main() -> None:
     raw_path = full_dir / f"narration-{fingerprint}-raw.wav"
     trimmed_path = full_dir / f"narration-{fingerprint}-trimmed.wav"
     final_output = output_dir / "demo-narration.wav"
-    prompted_text = f"({script['voiceControl']}){full_text}"
+    # Reference cloning and voice-design prompts are separate VoxCPM2 modes. Mixing
+    # a parenthetical design prompt into a cloned long-form take can create a quiet
+    # second vocal layer. The approved delivery direction remains in the receipt;
+    # punctuation and wording shape the cloned performance itself.
+    prompted_text = full_text
 
     if args.force or not raw_path.exists():
         print(f"Generate one continuous track · {word_count} words · backend={backend}", flush=True)
         if backend == "gguf":
-            result = run([
+            gguf_command = [
                 str(gguf_cli), "-t", prompted_text, "-o", str(raw_path), "-r", str(reference_wav),
                 "--steps", str(args.max_decode_steps), "--timesteps", str(args.steps),
                 "--cfg", str(args.cfg_value), "--temperature", str(args.temperature),
                 "--seed", str(args.seed), str(gguf_base), str(gguf_acoustic),
-            ])
+            ]
+            if args.gguf_device == "cpu":
+                gguf_command.insert(-2, "--cpu")
+            result = run(gguf_command)
             summary = " ".join((result.stdout + result.stderr).strip().splitlines()[-3:])
             if summary:
                 print(f"GGUF · {summary}", flush=True)
@@ -298,7 +309,7 @@ def main() -> None:
             "conversionModel": GGUF_MODEL_ID if backend == "gguf" else None,
             "baseModelSha256": sha256_file(gguf_base) if backend == "gguf" else None,
             "acousticModelSha256": sha256_file(gguf_acoustic) if backend == "gguf" else None,
-            "device": "metal" if backend == "gguf" else args.device,
+            "device": args.gguf_device if backend == "gguf" else args.device,
         },
         "script": {
             "path": portable_path(script_path),

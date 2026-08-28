@@ -1,40 +1,151 @@
 {
-  "schemaVersion": 1,
-  "analyzedAt": "2026-08-27T18:45:58.711566+00:00",
+  "schemaVersion": 2,
+  "analyzedAt": "2026-08-28T16:33:28.250659+00:00",
   "audio": {
     "path": "submission/video/narration/demo-narration.wav",
-    "durationSeconds": 158.361,
+    "durationSeconds": 102.904,
     "sampleRateHz": 48000,
     "channels": 1
   },
   "silence": {
     "thresholdDb": -50,
-    "fraction": 0.0325,
-    "totalSeconds": 5.14,
-    "longestSeconds": 1.06
+    "fraction": 0.1668,
+    "totalSeconds": 17.16,
+    "longestSeconds": 0.62
   },
   "persistentTone": {
     "bandHz": [
       330,
       346
     ],
-    "medianProminenceDb": -7.693,
-    "p75ProminenceDb": -0.98,
-    "framesOver8DbPercent": 7.389,
-    "activeFrames": 7119
+    "medianProminenceDb": -11.057,
+    "p75ProminenceDb": -3.487,
+    "framesOver8DbPercent": 6.989,
+    "activeFrames": 4307
+  },
+  "interBeatLeakage": {
+    "thresholdDb": -38,
+    "edgeGuardSeconds": 0.08,
+    "maximumActiveFraction": 0.0741,
+    "meanActiveFraction": 0.0067,
+    "boundaries": [
+      {
+        "beforeBeat": "02-sceneindex",
+        "startSeconds": 9.142,
+        "endSeconds": 9.662,
+        "durationSeconds": 0.52,
+        "medianRmsDb": -120.0,
+        "p90RmsDb": -73.652,
+        "activeFraction": 0.0
+      },
+      {
+        "beforeBeat": "03-mission",
+        "startSeconds": 18.684,
+        "endSeconds": 19.244,
+        "durationSeconds": 0.56,
+        "medianRmsDb": -120.0,
+        "p90RmsDb": -70.08,
+        "activeFraction": 0.0
+      },
+      {
+        "beforeBeat": "04-baseline-route",
+        "startSeconds": 27.686,
+        "endSeconds": 28.046,
+        "durationSeconds": 0.36,
+        "medianRmsDb": -120.0,
+        "p90RmsDb": -83.95,
+        "activeFraction": 0.0
+      },
+      {
+        "beforeBeat": "05-lift-closure",
+        "startSeconds": 34.568,
+        "endSeconds": 35.148,
+        "durationSeconds": 0.58,
+        "medianRmsDb": -120.0,
+        "p90RmsDb": -85.644,
+        "activeFraction": 0.0
+      },
+      {
+        "beforeBeat": "06-alternate-route",
+        "startSeconds": 43.89,
+        "endSeconds": 44.43,
+        "durationSeconds": 0.54,
+        "medianRmsDb": -120.0,
+        "p90RmsDb": -60.056,
+        "activeFraction": 0.0741
+      },
+      {
+        "beforeBeat": "07-evidence",
+        "startSeconds": 53.092,
+        "endSeconds": 53.552,
+        "durationSeconds": 0.46,
+        "medianRmsDb": -120.0,
+        "p90RmsDb": -76.677,
+        "activeFraction": 0.0
+      },
+      {
+        "beforeBeat": "08-recapture",
+        "startSeconds": 61.174,
+        "endSeconds": 61.554,
+        "durationSeconds": 0.38,
+        "medianRmsDb": -120.0,
+        "p90RmsDb": -74.389,
+        "activeFraction": 0.0
+      },
+      {
+        "beforeBeat": "09-human-control",
+        "startSeconds": 70.656,
+        "endSeconds": 70.996,
+        "durationSeconds": 0.34,
+        "medianRmsDb": -120.0,
+        "p90RmsDb": -63.049,
+        "activeFraction": 0.0
+      },
+      {
+        "beforeBeat": "10-webmcp",
+        "startSeconds": 78.058,
+        "endSeconds": 78.518,
+        "durationSeconds": 0.46,
+        "medianRmsDb": -120.0,
+        "p90RmsDb": -57.47,
+        "activeFraction": 0.0
+      },
+      {
+        "beforeBeat": "11-impact",
+        "startSeconds": 86.5,
+        "endSeconds": 86.8,
+        "durationSeconds": 0.3,
+        "medianRmsDb": -120.0,
+        "p90RmsDb": -56.715,
+        "activeFraction": 0.0
+      },
+      {
+        "beforeBeat": "12-close",
+        "startSeconds": 95.622,
+        "endSeconds": 96.022,
+        "durationSeconds": 0.4,
+        "medianRmsDb": -120.0,
+        "p90RmsDb": -65.219,
+        "activeFraction": 0.0
+      }
+    ]
   },
   "limits": {
-    "minimumDurationSeconds": 145,
-    "maximumDurationSeconds": 178,
-    "maximumSilenceFraction": 0.12,
+    "minimumDurationSeconds": 90,
+    "maximumDurationSeconds": 120,
+    "maximumSilenceFraction": 0.2,
     "maximumLongestSilenceSeconds": 2.0,
-    "maximumHumProminenceDb": 8.0
+    "maximumHumProminenceDb": 4.0,
+    "maximumHumFrameCoveragePercent": 20.0,
+    "maximumInterBeatActiveFraction": 0.2
   },
   "checks": {
     "durationInRange": true,
     "silenceFraction": true,
     "longestSilence": true,
-    "humProminence": true
+    "humProminence": true,
+    "humFrameCoverage": true,
+    "interBeatLeakage": true
   },
   "failures": [],
   "result": "passed"

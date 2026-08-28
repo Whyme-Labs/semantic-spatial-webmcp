@@ -26,6 +26,7 @@
     "verify:deployment": "node scripts/verify-public-deployment.mjs",
     "verify:demo-video": "node scripts/verify-demo-video.mjs",
     "generate:demo-narration": "python3.11 scripts/generate-demo-narration.py",
+    "clean:demo-narration": "python3.11 scripts/clean-narration-audio.py",
     "verify:demo-narration": "python3.11 scripts/verify-demo-narration.py",
     "verify:demo-audio": "python3.11 scripts/analyze-narration-audio.py --audio submission/video/narration/demo-narration.wav --output docs/demo-audio-quality.json",
     "assemble:demo-video": "node scripts/build-dynamic-demo-video.mjs",

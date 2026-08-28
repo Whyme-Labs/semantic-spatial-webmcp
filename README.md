@@ -156,7 +156,9 @@ The public repository workflow at `.github/workflows/verify.yml` reruns syntax, 
 The demo-media pipeline uses one continuous VoxCPM2 narration and a beat-aligned 24-shot edit:
 
 ```bash
-npm run generate:demo-narration -- --reference-audio <authorized-sample.m4a> --backend gguf --seed 43
+npm run generate:demo-narration -- --reference-audio <authorized-sample.m4a> --backend gguf --seed 44 --temperature 0.75
+npm run verify:demo-narration
+npm run clean:demo-narration
 npm run verify:demo-narration
 npm run verify:demo-audio
 npm run assemble:demo-video

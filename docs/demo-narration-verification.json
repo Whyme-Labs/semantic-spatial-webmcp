@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-27T18:45:55.464404+00:00",
+  "generatedAt": "2026-08-28T16:28:48.290372+00:00",
   "authorization": "Owner-authorized voice reference; source audio is not stored in the repository",
   "reference": {
     "sourceFilename": "Tsinghua University Zijing Students' Apartment Building 23 2.m4a",
@@ -16,11 +16,12 @@
     "model": "openbmb/VoxCPM2",
     "revision": "169f64d8b98bbaab1761e4ca3a83e6af653456cc",
     "inferenceTimesteps": 10,
-    "maxDecodeSteps": 1400,
+    "maxDecodeSteps": 1000,
     "cfgValue": 2.0,
     "temperature": 0.75,
-    "seed": 43,
-    "voiceControl": "Warm, confident documentary narrator. Begin conversational and reflective. Become firmer and slightly quicker when Lift 1 closes, without shouting. Slow down to explain the evidence. Finish calm and assured. Use natural speech, varied sentence rhythm, and one clean foreground voice. No trailer voice, whispering, singing, humming, doubled voice, or background vocalization.",
+    "seed": 44,
+    "device": "metal",
+    "voiceControl": "Warm, confident documentary narrator. Open with urgency, then become measured and curious. Turn firmer when Lift 1 closes. Slow down for the evidence and finish calm and assured. Use natural phrasing, varied emphasis, and one clean foreground voice. Never announce paragraphs, beats, scenes, cuts, switches, or transitions. No trailer voice, whispering, singing, humming, doubled voice, or background vocalization.",
     "referenceSha256": "851c838d6b9d35158c9b8589533f0aadd46c0bc1f66c9abcc5d580b858ac8301",
     "package": "llama.cpp-omni",
     "packageVersion": "64d092c60db4b4ee45768476bd752f03fdcc98ea",
@@ -29,24 +30,23 @@
     "longFormGraphPatchSha256": "8ff5334dd398f823136ad5c7e1804c00e37cf5b553a1c18bc89872d909ef680c",
     "conversionModel": "DennisHuang648/VoxCPM2-GGUF",
     "baseModelSha256": "0113177abd11303503bf0b705e1613ec5f0a8508cc74a7dfd0f99312b962a962",
-    "acousticModelSha256": "5bde898488ad635ff55d24da53543768fa33d5e5cdc538ce190e5ef831038e85",
-    "device": "metal"
+    "acousticModelSha256": "5bde898488ad635ff55d24da53543768fa33d5e5cdc538ce190e5ef831038e85"
   },
   "script": {
     "path": "submission/narration-script.json",
-    "sha256": "c4ac7139ba09173c03e70ab39b9a79bb02deab7bcd5edbe075819439f8ae1fb6",
-    "wordCount": 406,
+    "sha256": "6822ba00f3246d39368a2f407e0830a7f7766b9fa350af6b8eef1f79a776c0dc",
+    "wordCount": 247,
     "beatCount": 12,
-    "minimumDurationSeconds": 145.0,
-    "maximumDurationSeconds": 178.0
+    "minimumDurationSeconds": 90.0,
+    "maximumDurationSeconds": 120.0
   },
   "generation": {
-    "rawPath": "submission/video/narration/full/narration-fe91e3523cfd-raw.wav",
-    "rawSha256": "92df192fddade0e225e2a63c53244e164ba421064a61c6429d94c8989ce6ffb8",
-    "rawDurationSeconds": 158.24,
-    "trimmedPath": "submission/video/narration/full/narration-fe91e3523cfd-trimmed.wav",
-    "trimmedSha256": "82ede6b7333334343d9840f638af83ac9f97aaa9819c0be5bb167b1a3e847e23",
-    "trimmedDurationSeconds": 157.561,
+    "rawPath": "submission/video/narration/full/narration-c5bf7166b261-raw.wav",
+    "rawSha256": "1bf047bae53126fd1b6a8d4cf73f25858c5c98b190dac918477d14643fd0e572",
+    "rawDurationSeconds": 102.4,
+    "trimmedPath": "submission/video/narration/full/narration-c5bf7166b261-trimmed.wav",
+    "trimmedSha256": "f352601716d1873d219b63c1243fcc132b1a6ac03bf015e9bed97a9924bf0b59",
+    "trimmedDurationSeconds": 102.104,
     "trimFilter": "silenceremove=start_periods=1:start_duration=0.05:start_threshold=-50dB,areverse,silenceremove=start_periods=1:start_duration=0.1:start_threshold=-50dB,areverse",
     "tempo": 1.0,
     "masteringFilter": "highpass=f=90,afftdn=nr=12:nf=-42:tn=1:gs=8,equalizer=f=338:t=q:w=10:g=-15,loudnorm=I=-16:TP=-1.5:LRA=9,afade=t=in:st=0:d=0.04,adelay=250,apad=pad_dur=0.55"
@@ -54,62 +54,85 @@
   "beats": [
     {
       "id": "01-cold-open",
-      "text": "One lift closes. For a wheelchair user in an unfamiliar station, that red status can erase the route they expected. A beautiful 3D scan still looks complete. It does not know the journey has broken."
+      "text": "Traditional 3D scans can look complete while missing the instant an accessible route breaks. One lift closes, and the expected journey disappears."
     },
     {
       "id": "02-sceneindex",
-      "text": "SceneIndex gives the place memory and language. The Gaussian splat remains the visual record. Persistent rooms, gates, lifts, routes, and evidence sit underneath it. A person sees the station. An agent reasons about the same station."
+      "text": "SceneIndex adds persistent meaning beneath the Gaussian splat: rooms, gates, lifts, routes, and evidence that people and agents share."
     },
     {
       "id": "03-mission",
-      "text": "The job is simple. Get from Entrance A to Platform 2 without stairs, and do not hide uncertainty. The agent reads the live camera, finds the accessible gate, and moves the shared view to the evidence position."
+      "text": "The mission: reach Platform 2 from Entrance A without stairs, while exposing uncertainty. The agent reads the camera and finds the accessible gate."
     },
     {
       "id": "04-baseline-route",
-      "text": "The first answer is ordinary. Follow the east corridor. Take Lift 1. Continue to the platform. The route appears in the scene, so every turn can be inspected instead of trusted blindly."
+      "text": "The first route uses the east corridor and Lift 1. It appears in the scene, where every turn stays inspectable."
     },
     {
       "id": "05-lift-closure",
-      "text": "Then Lift 1 closes. The proxy turns red, the operational state changes, and the route becomes invalid. Nothing is silently rewritten. The outage is visible to both sides, and it can be undone."
+      "text": "Then Lift 1 closes. Its proxy turns red, its state changes, and the route fails visibly. The outage is reversible, never hidden."
     },
     {
       "id": "06-alternate-route",
-      "text": "The agent searches again. Lift 2 keeps the trip possible, but the alternate path crosses the West corridor. SceneIndex finds a route and raises a warning. Accessible-wayfinding readiness is only fifty-six percent."
+      "text": "The agent reroutes through Lift 2. The trip remains possible, but the West corridor raises a warning: wayfinding readiness is only just over half."
     },
     {
       "id": "07-evidence",
-      "text": "That number has a reason. The directional sign has one oblique, low-resolution observation. Connectivity is known, but the text is not verified. The page exposes that doubt and marks the weak region."
+      "text": "Why? The directional sign has one oblique, low resolution view. Connectivity is known, but its text remains unverified."
     },
     {
       "id": "08-recapture",
-      "text": "Now the system looks beyond navigation. It recommends a front-facing sign capture at eye level, then a reverse corridor pass from Lift 2. Six markers and sightlines turn better coverage into fieldwork someone can perform."
+      "text": "SceneIndex turns doubt into fieldwork: recapture the sign front-on, then walk a reverse pass from Lift 2. Six markers make the plan concrete."
     },
     {
       "id": "09-human-control",
-      "text": "The person stays in control. Inspect the route, challenge the evidence, accept the recommendation, or undo the outage. One action restores Lift 1 and clears the staged change. The baseline is clean again."
+      "text": "The person keeps control: inspect, challenge, accept, or undo. One action restores Lift 1 and the clean baseline."
     },
     {
       "id": "10-webmcp",
-      "text": "WebMCP connects to the live interface, not a separate backend copy. Ten narrow tools share validation, scene state, camera, visual effects, and the action timeline with human controls. Every agent call is labelled and observable."
+      "text": "Web M C P connects to this live interface. Ten narrow tools share scene state, validation, effects, and a human-visible action timeline."
     },
     {
       "id": "11-impact",
-      "text": "The station is synthetic, but the pattern is practical. A registered capture could support accessibility review, building handover, remote inspection, maintenance, and targeted recapture. The agent never has to pretend the pixels know more than they do."
+      "text": "The station is synthetic, but this pattern supports accessibility review, handover, inspection, maintenance, and targeted recapture without pretending pixels know more."
     },
     {
       "id": "12-close",
-      "text": "SceneIndex makes a place searchable, testable, and honest about its evidence. When the world changes, the route changes with it. Search the place. See the reason. Keep the decision in view."
+      "text": "SceneIndex makes a place searchable, testable, and honest about evidence. When the world changes, the route changes with it."
     }
   ],
   "output": {
     "path": "submission/video/narration/demo-narration.wav",
-    "bytes": 22804122,
-    "sha256": "c506f361981dde3e59f38ab1d78e7d9ff17a1958c872cde97a140a0782959bd0",
-    "durationSeconds": 158.361,
+    "bytes": 14818176,
+    "sha256": "49e0505cf1fbe54d2f66f4c58b1fff0d2d16dce66872040a43fea4630181439f",
+    "durationSeconds": 102.904,
     "sampleRateHz": 48000,
     "channels": 1,
-    "meanVolumeDb": -17.6,
-    "maxVolumeDb": -1.5
+    "meanVolumeDb": -17.1,
+    "maxVolumeDb": -1.0
   },
-  "result": "passed"
+  "result": "passed",
+  "cleanup": {
+    "processedAt": "2026-08-28T16:32:10.357734+00:00",
+    "mode": "single-track adaptive spectral subtraction with aligned gap envelopes",
+    "inputPath": "submission/video/narration/full/narration-a3ca11af7702-pre-clean.wav",
+    "inputSha256": "a3ca11af77027bd91cfc9d163877db2855c56daf1f35f642ee40609060073ba5",
+    "outputSha256": "49e0505cf1fbe54d2f66f4c58b1fff0d2d16dce66872040a43fea4630181439f",
+    "alignmentSha256": "6ea336280a669afb198d02cafdb8d8269e630894545abd3a38016d32b3e6a7c8",
+    "gapCount": 11,
+    "gapGuardSeconds": 0.08,
+    "gapFadeSeconds": 0.04,
+    "spectralStrength": 1.15,
+    "minimumGain": 0.14,
+    "notchBandsHz": [
+      [
+        320,
+        360
+      ],
+      [
+        650,
+        710
+      ]
+    ]
+  }
 }

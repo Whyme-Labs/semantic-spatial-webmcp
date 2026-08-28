@@ -2,435 +2,441 @@ TAP version 13
 # Subtest: SceneIndex is the visible product identity
 ok 1 - SceneIndex is the visible product identity
   ---
-  duration_ms: 1.111375
+  duration_ms: 1.936541
   type: 'test'
   ...
 # Subtest: the production palette and SVG system match the approved brand board
 ok 2 - the production palette and SVG system match the approved brand board
   ---
-  duration_ms: 1.106375
+  duration_ms: 1.705542
   type: 'test'
   ...
 # Subtest: the deployment build includes the brand assets
 ok 3 - the deployment build includes the brand assets
   ---
-  duration_ms: 0.122041
+  duration_ms: 0.187375
   type: 'test'
   ...
 # Subtest: the brand manifest binds each production SVG and records passing QA
 ok 4 - the brand manifest binds each production SVG and records passing QA
   ---
-  duration_ms: 1.106791
+  duration_ms: 2.571292
   type: 'test'
   ...
 # Subtest: Chrome verifier parses a paced headed replay
 ok 5 - Chrome verifier parses a paced headed replay
   ---
-  duration_ms: 0.759
+  duration_ms: 1.740292
   type: 'test'
   ...
 # Subtest: Chrome verifier rejects unsafe replay delays
 ok 6 - Chrome verifier rejects unsafe replay delays
   ---
-  duration_ms: 0.32825
+  duration_ms: 0.835791
   type: 'test'
   ...
 # Subtest: Cloudflare Workers deploys the allowlisted artifact through direct static assets
 ok 7 - Cloudflare Workers deploys the allowlisted artifact through direct static assets
   ---
-  duration_ms: 0.667625
+  duration_ms: 2.117291
   type: 'test'
   ...
 # Subtest: deployment scripts build before Wrangler validates or publishes
 ok 8 - deployment scripts build before Wrangler validates or publishes
   ---
-  duration_ms: 0.155083
+  duration_ms: 0.369542
   type: 'test'
   ...
 # Subtest: the production CSP allows only the exact inline import map
 ok 9 - the production CSP allows only the exact inline import map
   ---
-  duration_ms: 0.336833
+  duration_ms: 0.745542
   type: 'test'
   ...
 # Subtest: demo video analysis accepts an audible 1080p export below three minutes
 ok 10 - demo video analysis accepts an audible 1080p export below three minutes
   ---
-  duration_ms: 1.862334
+  duration_ms: 2.1815
   type: 'test'
   ...
 # Subtest: demo video analysis rejects the three-minute boundary
 ok 11 - demo video analysis rejects the three-minute boundary
   ---
-  duration_ms: 0.528459
+  duration_ms: 0.46075
   type: 'test'
   ...
 # Subtest: demo video analysis rejects missing or effectively silent audio
 ok 12 - demo video analysis rejects missing or effectively silent audio
   ---
-  duration_ms: 0.371542
+  duration_ms: 0.207
   type: 'test'
   ...
 # Subtest: volume parser reads ffmpeg output and handles negative infinity
 ok 13 - volume parser reads ffmpeg output and handles negative infinity
   ---
-  duration_ms: 0.616292
+  duration_ms: 0.510833
   type: 'test'
   ...
 # Subtest: demo video CLI parses explicit limits
 ok 14 - demo video CLI parses explicit limits
   ---
-  duration_ms: 0.205875
+  duration_ms: 3.159334
   type: 'test'
   ...
 # Subtest: dynamic edit maps twelve narration beats to twenty-four bounded shots
 ok 15 - dynamic edit maps twelve narration beats to twenty-four bounded shots
   ---
-  duration_ms: 0.670958
+  duration_ms: 1.617583
   type: 'test'
   ...
 # Subtest: dynamic edit CLI exposes repository-local defaults
 ok 16 - dynamic edit CLI exposes repository-local defaults
   ---
-  duration_ms: 0.20025
+  duration_ms: 0.417583
+  type: 'test'
+  ...
+# Subtest: dynamic edit renders exact live-call overlays and synthesized UI cues
+ok 17 - dynamic edit renders exact live-call overlays and synthesized UI cues
+  ---
+  duration_ms: 1.441416
   type: 'test'
   ...
 # Subtest: deterministic prompt fixtures pass through the shared runtime
-ok 17 - deterministic prompt fixtures pass through the shared runtime
+ok 18 - deterministic prompt fixtures pass through the shared runtime
   ---
-  duration_ms: 8.315167
+  duration_ms: 16.525792
   type: 'test'
   ...
 # Subtest: narration is one story-driven full-track prompt
-ok 18 - narration is one story-driven full-track prompt
+ok 19 - narration is one story-driven full-track prompt
   ---
-  duration_ms: 1.345834
+  duration_ms: 1.789334
   type: 'test'
   ...
 # Subtest: English captions cover all twelve aligned story beats
-ok 19 - English captions cover all twelve aligned story beats
+ok 20 - English captions cover all twelve aligned story beats
   ---
-  duration_ms: 1.113959
+  duration_ms: 1.174666
   type: 'test'
   ...
 # Subtest: generation, alignment, and hum checks prove one continuous master
-ok 20 - generation, alignment, and hum checks prove one continuous master
+ok 21 - generation, alignment, and hum checks prove one continuous master
   ---
-  duration_ms: 0.130041
+  duration_ms: 0.416291
   type: 'test'
   ...
 # Subtest: entrant attestation records the owner decisions without storing the voice sample
-ok 21 - entrant attestation records the owner decisions without storing the voice sample
+ok 22 - entrant attestation records the owner decisions without storing the voice sample
   ---
-  duration_ms: 0.078584
+  duration_ms: 0.240958
   type: 'test'
   ...
 # Subtest: public deployment verifier checks headers, clean manifest, asset hashes, and 404s
-ok 22 - public deployment verifier checks headers, clean manifest, asset hashes, and 404s
+ok 23 - public deployment verifier checks headers, clean manifest, asset hashes, and 404s
   ---
-  duration_ms: 17.08825
+  duration_ms: 26.746833
   type: 'test'
   ...
 # Subtest: public deployment verifier rejects a missing WebMCP header
-ok 23 - public deployment verifier rejects a missing WebMCP header
+ok 24 - public deployment verifier rejects a missing WebMCP header
   ---
-  duration_ms: 0.453666
+  duration_ms: 0.763333
   type: 'test'
   ...
 # Subtest: baseline accessible route uses Lift 1
-ok 24 - baseline accessible route uses Lift 1
+ok 25 - baseline accessible route uses Lift 1
   ---
-  duration_ms: 3.227583
+  duration_ms: 5.777708
   type: 'test'
   ...
 # Subtest: closing Lift 1 selects Lift 2 and exposes capture warning
-ok 25 - closing Lift 1 selects Lift 2 and exposes capture warning
+ok 26 - closing Lift 1 selects Lift 2 and exposes capture warning
   ---
-  duration_ms: 2.362916
+  duration_ms: 5.757667
   type: 'test'
   ...
 # Subtest: blocking east corridor selects the alternate route
-ok 26 - blocking east corridor selects the alternate route
+ok 27 - blocking east corridor selects the alternate route
   ---
-  duration_ms: 2.7635
+  duration_ms: 1.735208
   type: 'test'
   ...
 # Subtest: both lifts closed produces an explicit no-route result
-ok 27 - both lifts closed produces an explicit no-route result
+ok 28 - both lifts closed produces an explicit no-route result
   ---
-  duration_ms: 0.804958
+  duration_ms: 1.922417
   type: 'test'
   ...
 # Subtest: semantic search finds the accessible fare gate
-ok 28 - semantic search finds the accessible fare gate
+ok 29 - semantic search finds the accessible fare gate
   ---
-  duration_ms: 2.9755
+  duration_ms: 5.027708
   type: 'test'
   ...
 # Subtest: state changes are reversible
-ok 29 - state changes are reversible
+ok 30 - state changes are reversible
   ---
-  duration_ms: 1.686708
+  duration_ms: 3.660958
   type: 'test'
   ...
 # Subtest: uncertain entities expose the weak dimension
-ok 30 - uncertain entities expose the weak dimension
+ok 31 - uncertain entities expose the weak dimension
   ---
-  duration_ms: 0.746791
+  duration_ms: 0.606459
   type: 'test'
   ...
 # Subtest: semantic positions round-trip between the sidecar and viewer space
-ok 31 - semantic positions round-trip between the sidecar and viewer space
+ok 32 - semantic positions round-trip between the sidecar and viewer space
   ---
-  duration_ms: 1.752292
+  duration_ms: 9.104333
   type: 'test'
   ...
 # Subtest: lift nodes on separate floors stay vertically aligned
-ok 32 - lift nodes on separate floors stay vertically aligned
+ok 33 - lift nodes on separate floors stay vertically aligned
   ---
-  duration_ms: 0.363625
+  duration_ms: 1.550959
   type: 'test'
   ...
 # Subtest: region footprints preserve map dimensions at viewer scale
-ok 33 - region footprints preserve map dimensions at viewer scale
+ok 34 - region footprints preserve map dimensions at viewer scale
   ---
-  duration_ms: 0.234542
+  duration_ms: 0.226792
   type: 'test'
   ...
 # Subtest: fallback entity views face the selected entity from a useful distance
-ok 34 - fallback entity views face the selected entity from a useful distance
+ok 35 - fallback entity views face the selected entity from a useful distance
   ---
-  duration_ms: 0.1345
+  duration_ms: 0.281042
   type: 'test'
   ...
 # Subtest: named evidence poses drive entity navigation before the fallback
-ok 35 - named evidence poses drive entity navigation before the fallback
+ok 36 - named evidence poses drive entity navigation before the fallback
   ---
-  duration_ms: 0.273167
+  duration_ms: 0.651042
   type: 'test'
   ...
 # Subtest: current region lookup follows a semantic camera position
-ok 36 - current region lookup follows a semantic camera position
+ok 37 - current region lookup follows a semantic camera position
   ---
-  duration_ms: 0.096959
+  duration_ms: 0.235458
   type: 'test'
   ...
 # Subtest: recapture poses map semantic height into viewer space
-ok 37 - recapture poses map semantic height into viewer space
+ok 38 - recapture poses map semantic height into viewer space
   ---
-  duration_ms: 0.123459
+  duration_ms: 0.288625
   type: 'test'
   ...
 # Subtest: repository file, content, and JSON assertions pass
-ok 38 - repository file, content, and JSON assertions pass
+ok 39 - repository file, content, and JSON assertions pass
   ---
-  duration_ms: 3.968333
+  duration_ms: 4.493167
   type: 'test'
   ...
 # Subtest: missing files and missing required content fail deterministically
-ok 39 - missing files and missing required content fail deterministically
+ok 40 - missing files and missing required content fail deterministically
   ---
-  duration_ms: 40.634625
+  duration_ms: 68.191791
   type: 'test'
   ...
 # Subtest: malformed registries are rejected at the parse boundary
-ok 40 - malformed registries are rejected at the parse boundary
+ok 41 - malformed registries are rejected at the parse boundary
   ---
-  duration_ms: 0.271709
+  duration_ms: 0.7095
   type: 'test'
   ...
 # Subtest: external gates report EXTERNAL without failing default mode
-ok 41 - external gates report EXTERNAL without failing default mode
+ok 42 - external gates report EXTERNAL without failing default mode
   ---
-  duration_ms: 30.728792
+  duration_ms: 78.369833
   type: 'test'
   ...
 # Subtest: strict mode fails when any external gate remains
-ok 42 - strict mode fails when any external gate remains
+ok 43 - strict mode fails when any external gate remains
   ---
-  duration_ms: 28.275542
+  duration_ms: 62.102958
   type: 'test'
   ...
 # Subtest: runtime schemas reject extra fields, wrong types, and invalid ranges
-ok 43 - runtime schemas reject extra fields, wrong types, and invalid ranges
+ok 44 - runtime schemas reject extra fields, wrong types, and invalid ranges
   ---
-  duration_ms: 3.358792
+  duration_ms: 8.026875
   type: 'test'
   ...
 # Subtest: state patches reject unsupported keys and values before commit
-ok 44 - state patches reject unsupported keys and values before commit
+ok 45 - state patches reject unsupported keys and values before commit
   ---
-  duration_ms: 1.2755
+  duration_ms: 7.923916
   type: 'test'
   ...
 # Subtest: every successful tool result is plain JSON within the output budget
-ok 45 - every successful tool result is plain JSON within the output budget
+ok 46 - every successful tool result is plain JSON within the output budget
   ---
-  duration_ms: 19.0115
+  duration_ms: 38.626167
   type: 'test'
   ...
 # Subtest: navigation cancellation reaches the viewer and rejects
-ok 46 - navigation cancellation reaches the viewer and rejects
+ok 47 - navigation cancellation reaches the viewer and rejects
   ---
-  duration_ms: 0.688083
+  duration_ms: 1.63375
   type: 'test'
   ...
 # Subtest: state cancellation is checked before the store commit
-ok 47 - state cancellation is checked before the store commit
+ok 48 - state cancellation is checked before the store commit
   ---
-  duration_ms: 0.461958
+  duration_ms: 1.787791
   type: 'test'
   ...
 # Subtest: non-JSON tool output is rejected at the runtime boundary
-ok 48 - non-JSON tool output is rejected at the runtime boundary
+ok 49 - non-JSON tool output is rejected at the runtime boundary
   ---
-  duration_ms: 0.353958
+  duration_ms: 1.123208
   type: 'test'
   ...
 # Subtest: oversized tool output is rejected rather than truncated
-ok 49 - oversized tool output is rejected rather than truncated
+ok 50 - oversized tool output is rejected rather than truncated
   ---
-  duration_ms: 0.815417
+  duration_ms: 2.47425
   type: 'test'
   ...
 # Subtest: tool runtime exposes ten narrow tools
-ok 50 - tool runtime exposes ten narrow tools
+ok 51 - tool runtime exposes ten narrow tools
   ---
-  duration_ms: 2.644292
+  duration_ms: 4.217833
   type: 'test'
   ...
 # Subtest: route tool accepts public labels and hides navigation-node IDs
-ok 51 - route tool accepts public labels and hides navigation-node IDs
+ok 52 - route tool accepts public labels and hides navigation-node IDs
   ---
-  duration_ms: 2.613625
+  duration_ms: 4.4555
   type: 'test'
   ...
 # Subtest: route endpoints accept aliases, entity IDs, and region IDs
-ok 52 - route endpoints accept aliases, entity IDs, and region IDs
+ok 53 - route endpoints accept aliases, entity IDs, and region IDs
   ---
-  duration_ms: 2.182708
+  duration_ms: 10.739333
   type: 'test'
   ...
 # Subtest: scene context includes nearby hidden entities and connected spaces
-ok 53 - scene context includes nearby hidden entities and connected spaces
+ok 54 - scene context includes nearby hidden entities and connected spaces
   ---
-  duration_ms: 1.039792
+  duration_ms: 1.459625
   type: 'test'
   ...
 # Subtest: quality tool returns evidence gaps and updates the overlay
-ok 54 - quality tool returns evidence gaps and updates the overlay
+ok 55 - quality tool returns evidence gaps and updates the overlay
   ---
-  duration_ms: 0.837709
+  duration_ms: 2.249083
   type: 'test'
   ...
 # Subtest: state tool changes route outcome
-ok 55 - state tool changes route outcome
+ok 56 - state tool changes route outcome
   ---
-  duration_ms: 1.87
+  duration_ms: 2.689708
   type: 'test'
   ...
 # Subtest: state changes invalidate derived overlays and undo leaves a clean baseline
-ok 56 - state changes invalidate derived overlays and undo leaves a clean baseline
+ok 57 - state changes invalidate derived overlays and undo leaves a clean baseline
   ---
-  duration_ms: 1.458
+  duration_ms: 2.368709
   type: 'test'
   ...
 # Subtest: unknown entity returns not found instead of inventing one
-ok 57 - unknown entity returns not found instead of inventing one
+ok 58 - unknown entity returns not found instead of inventing one
   ---
-  duration_ms: 0.466042
+  duration_ms: 0.8405
   type: 'test'
   ...
 # Subtest: reset tool restores state and clears shared overlays
-ok 58 - reset tool restores state and clears shared overlays
+ok 59 - reset tool restores state and clears shared overlays
   ---
-  duration_ms: 0.89
+  duration_ms: 3.27025
   type: 'test'
   ...
 # Subtest: observer receives source-labelled start and terminal events
-ok 59 - observer receives source-labelled start and terminal events
+ok 60 - observer receives source-labelled start and terminal events
   ---
-  duration_ms: 1.9185
+  duration_ms: 1.471041
   type: 'test'
   ...
 # Subtest: human and agent navigation share results and viewer effects
-ok 60 - human and agent navigation share results and viewer effects
+ok 61 - human and agent navigation share results and viewer effects
   ---
-  duration_ms: 0.909
+  duration_ms: 2.222292
   type: 'test'
   ...
 # Subtest: failed invocations reject and produce one terminal error event
-ok 61 - failed invocations reject and produce one terminal error event
+ok 62 - failed invocations reject and produce one terminal error event
   ---
-  duration_ms: 0.98325
+  duration_ms: 2.075958
   type: 'test'
   ...
 # Subtest: browser adapter reads live renderer context without losing semantic selection
-ok 62 - browser adapter reads live renderer context without losing semantic selection
+ok 63 - browser adapter reads live renderer context without losing semantic selection
   ---
-  duration_ms: 1.134625
+  duration_ms: 3.263125
   type: 'test'
   ...
 # Subtest: browser adapter preserves an explicit null camera region
-ok 63 - browser adapter preserves an explicit null camera region
+ok 64 - browser adapter preserves an explicit null camera region
   ---
-  duration_ms: 0.092625
+  duration_ms: 0.225958
   type: 'test'
   ...
 # Subtest: browser adapter forwards route, quality, highlight, and navigation calls
-ok 64 - browser adapter forwards route, quality, highlight, and navigation calls
+ok 65 - browser adapter forwards route, quality, highlight, and navigation calls
   ---
-  duration_ms: 0.142875
+  duration_ms: 0.301625
   type: 'test'
   ...
 # Subtest: scenario changes synchronize effective store state with the renderer
-ok 65 - scenario changes synchronize effective store state with the renderer
+ok 66 - scenario changes synchronize effective store state with the renderer
   ---
-  duration_ms: 1.323875
+  duration_ms: 3.0395
   type: 'test'
   ...
 # Subtest: registration waits for readiness and resolves only after every tool
-ok 66 - registration waits for readiness and resolves only after every tool
+ok 67 - registration waits for readiness and resolves only after every tool
   ---
-  duration_ms: 2.579167
+  duration_ms: 6.68675
   type: 'test'
   ...
 # Subtest: one registration rejection aborts and settles the whole catalog
-ok 67 - one registration rejection aborts and settles the whole catalog
+ok 68 - one registration rejection aborts and settles the whole catalog
   ---
-  duration_ms: 0.469042
+  duration_ms: 1.983792
   type: 'test'
   ...
 # Subtest: registered execute returns raw JSON and passes exact source and signal
-ok 68 - registered execute returns raw JSON and passes exact source and signal
+ok 69 - registered execute returns raw JSON and passes exact source and signal
   ---
-  duration_ms: 0.471625
+  duration_ms: 1.580167
   type: 'test'
   ...
 # Subtest: registered execute lets runtime errors reject
-ok 69 - registered execute lets runtime errors reject
+ok 70 - registered execute lets runtime errors reject
   ---
-  duration_ms: 0.124625
+  duration_ms: 0.574792
   type: 'test'
   ...
 # Subtest: unsupported WebMCP reports local-only mode without registering
-ok 70 - unsupported WebMCP reports local-only mode without registering
+ok 71 - unsupported WebMCP reports local-only mode without registering
   ---
-  duration_ms: 0.093208
+  duration_ms: 0.287333
   type: 'test'
   ...
 # Subtest: catalog preflight rejects unsupported metadata before registration
-ok 71 - catalog preflight rejects unsupported metadata before registration
+ok 72 - catalog preflight rejects unsupported metadata before registration
   ---
-  duration_ms: 0.092334
+  duration_ms: 0.565709
   type: 'test'
   ...
-1..71
-# tests 71
+1..72
+# tests 72
 # suites 0
-# pass 71
+# pass 72
 # fail 0
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 237.309666
+# duration_ms 549.397583

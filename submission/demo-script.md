@@ -1,25 +1,25 @@
 # Demo script
 
-Target duration: 158 seconds. Hard limit: 179 seconds. The narration is generated in one continuous VoxCPM2 pass, then the edit cuts the verified public replay to the aligned speech beats.
+Target duration: 103 seconds. Hard limit: 179 seconds. The narration is generated in one continuous VoxCPM2 pass, cleaned as one full track, then the edit cuts the verified public replay to the aligned speech beats.
 
 ## Shot list
 
-Each story beat contains two shots. Cuts land in the gap between aligned beats, never in the middle of a sentence. Continuous pan and zoom keeps static evidence readable without freezing the frame.
+Each story beat contains two shots. Short charcoal-and-teal fades land in the gaps between aligned beats, never in the middle of a sentence. Continuous pan and zoom, exact live-call overlays, and project-authored UI ticks keep the evidence active without obscuring it.
 
 | Time | Picture | Narration |
 |---:|---|---|
-| 0:00–0:14 | Cold-open close-up on the route failure, then cut to the SceneIndex identity and full station. | "One lift closes. For a wheelchair user in an unfamiliar station, that red status can erase the route they expected. A beautiful 3D scan still looks complete. It does not know the journey has broken." |
-| 0:14–0:29 | Establish the full station, then move into the live Gaussian scene and semantic proxies. | "SceneIndex gives the place memory and language. The Gaussian splat remains the visual record. Persistent rooms, gates, lifts, routes, and evidence sit underneath it. A person sees the station. An agent reasons about the same station." |
-| 0:29–0:42 | Cut to the mission card, then to the accessible gate in the shared viewer. | "The job is simple. Get from Entrance A to Platform 2 without stairs, and do not hide uncertainty. The agent reads the live camera, finds the accessible gate, and moves the shared view to the evidence position." |
-| 0:42–0:54 | Draw the Lift 1 baseline route, then show the matching mission state. | "The first answer is ordinary. Follow the east corridor. Take Lift 1. Continue to the platform. The route appears in the scene, so every turn can be inspected instead of trusted blindly." |
-| 0:54–1:07 | Cut to the closure state and then the invalidated route in the viewer. | "Then Lift 1 closes. The proxy turns red, the operational state changes, and the route becomes invalid. Nothing is silently rewritten. The outage is visible to both sides, and it can be undone." |
-| 1:07–1:20 | Reveal the Lift 2 route, then reframe toward the West corridor warning. | "The agent searches again. Lift 2 keeps the trip possible, but the alternate path crosses the West corridor. SceneIndex finds a route and raises a warning. Accessible-wayfinding readiness is only fifty-six percent." |
-| 1:20–1:33 | Cut into the evidence panel, then return to the marked weak region. | "That number has a reason. The directional sign has one oblique, low-resolution observation. Connectivity is known, but the text is not verified. The page exposes that doubt and marks the weak region." |
-| 1:33–1:46 | Show the recommendation text, markers, and sightlines in two close views. | "Now the system looks beyond navigation. It recommends a front-facing sign capture at eye level, then a reverse corridor pass from Lift 2. Six markers and sightlines turn better coverage into fieldwork someone can perform." |
-| 1:46–1:59 | Cut to the undo control, then return to the clean full-scene baseline. | "The person stays in control. Inspect the route, challenge the evidence, accept the recommendation, or undo the outage. One action restores Lift 1 and clears the staged change. The baseline is clean again." |
-| 1:59–2:13 | Pan across the verified ten-call timeline in two readable shots. | "WebMCP connects to the live interface, not a separate backend copy. Ten narrow tools share validation, scene state, camera, visual effects, and the action timeline with human controls. Every agent call is labelled and observable." |
-| 2:13–2:27 | Use the project-authored screenshot-versus-spatial-context comparison to connect the fixture to field work. | "The station is synthetic, but the pattern is practical. A registered capture could support accessibility review, building handover, remote inspection, maintenance, and targeted recapture. The agent never has to pretend the pixels know more than they do." |
-| 2:27–2:38 | Resolve on the SceneIndex identity, live app, and full station. | "SceneIndex makes a place searchable, testable, and honest about its evidence. When the world changes, the route changes with it. Search the place. See the reason. Keep the decision in view." |
+| 0:00–0:09 | Cold-open close-up on the failed route with a live `set_entity_state` call, then reveal SceneIndex. | "Traditional 3D scans can look complete while missing the instant an accessible route breaks. One lift closes, and the expected journey disappears." |
+| 0:09–0:19 | Establish the full station and live Gaussian scene with the shared context call visible. | "SceneIndex adds persistent meaning beneath the Gaussian splat: rooms, gates, lifts, routes, and evidence that people and agents share." |
+| 0:19–0:28 | Frame the mission card, then move to the accessible gate while naming both live calls. | "The mission: reach Platform 2 from Entrance A without stairs, while exposing uncertainty. The agent reads the camera and finds the accessible gate." |
+| 0:28–0:35 | Draw the Lift 1 baseline route and keep its exact route call on screen. | "The first route uses the east corridor and Lift 1. It appears in the scene, where every turn stays inspectable." |
+| 0:35–0:44 | Close Lift 1, show the red state, and mark the baseline route invalid. | "Then Lift 1 closes. Its proxy turns red, its state changes, and the route fails visibly. The outage is reversible, never hidden." |
+| 0:44–0:53 | Reveal the Lift 2 reroute and the West corridor warning in two active views. | "The agent reroutes through Lift 2. The trip remains possible, but the West corridor raises a warning: wayfinding readiness is only just over half." |
+| 0:53–1:01 | Punch into the guided-proof evidence at 56%, then return to the marked weak region. | "Why? The directional sign has one oblique, low resolution view. Connectivity is known, but its text remains unverified." |
+| 1:01–1:11 | Show the recommendation panel, field positions, and capture sightlines. | "SceneIndex turns doubt into fieldwork: recapture the sign front-on, then walk a reverse pass from Lift 2. Six markers make the plan concrete." |
+| 1:11–1:18 | Put `undo_scene_change` on screen, then return to the clean baseline. | "The person keeps control: inspect, challenge, accept, or undo. One action restores Lift 1 and the clean baseline." |
+| 1:18–1:27 | Pan across readable timeline crops while highlighting exact WebMCP tool names. | "Web M C P connects to this live interface. Ten narrow tools share scene state, validation, effects, and a human-visible action timeline." |
+| 1:27–1:36 | Use the project-authored screenshot-versus-spatial-context comparison to connect the fixture to fieldwork. | "The station is synthetic, but this pattern supports accessibility review, handover, inspection, maintenance, and targeted recapture without pretending pixels know more." |
+| 1:36–1:43 | Resolve on the SceneIndex identity, live app, and full station. | "SceneIndex makes a place searchable, testable, and honest about evidence. When the world changes, the route changes with it." |
 
 ## Demo prompts
 
@@ -71,13 +71,14 @@ get_scene_context
 
 - Capture the public production URL in a fresh isolated Chrome profile.
 - Require ten successful agent-labelled WebMCP calls and an empty browser-error list.
-- Generate the whole 406-word narration in one VoxCPM2 inference. Do not synthesize beats separately.
+- Generate the whole 247-word narration in one VoxCPM2 inference. Do not synthesize beats separately.
 - Require full-track forced alignment for all 12 beats.
-- Run `npm run verify:demo-audio`; reject excessive silence or the measured hum band.
+- Clean the narration as one full track, then rerun full-track alignment.
+- Run `npm run verify:demo-audio`; reject excessive silence, hum coverage, or inter-beat vocal leakage.
 - Build 24 shots from the aligned beat boundaries.
 - Keep every planned shot below nine seconds.
 - Require at least eight detected cuts and no freeze event longer than eight seconds.
 - Do not add music or third-party media.
-- Export at 1920 by 1080, 30 fps, H.264 with 48 kHz AAC narration.
+- Export at 1920 by 1080, 30 fps, H.264 with 48 kHz AAC narration and project-authored UI ticks.
 - Run the exact-file video verifier and watch the finished export with sound.
 - Upload to YouTube as Public and check the URL while signed out.

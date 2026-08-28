@@ -17,7 +17,7 @@ test("SceneIndex is the visible product identity", () => {
   assert.match(page, /assets\/brand\/mark-inverse\.svg/);
   assert.match(page, /assets\/brand\/app-icon\.svg/);
   assert.match(submission, /^# SceneIndex$/m);
-  assert.match(narration.beats[1].text, /^SceneIndex gives the place memory and language\./);
+  assert.match(narration.beats[1].text, /^SceneIndex adds persistent meaning beneath the Gaussian splat/);
   assert.doesNotMatch(narration.beats.map((beat) => beat.text).join(" "), /Semantic Spatial Browser/);
 });
 

@@ -11,6 +11,7 @@ import { analyzeVideo } from "./verify-media-dynamics.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const FONT = "/System/Library/Fonts/HelveticaNeue.ttc";
+const BRAND_TRANSITION_SECONDS = 0.22;
 const DEFAULTS = Object.freeze({
   source: "submission/video/chrome-replay-silent.mp4",
   narration: "submission/video/narration/demo-narration.wav",
@@ -20,6 +21,7 @@ const DEFAULTS = Object.freeze({
   captureReceipt: "submission/video/chrome-replay-receipt.json",
   timelineFrame: "submission/video/chrome-replay-timeline.png",
   contextComparison: "submission/screenshots/context-comparison.png",
+  contactSheet: "submission/screenshots/demo-dynamic-contact-sheet.png",
   output: "submission/video/semantic-spatial-webmcp-demo.mp4",
   receipt: "docs/demo-video-verification.json",
   dynamicsReceipt: "docs/demo-media-dynamics.json",
@@ -70,7 +72,9 @@ function cropFor(mode) {
     viewer: "crop=1280:720:40:250",
     right: "crop=960:540:960:180",
     evidence: "crop=960:540:960:480",
-    timeline: "crop=1920:1080:0:0",
+    proof: "crop=640:360:1280:200",
+    timelineTools: "crop=1280:720:64:360",
+    timelineResults: "crop=1280:720:576:360",
     header: "crop=1440:810:0:0",
     comparison: "crop=1440:810:0:45"
   }[mode];
@@ -89,15 +93,34 @@ function buildFilter(shot, duration, index, count) {
     "eq=contrast=1.025:saturation=1.04",
     "format=yuv420p"
   ];
+  if (shot.call) {
+    const callFontSize = shot.call.tool.length > 30 ? 24 : 33;
+    filters.push(
+      "drawbox=x=1170:y=48:w=704:h=144:color=0x0D4D57@0.38:t=8",
+      "drawbox=x=1180:y=58:w=684:h=124:color=0x111418@0.92:t=fill",
+      "drawbox=x=1180:y=58:w=684:h=124:color=0x37D4C6@0.9:t=2",
+      "drawbox=x=1208:y=82:w=12:h=12:color=0x37D4C6@0.96:t=fill:enable='lt(mod(t,1),0.58)'",
+      `drawtext=fontfile='${FONT}':text='LIVE AGENT CALL':x=1234:y=75:fontsize=20:fontcolor=0x8A8F98`,
+      `drawtext=fontfile='${FONT}':text='${escapeDrawtext(shot.call.tool)}':x=1208:y=111:fontsize=${callFontSize}:fontcolor=0xFAFBFC`,
+      `drawtext=fontfile='${FONT}':text='${escapeDrawtext(shot.call.result)}':x=1209:y=151:fontsize=20:fontcolor=0x37D4C6`
+    );
+  }
   if (shot.title) {
     filters.push(
-      "drawbox=x=58:y=826:w=960:h=166:color=0x111418@0.84:t=fill",
+      "drawbox=x=0:y=816:w=1120:h=204:color=0x111418@0.94:t=fill",
+      "drawbox=x=0:y=816:w=1120:h=4:color=0x0D4D57@0.95:t=fill",
       `drawtext=fontfile='${FONT}':text='${escapeDrawtext(shot.title)}':x=92:y=856:fontsize=48:fontcolor=0xFAFBFC`,
       `drawtext=fontfile='${FONT}':text='${escapeDrawtext(shot.subtitle)}':x=94:y=923:fontsize=27:fontcolor=0xF2F4F6`,
       `drawtext=fontfile='${FONT}':text='${String(shot.beat).padStart(2, "0")} / 12':x=1740:y=955:fontsize=22:fontcolor=0x8A8F98`
     );
   }
   if (index === 0) filters.push("fade=t=in:st=0:d=0.55");
+  else if (shot.transitionInSeconds) {
+    filters.push(`fade=t=in:st=0:d=${shot.transitionInSeconds.toFixed(3)}:color=0x111418`);
+  }
+  if (shot.transitionOutSeconds) {
+    filters.push(`fade=t=out:st=${Math.max(0, duration - shot.transitionOutSeconds).toFixed(3)}:d=${shot.transitionOutSeconds.toFixed(3)}:color=0x111418`);
+  }
   if (index === count - 1) filters.push(`fade=t=out:st=${Math.max(0, duration - 0.7).toFixed(3)}:d=0.7`);
   return filters.join(",");
 }
@@ -114,16 +137,16 @@ function beatBoundaries(alignment) {
 
 function shotTemplate() {
   return [
-    { sources: [109.4, 0], modes: ["viewer", "header"], title: "ONE CLOSED LIFT", subtitle: "can break the route" },
-    { sources: [9.5, 23.8], modes: ["full", "viewer"], title: "THE PLACE, INDEXED", subtitle: "appearance plus persistent meaning" },
-    { sources: [44.4, 57.1], modes: ["right", "viewer"], title: "THE MISSION", subtitle: "Entrance A to Platform 2, without stairs" },
-    { sources: [71.4, 87.2], modes: ["viewer", "right"], title: "THE BASELINE", subtitle: "the first route uses Lift 1" },
-    { sources: [99.9, 111.0], modes: ["right", "viewer"], title: "LIFT 1 CLOSED", subtitle: "the original route is now invalid" },
-    { sources: [123.7, 139.5], modes: ["viewer", "evidence"], title: "THE ALTERNATE", subtitle: "Lift 2 keeps the trip possible" },
-    { sources: [155.4, 171.3], modes: ["evidence", "viewer"], title: "EVIDENCE: 56 PERCENT", subtitle: "known connection, unreadable sign" },
-    { sources: [183.9, 198.2], modes: ["evidence", "viewer"], title: "RECAPTURE THE GAP", subtitle: "two concrete field positions" },
-    { sources: [214.1, 225.2], modes: ["right", "full"], title: "HUMAN CONTROL", subtitle: "inspect, challenge, undo" },
-    { image: true, asset: "timeline", modes: ["timeline", "timeline"], title: "10 WEBMCP CALLS", subtitle: "one shared scene and one visible timeline" },
+    { sources: [109.4, 0], modes: ["viewer", "header"], title: "ONE CLOSED LIFT", subtitle: "can break the route", calls: [{ tool: "set_entity_state", result: "lift_1 = closed" }, null] },
+    { sources: [9.5, 23.8], modes: ["full", "viewer"], title: "THE PLACE, INDEXED", subtitle: "appearance plus persistent meaning", calls: [{ tool: "get_scene_context", result: "shared scene state returned" }, null] },
+    { sources: [44.4, 57.1], modes: ["right", "viewer"], title: "THE MISSION", subtitle: "Entrance A to Platform 2, without stairs", calls: [{ tool: "get_scene_context", result: "live camera and entities" }, { tool: "navigate_to_entity", result: "accessible_gate_1" }] },
+    { sources: [71.4, 87.2], modes: ["viewer", "right"], title: "THE BASELINE", subtitle: "the first route uses Lift 1", calls: [{ tool: "find_semantic_route", result: "accessible route uses lift_1" }, null] },
+    { sources: [99.9, 111.0], modes: ["right", "viewer"], title: "LIFT 1 CLOSED", subtitle: "the original route is now invalid", calls: [{ tool: "set_entity_state", result: "operational = closed" }, { tool: "find_semantic_route", result: "baseline route invalid" }] },
+    { sources: [123.7, 139.5], modes: ["viewer", "right"], title: "THE ALTERNATE", subtitle: "Lift 2 keeps the trip possible", calls: [{ tool: "find_semantic_route", result: "reroute uses lift_2" }, { tool: "get_region_quality", result: "warning = west_corridor" }] },
+    { sources: [155.4, 171.3], modes: ["proof", "viewer"], title: "EVIDENCE: 56 PERCENT", subtitle: "known connection, unreadable sign", calls: [{ tool: "get_region_quality", result: "readiness = 56 percent" }, null] },
+    { sources: [183.9, 198.2], modes: ["evidence", "viewer"], title: "RECAPTURE THE GAP", subtitle: "two concrete field positions", calls: [{ tool: "get_region_quality", result: "2 recaptures · 6 markers" }, null] },
+    { sources: [214.1, 225.2], modes: ["right", "full"], title: "HUMAN CONTROL", subtitle: "inspect, challenge, undo", calls: [{ tool: "undo_scene_change", result: "lift_1 = open" }, null] },
+    { image: true, asset: "timeline", modes: ["timelineTools", "timelineResults"], title: "10 WEBMCP CALLS", subtitle: "one shared scene and one visible timeline", calls: [{ tool: "get_scene_context", result: "camera · entity · scene" }, { tool: "set_entity_state + find_semantic_route", result: "change · validate · reroute" }] },
     { image: true, asset: "comparison", modes: ["comparison", "comparison"], title: "FROM FIXTURE TO FIELDWORK", subtitle: "make uncertainty actionable" },
     { sources: [0, 9.5], modes: ["header", "full"], title: "SCENEINDEX", subtitle: "Search the place. See the reason." }
   ];
@@ -151,12 +174,33 @@ function makeShots(alignment) {
         image: template[beatIndex].image === true,
         asset: template[beatIndex].asset ?? null,
         mode: template[beatIndex].modes[half],
+        call: template[beatIndex].calls?.[half] ?? null,
         title: half === 0 ? template[beatIndex].title : null,
         subtitle: half === 0 ? template[beatIndex].subtitle : null
       });
     }
   }
+  for (let beatIndex = 1; beatIndex < alignment.beats.length; beatIndex += 1) {
+    const gapSeconds = alignment.beats[beatIndex].speechStartSeconds - alignment.beats[beatIndex - 1].speechEndSeconds;
+    const transitionSeconds = Math.max(0.08, Math.min(BRAND_TRANSITION_SECONDS, gapSeconds / 2 - 0.03));
+    shots[beatIndex * 2 - 1].transitionOutSeconds = transitionSeconds;
+    shots[beatIndex * 2].transitionInSeconds = transitionSeconds;
+  }
   return shots;
+}
+
+function buildAudioFilter(cueTimes) {
+  const ticks = cueTimes.map((seconds, index) => {
+    const frequency = index % 2 === 0 ? 880 : 1120;
+    const delay = Math.max(0, Math.round(seconds * 1000));
+    return `sine=frequency=${frequency}:sample_rate=48000:duration=0.055,afade=t=out:st=0.005:d=0.05,volume=0.035,adelay=${delay}|${delay}[tick${index}]`;
+  });
+  const inputs = cueTimes.map((_seconds, index) => `[tick${index}]`).join("");
+  return [
+    "[1:a]volume=1[voice]",
+    ...ticks,
+    `[voice]${inputs}amix=inputs=${cueTimes.length + 1}:normalize=0:dropout_transition=0,alimiter=limit=0.95[mixed]`
+  ].join(";");
 }
 
 async function main() {
@@ -209,10 +253,23 @@ async function main() {
   writeFileSync(concatList, `${shotPaths.map((path) => `file '${path.replaceAll("'", "'\\''")}'`).join("\n")}\n`);
   const videoOnly = resolve(work, "video-only.mp4");
   run("ffmpeg", ["-y", "-hide_banner", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", concatList, "-c", "copy", videoOnly]);
+  const sfxCueTimes = shots.filter((shot) => shot.title && shot.call).map((shot) => shot.start + 0.12);
   run("ffmpeg", [
     "-y", "-hide_banner", "-loglevel", "error", "-i", videoOnly, "-i", resolve(ROOT, options.narration),
-    "-map", "0:v:0", "-map", "1:a:0", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k",
+    "-filter_complex", buildAudioFilter(sfxCueTimes),
+    "-map", "0:v:0", "-map", "[mixed]", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k",
     "-t", String(alignment.audio.durationSeconds), "-movflags", "+faststart", resolve(ROOT, options.output)
+  ]);
+  const contactInputs = shots.flatMap((shot, index) => [
+    "-ss", String(Math.max(0.1, shot.duration / 2)), "-i", shotPaths[index]
+  ]);
+  const scaledFrames = shots.map((_shot, index) => `[${index}:v]scale=480:270[v${index}]`).join(";");
+  const layout = shots.map((_shot, index) => `${(index % 4) * 488}_${Math.floor(index / 4) * 278}`).join("|");
+  const stackedFrames = shots.map((_shot, index) => `[v${index}]`).join("");
+  run("ffmpeg", [
+    "-y", "-hide_banner", "-loglevel", "error", ...contactInputs,
+    "-filter_complex", `${scaledFrames};${stackedFrames}xstack=inputs=${shots.length}:layout=${layout}:fill=0x111418,pad=1960:1676:8:8:color=0x111418[sheet]`,
+    "-map", "[sheet]", "-frames:v", "1", resolve(ROOT, options.contactSheet)
   ]);
 
   const verification = await verifyDemoVideo(options.output);
@@ -266,9 +323,15 @@ async function main() {
       }
     },
     edit: {
-      format: "story-driven hard-cut edit with continuous pan and zoom reframing",
+      format: "story-driven edit with paced hard cuts, brand-color beat fades, live tool callouts, and continuous pan and zoom reframing",
       shotCount: shots.length,
-      hardCutCount: shots.length - 1,
+      hardCutCount: alignment.beats.length,
+      brandFadeTransitionCount: alignment.beats.length - 1,
+      maximumBrandFadeSeconds: BRAND_TRANSITION_SECONDS,
+      liveToolCalloutCount: shots.filter((shot) => shot.call).length,
+      synthesizedUiCueCount: sfxCueTimes.length,
+      music: false,
+      contactSheet: { path: options.contactSheet, sha256: sha256File(options.contactSheet) },
       maximumPlannedShotSeconds: Math.max(...shots.map((shot) => shot.duration)),
       minimumCutToSpeechMarginSeconds: minimumCutMargin,
       beatCutMargins,
@@ -287,4 +350,4 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   });
 }
 
-export { beatBoundaries, makeShots, parseArgs };
+export { beatBoundaries, buildAudioFilter, buildFilter, makeShots, parseArgs };

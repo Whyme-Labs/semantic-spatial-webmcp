@@ -16,7 +16,7 @@ SceneIndex | Semantic Spatial Browser | WebMCP Challenge
 ```text
 One lift closes, and an accessible route disappears. SceneIndex is a semantic spatial browser that lets a person and an agent see the same change, find the alternate route, and inspect whether the available visual evidence deserves trust.
 
-This 158-second demo uses the live page's WebMCP tools to establish a route through Lift 1, stage the lift as closed, reroute through Lift 2, inspect weak West corridor evidence, retrieve concrete recapture guidance, and undo the outage. Every agent action is visible in the page's shared timeline.
+This 103-second demo uses the live page's WebMCP tools to establish a route through Lift 1, stage the lift as closed, reroute through Lift 2, inspect weak West corridor evidence, retrieve concrete recapture guidance, and undo the outage. Every agent action is visible in the page's shared timeline.
 
 Live app: https://semantic-spatial-webmcp.swmengappdev.workers.dev/
 Source and verification receipts: https://github.com/Whyme-Labs/semantic-spatial-webmcp

@@ -13,9 +13,11 @@ test("narration is one story-driven full-track prompt", () => {
   assert.equal(narration.schemaVersion, 2);
   assert.equal(narration.beats.length, 12);
   assert.ok(narration.beats.every((beat) => beat.id && beat.text.trim() && beat.visualIntent));
-  assert.ok(narration.minimumDurationSeconds >= 120);
+  assert.ok(narration.minimumDurationSeconds >= 90);
   assert.ok(narration.maximumDurationSeconds < 180);
   assert.match(narration.voiceControl, /one clean foreground voice/i);
+  assert.match(narration.voiceControl, /Never announce paragraphs, beats, scenes, cuts, switches, or transitions/i);
+  assert.doesNotMatch(narration.beats.map((beat) => beat.text).join(" "), /\bswitch\b/i);
 });
 
 test("English captions cover all twelve aligned story beats", () => {
@@ -27,6 +29,7 @@ test("English captions cover all twelve aligned story beats", () => {
 test("generation, alignment, and hum checks prove one continuous master", () => {
   assert.equal(generation.schemaVersion, 2);
   assert.equal(generation.generator.mode, "single-pass");
+  assert.match(generation.cleanup.mode, /single-track adaptive spectral subtraction/);
   assert.equal(generation.script.beatCount, 12);
   assert.equal(generation.result, "passed");
   assert.equal(alignment.schemaVersion, 2);
@@ -36,6 +39,8 @@ test("generation, alignment, and hum checks prove one continuous master", () => 
   assert.equal(audioQuality.result, "passed");
   assert.ok(audioQuality.silence.fraction <= audioQuality.limits.maximumSilenceFraction);
   assert.ok(audioQuality.persistentTone.medianProminenceDb <= audioQuality.limits.maximumHumProminenceDb);
+  assert.ok(audioQuality.persistentTone.framesOver8DbPercent <= audioQuality.limits.maximumHumFrameCoveragePercent);
+  assert.ok(audioQuality.interBeatLeakage.maximumActiveFraction <= audioQuality.limits.maximumInterBeatActiveFraction);
 });
 
 test("entrant attestation records the owner decisions without storing the voice sample", () => {

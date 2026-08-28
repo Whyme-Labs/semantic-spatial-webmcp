@@ -80,6 +80,7 @@ def main() -> None:
     parser.add_argument("--captions", type=Path, default=DEFAULT_CAPTIONS)
     parser.add_argument("--device", default="cpu")
     parser.add_argument("--minimum-confidence", type=float, default=0.3)
+    parser.add_argument("--minimum-word-confidence", type=float, default=0.05)
     args = parser.parse_args()
 
     script_path = args.script.resolve()
@@ -114,7 +115,8 @@ def main() -> None:
         cursor += len(beat_words)
         confidences = [mean(float(token.score) for token in word_span) for word_span in beat_spans]
         mean_confidence = mean(confidences)
-        if mean_confidence < args.minimum_confidence:
+        minimum_word_confidence = min(confidences)
+        if mean_confidence < args.minimum_confidence or minimum_word_confidence < args.minimum_word_confidence:
             failures.append(beat["id"])
         start = beat_spans[0][0].start * seconds_per_emission
         end = beat_spans[-1][-1].end * seconds_per_emission
@@ -126,7 +128,7 @@ def main() -> None:
             "speechStartSeconds": round(start, 3),
             "speechEndSeconds": round(end, 3),
             "meanConfidence": round(mean_confidence, 4),
-            "minimumWordConfidence": round(min(confidences), 4),
+            "minimumWordConfidence": round(minimum_word_confidence, 4),
             "maximumWordConfidence": round(max(confidences), 4),
         })
         print(
@@ -160,6 +162,7 @@ def main() -> None:
             "cueCount": len(beat_receipts),
         },
         "minimumMeanConfidence": args.minimum_confidence,
+        "minimumWordConfidence": args.minimum_word_confidence,
         "beats": beat_receipts,
         "failures": failures,
         "result": "passed" if not failures else "failed",

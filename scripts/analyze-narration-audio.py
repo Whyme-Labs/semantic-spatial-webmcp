@@ -13,6 +13,7 @@ import soundfile as sf
 
 
 ROOT = Path(__file__).resolve().parents[1]
+DEFAULT_ALIGNMENT = ROOT / "docs" / "demo-narration-alignment.json"
 
 
 def portable_path(path: Path) -> str:
@@ -77,20 +78,66 @@ def hum_metrics(samples: np.ndarray, sample_rate: int, start_hz: float, end_hz: 
     }
 
 
+def inter_beat_leakage_metrics(
+    samples: np.ndarray,
+    sample_rate: int,
+    alignment: dict,
+    threshold_db: float,
+    edge_guard_seconds: float,
+) -> dict:
+    boundaries = []
+    for previous, following in zip(alignment["beats"], alignment["beats"][1:]):
+        start = float(previous["speechEndSeconds"]) + edge_guard_seconds
+        end = float(following["speechStartSeconds"]) - edge_guard_seconds
+        if end <= start:
+            continue
+        gap = samples[round(start * sample_rate):round(end * sample_rate)]
+        frame_db = frame_rms_db(gap, sample_rate)
+        active_fraction = float((frame_db > threshold_db).mean())
+        boundaries.append({
+            "beforeBeat": following["id"],
+            "startSeconds": round(start, 3),
+            "endSeconds": round(end, 3),
+            "durationSeconds": round(end - start, 3),
+            "medianRmsDb": round(float(np.median(frame_db)), 3),
+            "p90RmsDb": round(float(np.percentile(frame_db, 90)), 3),
+            "activeFraction": round(active_fraction, 4),
+        })
+    if not boundaries:
+        raise ValueError("Alignment has no measurable inter-beat gaps")
+    return {
+        "thresholdDb": threshold_db,
+        "edgeGuardSeconds": edge_guard_seconds,
+        "maximumActiveFraction": round(max(item["activeFraction"] for item in boundaries), 4),
+        "meanActiveFraction": round(float(np.mean([item["activeFraction"] for item in boundaries])), 4),
+        "boundaries": boundaries,
+    }
+
+
 def analyze(path: Path, args: argparse.Namespace) -> dict:
     audio, sample_rate = sf.read(path, dtype="float32", always_2d=True)
     samples = audio.mean(axis=1)
     duration = len(samples) / sample_rate
     silence = silence_metrics(samples, sample_rate, args.silence_threshold_db)
     hum = hum_metrics(samples, sample_rate, args.hum_start_hz, args.hum_end_hz)
+    alignment = json.loads(args.alignment.resolve().read_text(encoding="utf-8"))
+    leakage = inter_beat_leakage_metrics(
+        samples,
+        sample_rate,
+        alignment,
+        args.inter_beat_threshold_db,
+        args.inter_beat_edge_guard,
+    )
     checks = {
         "durationInRange": args.minimum_duration <= duration < args.maximum_duration,
         "silenceFraction": silence["fraction"] <= args.maximum_silence_fraction,
         "longestSilence": silence["longestSeconds"] <= args.maximum_longest_silence,
         "humProminence": hum["medianProminenceDb"] <= args.maximum_hum_prominence_db,
+        "humFrameCoverage": hum["framesOver8DbPercent"] <= args.maximum_hum_frame_coverage_percent,
+        "interBeatLeakage": leakage["maximumActiveFraction"] <= args.maximum_inter_beat_active_fraction,
     }
     return {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "analyzedAt": datetime.now(timezone.utc).isoformat(),
         "audio": {
             "path": portable_path(path),
@@ -100,12 +147,15 @@ def analyze(path: Path, args: argparse.Namespace) -> dict:
         },
         "silence": silence,
         "persistentTone": hum,
+        "interBeatLeakage": leakage,
         "limits": {
             "minimumDurationSeconds": args.minimum_duration,
             "maximumDurationSeconds": args.maximum_duration,
             "maximumSilenceFraction": args.maximum_silence_fraction,
             "maximumLongestSilenceSeconds": args.maximum_longest_silence,
             "maximumHumProminenceDb": args.maximum_hum_prominence_db,
+            "maximumHumFrameCoveragePercent": args.maximum_hum_frame_coverage_percent,
+            "maximumInterBeatActiveFraction": args.maximum_inter_beat_active_fraction,
         },
         "checks": checks,
         "failures": [name for name, passed in checks.items() if not passed],
@@ -117,14 +167,19 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--audio", type=Path, required=True)
     parser.add_argument("--output", type=Path)
-    parser.add_argument("--minimum-duration", type=float, default=145)
-    parser.add_argument("--maximum-duration", type=float, default=178)
+    parser.add_argument("--alignment", type=Path, default=DEFAULT_ALIGNMENT)
+    parser.add_argument("--minimum-duration", type=float, default=90)
+    parser.add_argument("--maximum-duration", type=float, default=120)
     parser.add_argument("--silence-threshold-db", type=float, default=-50)
-    parser.add_argument("--maximum-silence-fraction", type=float, default=0.12)
+    parser.add_argument("--maximum-silence-fraction", type=float, default=0.2)
     parser.add_argument("--maximum-longest-silence", type=float, default=2.0)
     parser.add_argument("--hum-start-hz", type=float, default=330)
     parser.add_argument("--hum-end-hz", type=float, default=346)
-    parser.add_argument("--maximum-hum-prominence-db", type=float, default=8.0)
+    parser.add_argument("--maximum-hum-prominence-db", type=float, default=4.0)
+    parser.add_argument("--maximum-hum-frame-coverage-percent", type=float, default=20.0)
+    parser.add_argument("--inter-beat-threshold-db", type=float, default=-38)
+    parser.add_argument("--inter-beat-edge-guard", type=float, default=0.08)
+    parser.add_argument("--maximum-inter-beat-active-fraction", type=float, default=0.2)
     args = parser.parse_args()
 
     audio_path = args.audio.resolve()

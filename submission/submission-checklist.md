@@ -39,7 +39,7 @@ Complete this checklist against the final public artifacts. Do not mark an item 
 - [x] Record the production URL and real WebMCP calls in the paced Chrome replay.
 - [x] Use the prompts and shot list in `submission/demo-script.md`.
 - [x] Include clear English narration. One continuous VoxCPM2 take passed exact-script alignment for all 12 story beats and the hum/pacing gate.
-- [x] Use the aligned 24-shot edit. The final file has 24 detected cuts and zero freeze events over two seconds.
+- [x] Use the aligned 24-shot edit. The final file has 14 detected cuts, 11 beat fades, and zero freeze events over two seconds.
 - [x] Do not use music.
 - [x] Confirm the final duration is below 3:00.
 - [ ] Watch the exported video with sound.
