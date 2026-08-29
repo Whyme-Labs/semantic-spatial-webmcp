@@ -21,6 +21,7 @@ test("dynamic edit maps twelve narration beats to twenty-four bounded shots", ()
   assert.equal(shots.filter((shot) => shot.title).length, 12);
   assert.equal(shots.filter((shot) => shot.image).length, 4);
   assert.equal(shots.filter((shot) => shot.call).length, 14);
+  assert.equal(shots.reduce((count, shot) => count + (shot.focus?.length ?? 0), 0), 4);
   assert.equal(shots.filter((shot) => shot.transitionInSeconds).length, 11);
   assert.equal(shots.filter((shot) => shot.transitionOutSeconds).length, 11);
   assert.ok(shots.some((shot) => shot.mode === "proof"));
@@ -32,19 +33,29 @@ test("dynamic edit CLI exposes repository-local defaults", () => {
   assert.equal(options.source, "submission/video/chrome-replay-silent.mp4");
   assert.equal(options.output, "submission/video/semantic-spatial-webmcp-demo.mp4");
   assert.equal(options.contactSheet, "submission/screenshots/demo-dynamic-contact-sheet.png");
+  assert.equal(options.music, "submission/video/music/sceneindex-ambient.wav");
   assert.equal(options.receipt, "docs/demo-video-verification.json");
   assert.equal(options.dynamicsReceipt, "docs/demo-media-dynamics.json");
 });
 
-test("dynamic edit renders exact live-call overlays and synthesized UI cues", () => {
+test("dynamic edit renders opaque titles, animated call focus, music ducking, and UI cues", () => {
   const shot = makeShots(alignmentFixture()).find(({ call }) => call);
   const videoFilter = buildFilter(shot, shot.duration, 0, 24);
   assert.match(videoFilter, /LIVE AGENT CALL/);
   assert.match(videoFilter, /set_entity_state/);
   assert.match(videoFilter, /0x37D4C6/);
+  assert.match(videoFilter, /drawbox=x=0:y=808:w=1140:h=212:color=0x111418:t=fill/);
+
+  const focusShot = makeShots(alignmentFixture()).find(({ focus }) => focus);
+  const focusFilter = buildFilter(focusShot, focusShot.duration, 18, 24);
+  assert.match(focusFilter, /WEBMCP CALL/);
+  assert.match(focusFilter, /navigate_to_entity/);
+  assert.match(focusFilter, /RESULT/);
 
   const audioFilter = buildAudioFilter([0.12, 13.5]);
   assert.match(audioFilter, /sine=frequency=880/);
   assert.match(audioFilter, /sine=frequency=1120/);
-  assert.match(audioFilter, /amix=inputs=3/);
+  assert.match(audioFilter, /sidechaincompress/);
+  assert.match(audioFilter, /volume=0\.24/);
+  assert.match(audioFilter, /amix=inputs=4/);
 });

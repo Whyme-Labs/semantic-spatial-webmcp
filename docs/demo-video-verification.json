@@ -1,9 +1,9 @@
 {
-  "verifiedAt": "2026-08-28T16:39:36.745Z",
+  "verifiedAt": "2026-08-29T02:32:23.465Z",
   "artifact": {
     "path": "submission/video/semantic-spatial-webmcp-demo.mp4",
-    "bytes": 11897459,
-    "sha256": "8fea27231b0165641a66f83045dbc29bbe5f5e3989d1cf955bf22a996a6a3927"
+    "bytes": 11722768,
+    "sha256": "1b6ed50d0f867adc03a85c256ebaca09459b5bfe4e7cf6fe01ee85c86350b7fd"
   },
   "durationSeconds": 102.933333,
   "underThreeMinutes": true,
@@ -422,11 +422,43 @@
     "brandFadeTransitionCount": 11,
     "maximumBrandFadeSeconds": 0.22,
     "liveToolCalloutCount": 14,
+    "timelineFocusCardCount": 4,
     "synthesizedUiCueCount": 10,
-    "music": false,
+    "music": {
+      "projectAuthored": true,
+      "path": "submission/video/music/sceneindex-ambient.wav",
+      "sha256": "574288bd47adf4f323b6ad6d64048857d429099a72db47cb1b1dc73f9fd138db",
+      "nominalMixGain": 0.24,
+      "narrationDucking": {
+        "threshold": 0.06,
+        "ratio": 3,
+        "attackMs": 24,
+        "releaseMs": 500
+      },
+      "generator": "deterministic additive synthesis",
+      "sampleRateHz": 48000,
+      "channels": 1,
+      "durationSeconds": 102.904,
+      "peakAmplitude": 0.38,
+      "crossfadeSeconds": 1.1,
+      "progression": [
+        "D minor",
+        "D minor",
+        "B flat",
+        "F major",
+        "D diminished",
+        "G minor",
+        "E flat",
+        "B flat",
+        "C major",
+        "A minor",
+        "F major",
+        "D major"
+      ]
+    },
     "contactSheet": {
       "path": "submission/screenshots/demo-dynamic-contact-sheet.png",
-      "sha256": "b734342575e9359778be1ca0ddef419d6f20fe2bcba66d6eee4dc0018ba44f19"
+      "sha256": "ac02dc236ebe33ac89bfb98bf41d5e0554111f92f51b72092129302738ee2015"
     },
     "maximumPlannedShotSeconds": 4.781,
     "minimumCutToSpeechMarginSeconds": 0.23,
@@ -502,6 +534,7 @@
           "tool": "set_entity_state",
           "result": "lift_1 = closed"
         },
+        "focus": null,
         "title": "ONE CLOSED LIFT",
         "subtitle": "can break the route"
       },
@@ -516,6 +549,7 @@
         "asset": null,
         "mode": "header",
         "call": null,
+        "focus": null,
         "title": null,
         "subtitle": null,
         "transitionOutSeconds": 0.22
@@ -534,6 +568,7 @@
           "tool": "get_scene_context",
           "result": "shared scene state returned"
         },
+        "focus": null,
         "title": "THE PLACE, INDEXED",
         "subtitle": "appearance plus persistent meaning",
         "transitionInSeconds": 0.22
@@ -549,6 +584,7 @@
         "asset": null,
         "mode": "viewer",
         "call": null,
+        "focus": null,
         "title": null,
         "subtitle": null,
         "transitionOutSeconds": 0.22
@@ -567,6 +603,7 @@
           "tool": "get_scene_context",
           "result": "live camera and entities"
         },
+        "focus": null,
         "title": "THE MISSION",
         "subtitle": "Entrance A to Platform 2, without stairs",
         "transitionInSeconds": 0.22
@@ -585,6 +622,7 @@
           "tool": "navigate_to_entity",
           "result": "accessible_gate_1"
         },
+        "focus": null,
         "title": null,
         "subtitle": null,
         "transitionOutSeconds": 0.22
@@ -603,6 +641,7 @@
           "tool": "find_semantic_route",
           "result": "accessible route uses lift_1"
         },
+        "focus": null,
         "title": "THE BASELINE",
         "subtitle": "the first route uses Lift 1",
         "transitionInSeconds": 0.22
@@ -618,6 +657,7 @@
         "asset": null,
         "mode": "right",
         "call": null,
+        "focus": null,
         "title": null,
         "subtitle": null,
         "transitionOutSeconds": 0.22
@@ -636,6 +676,7 @@
           "tool": "set_entity_state",
           "result": "operational = closed"
         },
+        "focus": null,
         "title": "LIFT 1 CLOSED",
         "subtitle": "the original route is now invalid",
         "transitionInSeconds": 0.22
@@ -654,6 +695,7 @@
           "tool": "find_semantic_route",
           "result": "baseline route invalid"
         },
+        "focus": null,
         "title": null,
         "subtitle": null,
         "transitionOutSeconds": 0.22
@@ -672,6 +714,7 @@
           "tool": "find_semantic_route",
           "result": "reroute uses lift_2"
         },
+        "focus": null,
         "title": "THE ALTERNATE",
         "subtitle": "Lift 2 keeps the trip possible",
         "transitionInSeconds": 0.22
@@ -690,6 +733,7 @@
           "tool": "get_region_quality",
           "result": "warning = west_corridor"
         },
+        "focus": null,
         "title": null,
         "subtitle": null,
         "transitionOutSeconds": 0.22
@@ -708,6 +752,7 @@
           "tool": "get_region_quality",
           "result": "readiness = 56 percent"
         },
+        "focus": null,
         "title": "EVIDENCE: 56 PERCENT",
         "subtitle": "known connection, unreadable sign",
         "transitionInSeconds": 0.22
@@ -723,6 +768,7 @@
         "asset": null,
         "mode": "viewer",
         "call": null,
+        "focus": null,
         "title": null,
         "subtitle": null,
         "transitionOutSeconds": 0.22
@@ -741,6 +787,7 @@
           "tool": "get_region_quality",
           "result": "2 recaptures · 6 markers"
         },
+        "focus": null,
         "title": "RECAPTURE THE GAP",
         "subtitle": "two concrete field positions",
         "transitionInSeconds": 0.22
@@ -756,6 +803,7 @@
         "asset": null,
         "mode": "viewer",
         "call": null,
+        "focus": null,
         "title": null,
         "subtitle": null,
         "transitionOutSeconds": 0.22
@@ -774,6 +822,7 @@
           "tool": "undo_scene_change",
           "result": "lift_1 = open"
         },
+        "focus": null,
         "title": "HUMAN CONTROL",
         "subtitle": "inspect, challenge, undo",
         "transitionInSeconds": 0.22
@@ -789,6 +838,7 @@
         "asset": null,
         "mode": "full",
         "call": null,
+        "focus": null,
         "title": null,
         "subtitle": null,
         "transitionOutSeconds": 0.22
@@ -807,6 +857,22 @@
           "tool": "get_scene_context",
           "result": "camera · entity · scene"
         },
+        "focus": [
+          {
+            "step": "01 / 10",
+            "tool": "get_scene_context",
+            "result": "camera and scene context",
+            "start": 0,
+            "end": 2.08
+          },
+          {
+            "step": "02 / 10",
+            "tool": "navigate_to_entity",
+            "result": "accessible_gate_1 selected",
+            "start": 2.08,
+            "end": 5
+          }
+        ],
         "title": "10 WEBMCP CALLS",
         "subtitle": "one shared scene and one visible timeline",
         "transitionInSeconds": 0.22
@@ -825,6 +891,22 @@
           "tool": "set_entity_state + find_semantic_route",
           "result": "change · validate · reroute"
         },
+        "focus": [
+          {
+            "step": "05 / 10",
+            "tool": "set_entity_state",
+            "result": "lift_1 = closed",
+            "start": 0,
+            "end": 2.08
+          },
+          {
+            "step": "06 / 10",
+            "tool": "find_semantic_route",
+            "result": "reroute uses lift_2",
+            "start": 2.08,
+            "end": 5
+          }
+        ],
         "title": null,
         "subtitle": null,
         "transitionOutSeconds": 0.19999999999999687
@@ -840,6 +922,7 @@
         "asset": "comparison",
         "mode": "comparison",
         "call": null,
+        "focus": null,
         "title": "FROM FIXTURE TO FIELDWORK",
         "subtitle": "make uncertainty actionable",
         "transitionInSeconds": 0.19999999999999687
@@ -855,6 +938,7 @@
         "asset": "comparison",
         "mode": "comparison",
         "call": null,
+        "focus": null,
         "title": null,
         "subtitle": null,
         "transitionOutSeconds": 0.22
@@ -870,6 +954,7 @@
         "asset": null,
         "mode": "header",
         "call": null,
+        "focus": null,
         "title": "SCENEINDEX",
         "subtitle": "Search the place. See the reason.",
         "transitionInSeconds": 0.22
@@ -885,6 +970,7 @@
         "asset": null,
         "mode": "full",
         "call": null,
+        "focus": null,
         "title": null,
         "subtitle": null
       }

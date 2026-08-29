@@ -22,6 +22,7 @@ const DEFAULTS = Object.freeze({
   timelineFrame: "submission/video/chrome-replay-timeline.png",
   contextComparison: "submission/screenshots/context-comparison.png",
   contactSheet: "submission/screenshots/demo-dynamic-contact-sheet.png",
+  music: "submission/video/music/sceneindex-ambient.wav",
   output: "submission/video/semantic-spatial-webmcp-demo.mp4",
   receipt: "docs/demo-video-verification.json",
   dynamicsReceipt: "docs/demo-media-dynamics.json",
@@ -84,6 +85,100 @@ function escapeDrawtext(value) {
   return value.replaceAll("\\", "\\\\").replaceAll(":", "\\:").replaceAll("'", "\\'").replaceAll("%", "\\%");
 }
 
+function writePcm16MonoWav(path, samples, sampleRate) {
+  const data = Buffer.alloc(samples.length * 2);
+  for (let index = 0; index < samples.length; index += 1) {
+    data.writeInt16LE(Math.round(Math.max(-1, Math.min(1, samples[index])) * 32767), index * 2);
+  }
+  const header = Buffer.alloc(44);
+  header.write("RIFF", 0);
+  header.writeUInt32LE(36 + data.length, 4);
+  header.write("WAVE", 8);
+  header.write("fmt ", 12);
+  header.writeUInt32LE(16, 16);
+  header.writeUInt16LE(1, 20);
+  header.writeUInt16LE(1, 22);
+  header.writeUInt32LE(sampleRate, 24);
+  header.writeUInt32LE(sampleRate * 2, 28);
+  header.writeUInt16LE(2, 32);
+  header.writeUInt16LE(16, 34);
+  header.write("data", 36);
+  header.writeUInt32LE(data.length, 40);
+  writeFileSync(path, Buffer.concat([header, data]));
+}
+
+function generateAmbientMusic(boundaries, path) {
+  const sampleRate = 48000;
+  const duration = boundaries.at(-1);
+  const samples = new Float32Array(Math.ceil(duration * sampleRate));
+  const crossfadeSeconds = 1.1;
+  const progression = [
+    { name: "D minor", notes: [146.83, 174.61, 220.0], energy: 0.74 },
+    { name: "D minor", notes: [146.83, 174.61, 220.0], energy: 0.7 },
+    { name: "B flat", notes: [116.54, 146.83, 174.61], energy: 0.74 },
+    { name: "F major", notes: [130.81, 174.61, 220.0], energy: 0.78 },
+    { name: "D diminished", notes: [146.83, 174.61, 207.65], energy: 0.9 },
+    { name: "G minor", notes: [98.0, 146.83, 196.0], energy: 0.86 },
+    { name: "E flat", notes: [155.56, 196.0, 233.08], energy: 0.72 },
+    { name: "B flat", notes: [116.54, 146.83, 174.61], energy: 0.78 },
+    { name: "C major", notes: [130.81, 164.81, 196.0], energy: 0.7 },
+    { name: "A minor", notes: [110.0, 130.81, 164.81], energy: 0.84 },
+    { name: "F major", notes: [130.81, 174.61, 220.0], energy: 0.72 },
+    { name: "D major", notes: [146.83, 185.0, 220.0], energy: 0.68 }
+  ];
+  assert(progression.length === boundaries.length - 1, "Music progression and story beats differ.");
+  for (let beatIndex = 0; beatIndex < progression.length; beatIndex += 1) {
+    const chord = progression[beatIndex];
+    const beatStart = boundaries[beatIndex];
+    const beatEnd = boundaries[beatIndex + 1];
+    const start = Math.max(0, beatStart - crossfadeSeconds);
+    const end = Math.min(duration, beatEnd + crossfadeSeconds);
+    const firstSample = Math.floor(start * sampleRate);
+    const lastSample = Math.min(samples.length, Math.ceil(end * sampleRate));
+    for (let sampleIndex = firstSample; sampleIndex < lastSample; sampleIndex += 1) {
+      const time = sampleIndex / sampleRate;
+      const attack = time < beatStart
+        ? Math.sin(((time - start) / Math.max(0.001, beatStart - start)) * Math.PI / 2) ** 2
+        : 1;
+      const release = time > beatEnd
+        ? Math.cos(((time - beatEnd) / Math.max(0.001, end - beatEnd)) * Math.PI / 2) ** 2
+        : 1;
+      const drift = 0.86 + 0.14 * Math.sin(2 * Math.PI * 0.07 * time + beatIndex * 0.61);
+      const pulse = 0.9 + 0.1 * Math.cos(Math.PI * time) ** 4;
+      let value = 0;
+      for (let noteIndex = 0; noteIndex < chord.notes.length; noteIndex += 1) {
+        const frequency = chord.notes[noteIndex];
+        const phase = beatIndex * 0.37 + noteIndex * 1.19;
+        value += 0.19 * Math.sin(2 * Math.PI * frequency * time + phase);
+        value += 0.035 * Math.sin(2 * Math.PI * frequency * 2 * time + phase * 1.7);
+      }
+      value += 0.11 * Math.sin(2 * Math.PI * (chord.notes[0] / 2) * time + beatIndex * 0.29);
+      samples[sampleIndex] += value * attack * release * drift * pulse * chord.energy;
+    }
+  }
+  let peak = 0;
+  for (const sample of samples) peak = Math.max(peak, Math.abs(sample));
+  const scale = peak > 0 ? 0.38 / peak : 1;
+  const fadeSeconds = 2.4;
+  for (let index = 0; index < samples.length; index += 1) {
+    const time = index / sampleRate;
+    const fadeIn = Math.min(1, time / fadeSeconds);
+    const fadeOut = Math.min(1, (duration - time) / fadeSeconds);
+    samples[index] *= scale * Math.max(0, Math.min(fadeIn, fadeOut));
+  }
+  mkdirSync(dirname(path), { recursive: true });
+  writePcm16MonoWav(path, samples, sampleRate);
+  return {
+    generator: "deterministic additive synthesis",
+    sampleRateHz: sampleRate,
+    channels: 1,
+    durationSeconds: Number(duration.toFixed(3)),
+    peakAmplitude: 0.38,
+    crossfadeSeconds,
+    progression: progression.map(({ name }) => name)
+  };
+}
+
 function buildFilter(shot, duration, index, count) {
   const filters = [
     cropFor(shot.mode),
@@ -105,9 +200,25 @@ function buildFilter(shot, duration, index, count) {
       `drawtext=fontfile='${FONT}':text='${escapeDrawtext(shot.call.result)}':x=1209:y=151:fontsize=20:fontcolor=0x37D4C6`
     );
   }
+  if (shot.focus) {
+    for (const focus of shot.focus) {
+      const enable = `between(t,${focus.start.toFixed(2)},${focus.end.toFixed(2)})`;
+      filters.push(
+        `drawbox=x=62:y=206:w=1068:h=276:color=0x0D4D57@0.42:t=8:enable='${enable}'`,
+        `drawbox=x=72:y=216:w=1048:h=256:color=0x111418@0.97:t=fill:enable='${enable}'`,
+        `drawbox=x=72:y=216:w=1048:h=256:color=0x37D4C6@0.9:t=2:enable='${enable}'`,
+        `drawbox=x=104:y=252:w=10:h=178:color=0x37D4C6@0.92:t=fill:enable='${enable}'`,
+        `drawtext=fontfile='${FONT}':text='WEBMCP CALL ${escapeDrawtext(focus.step)}':x=142:y=244:fontsize=21:fontcolor=0x8A8F98:enable='${enable}'`,
+        `drawtext=fontfile='${FONT}':text='${escapeDrawtext(focus.tool)}':x=142:y=287:fontsize=43:fontcolor=0x37D4C6:enable='${enable}'`,
+        `drawtext=fontfile='${FONT}':text='RESULT':x=143:y=360:fontsize=18:fontcolor=0x8A8F98:enable='${enable}'`,
+        `drawtext=fontfile='${FONT}':text='${escapeDrawtext(focus.result)}':x=242:y=352:fontsize=28:fontcolor=0xF0C674:enable='${enable}'`,
+        `drawtext=fontfile='${FONT}':text='agent · args · result':x=143:y=414:fontsize=19:fontcolor=0xF2F4F6:enable='${enable}'`
+      );
+    }
+  }
   if (shot.title) {
     filters.push(
-      "drawbox=x=0:y=816:w=1120:h=204:color=0x111418@0.94:t=fill",
+      "drawbox=x=0:y=808:w=1140:h=212:color=0x111418:t=fill",
       "drawbox=x=0:y=816:w=1120:h=4:color=0x0D4D57@0.95:t=fill",
       `drawtext=fontfile='${FONT}':text='${escapeDrawtext(shot.title)}':x=92:y=856:fontsize=48:fontcolor=0xFAFBFC`,
       `drawtext=fontfile='${FONT}':text='${escapeDrawtext(shot.subtitle)}':x=94:y=923:fontsize=27:fontcolor=0xF2F4F6`,
@@ -146,7 +257,24 @@ function shotTemplate() {
     { sources: [155.4, 171.3], modes: ["proof", "viewer"], title: "EVIDENCE: 56 PERCENT", subtitle: "known connection, unreadable sign", calls: [{ tool: "get_region_quality", result: "readiness = 56 percent" }, null] },
     { sources: [183.9, 198.2], modes: ["evidence", "viewer"], title: "RECAPTURE THE GAP", subtitle: "two concrete field positions", calls: [{ tool: "get_region_quality", result: "2 recaptures · 6 markers" }, null] },
     { sources: [214.1, 225.2], modes: ["right", "full"], title: "HUMAN CONTROL", subtitle: "inspect, challenge, undo", calls: [{ tool: "undo_scene_change", result: "lift_1 = open" }, null] },
-    { image: true, asset: "timeline", modes: ["timelineTools", "timelineResults"], title: "10 WEBMCP CALLS", subtitle: "one shared scene and one visible timeline", calls: [{ tool: "get_scene_context", result: "camera · entity · scene" }, { tool: "set_entity_state + find_semantic_route", result: "change · validate · reroute" }] },
+    {
+      image: true,
+      asset: "timeline",
+      modes: ["timelineTools", "timelineResults"],
+      title: "10 WEBMCP CALLS",
+      subtitle: "one shared scene and one visible timeline",
+      calls: [{ tool: "get_scene_context", result: "camera · entity · scene" }, { tool: "set_entity_state + find_semantic_route", result: "change · validate · reroute" }],
+      focuses: [
+        [
+          { step: "01 / 10", tool: "get_scene_context", result: "camera and scene context", start: 0, end: 2.08 },
+          { step: "02 / 10", tool: "navigate_to_entity", result: "accessible_gate_1 selected", start: 2.08, end: 5 }
+        ],
+        [
+          { step: "05 / 10", tool: "set_entity_state", result: "lift_1 = closed", start: 0, end: 2.08 },
+          { step: "06 / 10", tool: "find_semantic_route", result: "reroute uses lift_2", start: 2.08, end: 5 }
+        ]
+      ]
+    },
     { image: true, asset: "comparison", modes: ["comparison", "comparison"], title: "FROM FIXTURE TO FIELDWORK", subtitle: "make uncertainty actionable" },
     { sources: [0, 9.5], modes: ["header", "full"], title: "SCENEINDEX", subtitle: "Search the place. See the reason." }
   ];
@@ -175,6 +303,7 @@ function makeShots(alignment) {
         asset: template[beatIndex].asset ?? null,
         mode: template[beatIndex].modes[half],
         call: template[beatIndex].calls?.[half] ?? null,
+        focus: template[beatIndex].focuses?.[half] ?? null,
         title: half === 0 ? template[beatIndex].title : null,
         subtitle: half === 0 ? template[beatIndex].subtitle : null
       });
@@ -197,9 +326,11 @@ function buildAudioFilter(cueTimes) {
   });
   const inputs = cueTimes.map((_seconds, index) => `[tick${index}]`).join("");
   return [
-    "[1:a]volume=1[voice]",
+    "[1:a]asplit=2[voice][voice_key]",
+    "[2:a]highpass=f=65,lowpass=f=2600,volume=0.24[bed]",
+    "[bed][voice_key]sidechaincompress=threshold=0.06:ratio=3:attack=24:release=500[ducked]",
     ...ticks,
-    `[voice]${inputs}amix=inputs=${cueTimes.length + 1}:normalize=0:dropout_transition=0,alimiter=limit=0.95[mixed]`
+    `[voice][ducked]${inputs}amix=inputs=${cueTimes.length + 2}:normalize=0:dropout_transition=0,alimiter=limit=0.95[mixed]`
   ].join(";");
 }
 
@@ -226,6 +357,8 @@ async function main() {
   assert(work.startsWith(resolve(ROOT, "submission/video/")), "Refusing to use a work directory outside submission/video.");
   rmSync(work, { recursive: true, force: true });
   mkdirSync(work, { recursive: true });
+  const musicPath = resolve(ROOT, options.music);
+  const musicGeneration = generateAmbientMusic(beatBoundaries(alignment), musicPath);
 
   const shotPaths = [];
   for (let index = 0; index < shots.length; index += 1) {
@@ -255,7 +388,7 @@ async function main() {
   run("ffmpeg", ["-y", "-hide_banner", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", concatList, "-c", "copy", videoOnly]);
   const sfxCueTimes = shots.filter((shot) => shot.title && shot.call).map((shot) => shot.start + 0.12);
   run("ffmpeg", [
-    "-y", "-hide_banner", "-loglevel", "error", "-i", videoOnly, "-i", resolve(ROOT, options.narration),
+    "-y", "-hide_banner", "-loglevel", "error", "-i", videoOnly, "-i", resolve(ROOT, options.narration), "-i", musicPath,
     "-filter_complex", buildAudioFilter(sfxCueTimes),
     "-map", "0:v:0", "-map", "[mixed]", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k",
     "-t", String(alignment.audio.durationSeconds), "-movflags", "+faststart", resolve(ROOT, options.output)
@@ -329,8 +462,16 @@ async function main() {
       brandFadeTransitionCount: alignment.beats.length - 1,
       maximumBrandFadeSeconds: BRAND_TRANSITION_SECONDS,
       liveToolCalloutCount: shots.filter((shot) => shot.call).length,
+      timelineFocusCardCount: shots.reduce((count, shot) => count + (shot.focus?.length ?? 0), 0),
       synthesizedUiCueCount: sfxCueTimes.length,
-      music: false,
+      music: {
+        projectAuthored: true,
+        path: options.music,
+        sha256: sha256File(options.music),
+        nominalMixGain: 0.24,
+        narrationDucking: { threshold: 0.06, ratio: 3, attackMs: 24, releaseMs: 500 },
+        ...musicGeneration
+      },
       contactSheet: { path: options.contactSheet, sha256: sha256File(options.contactSheet) },
       maximumPlannedShotSeconds: Math.max(...shots.map((shot) => shot.duration)),
       minimumCutToSpeechMarginSeconds: minimumCutMargin,
@@ -350,4 +491,4 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   });
 }
 
-export { beatBoundaries, buildAudioFilter, buildFilter, makeShots, parseArgs };
+export { beatBoundaries, buildAudioFilter, buildFilter, generateAmbientMusic, makeShots, parseArgs };

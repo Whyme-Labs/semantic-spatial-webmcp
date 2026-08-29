@@ -17,7 +17,7 @@ Each story beat contains two shots. Short charcoal-and-teal fades land in the ga
 | 0:53–1:01 | Punch into the guided-proof evidence at 56%, then return to the marked weak region. | "Why? The directional sign has one oblique, low resolution view. Connectivity is known, but its text remains unverified." |
 | 1:01–1:11 | Show the recommendation panel, field positions, and capture sightlines. | "SceneIndex turns doubt into fieldwork: recapture the sign front-on, then walk a reverse pass from Lift 2. Six markers make the plan concrete." |
 | 1:11–1:18 | Put `undo_scene_change` on screen, then return to the clean baseline. | "The person keeps control: inspect, challenge, accept, or undo. One action restores Lift 1 and the clean baseline." |
-| 1:18–1:27 | Pan across readable timeline crops while highlighting exact WebMCP tool names. | "Web M C P connects to this live interface. Ten narrow tools share scene state, validation, effects, and a human-visible action timeline." |
+| 1:18–1:27 | Pan across readable timeline crops while four animated focus cards isolate the exact call and result. | "Web M C P connects to this live interface. Ten narrow tools share scene state, validation, effects, and a human-visible action timeline." |
 | 1:27–1:36 | Use the project-authored screenshot-versus-spatial-context comparison to connect the fixture to fieldwork. | "The station is synthetic, but this pattern supports accessibility review, handover, inspection, maintenance, and targeted recapture without pretending pixels know more." |
 | 1:36–1:43 | Resolve on the SceneIndex identity, live app, and full station. | "SceneIndex makes a place searchable, testable, and honest about evidence. When the world changes, the route changes with it." |
 
@@ -78,7 +78,7 @@ get_scene_context
 - Build 24 shots from the aligned beat boundaries.
 - Keep every planned shot below nine seconds.
 - Require at least eight detected cuts and no freeze event longer than eight seconds.
-- Do not add music or third-party media.
+- Use only the project-authored procedural score and UI cues. Do not add third-party media.
 - Export at 1920 by 1080, 30 fps, H.264 with 48 kHz AAC narration and project-authored UI ticks.
 - Run the exact-file video verifier and watch the finished export with sound.
 - Upload to YouTube as Public and check the URL while signed out.

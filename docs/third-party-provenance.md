@@ -23,7 +23,7 @@ Spark's public `butterfly.spz` sample was used only for a local loader check. Th
 
 - The interface uses the operating system's font stack. No font files are bundled.
 - The SceneIndex mark and source brand board were supplied and approved by the entrant. The production SVGs, fit evidence, palette rules, and motion study are recorded under `assets/brand/` and `docs/brand/`.
-- No icon set, music, stock footage, photographs, or third-party trademarks are included.
+- No icon set, third-party music, stock footage, photographs, or third-party trademarks are included.
 - Local Playwright screenshots under `output/playwright/` are ignored. They are engineering receipts, not submission media.
 - `submission/screenshots/chrome-webmcp-flow.png` is an automated capture of this project's synthetic interface. `context-comparison.svg`, its PNG export, and `demo-dynamic-contact-sheet.png` are project-authored SceneIndex evidence. None contains a captured station asset or third-party media.
 - Final screenshots and video must show only the project interface, the approved browser controls, and materials owned or licensed by the entrant.
@@ -35,7 +35,9 @@ Spark's public `butterfly.spz` sample was used only for a local loader check. Th
 | VoxCPM2 | upstream `bffb3df`, GGUF conversion `169f64d` | Local voice-cloned English narration | [OpenBMB/VoxCPM](https://github.com/OpenBMB/VoxCPM), [VoxCPM2-GGUF](https://huggingface.co/DennisHuang648/VoxCPM2-GGUF) | Apache-2.0 | Model weights remain in local caches and are not copied into this repository. |
 | llama.cpp-omni | upstream `64d092c` plus `patches/voxcpm2-long-form-graph.patch` | One-pass VoxCPM2 inference and voice cloning on CPU or Metal | [tc-mb/llama.cpp-omni](https://github.com/tc-mb/llama.cpp-omni) | MIT | Built in a dedicated local cache. The small local graph-capacity patch and final binary SHA-256 are recorded; source, binary, and weights are not copied into this repository. |
 
-The entrant supplied and authorized the voice reference identified in `docs/entrant-attestation.json`. The source recording is not committed or distributed. VoxCPM2 generates the complete 247-word performance in one inference. The accepted take then receives deterministic full-track spectral cleanup; no speech is regenerated, replaced, or stitched. It passes transcript alignment, per-word pronunciation confidence, silence analysis, the measured hum-band limits, and an inter-beat background-vocal gate before it is muxed into the final MP4. The editor adds only project-authored synthesized UI ticks. The video contains no music.
+The entrant supplied and authorized the voice reference identified in `docs/entrant-attestation.json`. The source recording is not committed or distributed. VoxCPM2 generates the complete 247-word performance in one inference. The accepted take then receives deterministic full-track spectral cleanup; no speech is regenerated, replaced, or stitched. It passes transcript alignment, per-word pronunciation confidence, silence analysis, the measured hum-band limits, and an inter-beat background-vocal gate before it is muxed into the final MP4.
+
+The editor adds project-authored synthesized UI ticks and an original ambient score generated deterministically by `scripts/build-dynamic-demo-video.mjs`. The twelve chord beds follow the story beats, use no samples or external recordings, and duck beneath the narration. The score is local build output; its generator settings and SHA-256 are recorded in `docs/demo-video-verification.json`.
 
 ## Final media review
 

@@ -63,7 +63,7 @@ npm run assemble:demo-video
 npm run verify:media-dynamics
 ```
 
-The editor reads the forced-alignment receipt and places short brand-color fades only between speech beats. It creates 24 shots with exact live tool-call overlays, evidence punch-ins, readable timeline crops, a context-comparison beat, and a branded resolution. Project-authored UI ticks accent key calls; there is no music. The final dynamics gate requires at least eight detected cuts and rejects freeze events longer than eight seconds.
+The editor reads the forced-alignment receipt and places short brand-color fades only between speech beats. It creates 24 shots with exact live tool-call overlays, evidence punch-ins, animated timeline focus cards, a context-comparison beat, and a branded resolution. Project-authored UI ticks accent key calls. A deterministic twelve-chord ambient score runs about 25 dB below narration and ducks further while the narrator speaks. The final dynamics gate requires at least eight detected cuts and rejects freeze events longer than eight seconds.
 
 ## Verify the exact export
 

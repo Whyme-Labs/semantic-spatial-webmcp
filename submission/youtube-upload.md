@@ -35,6 +35,6 @@ Built by Soh Wei Meng.
 - Recording date: **August 27, 2026**
 - License: **Standard YouTube License**
 - Comments: owner's choice
-- Music: none
+- Music: project-authored procedural ambient score; no third-party track or sample
 
 After processing finishes, open the URL in a signed-out browser. Confirm 1080p playback, audible narration, English captions, and a duration below three minutes before adding the URL to Devpost.
