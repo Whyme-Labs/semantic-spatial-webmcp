@@ -19,7 +19,7 @@ Each story beat contains two shots. Short charcoal-and-teal fades land in the ga
 | 1:11–1:18 | Put `undo_scene_change` on screen, then return to the clean baseline. | "The person keeps control: inspect, challenge, accept, or undo. One action restores Lift 1 and the clean baseline." |
 | 1:18–1:27 | Pan across readable timeline crops while four animated focus cards isolate the exact call and result. | "Web M C P connects to this live interface. Ten narrow tools share scene state, validation, effects, and a human-visible action timeline." |
 | 1:27–1:36 | Use the project-authored screenshot-versus-spatial-context comparison to connect the fixture to fieldwork. | "The station is synthetic, but this pattern supports accessibility review, handover, inspection, maintenance, and targeted recapture without pretending pixels know more." |
-| 1:36–1:43 | Resolve on the SceneIndex identity, live app, and full station. | "SceneIndex makes a place searchable, testable, and honest about evidence. When the world changes, the route changes with it." |
+| 1:36–1:43 | Show the public GitHub repository with a two-second WebMCP, 3DGS, Spatial Graph, and MIT summary, then resolve on SceneIndex. | "SceneIndex makes a place searchable, testable, and honest about evidence. When the world changes, the route changes with it." |
 
 ## Demo prompts
 

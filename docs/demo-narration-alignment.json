@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "verifiedAt": "2026-08-28T16:32:34.382655+00:00",
+  "verifiedAt": "2026-08-29T04:24:51.919663+00:00",
   "method": "Torchaudio MMS_FA CTC forced alignment over one continuous checked-in narration",
   "model": "torchaudio.pipelines.MMS_FA",
   "device": "cpu",
@@ -33,7 +33,141 @@
       "speechEndSeconds": 9.062,
       "meanConfidence": 0.9369,
       "minimumWordConfidence": 0.6483,
-      "maximumWordConfidence": 0.9987
+      "maximumWordConfidence": 0.9987,
+      "words": [
+        {
+          "text": "traditional",
+          "startSeconds": 0.34,
+          "endSeconds": 0.82,
+          "confidence": 0.9813
+        },
+        {
+          "text": "d",
+          "startSeconds": 1.08,
+          "endSeconds": 1.1,
+          "confidence": 0.9454
+        },
+        {
+          "text": "scans",
+          "startSeconds": 1.22,
+          "endSeconds": 1.62,
+          "confidence": 0.9635
+        },
+        {
+          "text": "can",
+          "startSeconds": 1.68,
+          "endSeconds": 1.82,
+          "confidence": 0.9987
+        },
+        {
+          "text": "look",
+          "startSeconds": 1.88,
+          "endSeconds": 2.02,
+          "confidence": 0.9916
+        },
+        {
+          "text": "complete",
+          "startSeconds": 2.06,
+          "endSeconds": 2.521,
+          "confidence": 0.9984
+        },
+        {
+          "text": "while",
+          "startSeconds": 2.601,
+          "endSeconds": 2.801,
+          "confidence": 0.9592
+        },
+        {
+          "text": "missing",
+          "startSeconds": 2.841,
+          "endSeconds": 3.221,
+          "confidence": 0.9435
+        },
+        {
+          "text": "the",
+          "startSeconds": 3.261,
+          "endSeconds": 3.341,
+          "confidence": 0.9662
+        },
+        {
+          "text": "instant",
+          "startSeconds": 3.461,
+          "endSeconds": 3.841,
+          "confidence": 0.9883
+        },
+        {
+          "text": "an",
+          "startSeconds": 3.921,
+          "endSeconds": 3.981,
+          "confidence": 0.9944
+        },
+        {
+          "text": "accessible",
+          "startSeconds": 4.061,
+          "endSeconds": 4.601,
+          "confidence": 0.9966
+        },
+        {
+          "text": "route",
+          "startSeconds": 4.641,
+          "endSeconds": 4.801,
+          "confidence": 0.6483
+        },
+        {
+          "text": "breaks",
+          "startSeconds": 4.841,
+          "endSeconds": 5.201,
+          "confidence": 0.8647
+        },
+        {
+          "text": "one",
+          "startSeconds": 5.981,
+          "endSeconds": 6.101,
+          "confidence": 0.9965
+        },
+        {
+          "text": "lift",
+          "startSeconds": 6.141,
+          "endSeconds": 6.341,
+          "confidence": 0.8829
+        },
+        {
+          "text": "closes",
+          "startSeconds": 6.361,
+          "endSeconds": 6.882,
+          "confidence": 0.8335
+        },
+        {
+          "text": "and",
+          "startSeconds": 7.342,
+          "endSeconds": 7.442,
+          "confidence": 0.9956
+        },
+        {
+          "text": "the",
+          "startSeconds": 7.462,
+          "endSeconds": 7.522,
+          "confidence": 0.9544
+        },
+        {
+          "text": "expected",
+          "startSeconds": 7.562,
+          "endSeconds": 8.042,
+          "confidence": 0.7881
+        },
+        {
+          "text": "journey",
+          "startSeconds": 8.102,
+          "endSeconds": 8.362,
+          "confidence": 0.9261
+        },
+        {
+          "text": "disappears",
+          "startSeconds": 8.422,
+          "endSeconds": 9.062,
+          "confidence": 0.9952
+        }
+      ]
     },
     {
       "id": "02-sceneindex",
@@ -44,7 +178,123 @@
       "speechEndSeconds": 18.604,
       "meanConfidence": 0.8683,
       "minimumWordConfidence": 0.3504,
-      "maximumWordConfidence": 0.9983
+      "maximumWordConfidence": 0.9983,
+      "words": [
+        {
+          "text": "sceneindex",
+          "startSeconds": 9.742,
+          "endSeconds": 10.242,
+          "confidence": 0.7568
+        },
+        {
+          "text": "adds",
+          "startSeconds": 10.462,
+          "endSeconds": 10.662,
+          "confidence": 0.3504
+        },
+        {
+          "text": "persistent",
+          "startSeconds": 10.762,
+          "endSeconds": 11.343,
+          "confidence": 0.9878
+        },
+        {
+          "text": "meaning",
+          "startSeconds": 11.423,
+          "endSeconds": 11.763,
+          "confidence": 0.9983
+        },
+        {
+          "text": "beneath",
+          "startSeconds": 11.843,
+          "endSeconds": 12.183,
+          "confidence": 0.6394
+        },
+        {
+          "text": "the",
+          "startSeconds": 12.323,
+          "endSeconds": 12.403,
+          "confidence": 0.928
+        },
+        {
+          "text": "gaussian",
+          "startSeconds": 12.463,
+          "endSeconds": 12.823,
+          "confidence": 0.5195
+        },
+        {
+          "text": "splat",
+          "startSeconds": 12.883,
+          "endSeconds": 13.223,
+          "confidence": 0.9924
+        },
+        {
+          "text": "rooms",
+          "startSeconds": 13.783,
+          "endSeconds": 14.103,
+          "confidence": 0.9932
+        },
+        {
+          "text": "gates",
+          "startSeconds": 14.343,
+          "endSeconds": 14.683,
+          "confidence": 0.9969
+        },
+        {
+          "text": "lifts",
+          "startSeconds": 15.103,
+          "endSeconds": 15.404,
+          "confidence": 0.9184
+        },
+        {
+          "text": "routes",
+          "startSeconds": 15.764,
+          "endSeconds": 16.064,
+          "confidence": 0.7039
+        },
+        {
+          "text": "and",
+          "startSeconds": 16.464,
+          "endSeconds": 16.564,
+          "confidence": 0.9958
+        },
+        {
+          "text": "evidence",
+          "startSeconds": 16.644,
+          "endSeconds": 17.064,
+          "confidence": 0.9959
+        },
+        {
+          "text": "that",
+          "startSeconds": 17.124,
+          "endSeconds": 17.244,
+          "confidence": 0.9949
+        },
+        {
+          "text": "people",
+          "startSeconds": 17.304,
+          "endSeconds": 17.684,
+          "confidence": 0.9961
+        },
+        {
+          "text": "and",
+          "startSeconds": 17.744,
+          "endSeconds": 17.864,
+          "confidence": 0.9301
+        },
+        {
+          "text": "agents",
+          "startSeconds": 17.964,
+          "endSeconds": 18.284,
+          "confidence": 0.9941
+        },
+        {
+          "text": "share",
+          "startSeconds": 18.364,
+          "endSeconds": 18.604,
+          "confidence": 0.8055
+        }
+      ]
     },
     {
       "id": "03-mission",
@@ -55,7 +305,141 @@
       "speechEndSeconds": 27.606,
       "meanConfidence": 0.9674,
       "minimumWordConfidence": 0.7794,
-      "maximumWordConfidence": 0.9995
+      "maximumWordConfidence": 0.9995,
+      "words": [
+        {
+          "text": "the",
+          "startSeconds": 19.324,
+          "endSeconds": 19.384,
+          "confidence": 0.9913
+        },
+        {
+          "text": "mission",
+          "startSeconds": 19.444,
+          "endSeconds": 19.745,
+          "confidence": 0.9826
+        },
+        {
+          "text": "reach",
+          "startSeconds": 19.865,
+          "endSeconds": 20.065,
+          "confidence": 0.9324
+        },
+        {
+          "text": "platform",
+          "startSeconds": 20.125,
+          "endSeconds": 20.485,
+          "confidence": 0.9985
+        },
+        {
+          "text": "from",
+          "startSeconds": 20.785,
+          "endSeconds": 20.925,
+          "confidence": 0.9982
+        },
+        {
+          "text": "entrance",
+          "startSeconds": 21.005,
+          "endSeconds": 21.365,
+          "confidence": 0.9857
+        },
+        {
+          "text": "a",
+          "startSeconds": 21.465,
+          "endSeconds": 21.485,
+          "confidence": 0.9027
+        },
+        {
+          "text": "without",
+          "startSeconds": 21.625,
+          "endSeconds": 21.905,
+          "confidence": 0.9904
+        },
+        {
+          "text": "stairs",
+          "startSeconds": 21.965,
+          "endSeconds": 22.325,
+          "confidence": 0.9711
+        },
+        {
+          "text": "while",
+          "startSeconds": 22.765,
+          "endSeconds": 22.965,
+          "confidence": 0.9907
+        },
+        {
+          "text": "exposing",
+          "startSeconds": 23.005,
+          "endSeconds": 23.505,
+          "confidence": 0.9986
+        },
+        {
+          "text": "uncertainty",
+          "startSeconds": 23.565,
+          "endSeconds": 24.186,
+          "confidence": 0.8719
+        },
+        {
+          "text": "the",
+          "startSeconds": 24.826,
+          "endSeconds": 24.906,
+          "confidence": 0.996
+        },
+        {
+          "text": "agent",
+          "startSeconds": 24.986,
+          "endSeconds": 25.266,
+          "confidence": 0.9993
+        },
+        {
+          "text": "reads",
+          "startSeconds": 25.346,
+          "endSeconds": 25.566,
+          "confidence": 0.7794
+        },
+        {
+          "text": "the",
+          "startSeconds": 25.586,
+          "endSeconds": 25.666,
+          "confidence": 0.9936
+        },
+        {
+          "text": "camera",
+          "startSeconds": 25.726,
+          "endSeconds": 26.066,
+          "confidence": 0.9995
+        },
+        {
+          "text": "and",
+          "startSeconds": 26.166,
+          "endSeconds": 26.266,
+          "confidence": 0.9981
+        },
+        {
+          "text": "finds",
+          "startSeconds": 26.306,
+          "endSeconds": 26.606,
+          "confidence": 0.9882
+        },
+        {
+          "text": "the",
+          "startSeconds": 26.626,
+          "endSeconds": 26.706,
+          "confidence": 0.9675
+        },
+        {
+          "text": "accessible",
+          "startSeconds": 26.746,
+          "endSeconds": 27.286,
+          "confidence": 0.9947
+        },
+        {
+          "text": "gate",
+          "startSeconds": 27.326,
+          "endSeconds": 27.606,
+          "confidence": 0.9526
+        }
+      ]
     },
     {
       "id": "04-baseline-route",
@@ -66,7 +450,123 @@
       "speechEndSeconds": 34.488,
       "meanConfidence": 0.9559,
       "minimumWordConfidence": 0.712,
-      "maximumWordConfidence": 0.9993
+      "maximumWordConfidence": 0.9993,
+      "words": [
+        {
+          "text": "the",
+          "startSeconds": 28.126,
+          "endSeconds": 28.206,
+          "confidence": 0.9814
+        },
+        {
+          "text": "first",
+          "startSeconds": 28.287,
+          "endSeconds": 28.507,
+          "confidence": 0.9983
+        },
+        {
+          "text": "route",
+          "startSeconds": 28.567,
+          "endSeconds": 28.747,
+          "confidence": 0.7466
+        },
+        {
+          "text": "uses",
+          "startSeconds": 28.827,
+          "endSeconds": 29.107,
+          "confidence": 0.9985
+        },
+        {
+          "text": "the",
+          "startSeconds": 29.167,
+          "endSeconds": 29.247,
+          "confidence": 0.995
+        },
+        {
+          "text": "east",
+          "startSeconds": 29.347,
+          "endSeconds": 29.507,
+          "confidence": 0.9548
+        },
+        {
+          "text": "corridor",
+          "startSeconds": 29.547,
+          "endSeconds": 29.947,
+          "confidence": 0.9587
+        },
+        {
+          "text": "and",
+          "startSeconds": 30.007,
+          "endSeconds": 30.107,
+          "confidence": 0.9912
+        },
+        {
+          "text": "lift",
+          "startSeconds": 30.147,
+          "endSeconds": 30.367,
+          "confidence": 0.9979
+        },
+        {
+          "text": "it",
+          "startSeconds": 31.227,
+          "endSeconds": 31.307,
+          "confidence": 0.9993
+        },
+        {
+          "text": "appears",
+          "startSeconds": 31.347,
+          "endSeconds": 31.707,
+          "confidence": 0.9884
+        },
+        {
+          "text": "in",
+          "startSeconds": 31.767,
+          "endSeconds": 31.827,
+          "confidence": 0.9991
+        },
+        {
+          "text": "the",
+          "startSeconds": 31.867,
+          "endSeconds": 31.927,
+          "confidence": 0.993
+        },
+        {
+          "text": "scene",
+          "startSeconds": 32.007,
+          "endSeconds": 32.287,
+          "confidence": 0.712
+        },
+        {
+          "text": "where",
+          "startSeconds": 32.648,
+          "endSeconds": 32.788,
+          "confidence": 0.986
+        },
+        {
+          "text": "every",
+          "startSeconds": 32.848,
+          "endSeconds": 33.028,
+          "confidence": 0.9985
+        },
+        {
+          "text": "turn",
+          "startSeconds": 33.128,
+          "endSeconds": 33.308,
+          "confidence": 0.8951
+        },
+        {
+          "text": "stays",
+          "startSeconds": 33.348,
+          "endSeconds": 33.668,
+          "confidence": 0.975
+        },
+        {
+          "text": "inspectable",
+          "startSeconds": 33.788,
+          "endSeconds": 34.488,
+          "confidence": 0.9943
+        }
+      ]
     },
     {
       "id": "05-lift-closure",
@@ -77,7 +577,135 @@
       "speechEndSeconds": 43.81,
       "meanConfidence": 0.9424,
       "minimumWordConfidence": 0.7542,
-      "maximumWordConfidence": 0.9987
+      "maximumWordConfidence": 0.9987,
+      "words": [
+        {
+          "text": "then",
+          "startSeconds": 35.228,
+          "endSeconds": 35.368,
+          "confidence": 0.9559
+        },
+        {
+          "text": "lift",
+          "startSeconds": 35.448,
+          "endSeconds": 35.648,
+          "confidence": 0.9964
+        },
+        {
+          "text": "closes",
+          "startSeconds": 35.968,
+          "endSeconds": 36.468,
+          "confidence": 0.8396
+        },
+        {
+          "text": "its",
+          "startSeconds": 36.688,
+          "endSeconds": 36.808,
+          "confidence": 0.9953
+        },
+        {
+          "text": "proxy",
+          "startSeconds": 36.888,
+          "endSeconds": 37.189,
+          "confidence": 0.8708
+        },
+        {
+          "text": "turns",
+          "startSeconds": 37.269,
+          "endSeconds": 37.509,
+          "confidence": 0.791
+        },
+        {
+          "text": "red",
+          "startSeconds": 37.629,
+          "endSeconds": 37.829,
+          "confidence": 0.9864
+        },
+        {
+          "text": "its",
+          "startSeconds": 38.349,
+          "endSeconds": 38.469,
+          "confidence": 0.9727
+        },
+        {
+          "text": "state",
+          "startSeconds": 38.509,
+          "endSeconds": 38.729,
+          "confidence": 0.9914
+        },
+        {
+          "text": "changes",
+          "startSeconds": 38.749,
+          "endSeconds": 39.229,
+          "confidence": 0.9923
+        },
+        {
+          "text": "and",
+          "startSeconds": 39.609,
+          "endSeconds": 39.729,
+          "confidence": 0.9819
+        },
+        {
+          "text": "the",
+          "startSeconds": 39.749,
+          "endSeconds": 39.809,
+          "confidence": 0.9875
+        },
+        {
+          "text": "route",
+          "startSeconds": 39.869,
+          "endSeconds": 40.049,
+          "confidence": 0.7542
+        },
+        {
+          "text": "fails",
+          "startSeconds": 40.089,
+          "endSeconds": 40.389,
+          "confidence": 0.9718
+        },
+        {
+          "text": "visibly",
+          "startSeconds": 40.489,
+          "endSeconds": 40.909,
+          "confidence": 0.9757
+        },
+        {
+          "text": "the",
+          "startSeconds": 41.57,
+          "endSeconds": 41.65,
+          "confidence": 0.9681
+        },
+        {
+          "text": "outage",
+          "startSeconds": 41.75,
+          "endSeconds": 42.11,
+          "confidence": 0.8733
+        },
+        {
+          "text": "is",
+          "startSeconds": 42.15,
+          "endSeconds": 42.23,
+          "confidence": 0.9976
+        },
+        {
+          "text": "reversible",
+          "startSeconds": 42.31,
+          "endSeconds": 42.95,
+          "confidence": 0.9464
+        },
+        {
+          "text": "never",
+          "startSeconds": 43.23,
+          "endSeconds": 43.47,
+          "confidence": 0.9987
+        },
+        {
+          "text": "hidden",
+          "startSeconds": 43.53,
+          "endSeconds": 43.81,
+          "confidence": 0.9431
+        }
+      ]
     },
     {
       "id": "06-alternate-route",
@@ -88,7 +716,147 @@
       "speechEndSeconds": 53.012,
       "meanConfidence": 0.9578,
       "minimumWordConfidence": 0.7304,
-      "maximumWordConfidence": 0.9994
+      "maximumWordConfidence": 0.9994,
+      "words": [
+        {
+          "text": "the",
+          "startSeconds": 44.51,
+          "endSeconds": 44.57,
+          "confidence": 0.9925
+        },
+        {
+          "text": "agent",
+          "startSeconds": 44.67,
+          "endSeconds": 44.95,
+          "confidence": 0.9865
+        },
+        {
+          "text": "reroutes",
+          "startSeconds": 45.01,
+          "endSeconds": 45.51,
+          "confidence": 0.7304
+        },
+        {
+          "text": "through",
+          "startSeconds": 45.61,
+          "endSeconds": 45.831,
+          "confidence": 0.9565
+        },
+        {
+          "text": "lift",
+          "startSeconds": 45.871,
+          "endSeconds": 46.131,
+          "confidence": 0.9835
+        },
+        {
+          "text": "the",
+          "startSeconds": 46.851,
+          "endSeconds": 46.931,
+          "confidence": 0.9816
+        },
+        {
+          "text": "trip",
+          "startSeconds": 46.991,
+          "endSeconds": 47.191,
+          "confidence": 0.9281
+        },
+        {
+          "text": "remains",
+          "startSeconds": 47.231,
+          "endSeconds": 47.531,
+          "confidence": 0.9991
+        },
+        {
+          "text": "possible",
+          "startSeconds": 47.571,
+          "endSeconds": 48.071,
+          "confidence": 0.9932
+        },
+        {
+          "text": "but",
+          "startSeconds": 48.211,
+          "endSeconds": 48.331,
+          "confidence": 0.9992
+        },
+        {
+          "text": "the",
+          "startSeconds": 48.371,
+          "endSeconds": 48.451,
+          "confidence": 0.9188
+        },
+        {
+          "text": "west",
+          "startSeconds": 48.531,
+          "endSeconds": 48.751,
+          "confidence": 0.998
+        },
+        {
+          "text": "corridor",
+          "startSeconds": 48.791,
+          "endSeconds": 49.211,
+          "confidence": 0.9936
+        },
+        {
+          "text": "raises",
+          "startSeconds": 49.271,
+          "endSeconds": 49.551,
+          "confidence": 0.9653
+        },
+        {
+          "text": "a",
+          "startSeconds": 49.631,
+          "endSeconds": 49.651,
+          "confidence": 0.9965
+        },
+        {
+          "text": "warning",
+          "startSeconds": 49.711,
+          "endSeconds": 50.092,
+          "confidence": 0.975
+        },
+        {
+          "text": "wayfinding",
+          "startSeconds": 50.632,
+          "endSeconds": 51.132,
+          "confidence": 0.9638
+        },
+        {
+          "text": "readiness",
+          "startSeconds": 51.192,
+          "endSeconds": 51.612,
+          "confidence": 0.8778
+        },
+        {
+          "text": "is",
+          "startSeconds": 51.732,
+          "endSeconds": 51.832,
+          "confidence": 0.9975
+        },
+        {
+          "text": "only",
+          "startSeconds": 51.932,
+          "endSeconds": 52.112,
+          "confidence": 0.9975
+        },
+        {
+          "text": "just",
+          "startSeconds": 52.192,
+          "endSeconds": 52.412,
+          "confidence": 0.9994
+        },
+        {
+          "text": "over",
+          "startSeconds": 52.492,
+          "endSeconds": 52.712,
+          "confidence": 0.9702
+        },
+        {
+          "text": "half",
+          "startSeconds": 52.772,
+          "endSeconds": 53.012,
+          "confidence": 0.8256
+        }
+      ]
     },
     {
       "id": "07-evidence",
@@ -98,8 +866,118 @@
       "speechStartSeconds": 53.632,
       "speechEndSeconds": 61.094,
       "meanConfidence": 0.9266,
-      "minimumWordConfidence": 0.3206,
-      "maximumWordConfidence": 0.9989
+      "minimumWordConfidence": 0.3205,
+      "maximumWordConfidence": 0.9989,
+      "words": [
+        {
+          "text": "why",
+          "startSeconds": 53.632,
+          "endSeconds": 53.852,
+          "confidence": 0.9289
+        },
+        {
+          "text": "the",
+          "startSeconds": 54.032,
+          "endSeconds": 54.092,
+          "confidence": 0.9955
+        },
+        {
+          "text": "directional",
+          "startSeconds": 54.132,
+          "endSeconds": 54.693,
+          "confidence": 0.9949
+        },
+        {
+          "text": "sign",
+          "startSeconds": 54.753,
+          "endSeconds": 55.013,
+          "confidence": 0.948
+        },
+        {
+          "text": "has",
+          "startSeconds": 55.053,
+          "endSeconds": 55.193,
+          "confidence": 0.9968
+        },
+        {
+          "text": "one",
+          "startSeconds": 55.333,
+          "endSeconds": 55.453,
+          "confidence": 0.9972
+        },
+        {
+          "text": "oblique",
+          "startSeconds": 55.513,
+          "endSeconds": 55.893,
+          "confidence": 0.6285
+        },
+        {
+          "text": "low",
+          "startSeconds": 56.333,
+          "endSeconds": 56.473,
+          "confidence": 0.3205
+        },
+        {
+          "text": "resolution",
+          "startSeconds": 56.533,
+          "endSeconds": 57.053,
+          "confidence": 0.9965
+        },
+        {
+          "text": "view",
+          "startSeconds": 57.133,
+          "endSeconds": 57.313,
+          "confidence": 0.9726
+        },
+        {
+          "text": "connectivity",
+          "startSeconds": 57.913,
+          "endSeconds": 58.533,
+          "confidence": 0.9984
+        },
+        {
+          "text": "is",
+          "startSeconds": 58.613,
+          "endSeconds": 58.714,
+          "confidence": 0.9987
+        },
+        {
+          "text": "known",
+          "startSeconds": 58.754,
+          "endSeconds": 59.014,
+          "confidence": 0.9588
+        },
+        {
+          "text": "but",
+          "startSeconds": 59.154,
+          "endSeconds": 59.294,
+          "confidence": 0.998
+        },
+        {
+          "text": "its",
+          "startSeconds": 59.354,
+          "endSeconds": 59.474,
+          "confidence": 0.9945
+        },
+        {
+          "text": "text",
+          "startSeconds": 59.534,
+          "endSeconds": 59.774,
+          "confidence": 0.965
+        },
+        {
+          "text": "remains",
+          "startSeconds": 59.834,
+          "endSeconds": 60.214,
+          "confidence": 0.9989
+        },
+        {
+          "text": "unverified",
+          "startSeconds": 60.354,
+          "endSeconds": 61.094,
+          "confidence": 0.9862
+        }
+      ]
     },
     {
       "id": "08-recapture",
@@ -110,7 +988,147 @@
       "speechEndSeconds": 70.576,
       "meanConfidence": 0.9333,
       "minimumWordConfidence": 0.4421,
-      "maximumWordConfidence": 0.999
+      "maximumWordConfidence": 0.999,
+      "words": [
+        {
+          "text": "sceneindex",
+          "startSeconds": 61.634,
+          "endSeconds": 62.134,
+          "confidence": 0.7264
+        },
+        {
+          "text": "turns",
+          "startSeconds": 62.234,
+          "endSeconds": 62.474,
+          "confidence": 0.8758
+        },
+        {
+          "text": "doubt",
+          "startSeconds": 62.534,
+          "endSeconds": 62.754,
+          "confidence": 0.4421
+        },
+        {
+          "text": "into",
+          "startSeconds": 62.834,
+          "endSeconds": 63.035,
+          "confidence": 0.9512
+        },
+        {
+          "text": "fieldwork",
+          "startSeconds": 63.115,
+          "endSeconds": 63.615,
+          "confidence": 0.9768
+        },
+        {
+          "text": "recapture",
+          "startSeconds": 64.175,
+          "endSeconds": 64.695,
+          "confidence": 0.9693
+        },
+        {
+          "text": "the",
+          "startSeconds": 64.735,
+          "endSeconds": 64.795,
+          "confidence": 0.9568
+        },
+        {
+          "text": "sign",
+          "startSeconds": 64.875,
+          "endSeconds": 65.135,
+          "confidence": 0.9598
+        },
+        {
+          "text": "front",
+          "startSeconds": 65.195,
+          "endSeconds": 65.435,
+          "confidence": 0.9961
+        },
+        {
+          "text": "on",
+          "startSeconds": 65.535,
+          "endSeconds": 65.655,
+          "confidence": 0.9925
+        },
+        {
+          "text": "then",
+          "startSeconds": 66.135,
+          "endSeconds": 66.275,
+          "confidence": 0.9304
+        },
+        {
+          "text": "walk",
+          "startSeconds": 66.335,
+          "endSeconds": 66.515,
+          "confidence": 0.9776
+        },
+        {
+          "text": "a",
+          "startSeconds": 66.595,
+          "endSeconds": 66.615,
+          "confidence": 0.9921
+        },
+        {
+          "text": "reverse",
+          "startSeconds": 66.695,
+          "endSeconds": 67.055,
+          "confidence": 0.9393
+        },
+        {
+          "text": "pass",
+          "startSeconds": 67.095,
+          "endSeconds": 67.336,
+          "confidence": 0.9973
+        },
+        {
+          "text": "from",
+          "startSeconds": 67.396,
+          "endSeconds": 67.536,
+          "confidence": 0.9967
+        },
+        {
+          "text": "lift",
+          "startSeconds": 67.596,
+          "endSeconds": 67.876,
+          "confidence": 0.9839
+        },
+        {
+          "text": "six",
+          "startSeconds": 68.696,
+          "endSeconds": 68.856,
+          "confidence": 0.999
+        },
+        {
+          "text": "markers",
+          "startSeconds": 68.976,
+          "endSeconds": 69.376,
+          "confidence": 0.8371
+        },
+        {
+          "text": "make",
+          "startSeconds": 69.456,
+          "endSeconds": 69.636,
+          "confidence": 0.9834
+        },
+        {
+          "text": "the",
+          "startSeconds": 69.656,
+          "endSeconds": 69.716,
+          "confidence": 0.9913
+        },
+        {
+          "text": "plan",
+          "startSeconds": 69.776,
+          "endSeconds": 69.996,
+          "confidence": 0.9984
+        },
+        {
+          "text": "concrete",
+          "startSeconds": 70.076,
+          "endSeconds": 70.576,
+          "confidence": 0.992
+        }
+      ]
     },
     {
       "id": "09-human-control",
@@ -121,7 +1139,111 @@
       "speechEndSeconds": 77.978,
       "meanConfidence": 0.9724,
       "minimumWordConfidence": 0.8468,
-      "maximumWordConfidence": 0.999
+      "maximumWordConfidence": 0.999,
+      "words": [
+        {
+          "text": "the",
+          "startSeconds": 71.076,
+          "endSeconds": 71.156,
+          "confidence": 0.9945
+        },
+        {
+          "text": "person",
+          "startSeconds": 71.216,
+          "endSeconds": 71.556,
+          "confidence": 0.999
+        },
+        {
+          "text": "keeps",
+          "startSeconds": 71.616,
+          "endSeconds": 71.817,
+          "confidence": 0.9954
+        },
+        {
+          "text": "control",
+          "startSeconds": 71.877,
+          "endSeconds": 72.317,
+          "confidence": 0.9988
+        },
+        {
+          "text": "inspect",
+          "startSeconds": 72.737,
+          "endSeconds": 73.157,
+          "confidence": 0.9701
+        },
+        {
+          "text": "challenge",
+          "startSeconds": 73.237,
+          "endSeconds": 73.697,
+          "confidence": 0.9707
+        },
+        {
+          "text": "accept",
+          "startSeconds": 73.837,
+          "endSeconds": 74.237,
+          "confidence": 0.9922
+        },
+        {
+          "text": "or",
+          "startSeconds": 74.357,
+          "endSeconds": 74.437,
+          "confidence": 0.9965
+        },
+        {
+          "text": "undo",
+          "startSeconds": 74.517,
+          "endSeconds": 74.757,
+          "confidence": 0.9812
+        },
+        {
+          "text": "one",
+          "startSeconds": 75.397,
+          "endSeconds": 75.537,
+          "confidence": 0.9788
+        },
+        {
+          "text": "action",
+          "startSeconds": 75.577,
+          "endSeconds": 75.837,
+          "confidence": 0.9959
+        },
+        {
+          "text": "restores",
+          "startSeconds": 75.877,
+          "endSeconds": 76.278,
+          "confidence": 0.8744
+        },
+        {
+          "text": "lift",
+          "startSeconds": 76.358,
+          "endSeconds": 76.578,
+          "confidence": 0.9935
+        },
+        {
+          "text": "and",
+          "startSeconds": 76.958,
+          "endSeconds": 77.058,
+          "confidence": 0.9502
+        },
+        {
+          "text": "the",
+          "startSeconds": 77.058,
+          "endSeconds": 77.118,
+          "confidence": 0.8468
+        },
+        {
+          "text": "clean",
+          "startSeconds": 77.178,
+          "endSeconds": 77.418,
+          "confidence": 0.9984
+        },
+        {
+          "text": "baseline",
+          "startSeconds": 77.478,
+          "endSeconds": 77.978,
+          "confidence": 0.9937
+        }
+      ]
     },
     {
       "id": "10-webmcp",
@@ -132,7 +1254,147 @@
       "speechEndSeconds": 86.42,
       "meanConfidence": 0.9396,
       "minimumWordConfidence": 0.5667,
-      "maximumWordConfidence": 0.9997
+      "maximumWordConfidence": 0.9997,
+      "words": [
+        {
+          "text": "web",
+          "startSeconds": 78.598,
+          "endSeconds": 78.778,
+          "confidence": 0.9992
+        },
+        {
+          "text": "m",
+          "startSeconds": 78.938,
+          "endSeconds": 78.958,
+          "confidence": 0.9844
+        },
+        {
+          "text": "c",
+          "startSeconds": 79.038,
+          "endSeconds": 79.058,
+          "confidence": 0.9971
+        },
+        {
+          "text": "p",
+          "startSeconds": 79.218,
+          "endSeconds": 79.238,
+          "confidence": 0.9997
+        },
+        {
+          "text": "connects",
+          "startSeconds": 79.418,
+          "endSeconds": 79.798,
+          "confidence": 0.9293
+        },
+        {
+          "text": "to",
+          "startSeconds": 79.838,
+          "endSeconds": 79.918,
+          "confidence": 0.9973
+        },
+        {
+          "text": "this",
+          "startSeconds": 79.978,
+          "endSeconds": 80.118,
+          "confidence": 0.9967
+        },
+        {
+          "text": "live",
+          "startSeconds": 80.198,
+          "endSeconds": 80.439,
+          "confidence": 0.7447
+        },
+        {
+          "text": "interface",
+          "startSeconds": 80.479,
+          "endSeconds": 81.079,
+          "confidence": 0.87
+        },
+        {
+          "text": "ten",
+          "startSeconds": 81.619,
+          "endSeconds": 81.799,
+          "confidence": 0.9782
+        },
+        {
+          "text": "narrow",
+          "startSeconds": 81.859,
+          "endSeconds": 82.119,
+          "confidence": 0.9411
+        },
+        {
+          "text": "tools",
+          "startSeconds": 82.179,
+          "endSeconds": 82.459,
+          "confidence": 0.9857
+        },
+        {
+          "text": "share",
+          "startSeconds": 82.519,
+          "endSeconds": 82.719,
+          "confidence": 0.8176
+        },
+        {
+          "text": "scene",
+          "startSeconds": 82.799,
+          "endSeconds": 83.019,
+          "confidence": 0.5667
+        },
+        {
+          "text": "state",
+          "startSeconds": 83.059,
+          "endSeconds": 83.379,
+          "confidence": 0.9982
+        },
+        {
+          "text": "validation",
+          "startSeconds": 83.459,
+          "endSeconds": 84.039,
+          "confidence": 0.9908
+        },
+        {
+          "text": "effects",
+          "startSeconds": 84.139,
+          "endSeconds": 84.519,
+          "confidence": 0.9807
+        },
+        {
+          "text": "and",
+          "startSeconds": 84.599,
+          "endSeconds": 84.699,
+          "confidence": 0.9896
+        },
+        {
+          "text": "a",
+          "startSeconds": 84.74,
+          "endSeconds": 84.76,
+          "confidence": 0.9448
+        },
+        {
+          "text": "human",
+          "startSeconds": 84.82,
+          "endSeconds": 85.12,
+          "confidence": 0.9894
+        },
+        {
+          "text": "visible",
+          "startSeconds": 85.18,
+          "endSeconds": 85.56,
+          "confidence": 0.9843
+        },
+        {
+          "text": "action",
+          "startSeconds": 85.62,
+          "endSeconds": 85.88,
+          "confidence": 0.9588
+        },
+        {
+          "text": "timeline",
+          "startSeconds": 85.94,
+          "endSeconds": 86.42,
+          "confidence": 0.9675
+        }
+      ]
     },
     {
       "id": "11-impact",
@@ -143,7 +1405,135 @@
       "speechEndSeconds": 95.542,
       "meanConfidence": 0.9373,
       "minimumWordConfidence": 0.4996,
-      "maximumWordConfidence": 0.9993
+      "maximumWordConfidence": 0.9993,
+      "words": [
+        {
+          "text": "the",
+          "startSeconds": 86.88,
+          "endSeconds": 86.96,
+          "confidence": 0.9422
+        },
+        {
+          "text": "station",
+          "startSeconds": 87.0,
+          "endSeconds": 87.36,
+          "confidence": 0.9967
+        },
+        {
+          "text": "is",
+          "startSeconds": 87.44,
+          "endSeconds": 87.5,
+          "confidence": 0.9963
+        },
+        {
+          "text": "synthetic",
+          "startSeconds": 87.56,
+          "endSeconds": 88.06,
+          "confidence": 0.9753
+        },
+        {
+          "text": "but",
+          "startSeconds": 88.18,
+          "endSeconds": 88.3,
+          "confidence": 0.999
+        },
+        {
+          "text": "this",
+          "startSeconds": 88.36,
+          "endSeconds": 88.5,
+          "confidence": 0.9838
+        },
+        {
+          "text": "pattern",
+          "startSeconds": 88.54,
+          "endSeconds": 88.86,
+          "confidence": 0.7873
+        },
+        {
+          "text": "supports",
+          "startSeconds": 88.94,
+          "endSeconds": 89.321,
+          "confidence": 0.9858
+        },
+        {
+          "text": "accessibility",
+          "startSeconds": 89.401,
+          "endSeconds": 90.141,
+          "confidence": 0.9971
+        },
+        {
+          "text": "review",
+          "startSeconds": 90.241,
+          "endSeconds": 90.541,
+          "confidence": 0.9911
+        },
+        {
+          "text": "handover",
+          "startSeconds": 90.961,
+          "endSeconds": 91.441,
+          "confidence": 0.993
+        },
+        {
+          "text": "inspection",
+          "startSeconds": 91.541,
+          "endSeconds": 92.081,
+          "confidence": 0.9967
+        },
+        {
+          "text": "maintenance",
+          "startSeconds": 92.121,
+          "endSeconds": 92.681,
+          "confidence": 0.8961
+        },
+        {
+          "text": "and",
+          "startSeconds": 92.781,
+          "endSeconds": 92.881,
+          "confidence": 0.9912
+        },
+        {
+          "text": "targeted",
+          "startSeconds": 92.921,
+          "endSeconds": 93.341,
+          "confidence": 0.9986
+        },
+        {
+          "text": "recapture",
+          "startSeconds": 93.402,
+          "endSeconds": 93.882,
+          "confidence": 0.9895
+        },
+        {
+          "text": "without",
+          "startSeconds": 93.902,
+          "endSeconds": 94.142,
+          "confidence": 0.9965
+        },
+        {
+          "text": "pretending",
+          "startSeconds": 94.162,
+          "endSeconds": 94.622,
+          "confidence": 0.9993
+        },
+        {
+          "text": "pixels",
+          "startSeconds": 94.662,
+          "endSeconds": 95.082,
+          "confidence": 0.6809
+        },
+        {
+          "text": "know",
+          "startSeconds": 95.142,
+          "endSeconds": 95.282,
+          "confidence": 0.4996
+        },
+        {
+          "text": "more",
+          "startSeconds": 95.342,
+          "endSeconds": 95.542,
+          "confidence": 0.9878
+        }
+      ]
     },
     {
       "id": "12-close",
@@ -154,7 +1544,123 @@
       "speechEndSeconds": 102.204,
       "meanConfidence": 0.9299,
       "minimumWordConfidence": 0.6689,
-      "maximumWordConfidence": 0.999
+      "maximumWordConfidence": 0.999,
+      "words": [
+        {
+          "text": "sceneindex",
+          "startSeconds": 96.102,
+          "endSeconds": 96.562,
+          "confidence": 0.7192
+        },
+        {
+          "text": "makes",
+          "startSeconds": 96.682,
+          "endSeconds": 96.862,
+          "confidence": 0.9484
+        },
+        {
+          "text": "a",
+          "startSeconds": 96.922,
+          "endSeconds": 96.942,
+          "confidence": 0.9864
+        },
+        {
+          "text": "place",
+          "startSeconds": 97.002,
+          "endSeconds": 97.242,
+          "confidence": 0.9685
+        },
+        {
+          "text": "searchable",
+          "startSeconds": 97.282,
+          "endSeconds": 97.783,
+          "confidence": 0.8674
+        },
+        {
+          "text": "testable",
+          "startSeconds": 97.863,
+          "endSeconds": 98.383,
+          "confidence": 0.9502
+        },
+        {
+          "text": "and",
+          "startSeconds": 98.443,
+          "endSeconds": 98.543,
+          "confidence": 0.9367
+        },
+        {
+          "text": "honest",
+          "startSeconds": 98.583,
+          "endSeconds": 98.863,
+          "confidence": 0.9436
+        },
+        {
+          "text": "about",
+          "startSeconds": 98.923,
+          "endSeconds": 99.123,
+          "confidence": 0.9972
+        },
+        {
+          "text": "evidence",
+          "startSeconds": 99.203,
+          "endSeconds": 99.663,
+          "confidence": 0.9984
+        },
+        {
+          "text": "when",
+          "startSeconds": 100.163,
+          "endSeconds": 100.283,
+          "confidence": 0.9453
+        },
+        {
+          "text": "the",
+          "startSeconds": 100.323,
+          "endSeconds": 100.383,
+          "confidence": 0.9886
+        },
+        {
+          "text": "world",
+          "startSeconds": 100.463,
+          "endSeconds": 100.643,
+          "confidence": 0.7728
+        },
+        {
+          "text": "changes",
+          "startSeconds": 100.683,
+          "endSeconds": 101.103,
+          "confidence": 0.9972
+        },
+        {
+          "text": "the",
+          "startSeconds": 101.163,
+          "endSeconds": 101.243,
+          "confidence": 0.9896
+        },
+        {
+          "text": "route",
+          "startSeconds": 101.323,
+          "endSeconds": 101.483,
+          "confidence": 0.6689
+        },
+        {
+          "text": "changes",
+          "startSeconds": 101.503,
+          "endSeconds": 101.863,
+          "confidence": 0.999
+        },
+        {
+          "text": "with",
+          "startSeconds": 101.923,
+          "endSeconds": 102.083,
+          "confidence": 0.9936
+        },
+        {
+          "text": "it",
+          "startSeconds": 102.124,
+          "endSeconds": 102.204,
+          "confidence": 0.9979
+        }
+      ]
     }
   ],
   "failures": [],

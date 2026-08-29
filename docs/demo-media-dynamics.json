@@ -3,7 +3,7 @@
   "video": "submission/video/semantic-spatial-webmcp-demo.mp4",
   "sceneDetection": {
     "threshold": 0.12,
-    "cutCount": 14,
+    "cutCount": 13,
     "cutsSeconds": [
       4.7,
       14.166667,
@@ -11,14 +11,13 @@
       23.4,
       31.366667,
       39.533333,
-      48.766667,
-      57.366667,
-      66.133333,
-      74.6,
-      82.5,
-      91.266667,
-      95.866667,
-      99.4
+      50.3,
+      57.4,
+      66.166667,
+      74.633333,
+      82.533333,
+      91.3,
+      99.433333
     ]
   },
   "freezeDetection": {

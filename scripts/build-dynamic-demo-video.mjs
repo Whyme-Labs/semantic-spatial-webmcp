@@ -20,6 +20,7 @@ const DEFAULTS = Object.freeze({
   audioQualityReceipt: "docs/demo-audio-quality.json",
   captureReceipt: "submission/video/chrome-replay-receipt.json",
   timelineFrame: "submission/video/chrome-replay-timeline.png",
+  outroFrame: "submission/video/chrome-replay-outro.png",
   contextComparison: "submission/screenshots/context-comparison.png",
   contactSheet: "submission/screenshots/demo-dynamic-contact-sheet.png",
   music: "submission/video/music/sceneindex-ambient.wav",
@@ -74,8 +75,10 @@ function cropFor(mode) {
     right: "crop=960:540:960:180",
     evidence: "crop=960:540:960:480",
     proof: "crop=640:360:1280:200",
+    recapture: "crop=640:360:1280:0",
     timelineTools: "crop=1280:720:64:360",
     timelineResults: "crop=1280:720:576:360",
+    outro: "crop=1920:1080:0:0",
     header: "crop=1440:810:0:0",
     comparison: "crop=1440:810:0:45"
   }[mode];
@@ -180,10 +183,24 @@ function generateAmbientMusic(boundaries, path) {
 }
 
 function buildFilter(shot, duration, index, count) {
+  const motionFilters = shot.mode === "recapture"
+    ? [
+        "pad=672:378:16:9:color=0x111418",
+        "scale=1984:1116",
+        "crop=1920:1080:x='32+16*sin(t*0.24)':y='18+8*cos(t*0.20)'"
+      ]
+    : shot.mode === "outro"
+      ? [
+          "scale=1984:1116",
+          "crop=1920:1080:x='32+16*sin(t*0.24)':y='18+8*cos(t*0.20)'"
+        ]
+      : [
+          "scale=2080:1170:force_original_aspect_ratio=increase",
+          "crop=1920:1080:x='80+48*sin(t*0.31)':y='45+28*cos(t*0.23)'"
+        ];
   const filters = [
     cropFor(shot.mode),
-    "scale=2080:1170:force_original_aspect_ratio=increase",
-    "crop=1920:1080:x='80+48*sin(t*0.31)':y='45+28*cos(t*0.23)'",
+    ...motionFilters,
     "fps=30",
     "eq=contrast=1.025:saturation=1.04",
     "format=yuv420p"
@@ -215,6 +232,31 @@ function buildFilter(shot, duration, index, count) {
         `drawtext=fontfile='${FONT}':text='agent · args · result':x=143:y=414:fontsize=19:fontcolor=0xF2F4F6:enable='${enable}'`
       );
     }
+  }
+  if (shot.metricFocus) {
+    filters.push(
+      "drawbox=x=1260:y=278:w=520:h=316:color=0x0D4D57@0.38:t=10",
+      "drawbox=x=1272:y=290:w=496:h=292:color=0x111418@0.96:t=fill",
+      "drawbox=x=1272:y=290:w=496:h=292:color=0xF0C674@0.9:t=2",
+      `drawtext=fontfile='${FONT}':text='56%':x=1312:y=306:fontsize=126:fontcolor=0xF0C674:expansion=none`,
+      `drawtext=fontfile='${FONT}':text='ACCESSIBLE WAYFINDING':x=1318:y=474:fontsize=22:fontcolor=0xFAFBFC`,
+      `drawtext=fontfile='${FONT}':text='READINESS':x=1318:y=511:fontsize=31:fontcolor=0x37D4C6`,
+      "drawbox=x=1318:y=557:w=392:h=5:color=0xF0C674@0.92:t=fill:enable='lt(mod(t,1),0.56)'"
+    );
+  }
+  if (shot.repositorySummarySeconds) {
+    const enable = `between(t,0,${shot.repositorySummarySeconds.toFixed(2)})`;
+    filters.push(
+      `drawbox=x=138:y=610:w=1644:h=254:color=0x0D4D57@0.38:t=10:enable='${enable}'`,
+      `drawbox=x=150:y=622:w=1620:h=230:color=0x111418@0.97:t=fill:enable='${enable}'`,
+      `drawbox=x=150:y=622:w=1620:h=230:color=0x37D4C6@0.9:t=2:enable='${enable}'`,
+      `drawtext=fontfile='${FONT}':text='OPEN SOURCE REFERENCE BUILD':x=190:y=650:fontsize=25:fontcolor=0x8A8F98:enable='${enable}'`,
+      `drawtext=fontfile='${FONT}':text='WEBMCP':x=190:y=717:fontsize=34:fontcolor=0x37D4C6:enable='${enable}'`,
+      `drawtext=fontfile='${FONT}':text='3DGS':x=505:y=717:fontsize=34:fontcolor=0xFAFBFC:enable='${enable}'`,
+      `drawtext=fontfile='${FONT}':text='SPATIAL GRAPH':x=750:y=717:fontsize=34:fontcolor=0xF0C674:enable='${enable}'`,
+      `drawtext=fontfile='${FONT}':text='MIT OPEN SOURCE':x=1190:y=717:fontsize=34:fontcolor=0xFAFBFC:enable='${enable}'`,
+      `drawtext=fontfile='${FONT}':text='Whyme-Labs / semantic-spatial-webmcp':x=190:y=792:fontsize=22:fontcolor=0xF2F4F6:enable='${enable}'`
+    );
   }
   if (shot.title) {
     filters.push(
@@ -253,9 +295,9 @@ function shotTemplate() {
     { sources: [44.4, 57.1], modes: ["right", "viewer"], title: "THE MISSION", subtitle: "Entrance A to Platform 2, without stairs", calls: [{ tool: "get_scene_context", result: "live camera and entities" }, { tool: "navigate_to_entity", result: "accessible_gate_1" }] },
     { sources: [71.4, 87.2], modes: ["viewer", "right"], title: "THE BASELINE", subtitle: "the first route uses Lift 1", calls: [{ tool: "find_semantic_route", result: "accessible route uses lift_1" }, null] },
     { sources: [99.9, 111.0], modes: ["right", "viewer"], title: "LIFT 1 CLOSED", subtitle: "the original route is now invalid", calls: [{ tool: "set_entity_state", result: "operational = closed" }, { tool: "find_semantic_route", result: "baseline route invalid" }] },
-    { sources: [123.7, 139.5], modes: ["viewer", "right"], title: "THE ALTERNATE", subtitle: "Lift 2 keeps the trip possible", calls: [{ tool: "find_semantic_route", result: "reroute uses lift_2" }, { tool: "get_region_quality", result: "warning = west_corridor" }] },
-    { sources: [155.4, 171.3], modes: ["proof", "viewer"], title: "EVIDENCE: 56 PERCENT", subtitle: "known connection, unreadable sign", calls: [{ tool: "get_region_quality", result: "readiness = 56 percent" }, null] },
-    { sources: [183.9, 198.2], modes: ["evidence", "viewer"], title: "RECAPTURE THE GAP", subtitle: "two concrete field positions", calls: [{ tool: "get_region_quality", result: "2 recaptures · 6 markers" }, null] },
+    { sources: [123.7, 139.5], modes: ["viewer", "proof"], title: "THE ALTERNATE", subtitle: "Lift 2 keeps the trip possible", calls: [{ tool: "find_semantic_route", result: "reroute uses lift_2" }, { tool: "get_region_quality", result: "readiness = 56 percent" }], splitWord: "wayfinding", metricFocuses: [false, true] },
+    { sources: [155.4, 171.3], modes: ["evidence", "viewer"], title: "EVIDENCE: 56 PERCENT", subtitle: "known connection, unreadable sign", calls: [{ tool: "get_region_quality", result: "weak region = west_corridor" }, null] },
+    { images: [true, false], assets: ["timeline", null], sources: [null, 198.2], modes: ["recapture", "viewer"], titles: [null, "RECAPTURE THE GAP"], subtitles: [null, "two concrete field positions"], calls: [null, { tool: "get_region_quality", result: "2 recaptures · 6 markers" }] },
     { sources: [214.1, 225.2], modes: ["right", "full"], title: "HUMAN CONTROL", subtitle: "inspect, challenge, undo", calls: [{ tool: "undo_scene_change", result: "lift_1 = open" }, null] },
     {
       image: true,
@@ -276,7 +318,7 @@ function shotTemplate() {
       ]
     },
     { image: true, asset: "comparison", modes: ["comparison", "comparison"], title: "FROM FIXTURE TO FIELDWORK", subtitle: "make uncertainty actionable" },
-    { sources: [0, 9.5], modes: ["header", "full"], title: "SCENEINDEX", subtitle: "Search the place. See the reason." }
+    { images: [true, false], assets: ["outro", null], sources: [null, 9.5], modes: ["outro", "full"], titles: [null, "SCENEINDEX"], subtitles: [null, "Search the place. See the reason."], repositorySummarySeconds: [2.2, null] }
   ];
 }
 
@@ -288,7 +330,12 @@ function makeShots(alignment) {
   for (let beatIndex = 0; beatIndex < template.length; beatIndex += 1) {
     const start = boundaries[beatIndex];
     const end = boundaries[beatIndex + 1];
-    const middle = (start + end) / 2;
+    const anchor = template[beatIndex].splitWord
+      ? alignment.beats[beatIndex].words?.find(({ text }) => text === template[beatIndex].splitWord)
+      : null;
+    const middle = anchor
+      ? Math.max(start + 3.05, Math.min(end - 3.05, anchor.startSeconds - 0.15))
+      : (start + end) / 2;
     for (let half = 0; half < 2; half += 1) {
       const shotStart = half === 0 ? start : middle;
       const shotEnd = half === 0 ? middle : end;
@@ -299,13 +346,15 @@ function makeShots(alignment) {
         end: Number(shotEnd.toFixed(3)),
         duration: Number((shotEnd - shotStart).toFixed(3)),
         sourceStart: template[beatIndex].sources?.[half] ?? null,
-        image: template[beatIndex].image === true,
-        asset: template[beatIndex].asset ?? null,
+        image: template[beatIndex].images?.[half] ?? template[beatIndex].image === true,
+        asset: template[beatIndex].assets?.[half] ?? template[beatIndex].asset ?? null,
         mode: template[beatIndex].modes[half],
         call: template[beatIndex].calls?.[half] ?? null,
         focus: template[beatIndex].focuses?.[half] ?? null,
-        title: half === 0 ? template[beatIndex].title : null,
-        subtitle: half === 0 ? template[beatIndex].subtitle : null
+        metricFocus: template[beatIndex].metricFocuses?.[half] ?? false,
+        repositorySummarySeconds: template[beatIndex].repositorySummarySeconds?.[half] ?? null,
+        title: template[beatIndex].titles ? template[beatIndex].titles[half] : half === 0 ? template[beatIndex].title : null,
+        subtitle: template[beatIndex].subtitles ? template[beatIndex].subtitles[half] : half === 0 ? template[beatIndex].subtitle : null
       });
     }
   }
@@ -334,6 +383,23 @@ function buildAudioFilter(cueTimes) {
   ].join(";");
 }
 
+function buildSyncAnchors(shots, alignment) {
+  const beat = (id) => alignment.beats.find((item) => item.id === id);
+  const shot = (beatNumber, half) => shots[(beatNumber - 1) * 2 + half];
+  const word = (beatId, text) => beat(beatId).words.find((item) => item.text === text);
+  const anchors = [
+    { id: "route-baseline", visualSeconds: shot(4, 0).start, speechSeconds: beat("04-baseline-route").speechStartSeconds },
+    { id: "lift-outage", visualSeconds: shot(5, 0).start, speechSeconds: beat("05-lift-closure").speechStartSeconds },
+    { id: "readiness-warning", visualSeconds: shot(6, 1).start, speechSeconds: word("06-alternate-route", "wayfinding").startSeconds },
+    { id: "tool-call-log", visualSeconds: shot(10, 0).start, speechSeconds: beat("10-webmcp").speechStartSeconds }
+  ].map((anchor) => ({
+    ...anchor,
+    offsetSeconds: Number((anchor.visualSeconds - anchor.speechSeconds).toFixed(3))
+  }));
+  assert(anchors.every(({ offsetSeconds }) => Math.abs(offsetSeconds) <= 0.45), "A key visual is not synchronized to narration.");
+  return anchors;
+}
+
 async function main() {
   const options = parseArgs(process.argv.slice(2));
   if (options.help) {
@@ -353,6 +419,7 @@ async function main() {
   const shots = makeShots(alignment);
   assert(shots.length === 24, "Dynamic edit must contain 24 shots.");
   assert(shots.every((shot) => shot.duration > 3 && shot.duration < 9), "Shot durations must stay between 3 and 9 seconds.");
+  const syncAnchors = buildSyncAnchors(shots, alignment);
   const work = resolve(ROOT, options.work);
   assert(work.startsWith(resolve(ROOT, "submission/video/")), "Refusing to use a work directory outside submission/video.");
   rmSync(work, { recursive: true, force: true });
@@ -365,7 +432,9 @@ async function main() {
     const shot = shots[index];
     const output = resolve(work, `shot-${String(index + 1).padStart(2, "0")}.mp4`);
     const sourceDuration = Math.min(shot.duration, 7.5);
-    const imagePath = shot.asset === "timeline" ? options.timelineFrame : options.contextComparison;
+    const imagePath = shot.asset === "timeline"
+      ? options.timelineFrame
+      : shot.asset === "outro" ? options.outroFrame : options.contextComparison;
     const inputArgs = shot.image
       ? ["-loop", "1", "-framerate", "30", "-t", String(shot.duration), "-i", resolve(ROOT, imagePath)]
       : ["-ss", String(shot.sourceStart), "-t", String(sourceDuration), "-i", resolve(ROOT, options.source)];
@@ -435,6 +504,7 @@ async function main() {
       alignmentReceipt: { path: options.alignmentReceipt, sha256: sha256File(options.alignmentReceipt) },
       audioQualityReceipt: { path: options.audioQualityReceipt, sha256: sha256File(options.audioQualityReceipt) },
       timelineFrame: { path: options.timelineFrame, sha256: sha256File(options.timelineFrame) },
+      outroFrame: { path: options.outroFrame, sha256: sha256File(options.outroFrame) },
       contextComparison: { path: options.contextComparison, sha256: sha256File(options.contextComparison) }
     },
     evidence: {
@@ -464,6 +534,7 @@ async function main() {
       liveToolCalloutCount: shots.filter((shot) => shot.call).length,
       timelineFocusCardCount: shots.reduce((count, shot) => count + (shot.focus?.length ?? 0), 0),
       synthesizedUiCueCount: sfxCueTimes.length,
+      syncAnchors,
       music: {
         projectAuthored: true,
         path: options.music,
@@ -491,4 +562,4 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   });
 }
 
-export { beatBoundaries, buildAudioFilter, buildFilter, generateAmbientMusic, makeShots, parseArgs };
+export { beatBoundaries, buildAudioFilter, buildFilter, buildSyncAnchors, generateAmbientMusic, makeShots, parseArgs };

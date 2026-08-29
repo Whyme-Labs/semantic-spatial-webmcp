@@ -120,6 +120,14 @@ def main() -> None:
             failures.append(beat["id"])
         start = beat_spans[0][0].start * seconds_per_emission
         end = beat_spans[-1][-1].end * seconds_per_emission
+        word_timings = []
+        for word, word_span, confidence in zip(beat_words, beat_spans, confidences):
+            word_timings.append({
+                "text": word,
+                "startSeconds": round(word_span[0].start * seconds_per_emission, 3),
+                "endSeconds": round(word_span[-1].end * seconds_per_emission, 3),
+                "confidence": round(confidence, 4),
+            })
         beat_receipts.append({
             "id": beat["id"],
             "text": beat["text"],
@@ -130,6 +138,7 @@ def main() -> None:
             "meanConfidence": round(mean_confidence, 4),
             "minimumWordConfidence": round(minimum_word_confidence, 4),
             "maximumWordConfidence": round(max(confidences), 4),
+            "words": word_timings,
         })
         print(
             f"{beat['id']} · {len(beat_words)} words · {start:.2f}-{end:.2f}s · confidence={mean_confidence:.4f}",
