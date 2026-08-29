@@ -1,9 +1,9 @@
 {
-  "verifiedAt": "2026-08-29T04:40:41.055Z",
+  "verifiedAt": "2026-08-29T06:28:49.954Z",
   "artifact": {
     "path": "submission/video/semantic-spatial-webmcp-demo.mp4",
-    "bytes": 11364083,
-    "sha256": "50f492c9fab903c70d371fe4ad635c0d31fccf3a93379fd31fe9500b7f4b3dba"
+    "bytes": 10925492,
+    "sha256": "5aabec5c18ebad20bd6b9d591013998fe899f65a0879dfe0e100cea0d52893e9"
   },
   "durationSeconds": 102.966667,
   "underThreeMinutes": true,
@@ -19,7 +19,7 @@
     "channels": 1,
     "channelLayout": "mono",
     "sampleRateHz": 48000,
-    "meanVolumeDb": -16.7,
+    "meanVolumeDb": -16.6,
     "maxVolumeDb": -0.6,
     "nonSilent": true
   },
@@ -1964,12 +1964,12 @@
       "projectAuthored": true,
       "path": "submission/video/music/sceneindex-ambient.wav",
       "sha256": "574288bd47adf4f323b6ad6d64048857d429099a72db47cb1b1dc73f9fd138db",
-      "nominalMixGain": 0.24,
+      "nominalMixGain": 0.34,
       "narrationDucking": {
-        "threshold": 0.06,
-        "ratio": 3,
+        "threshold": 0.08,
+        "ratio": 2.5,
         "attackMs": 24,
-        "releaseMs": 500
+        "releaseMs": 550
       },
       "generator": "deterministic additive synthesis",
       "sampleRateHz": 48000,
@@ -1994,7 +1994,7 @@
     },
     "contactSheet": {
       "path": "submission/screenshots/demo-dynamic-contact-sheet.png",
-      "sha256": "6540a77cd9ba73ba0fa210b9801f17ce6335e262591cf9a4f3bc36dd4c2d9363"
+      "sha256": "afd1206a18c8fc08e4a6f43ffb4939d880e36ee11e5735597281e1f0a9be7b4d"
     },
     "maximumPlannedShotSeconds": 6.112,
     "minimumCutToSpeechMarginSeconds": 0.23,

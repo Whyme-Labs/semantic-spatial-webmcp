@@ -60,6 +60,8 @@ test("dynamic edit renders opaque titles, animated call focus, music ducking, an
   assert.match(videoFilter, /set_entity_state/);
   assert.match(videoFilter, /0x37D4C6/);
   assert.match(videoFilter, /drawbox=x=0:y=808:w=1140:h=212:color=0x111418:t=fill/);
+  assert.match(videoFilter, /crop=1280:720:0:250/);
+  assert.match(videoFilter, /crop=1920:1080:x='40\+20\*sin/);
 
   const focusShot = makeShots(alignmentFixture()).find(({ focus }) => focus);
   const focusFilter = buildFilter(focusShot, focusShot.duration, 18, 24);
@@ -71,6 +73,6 @@ test("dynamic edit renders opaque titles, animated call focus, music ducking, an
   assert.match(audioFilter, /sine=frequency=880/);
   assert.match(audioFilter, /sine=frequency=1120/);
   assert.match(audioFilter, /sidechaincompress/);
-  assert.match(audioFilter, /volume=0\.24/);
+  assert.match(audioFilter, /volume=0\.34/);
   assert.match(audioFilter, /amix=inputs=4/);
 });

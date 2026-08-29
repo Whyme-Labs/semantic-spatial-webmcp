@@ -71,7 +71,7 @@ function run(command, args) {
 function cropFor(mode) {
   return {
     full: "crop=1920:1080:0:0",
-    viewer: "crop=1280:720:40:250",
+    viewer: "crop=1280:720:0:250",
     right: "crop=960:540:960:180",
     evidence: "crop=960:540:960:480",
     proof: "crop=640:360:1280:200",
@@ -183,6 +183,7 @@ function generateAmbientMusic(boundaries, path) {
 }
 
 function buildFilter(shot, duration, index, count) {
+  const leftSafeFrame = shot.mode === "viewer" || shot.mode === "full" || shot.mode === "header";
   const motionFilters = shot.mode === "recapture"
     ? [
         "pad=672:378:16:9:color=0x111418",
@@ -194,6 +195,11 @@ function buildFilter(shot, duration, index, count) {
           "scale=1984:1116",
           "crop=1920:1080:x='32+16*sin(t*0.24)':y='18+8*cos(t*0.20)'"
         ]
+      : leftSafeFrame
+        ? [
+            "scale=2080:1170:force_original_aspect_ratio=increase",
+            "crop=1920:1080:x='40+20*sin(t*0.31)':y='45+28*cos(t*0.23)'"
+          ]
       : [
           "scale=2080:1170:force_original_aspect_ratio=increase",
           "crop=1920:1080:x='80+48*sin(t*0.31)':y='45+28*cos(t*0.23)'"
@@ -376,8 +382,8 @@ function buildAudioFilter(cueTimes) {
   const inputs = cueTimes.map((_seconds, index) => `[tick${index}]`).join("");
   return [
     "[1:a]asplit=2[voice][voice_key]",
-    "[2:a]highpass=f=65,lowpass=f=2600,volume=0.24[bed]",
-    "[bed][voice_key]sidechaincompress=threshold=0.06:ratio=3:attack=24:release=500[ducked]",
+    "[2:a]highpass=f=65,lowpass=f=2600,volume=0.34[bed]",
+    "[bed][voice_key]sidechaincompress=threshold=0.08:ratio=2.5:attack=24:release=550[ducked]",
     ...ticks,
     `[voice][ducked]${inputs}amix=inputs=${cueTimes.length + 2}:normalize=0:dropout_transition=0,alimiter=limit=0.95[mixed]`
   ].join(";");
@@ -539,8 +545,8 @@ async function main() {
         projectAuthored: true,
         path: options.music,
         sha256: sha256File(options.music),
-        nominalMixGain: 0.24,
-        narrationDucking: { threshold: 0.06, ratio: 3, attackMs: 24, releaseMs: 500 },
+        nominalMixGain: 0.34,
+        narrationDucking: { threshold: 0.08, ratio: 2.5, attackMs: 24, releaseMs: 550 },
         ...musicGeneration
       },
       contactSheet: { path: options.contactSheet, sha256: sha256File(options.contactSheet) },

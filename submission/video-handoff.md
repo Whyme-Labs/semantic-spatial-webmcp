@@ -63,7 +63,7 @@ npm run assemble:demo-video
 npm run verify:media-dynamics
 ```
 
-The editor reads word-level alignment and keeps the baseline route, lift outage, 56% warning, and tool log within 450 milliseconds of the matching narration. It creates 24 shots with exact live tool-call overlays, a timed readiness punch-in, readable recapture instructions, animated timeline focus cards, and a two-second repository stack card. Project-authored UI ticks accent key calls. A deterministic twelve-chord ambient score runs about 25 dB below narration and ducks further while the narrator speaks. The final dynamics gate requires at least eight detected cuts and rejects freeze events longer than eight seconds.
+The editor reads word-level alignment and keeps the baseline route, lift outage, 56% warning, and tool log within 450 milliseconds of the matching narration. It creates 24 shots with exact live tool-call overlays, a timed readiness punch-in, readable recapture instructions, animated timeline focus cards, and a two-second repository stack card. Project-authored UI ticks accent key calls. A deterministic twelve-chord ambient score runs about 20.5 dB below narration and ducks further while the narrator speaks. The final dynamics gate requires at least eight detected cuts and rejects freeze events longer than eight seconds.
 
 ## Verify the exact export
 
