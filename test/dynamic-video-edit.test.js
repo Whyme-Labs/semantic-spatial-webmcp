@@ -75,4 +75,5 @@ test("dynamic edit renders opaque titles, animated call focus, music ducking, an
   assert.match(audioFilter, /sidechaincompress/);
   assert.match(audioFilter, /volume=0\.34/);
   assert.match(audioFilter, /amix=inputs=4/);
+  assert.match(audioFilter, /alimiter=limit=0\.89:level=false/);
 });

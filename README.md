@@ -163,6 +163,7 @@ npm run verify:demo-narration
 npm run verify:demo-audio
 npm run assemble:demo-video
 npm run verify:media-dynamics
+npm run verify:youtube-upload
 ```
 
 `submission/video-handoff.md` records the pinned long-form inference patch, source capture command, quality thresholds, and exact-file review steps.

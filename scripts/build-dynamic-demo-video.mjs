@@ -385,7 +385,7 @@ function buildAudioFilter(cueTimes) {
     "[2:a]highpass=f=65,lowpass=f=2600,volume=0.34[bed]",
     "[bed][voice_key]sidechaincompress=threshold=0.08:ratio=2.5:attack=24:release=550[ducked]",
     ...ticks,
-    `[voice][ducked]${inputs}amix=inputs=${cueTimes.length + 2}:normalize=0:dropout_transition=0,alimiter=limit=0.95[mixed]`
+    `[voice][ducked]${inputs}amix=inputs=${cueTimes.length + 2}:normalize=0:dropout_transition=0,alimiter=limit=0.89:level=false[mixed]`
   ].join(";");
 }
 

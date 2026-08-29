@@ -329,7 +329,7 @@
         { "type": "jsonValue", "path": "docs/demo-audio-quality.json", "pointer": "/checks/humFrameCoverage", "equals": true },
         { "type": "jsonValue", "path": "docs/demo-audio-quality.json", "pointer": "/checks/interBeatLeakage", "equals": true },
         { "type": "fileExists", "path": "docs/demo-video-verification.json" },
-        { "type": "jsonValue", "path": "docs/demo-video-verification.json", "pointer": "/artifact/sha256", "equals": "5aabec5c18ebad20bd6b9d591013998fe899f65a0879dfe0e100cea0d52893e9" },
+        { "type": "jsonValue", "path": "docs/demo-video-verification.json", "pointer": "/artifact/sha256", "equals": "31871a177dbb60f08174c0cb7839370f51526193ac8fa14667f53d978fd88691" },
         { "type": "jsonValue", "path": "docs/demo-video-verification.json", "pointer": "/durationSeconds", "equals": 102.966667 },
         { "type": "jsonValue", "path": "docs/demo-video-verification.json", "pointer": "/underThreeMinutes", "equals": true },
         { "type": "jsonValue", "path": "docs/demo-video-verification.json", "pointer": "/video/width", "equals": 1920 },
@@ -359,6 +359,12 @@
         { "type": "fileExists", "path": "docs/demo-media-dynamics.json" },
         { "type": "jsonValue", "path": "docs/demo-media-dynamics.json", "pointer": "/result", "equals": "passed" },
         { "type": "fileExists", "path": "submission/demo-narration.srt" },
+        { "type": "fileExists", "path": "docs/youtube-upload-verification.json" },
+        { "type": "jsonValue", "path": "docs/youtube-upload-verification.json", "pointer": "/checks/fastStart", "equals": true },
+        { "type": "jsonValue", "path": "docs/youtube-upload-verification.json", "pointer": "/checks/loudness", "equals": true },
+        { "type": "jsonValue", "path": "docs/youtube-upload-verification.json", "pointer": "/checks/truePeakHeadroom", "equals": true },
+        { "type": "jsonValue", "path": "docs/youtube-upload-verification.json", "pointer": "/checks/captions", "equals": true },
+        { "type": "jsonValue", "path": "docs/youtube-upload-verification.json", "pointer": "/result", "equals": "passed" },
         { "type": "jsonValue", "path": "docs/demo-video-verification.json", "pointer": "/result", "equals": "passed" }
       ]
     },

@@ -1,9 +1,9 @@
 {
-  "verifiedAt": "2026-08-29T06:28:49.954Z",
+  "verifiedAt": "2026-08-29T09:29:20.120Z",
   "artifact": {
     "path": "submission/video/semantic-spatial-webmcp-demo.mp4",
-    "bytes": 10925492,
-    "sha256": "5aabec5c18ebad20bd6b9d591013998fe899f65a0879dfe0e100cea0d52893e9"
+    "bytes": 10909132,
+    "sha256": "31871a177dbb60f08174c0cb7839370f51526193ac8fa14667f53d978fd88691"
   },
   "durationSeconds": 102.966667,
   "underThreeMinutes": true,
@@ -19,8 +19,8 @@
     "channels": 1,
     "channelLayout": "mono",
     "sampleRateHz": 48000,
-    "meanVolumeDb": -16.6,
-    "maxVolumeDb": -0.6,
+    "meanVolumeDb": -17.1,
+    "maxVolumeDb": -1,
     "nonSilent": true
   },
   "container": "mov,mp4,m4a,3gp,3g2,mj2",

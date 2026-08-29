@@ -1,5 +1,5 @@
 {
-  "verifiedAt": "2026-08-29T06:54:49.374Z",
+  "verifiedAt": "2026-08-29T09:35:49.957Z",
   "evidenceClass": "deterministic-runtime",
   "note": "These cases verify expected tool plans and grounded runtime behavior. They do not claim that a language model selected the calls.",
   "cases": 5,

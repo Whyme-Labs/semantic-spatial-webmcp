@@ -31,6 +31,7 @@
     "verify:demo-audio": "python3.11 scripts/analyze-narration-audio.py --audio submission/video/narration/demo-narration.wav --output docs/demo-audio-quality.json",
     "assemble:demo-video": "node scripts/build-dynamic-demo-video.mjs",
     "verify:media-dynamics": "node scripts/verify-media-dynamics.mjs --video submission/video/semantic-spatial-webmcp-demo.mp4 --output docs/demo-media-dynamics.json",
+    "verify:youtube-upload": "node scripts/verify-youtube-upload.mjs",
     "check:submission": "node scripts/check-submission.mjs",
     "check:submission:strict": "node scripts/check-submission.mjs --strict",
     "verify:webmcp:chrome": "node scripts/verify-webmcp-chrome.mjs"

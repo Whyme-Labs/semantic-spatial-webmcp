@@ -42,6 +42,7 @@ Complete this checklist against the final public artifacts. Do not mark an item 
 - [x] Use the aligned 24-shot edit. The final file has 13 detected cuts, 11 beat fades, and zero freeze events over two seconds.
 - [x] Use only the project-authored procedural score; include no third-party music.
 - [x] Confirm the final duration is below 3:00.
+- [x] Pass the local YouTube upload verifier for codecs, fast start, loudness, true peak, captions, and metadata.
 - [ ] Watch the exported video with sound.
 - [ ] Publish the video as Public on YouTube.
 - [ ] Open the YouTube link while signed out.

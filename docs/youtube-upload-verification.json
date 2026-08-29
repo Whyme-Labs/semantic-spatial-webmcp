@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-08-29T09:36:14.948Z",
+  "video": {
+    "path": "submission/video/semantic-spatial-webmcp-demo.mp4",
+    "sha256": "31871a177dbb60f08174c0cb7839370f51526193ac8fa14667f53d978fd88691",
+    "bytes": 10909132,
+    "durationSeconds": 102.966667,
+    "codec": "h264",
+    "width": 1920,
+    "height": 1080,
+    "frameRate": "30/1",
+    "fastStartAtoms": {
+      "ftyp": 4,
+      "moov": 36,
+      "mdat": 114712
+    }
+  },
+  "audio": {
+    "integratedLufs": -16.3,
+    "loudnessRangeLu": 2,
+    "truePeakDbfs": -1,
+    "codec": "aac",
+    "sampleRateHz": 48000,
+    "channels": 1
+  },
+  "captions": {
+    "path": "submission/demo-narration.srt",
+    "sha256": "0cbe5dafe4ce71a76e3f2becb2982d5d24a8f0d709c4d72b76a4f4b4ecb78bb4",
+    "cueCount": 12,
+    "firstStartSeconds": 0.34,
+    "lastEndSeconds": 102.504,
+    "sequential": true,
+    "nonOverlapping": true,
+    "withinVideo": true
+  },
+  "metadata": {
+    "path": "submission/youtube-upload.md",
+    "sha256": "62c262e759e92af3e9f2ac3013db8d9cc49784867d9f57905a90dbafed78d701"
+  },
+  "checks": {
+    "receiptMatchesVideo": true,
+    "fastStart": true,
+    "durationBelowThreeMinutes": true,
+    "videoFormat": true,
+    "audioFormat": true,
+    "loudness": true,
+    "truePeakHeadroom": true,
+    "captions": true,
+    "metadata": true
+  },
+  "failures": [],
+  "result": "passed"
+}
