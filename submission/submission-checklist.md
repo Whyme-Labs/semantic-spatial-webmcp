@@ -58,6 +58,7 @@ Complete this checklist against the final public artifacts. Do not mark an item 
 - [ ] Preview the entry as a judge would see it.
 - [ ] Submit before September 4, 2026 at 4:00 AM Malaysia time.
 - [ ] Save the Devpost confirmation page or email.
+- [ ] After the deadline, leave the Devpost entry, repository, and live site unchanged until winners are announced, unless the organizer directs otherwise.
 
 ## Final no-receipt-no-claim check
 

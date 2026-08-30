@@ -1,6 +1,6 @@
 # WebMCP Challenge submission requirements
 
-Current as of **August 27, 2026**. This report uses only first-party sources: OpenAI, the official Devpost challenge pages, the Web Machine Learning Community Group draft, and Chrome's implementation documentation.
+Current as of **August 30, 2026**. This report uses only first-party sources: OpenAI, the official Devpost challenge pages, the Web Machine Learning Community Group draft, and Chrome's implementation documentation.
 
 ## Controlling sources and dates
 
@@ -15,7 +15,7 @@ The controlling source for eligibility, deadlines, project rules, and judging is
 
 An entrant may be an individual who has reached the age of majority where they live, a team of eligible individuals, or an organization organized in an eligible jurisdiction. Individuals and organizations must be resident/domiciled in a country that currently supports OpenAI API access and must not fall within a legal, sanctions, organizer, judge, affiliate, or conflict-of-interest exclusion. Teams and organizations must appoint an eligible representative. Malaysia is on OpenAI's current [supported-country list](https://developers.openai.com/api/docs/supported-countries), but the entrant still must personally attest to every rule. The complete exclusions and definitions are in [Official Rules section 3](https://webmcp.devpost.com/rules).
 
-The rules allow an eligible person to participate in more than one team or organization and also individually. A later clause says an entrant may not submit more than one submission, then refers inconsistently to that entrant's “other submissions.” Until Devpost clarifies, the conservative interpretation is **one submission per entrant identity**.
+The current Multiple Submissions clause allows an entrant to submit more than one project. Each submission must be unique and substantially different from that entrant's other submissions. SceneIndex remains the only submission prepared by this repository.
 
 ## Required submission package
 
@@ -134,6 +134,5 @@ Local Chrome 151 evidence on August 27 confirmed that drift. Manual `executeTool
 
 1. Who is the eligible entrant/representative, and are there team members whose prize eligibility or media consent must be recorded?
 2. Which YouTube account should publish the final verified MP4? Uploading and submitting require that account-owner decision.
-3. Does Devpost intend the contradictory multiple-submission clause to mean exactly one entry per person across individual and team identities? Use one until written clarification says otherwise.
-4. Does Devpost require the literal imperative API for eligibility, or is an entirely declarative WebMCP app acceptable? This repository already uses the imperative API, so no decision is needed for the current implementation.
-5. The rules' optional-plugin section mistakenly names `openai.devpost.com`; use the functioning `webmcp.devpost.com` site unless the organizer says otherwise.
+3. Does Devpost require the literal imperative API for eligibility, or is an entirely declarative WebMCP app acceptable? This repository already uses the imperative API, so no decision is needed for the current implementation.
+4. The rules' optional-plugin section mistakenly names `openai.devpost.com`; use the functioning `webmcp.devpost.com` site unless the organizer says otherwise.

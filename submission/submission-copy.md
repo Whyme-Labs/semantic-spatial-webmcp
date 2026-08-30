@@ -1,5 +1,26 @@
 # SceneIndex
 
+## Devpost field map
+
+- Project name: `SceneIndex`
+- Entrant: `Soh Wei Meng`
+- Entry type: individual
+- Team members: none
+- Tagline: `Search a place. Understand it. Test what happens when it changes.`
+- Live app: https://semantic-spatial-webmcp.swmengappdev.workers.dev/
+- Public source: https://github.com/Whyme-Labs/semantic-spatial-webmcp
+- Public demo video: `PASTE_PUBLIC_YOUTUBE_URL`
+- Credentials: none required
+- Testing instructions: use `submission/testing-instructions.md`
+- Primary screenshots:
+  - `submission/screenshots/chrome-webmcp-flow.png`
+  - `submission/screenshots/context-comparison.png`
+  - `submission/screenshots/cloudflare-workers-webmcp.png`
+- Optional process image: `submission/screenshots/demo-dynamic-contact-sheet.png`
+- Built with: WebMCP, JavaScript, Spark, Three.js, Cloudflare Workers Static Assets
+
+Before submission, replace `PASTE_PUBLIC_YOUTUBE_URL` and confirm every public link while signed out.
+
 ## Short description
 
 SceneIndex turns a Gaussian-splat scene into a place that people and agents can search, inspect, route through, test, and verify together.
@@ -87,4 +108,4 @@ The repository preserves `starter-v0.1.0` and its SHA as the first semantic vert
 
 - Public source: https://github.com/Whyme-Labs/semantic-spatial-webmcp
 - Live application: https://semantic-spatial-webmcp.swmengappdev.workers.dev/
-- Public demo video: pending owner upload of the verified 103-second story-driven MP4
+- Public demo video: `PASTE_PUBLIC_YOUTUBE_URL`
